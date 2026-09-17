@@ -96,7 +96,7 @@ export const projectsData = [
     ],
     tech: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Express 5', 'PostgreSQL (Neon)', 'BullMQ / Redis', 'API Gmail', 'Playwright'],
     links: [
-      { kind: 'demo', label: 'Voir le site', url: 'https://campaign-mailer-app.vercel.app' },
+      { kind: 'demo', label: 'Voir le site', url: 'https://campaignmailer.vercel.app' },
       { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Campaign-Mailer' },
     ],
   },
