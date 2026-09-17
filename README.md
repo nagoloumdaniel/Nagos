@@ -28,6 +28,7 @@ public/
 ├── robots.txt · sitemap.xml
 src/
 ├── assets/                  # Images WebP + CV (Mon_CV_Dev.pdf)
+│   └── logos/               # Logos des projets, récupérés dans leurs dépôts
 ├── components/
 │   ├── about/               # « À propos » + bouton de téléchargement du CV
 │   ├── blog/                # Articles avec filtres et modal
@@ -100,6 +101,23 @@ rayons, ombres, z-index). Le **thème sombre** redéfinit les variables sous `bo
 `BlogModal`, `ServiceModal` et `ProjectModal` sont rendues via `createPortal(…, document.body)` pour
 échapper au stacking context de `<main>`. Chacune bloque le scroll, se ferme avec `Escape` ou au clic
 sur l'overlay, et place le focus sur le bouton de fermeture à l'ouverture.
+
+`ProjectModal` garde en plus le focus clavier à l'intérieur de la modal et le rend à la carte
+d'origine à la fermeture.
+
+---
+
+## 🗂️ Projets
+
+Les données sont dans `src/components/work/Data.jsx` : une carte par produit, même quand il a plusieurs
+dépôts (liens « GitHub Frontend » / « GitHub Backend » dans la même carte).
+
+- **Logo** : récupéré dans le dépôt du projet et converti en WebP dans `src/assets/logos/`. Sans logo
+  dans le dépôt, la carte affiche un monogramme (`initials`).
+- **Liens** : uniquement des liens vérifiés. Un dépôt privé (`private: true`) n'a jamais de lien vers
+  son code.
+- **Carte cliquable** : le titre est un bouton dont la zone s'étend à toute la carte (`.work__open::after`) ;
+  les liens de la carte passent au-dessus et restent utilisables séparément.
 
 ---
 

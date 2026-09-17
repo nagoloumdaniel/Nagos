@@ -14,7 +14,7 @@ const experience = [
     sub: 'DATALIA - plateforme immobilière KILICASA',
     dates: 'Avril – juin 2026 (3 mois)', side: 'left' },
   { title: 'Projets Full-Stack',
-    sub: 'Allibuy · Zolya · Cyna (SaaS en équipe)', dates: '', side: 'right' },
+    sub: 'Allibuy · Zolya · Campaign Mailer · Cyna (en équipe)', dates: '', side: 'right' },
   { title: 'Design graphique & motion', sub: 'BRITECH',                  dates: '2022 – 2025', side: 'left'  },
 ];
 const certifications = [

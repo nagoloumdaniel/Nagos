@@ -41,7 +41,7 @@ const servicesData = [
     modalDesc: 'J\'intègre la Data et l\'IA dans des applications concrètes : de l\'appel d\'API de modèles au scoring et à la visualisation.',
     items: [
       { icon: 'uil-robot',     text: 'Intégration d\'API de modèles d\'IA : Claude, Gemini, GPT.' },
-      { icon: 'uil-analytics', text: 'Scoring algorithmique et stratégies de trading en Python (Fundatrade, NexaGold).' },
+      { icon: 'uil-analytics', text: 'Scoring algorithmique et stratégies de trading : Fundatrade (TypeScript), NexaGold (Python).' },
       { icon: 'uil-graph-bar', text: 'Analyse et dashboards de données avec pandas et Streamlit.' },
       { icon: 'uil-cog',       text: 'Scripts d\'automatisation et pipelines de données.' },
     ],
