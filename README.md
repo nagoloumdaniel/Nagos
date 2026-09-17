@@ -99,8 +99,14 @@ rayons, ombres, z-index). Le **thème sombre** redéfinit les variables sous `bo
 ## 🪟 Modals
 
 `BlogModal`, `ServiceModal` et `ProjectModal` sont rendues via `createPortal(…, document.body)` pour
-échapper au stacking context de `<main>`. Chacune bloque le scroll, se ferme avec `Escape` ou au clic
-sur l'overlay, et place le focus sur le bouton de fermeture à l'ouverture.
+échapper au stacking context de `<main>`. Chacune se ferme avec `Escape`, au clic sur l'overlay ou
+sur la croix, et place le focus sur le bouton de fermeture à l'ouverture.
+
+Le hook commun **`useModalDismiss(isOpen, onClose)`** (`src/hooks/`) gère `Escape` et le verrouillage
+de la page de fond. `overflow: hidden` sur `<body>` seul ne suffisait pas (c'est `<html>` qui défile) :
+les deux sont verrouillés, la largeur de la barre de défilement est compensée par un padding pour
+éviter un saut de la page, et les ouvertures sont comptées pour ne rendre le scroll qu'à la dernière
+fermeture.
 
 `ProjectModal` garde en plus le focus clavier à l'intérieur de la modal et le rend à la carte
 d'origine à la fermeture.
@@ -112,8 +118,9 @@ d'origine à la fermeture.
 Les données sont dans `src/components/work/Data.jsx` : une carte par produit, même quand il a plusieurs
 dépôts (liens « GitHub Frontend » / « GitHub Backend » dans la même carte).
 
-- **Logo** : récupéré dans le dépôt du projet et converti en WebP dans `src/assets/logos/`. Sans logo
-  dans le dépôt, la carte affiche un monogramme (`initials`).
+- **Logo** : récupéré dans le dépôt du projet (ou sur le site déployé) et converti en WebP dans
+  `src/assets/logos/`. Si la marque du projet est une icône et non un fichier, `logoIcon` reprend la
+  même icône sur le même fond. Sans logo du tout, la carte affiche un monogramme (`initials`).
 - **Liens** : uniquement des liens vérifiés. Un dépôt privé (`private: true`) n'a jamais de lien vers
   son code.
 - **Carte cliquable** : le titre est un bouton dont la zone s'étend à toute la carte (`.work__open::after`) ;

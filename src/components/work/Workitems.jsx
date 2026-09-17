@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
+import useModalDismiss from '../../hooks/useModalDismiss';
 
 /* Libellé court d'un lien dans la carte : « GitHub Frontend » → « Frontend » */
 const shortLabel = (link) => {
@@ -15,16 +16,17 @@ const ProjectLogo = ({ item, variant }) => {
     'work__logo',
     `work__logo--${variant}`,
     item.logoCover ? 'work__logo--cover' : '',
-    !item.logo ? 'work__logo--monogram' : '',
+    item.logoIcon ? 'work__logo--icon' : '',
+    !item.logo && !item.logoIcon ? 'work__logo--monogram' : '',
+    // Trois initiales (KYC) ne tiennent pas à la taille de deux
+    !item.logo && !item.logoIcon && item.initials.length > 2 ? 'work__logo--monogram-wide' : '',
   ].filter(Boolean).join(' ');
 
   return (
     <div className={className} style={item.logoBg ? { background: item.logoBg } : undefined}>
-      {item.logo ? (
-        <img src={item.logo} alt={`Logo ${item.title}`} loading="lazy" decoding="async" />
-      ) : (
-        <span aria-hidden="true">{item.initials}</span>
-      )}
+      {item.logo && <img src={item.logo} alt={`Logo ${item.title}`} loading="lazy" decoding="async" />}
+      {!item.logo && item.logoIcon && <i className={item.logoIcon} aria-hidden="true" />}
+      {!item.logo && !item.logoIcon && <span aria-hidden="true">{item.initials}</span>}
     </div>
   );
 };
@@ -33,11 +35,13 @@ const ProjectLogo = ({ item, variant }) => {
 const ProjectModal = ({ item, onClose }) => {
   const dialogRef = useRef(null);
 
+  // Escape + verrouillage du scroll de la page (commun à toutes les modals)
+  useModalDismiss(Boolean(item), onClose);
+
   useEffect(() => {
     if (!item) return;
 
     const onKey = (e) => {
-      if (e.key === 'Escape') { onClose(); return; }
       if (e.key !== 'Tab' || !dialogRef.current) return;
       // Garde le focus clavier à l'intérieur de la modal
       const focusables = dialogRef.current.querySelectorAll('a[href], button:not([disabled])');
@@ -49,13 +53,8 @@ const ProjectModal = ({ item, onClose }) => {
     };
 
     document.addEventListener('keydown', onKey);
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
-    };
-  }, [item, onClose]);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [item]);
 
   if (!item) return null;
 
@@ -115,12 +114,12 @@ const ProjectModal = ({ item, onClose }) => {
 
           <div className="modal-info__actions">
             {demo.map(l => (
-              <a key={l.url} href={l.url} target="_blank" rel="noreferrer" className="button button--accent button--flex">
+              <a key={l.url} href={l.url} target="_blank" rel="noreferrer" className="button button--accent button--flex modal-action modal-action--demo">
                 <i className="uil uil-external-link-alt" /> {l.label}
               </a>
             ))}
             {repos.map(l => (
-              <a key={l.url} href={l.url} target="_blank" rel="noreferrer" className="button button--ghost button--flex">
+              <a key={l.url} href={l.url} target="_blank" rel="noreferrer" className="button button--ghost button--flex modal-action modal-action--repo">
                 <i className="uil uil-github-alt" /> {l.label}
               </a>
             ))}

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
+import useModalDismiss from '../../hooks/useModalDismiss';
 import './Blog.css';
 
 /*
@@ -197,17 +198,8 @@ const BlogCard = ({ post, onClick }) => (
 );
 
 const BlogModal = ({ post, onClose }) => {
-  useEffect(() => {
-    if (!post) return;
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    document.addEventListener('keydown', onKey);
-    // Prevent body scroll when modal is open
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
-    };
-  }, [post, onClose]);
+  // Escape + page de fond verrouillée
+  useModalDismiss(Boolean(post), onClose);
 
   if (!post) return null;
 

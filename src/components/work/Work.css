@@ -158,12 +158,19 @@
   border-radius: 1.25rem;
 }
 
+/* Marque en icône (pas de fichier logo dans le dépôt) */
+.work__logo--icon { color: #fff; border-color: transparent; }
+.work__logo--card.work__logo--icon  { font-size: 1.6rem; }
+.work__logo--modal.work__logo--icon { font-size: 2.2rem; }
+
 /* Icône d'application carrée : affichée bord à bord */
 .work__logo--cover { padding: 0; }
 .work__logo--cover img { object-fit: cover; }
 
-/* Pas de logo dans le dépôt : monogramme */
+/* Pas de logo dans le dépôt : monogramme.
+   Pas de padding ici : il est fait pour les logos, et il rognait les initiales. */
 .work__logo--monogram {
+  padding: 0;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
   border-color: transparent;
   color: #fff;
@@ -171,8 +178,16 @@
   font-weight: var(--font-extra-bold);
   letter-spacing: 0.02em;
 }
+/* line-height: 1 — sans ça, les métriques de Syne (place réservée aux jambages)
+   poussent les initiales environ 1px trop bas dans la pastille */
+.work__logo--monogram span {
+  display: block;
+  line-height: 1;
+}
 .work__logo--card.work__logo--monogram  { font-size: 1.2rem; }
 .work__logo--modal.work__logo--monogram { font-size: 1.6rem; }
+.work__logo--card.work__logo--monogram-wide  { font-size: 0.9rem; }
+.work__logo--modal.work__logo--monogram-wide { font-size: 1.2rem; }
 
 body.dark-theme .work__logo:not(.work__logo--monogram) { border-color: rgba(255, 255, 255, 0.12); }
 
@@ -462,6 +477,9 @@ body.dark-theme .work__logo:not(.work__logo--monogram) { border-color: rgba(255,
   gap: 0.75rem;
   flex-wrap: wrap;
 }
+/* Boutons un peu plus compacts qu'ailleurs : « Voir le site », « Frontend » et
+   « Backend » doivent tenir sur une seule ligne dans la modal */
+.modal-info__actions .button { padding: 0.8rem 1.4rem; }
 
 @media (prefers-reduced-motion: reduce) {
   .work__card,
@@ -484,6 +502,9 @@ body.dark-theme .work__logo:not(.work__logo--monogram) { border-color: rgba(255,
   .work__container { grid-template-columns: 1fr; }
   .work__card { padding: 1.25rem; }
   .work__logo--card { width: 56px; height: 56px; }
+  /* Pastille plus petite sur mobile : initiales réduites en conséquence */
+  .work__logo--card.work__logo--monogram      { font-size: 1.05rem; }
+  .work__logo--card.work__logo--monogram-wide { font-size: 0.8rem; }
   .work__link { padding: 0.3rem 0.55rem; gap: 0.25rem; }
   .modal-detail { max-width: 100%; }
   .modal-overlay { padding: 0; align-items: flex-end; }
@@ -491,5 +512,15 @@ body.dark-theme .work__logo:not(.work__logo--monogram) { border-color: rgba(255,
   .project-modal__head { padding: 1.5rem 3.25rem 1.25rem 1.25rem; gap: 1rem; }
   .work__logo--modal { width: 68px; height: 68px; padding: 0.6rem; border-radius: var(--radius-md); }
   .modal-info { padding: 1.25rem 1.25rem 1.5rem; }
-  .modal-info__actions .button { flex: 1 1 100%; justify-content: center; }
+  /* Mobile : « Voir le site » sur sa ligne, puis les dépôts côte à côte */
+  .modal-info__actions { gap: 0.5rem; }
+  .modal-info__actions .button {
+    justify-content: center;
+    padding: 0.75rem 0.8rem;
+    gap: 0.35rem;
+    white-space: nowrap;
+  }
+  .modal-action--demo { flex: 1 1 100%; }
+  .modal-action--repo { flex: 1 1 calc(50% - 0.25rem); }
+  .modal-info__actions .button:only-child { flex: 1 1 100%; }
 }

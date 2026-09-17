@@ -15,12 +15,15 @@ import wiyorentLogo   from '../../assets/logos/wiyorent.webp';
 import qrStudioLogo   from '../../assets/logos/qr-studio.webp';
 import ireneLogo      from '../../assets/logos/irene-hair-braids.webp';
 import basicShopLogo  from '../../assets/logos/basic-shop.webp';
+import urbanetLogo    from '../../assets/logos/urbanet.svg';
 
 /*
   Données projets, vérifiées sur les dépôts GitHub et les projets locaux (septembre 2026).
 
   - `logo`      : logo récupéré dans le dépôt du projet. `null` = aucun logo dans le dépôt,
                   la carte affiche alors le monogramme `initials`.
+  - `logoIcon`  : le projet n'a pas de fichier logo mais sa marque est une icône (Thebarber),
+                  reprise ici avec la même icône et le même fond.
   - `logoBg`    : fond de la pastille du logo (blanc par défaut).
   - `logoCover` : le logo est déjà une icône carrée pleine, affichée bord à bord.
   - `links`     : uniquement des liens vérifiés. `kind` = 'demo' | 'github'.
@@ -139,8 +142,8 @@ export const projectsData = [
     tech: ['React 19', 'Redux Toolkit', 'Tailwind CSS', 'i18next', 'Stripe', 'NestJS 11', 'MongoDB', 'Swagger'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://cynaapp.vercel.app' },
-      { kind: 'github', label: 'GitHub Frontend', url: 'https://github.com/Nagoloum/Frontend_cyna' },
-      { kind: 'github', label: 'GitHub Backend', url: 'https://github.com/Nagoloum/Backend_cyna' },
+      { kind: 'github', label: 'Frontend', url: 'https://github.com/Nagoloum/Frontend_cyna' },
+      { kind: 'github', label: 'Backend', url: 'https://github.com/Nagoloum/Backend_cyna' },
     ],
   },
   {
@@ -273,8 +276,8 @@ export const projectsData = [
     ],
     tech: ['Python', 'MetaTrader 5', 'pandas', 'MongoDB', 'Streamlit', 'Telegram'],
     links: [
-      { kind: 'github', label: 'GitHub XAUFxBot', url: 'https://github.com/Nagoloum/XAUFxBot' },
-      { kind: 'github', label: 'GitHub SYNFxBot', url: 'https://github.com/Nagoloum/SYNFxBot' },
+      { kind: 'github', label: 'XAUFxBot', url: 'https://github.com/Nagoloum/XAUFxBot' },
+      { kind: 'github', label: 'SYNFxBot', url: 'https://github.com/Nagoloum/SYNFxBot' },
     ],
   },
   {
@@ -295,8 +298,8 @@ export const projectsData = [
     tech: ['React', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Jest'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://rememberme-lemon-chi.vercel.app' },
-      { kind: 'github', label: 'GitHub Frontend', url: 'https://github.com/Nagoloum/Frontend_RememberMe' },
-      { kind: 'github', label: 'GitHub Backend', url: 'https://github.com/Nagoloum/Backend_RememberMe' },
+      { kind: 'github', label: 'Frontend', url: 'https://github.com/Nagoloum/Frontend_RememberMe' },
+      { kind: 'github', label: 'Backend', url: 'https://github.com/Nagoloum/Backend_RememberMe' },
     ],
   },
   {
@@ -444,7 +447,9 @@ export const projectsData = [
     category: 'Full-Stack',
     status: 'Prototype',
     logo: null,
-    initials: 'TB',
+    // Marque du site : des ciseaux blancs dans un carré sombre (voir son site-header)
+    logoIcon: 'bx bx-cut',
+    logoBg: '#111111',
     summary: 'Site de salon de coiffure avec prise de rendez-vous en ligne, en Next.js, Prisma et PostgreSQL.',
     description: "Base d'un site pour un salon de coiffure en France : vitrine optimisée pour le référencement et parcours de réservation. Le modèle de données est pensé dès le départ pour la suite (équipe, horaires, créneaux bloqués, consentements RGPD, journal d'audit), mais seul le parcours de réservation est développé à ce stade.",
     features: [
@@ -544,8 +549,9 @@ export const projectsData = [
     title: 'Urbanet',
     category: 'Front-End',
     status: 'Déployé',
-    logo: null,
-    initials: 'UR',
+    // Logo affiché sur le site déployé (celui du modèle intégré)
+    logo: urbanetLogo,
+    logoBg: '#0F0E17',
     summary: 'Landing page immobilière en React et TypeScript, découpée en composants et hooks réutilisables.',
     description: "Intégration d'une landing page immobilière en React et TypeScript. L'intérêt du projet est surtout dans l'organisation du code : les contenus sont séparés dans des fichiers de données, les interactions dans des hooks (accordéon, carrousel, lecteur vidéo) et l'interface dans de petits composants réutilisables.",
     features: [

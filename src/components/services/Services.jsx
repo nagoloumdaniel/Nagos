@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
+import useModalDismiss from '../../hooks/useModalDismiss';
 import './Services.css';
 
 const servicesData = [
@@ -50,16 +51,8 @@ const servicesData = [
 
 /* ── Modal component ── */
 const ServiceModal = ({ service, onClose }) => {
-  useEffect(() => {
-    if (!service) return;
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    document.addEventListener('keydown', onKey);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
-    };
-  }, [service, onClose]);
+  // Escape + page de fond verrouillée
+  useModalDismiss(Boolean(service), onClose);
 
   if (!service) return null;
 
