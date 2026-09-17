@@ -204,8 +204,9 @@ const Workitems = ({ item }) => {
               </span>
             )}
           </div>
-          <span className="work__details-hint" aria-hidden="true">
-            Détails <i className="uil uil-arrow-right" />
+          {/* Visuel seulement : toute la carte ouvre déjà les détails */}
+          <span className="work__plus" aria-hidden="true">
+            <i className="uil uil-plus" />
           </span>
         </div>
       </article>

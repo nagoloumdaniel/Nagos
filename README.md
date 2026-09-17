@@ -117,7 +117,9 @@ dépôts (liens « GitHub Frontend » / « GitHub Backend » dans la même carte
 - **Liens** : uniquement des liens vérifiés. Un dépôt privé (`private: true`) n'a jamais de lien vers
   son code.
 - **Carte cliquable** : le titre est un bouton dont la zone s'étend à toute la carte (`.work__open::after`) ;
-  les liens de la carte passent au-dessus et restent utilisables séparément.
+  les liens de la carte passent au-dessus et restent utilisables séparément. Aucun déplacement au survol.
+- **Pagination** : 6 projets par page à partir de 993 px de large (grille à 3 colonnes), gérée dans
+  `Works.jsx` avec `matchMedia`. En dessous (tablette, mobile), tous les projets restent affichés.
 
 ---
 

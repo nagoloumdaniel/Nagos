@@ -32,9 +32,12 @@
 }
 
 /* ─── GRID ───────────────────────────────────────────────── */
+/* Cartes plus larges que le .container standard (1160px) : Démo + Frontend + Backend + « + »
+   tiennent sur une seule ligne */
 .work__container {
+  max-width: 1240px;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1.25rem;
 }
 
 /* ─── CARD ───────────────────────────────────────────────── */
@@ -51,8 +54,8 @@
   /* opacity : garde le fondu d'apparition de .reveal-scale */
   transition: opacity .75s ease, transform var(--t-spring), box-shadow var(--t-med), border-color var(--t-fast);
 }
+/* Pas de déplacement au survol : seules l'ombre et la bordure changent */
 .work__card:hover {
-  transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
   border-color: rgba(var(--accent-rgb), 0.25);
 }
@@ -135,7 +138,6 @@
   border: 1px solid rgba(15, 14, 23, 0.08);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
-  transition: transform var(--t-spring);
 }
 .work__logo img {
   width: 100%;
@@ -155,7 +157,6 @@
   padding: 0.8rem;
   border-radius: 1.25rem;
 }
-.work__card:hover .work__logo { transform: scale(1.06) rotate(-2deg); }
 
 /* Icône d'application carrée : affichée bord à bord */
 .work__logo--cover { padding: 0; }
@@ -214,8 +215,8 @@ body.dark-theme .work__logo:not(.work__logo--monogram) { border-color: rgba(255,
   border-top: 1px solid var(--card-border);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
+  /* Même espace entre les liens et le « + » */
+  gap: 0.4rem;
 }
 
 .work__links {
@@ -260,17 +261,72 @@ body.dark-theme .work__logo:not(.work__logo--monogram) { border-color: rgba(255,
   color: var(--text-color);
 }
 
-.work__details-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
+/* Bouton « + » : indique que la carte ouvre les détails */
+.work__plus {
+  width: 34px;
+  height: 34px;
   flex-shrink: 0;
+  margin-left: auto; /* toujours collé au bord droit de la ligne */
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 1.15rem;
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.08);
+  border: 1px solid rgba(var(--accent-rgb), 0.2);
+  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+}
+.work__card:hover .work__plus {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* ─── PAGINATION (grands écrans uniquement, voir Works.jsx) ── */
+.work__wrapper { scroll-margin-top: 6rem; }
+
+.work__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--mb-2-5);
+}
+
+.work__page {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 0.75rem;
+  display: grid;
+  place-items: center;
+  font-family: var(--body-font);
   font-size: var(--small-font-size);
   font-weight: var(--font-semi-bold);
-  color: var(--accent);
-  transition: gap var(--t-fast);
+  color: var(--text-color);
+  background: var(--container-color);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
 }
-.work__card:hover .work__details-hint { gap: 0.5rem; }
+.work__page:hover:not(:disabled):not(.work__page--active) {
+  color: var(--accent);
+  border-color: rgba(var(--accent-rgb), 0.3);
+  background: rgba(var(--accent-rgb), 0.1);
+}
+.work__page--active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.3);
+  cursor: default;
+}
+.work__page--arrow { padding: 0; font-size: 1.25rem; }
+.work__page:disabled { opacity: 0.4; cursor: not-allowed; }
+.work__page:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 
 /* ─── MODAL ──────────────────────────────────────────────── */
 .modal-overlay {
@@ -409,24 +465,26 @@ body.dark-theme .work__logo:not(.work__logo--monogram) { border-color: rgba(255,
 
 @media (prefers-reduced-motion: reduce) {
   .work__card,
-  .work__logo,
   .modal-content,
   .modal-overlay { transition: none; animation: none; }
-  .work__card:hover { transform: none; }
-  .work__card:hover .work__logo { transform: none; }
 }
 
 /* ─── BREAKPOINTS ────────────────────────────────────────── */
-@media screen and (min-width: 1400px) {
-  .work__container { gap: 2.25rem; }
+/* Laptop étroit : 3 colonnes seraient trop serrées pour les liens */
+@media screen and (max-width: 1239px) {
+  .work__container { grid-template-columns: repeat(2, 1fr); }
 }
 @media screen and (max-width: 992px) {
-  .work__container { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .work__container { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .work__card { padding: 1.25rem; }
+  /* Petit écran : pas de « + », les liens gardent toute la ligne */
+  .work__plus { display: none; }
 }
 @media screen and (max-width: 576px) {
   .work__container { grid-template-columns: 1fr; }
   .work__card { padding: 1.25rem; }
   .work__logo--card { width: 56px; height: 56px; }
+  .work__link { padding: 0.3rem 0.55rem; gap: 0.25rem; }
   .modal-detail { max-width: 100%; }
   .modal-overlay { padding: 0; align-items: flex-end; }
   .modal-content { border-radius: var(--radius-lg) var(--radius-lg) 0 0; max-height: 92vh; }
