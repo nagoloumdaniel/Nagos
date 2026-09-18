@@ -16,6 +16,7 @@ import qrStudioLogo   from '../../assets/logos/qr-studio.webp';
 import ireneLogo      from '../../assets/logos/irene-hair-braids.webp';
 import basicShopLogo  from '../../assets/logos/basic-shop.webp';
 import urbanetLogo    from '../../assets/logos/urbanet.svg';
+import nexagoldLogo   from '../../assets/logos/nexagold.webp';
 
 /*
   Données projets, vérifiées sur les dépôts GitHub et les projets locaux (septembre 2026).
@@ -106,9 +107,8 @@ export const projectsData = [
     category: 'Data & IA',
     status: 'En développement',
     featured: true,
-    private: true,
-    logo: null,
-    initials: 'NG',
+    logo: nexagoldLogo,
+    logoBg: '#0F0E17', // le logo est blanc, pensé pour un fond sombre
     summary: "Plateforme de trading algorithmique sur l'or : moteur Python FastAPI relié à MetaTrader 5, API NestJS et dashboard Next.js.",
     description: "NexaGold prend la suite de mes premiers bots de trading. Le moteur Python enchaîne données, stratégie, risque et exécution, et pilote un compte démo MetaTrader 5. Autour, une API NestJS gère rapports et alertes, et un dashboard Next.js affiche l'état du système. Le projet accorde plus de place à la validation qu'au trading lui-même : backtest sans biais de look-ahead, limites de risque centralisées et modèles IA évalués avant d'être branchés.",
     features: [
@@ -120,7 +120,9 @@ export const projectsData = [
       'Tests pytest et intégration continue GitHub Actions',
     ],
     tech: ['Python', 'FastAPI', 'MetaTrader 5', 'pandas', 'scikit-learn / LightGBM', 'NestJS', 'Prisma', 'Next.js 16', 'PostgreSQL'],
-    links: [],
+    links: [
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/NexaGoldAI' },
+    ],
   },
   {
     id: 'cyna',
