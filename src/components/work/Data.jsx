@@ -225,7 +225,6 @@ export const projectsData = [
     title: 'Findit',
     category: 'Full-Stack',
     status: 'En développement',
-    private: true,
     logo: finditLogo,
     summary: "Agrégateur d'offres d'alternance et de stage en développement en Île-de-France, avec collecte automatisée.",
     description: "Findit centralise les offres d'alternance et de stage en développement publiées en Île-de-France et renvoie toujours vers l'annonce d'origine. Le socle public fonctionne : collecte planifiée, normalisation et recherche. La partie privée (analyse de CV et suivi de candidatures) est en cours, avec une règle stricte : ne jamais inventer une compétence ou une expérience.",
@@ -237,14 +236,15 @@ export const projectsData = [
       'Import de CV (PDF, DOCX, TXT) et structuration via une IA locale (Ollama), désactivée par défaut',
     ],
     tech: ['Next.js', 'NestJS + Fastify', 'Prisma', 'PostgreSQL', 'Redis / BullMQ', 'Docker', 'Turborepo'],
-    links: [],
+    links: [
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Findit' },
+    ],
   },
   {
     id: 'kyc-checker',
     title: 'KYC Checker',
     category: 'Data & IA',
     status: 'Fonctionnel',
-    private: true,
     logo: null,
     initials: 'KYC',
     summary: "Vérification de pièces d'identité : lecture de la MRZ, correspondance du nom, comparaison de visage et archivage chiffré.",
@@ -259,7 +259,9 @@ export const projectsData = [
       'SDK TypeScript pour Next.js, image Docker, 48 tests pytest',
     ],
     tech: ['Python', 'FastAPI', 'OpenCV', 'Tesseract OCR', 'Cryptography', 'Docker', 'pytest'],
-    links: [],
+    links: [
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/KYC-Checker' },
+    ],
   },
   {
     id: 'trading-bots',
