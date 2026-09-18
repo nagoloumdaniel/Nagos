@@ -17,6 +17,7 @@ import ireneLogo      from '../../assets/logos/irene-hair-braids.webp';
 import basicShopLogo  from '../../assets/logos/basic-shop.webp';
 import urbanetLogo    from '../../assets/logos/urbanet.svg';
 import nexagoldLogo   from '../../assets/logos/nexagold.webp';
+import kycLogo        from '../../assets/logos/kyc-checker.webp';
 
 /*
   Données projets, vérifiées sur les dépôts GitHub et les projets locaux (septembre 2026).
@@ -245,8 +246,8 @@ export const projectsData = [
     title: 'KYC Checker',
     category: 'Data & IA',
     status: 'Fonctionnel',
-    logo: null,
-    initials: 'KYC',
+    logo: kycLogo,
+    logoCover: true,
     summary: "Vérification de pièces d'identité : lecture de la MRZ, correspondance du nom, comparaison de visage et archivage chiffré.",
     description: "KYC Checker analyse la photo d'une pièce d'identité. Il lit la bande MRZ des passeports et des cartes d'identité, contrôle ses clés selon la norme ICAO 9303, compare le nom à celui attendu et, si un selfie est fourni, le visage à la photo du document. Il rend une décision (validé, suspect ou rejeté) accompagnée d'un score. Le module annonce clairement sa limite : il vérifie la cohérence d'un document, pas son authenticité physique.",
     features: [
