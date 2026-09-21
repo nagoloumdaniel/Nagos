@@ -44,6 +44,8 @@ src/
 │   ├── skills/              # Compétences classées par catégorie (tags)
 │   └── work/                # Projets : filtres, cartes et modal
 ├── hooks/
+│   ├── useMediaQuery.js     # Media query réactive (grand écran : ≥ 993 px)
+│   ├── useModalDismiss.js   # Escape + page verrouillée pour les modals
 │   ├── usePageMeta.js       # Titre / description / canonical / OG par page
 │   └── useScrollReveal.js   # Animations d'apparition au scroll
 ├── pages/                   # HomePage, PortfolioPage, BlogPage, NotFoundPage (404)
@@ -171,6 +173,8 @@ VITE_EMAILJS_PUBLIC_KEY=...
 - Pages secondaires et sphère 3D (Three.js + GSAP) chargées en lazy loading : bundle initial ≈ 250 kB.
 - Images en WebP redimensionnées (≈ 5 Mo → 0,6 Mo).
 - La sphère ne réalloue aucun objet par frame et se met en pause hors écran.
+- La sphère n'est rendue que sur grand écran (≥ 993 px, hook `useMediaQuery`) : sur tablette et mobile,
+  Three.js et GSAP ne sont même pas téléchargés.
 
 ---
 

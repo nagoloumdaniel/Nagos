@@ -1,21 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { projectsData, projectsNav } from './Data';
 import Workitems from './Workitems';
+import useMediaQuery, { DESKTOP_QUERY } from '../../hooks/useMediaQuery';
 
 /* Pagination réservée aux écrans laptop et plus (grille à 2 ou 3 colonnes) */
-const DESKTOP_QUERY = '(min-width: 993px)';
 const PER_PAGE = 6;
-
-const useMediaQuery = (query) => {
-  const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
-  useEffect(() => {
-    const mql = window.matchMedia(query);
-    const onChange = (e) => setMatches(e.matches);
-    mql.addEventListener('change', onChange);
-    return () => mql.removeEventListener('change', onChange);
-  }, [query]);
-  return matches;
-};
 
 const Works = () => {
   const [active, setActive] = useState('Tous');

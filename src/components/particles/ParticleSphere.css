@@ -30,12 +30,4 @@
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
-@media screen and (max-width: 992px) {
-  .particle-sphere { height: 400px; }
-}
-@media screen and (max-width: 768px) {
-  .particle-sphere { height: 320px; }
-}
-@media screen and (max-width: 480px) {
-  .particle-sphere { height: 270px; }
-}
+/* Pas de règles mobiles : la sphère n'est rendue qu'à partir de 993px (voir About.jsx) */

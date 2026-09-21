@@ -90,10 +90,6 @@
     grid-template-columns: 1fr;
     row-gap: 2.5rem;
   }
-  .about__sphere-wrap {
-    max-width: 420px;
-    margin-inline: auto;
-  }
   .about__data {
     text-align: center;
   }
@@ -114,9 +110,6 @@
   }
   .about__description {
     padding: 0;
-  }
-  .about__sphere-wrap {
-    max-width: 100%;
   }
 }
 @media screen and (max-width: 350px) {
