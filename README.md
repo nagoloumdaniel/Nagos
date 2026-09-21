@@ -57,7 +57,7 @@ src/
 ## ⚙️ Installation & démarrage
 
 ```bash
-git clone https://github.com/Nagoloum/Nagos.git
+git clone https://github.com/nagoloumdaniel/Nagos.git
 cd Nagos
 npm install
 npm run dev       # développement
@@ -188,7 +188,7 @@ remplacer ce fichier par le nouveau PDF en gardant le même nom.
 
 - **Portfolio :** https://nagoloum.vercel.app
 - **LinkedIn :** [linkedin.com/in/nagoloum](https://www.linkedin.com/in/nagoloum)
-- **GitHub :** [github.com/Nagoloum](https://github.com/Nagoloum)
+- **GitHub :** [github.com/nagoloumdaniel](https://github.com/nagoloumdaniel)
 - **Contact :** nagoloumtalladanielparfait@gmail.com · 06 25 83 90 07
 
 ---

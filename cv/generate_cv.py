@@ -103,25 +103,25 @@ MAJOR = [
     {"name": "Cyna - Plateforme SaaS de cybersécurité",
      "kind": "projet académique, en équipe",
      "tech": "React 19 · Redux Toolkit · Stripe · i18next · NestJS · MongoDB · Swagger",
-     "link": "github.com/Nagoloum/Frontend_cyna",
+     "link": "github.com/nagoloumdaniel/Frontend_cyna",
      "desc": "Front et API déployés : catalogue, panier et paiement Stripe, tableaux de bord, authentification "
              "JWT, rate limiting, documentation Swagger, travail en équipe avec Git."},
     {"name": "Fundatrade - Analyse fondamentale & technique BTC / Or",
      "kind": "projet personnel, déployé",
      "tech": "Next.js 15 · React 19 · TypeScript · WebSocket (Kraken) · Recharts",
-     "link": "github.com/Nagoloum/Fundatrade",
+     "link": "github.com/nagoloumdaniel/Fundatrade",
      "desc": "Prix en temps réel, 8 indicateurs techniques calculés côté serveur, 6 stratégies croisées via un "
              "scoring et suivi de la performance des prédictions générées."},
     {"name": "Thebarber - Réservation en ligne pour salon de coiffure",
      "kind": "projet personnel, déployé",
      "tech": "Next.js · TypeScript · Prisma · PostgreSQL · NextAuth · Zod",
-     "link": "github.com/Nagoloum/Thebarber",
+     "link": "github.com/nagoloumdaniel/Thebarber",
      "desc": "Site vitrine avec réservation en ligne et back-office : logique métier séparée, validation des "
              "formulaires, socle RGPD / CNIL."},
     {"name": "XAUFxBot & SYNFxBot - Robots de trading automatisé",
      "kind": "projets personnels, fonctionnels",
      "tech": "Python · pandas / NumPy · MetaTrader 5 · MongoDB · Streamlit · Telegram API",
-     "link": "github.com/Nagoloum/XAUFxBot",
+     "link": "github.com/nagoloumdaniel/XAUFxBot",
      "desc": "Stratégies automatisées sur l'or (XAU/USD) et les indices synthétiques : collecte temps réel, "
              "analyse de volatilité, gestion du risque, alertes Telegram, tableau de bord Streamlit."},
     {"name": "Findit - Agrégateur d'offres d'alternance (Île-de-France)",
@@ -133,18 +133,18 @@ MAJOR = [
 ]
 
 OTHER = [
-    ("NagosUI - Librairie de composants front-end", "Next.js 16, React 19, Tailwind v4, Turborepo - en développement", "github.com/Nagoloum/NagosUI"),
-    ("Mon Portfolio (nagoloum.vercel.app)", "React 19, Vite, GSAP, Three.js (R3F), EmailJS - en production", "github.com/Nagoloum/Nagos"),
-    ("RememberMe - Application de planification", "React, Express, MongoDB, JWT - déployée", "github.com/Nagoloum/Backend_RememberMe"),
-    ("Task App - Clone Wunderlist / Google Tasks", "Angular 18, NestJS, TypeScript - terminé", "github.com/Nagoloum/libheros-task-app"),
-    ("QR Studio Ad - Générateur de QR codes", "React, react-qr-code, i18next - déployé", "github.com/Nagoloum/QrStudioAd"),
-    ("Urbanet - Site vitrine animé", "React, TypeScript, Framer Motion - déployé", "github.com/Nagoloum/Urbanet"),
-    ("Sites vitrines clients", "Krossty, Irene Hair Braids, Wiyorent, Creamy Milk Candies - React, déployés", "github.com/Nagoloum"),
-    ("SellCatalog - Application mobile + API Python", "Flutter, Python (Flask) - prototype fonctionnel", "github.com/Nagoloum/SellCatalog"),
-    ("Basic Shop App - Application Android", "Kotlin - en développement", "github.com/Nagoloum/Basic-shop-app"),
-    ("Shadow Escape - Jeu d'infiltration", "Unity, C#, ShaderLab - prototype", "github.com/Nagoloum/Shadow_Escape"),
-    ("Shop App - Mini e-commerce", "Java Spring Boot, Vue.js - projet académique", "github.com/Nagoloum/Springboot_project"),
-    ("Gestion Tickets Bus & Feedback", "PHP, MySQL, SCSS - projets académiques", "github.com/Nagoloum/Gestion_tickets_bus"),
+    ("NagosUI - Librairie de composants front-end", "Next.js 16, React 19, Tailwind v4, Turborepo - en développement", "github.com/nagoloumdaniel/NagosUI"),
+    ("Mon Portfolio (nagoloum.vercel.app)", "React 19, Vite, GSAP, Three.js (R3F), EmailJS - en production", "github.com/nagoloumdaniel/Nagos"),
+    ("RememberMe - Application de planification", "React, Express, MongoDB, JWT - déployée", "github.com/nagoloumdaniel/Backend_RememberMe"),
+    ("Task App - Clone Wunderlist / Google Tasks", "Angular 18, NestJS, TypeScript - terminé", "github.com/nagoloumdaniel/libheros-task-app"),
+    ("QR Studio Ad - Générateur de QR codes", "React, react-qr-code, i18next - déployé", "github.com/nagoloumdaniel/QrStudioAd"),
+    ("Urbanet - Site vitrine animé", "React, TypeScript, Framer Motion - déployé", "github.com/nagoloumdaniel/Urbanet"),
+    ("Sites vitrines clients", "Krossty, Irene Hair Braids, Wiyorent, Creamy Milk Candies - React, déployés", "github.com/nagoloumdaniel"),
+    ("SellCatalog - Application mobile + API Python", "Flutter, Python (Flask) - prototype fonctionnel", "github.com/nagoloumdaniel/SellCatalog"),
+    ("Basic Shop App - Application Android", "Kotlin - en développement", "github.com/nagoloumdaniel/Basic-shop-app"),
+    ("Shadow Escape - Jeu d'infiltration", "Unity, C#, ShaderLab - prototype", "github.com/nagoloumdaniel/Shadow_Escape"),
+    ("Shop App - Mini e-commerce", "Java Spring Boot, Vue.js - projet académique", "github.com/nagoloumdaniel/Springboot_project"),
+    ("Gestion Tickets Bus & Feedback", "PHP, MySQL, SCSS - projets académiques", "github.com/nagoloumdaniel/Gestion_tickets_bus"),
 ]
 
 SKILLS = [
@@ -272,7 +272,7 @@ class CV:
                               "mailto:nagoloumtalladanielparfait@gmail.com"), after=1)
         self.rich(self.toks("linkedin.com/in/nagoloum", FR, 9, BLUE, "https://www.linkedin.com/in/nagoloum")
                   + self.toks("·", FR, 9, GRAY)
-                  + self.toks("github.com/Nagoloum", FR, 9, BLUE, "https://github.com/Nagoloum")
+                  + self.toks("github.com/nagoloumdaniel", FR, 9, BLUE, "https://github.com/nagoloumdaniel")
                   + self.toks("·", FR, 9, GRAY)
                   + self.toks("nagoloum.vercel.app", FR, 9, BLUE, "https://nagoloum.vercel.app"), after=0)
 
@@ -330,7 +330,7 @@ class CV:
         self.rich(self.toks("Portfolio :", FB, 10, BLACK)
                   + self.toks("nagoloum.vercel.app", FR, 10, BLUE, "https://nagoloum.vercel.app")
                   + self.toks("· GitHub :", FB, 10, BLACK)
-                  + self.toks("github.com/Nagoloum", FR, 10, BLUE, "https://github.com/Nagoloum")
+                  + self.toks("github.com/nagoloumdaniel", FR, 10, BLUE, "https://github.com/nagoloumdaniel")
                   + self.toks("· LinkedIn :", FB, 10, BLACK)
                   + self.toks("linkedin.com/in/nagoloum", FR, 10, BLUE, "https://www.linkedin.com/in/nagoloum"),
                   after=0)

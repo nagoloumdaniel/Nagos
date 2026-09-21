@@ -4,7 +4,7 @@ const socialLinks = [
   { href: 'https://www.linkedin.com/in/nagoloum', icon: 'uil-linkedin-alt', label: 'LinkedIn' },
   { href: 'https://wa.me/33625839007?text=Salut%20Nagoloum', icon: 'uil-whatsapp', label: 'WhatsApp' },
   { href: 'mailto:nagoloumtalladanielparfait@gmail.com', icon: 'uil-envelope', label: 'Email' },
-  { href: 'https://github.com/Nagoloum', icon: 'uil-github-alt', label: 'GitHub' },
+  { href: 'https://github.com/nagoloumdaniel', icon: 'uil-github-alt', label: 'GitHub' },
   { href: 'tel:+33625839007', icon: 'uil-phone', label: 'Téléphone' },
 ];
 

@@ -36,8 +36,8 @@ const contactCards = [
   {
     icon: "uil-github-alt",
     title: "GitHub",
-    data: "github.com/Nagoloum",
-    href: "https://github.com/Nagoloum",
+    data: "github.com/nagoloumdaniel",
+    href: "https://github.com/nagoloumdaniel",
     label: "Voir le profil GitHub",
     action: "Visiter",
   },

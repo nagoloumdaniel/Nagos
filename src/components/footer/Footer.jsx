@@ -7,7 +7,7 @@ const socials = [
   { href: 'tel:+33625839007',                            icon: 'uil-phone',      label: 'Tél'      },
   { href: 'https://www.linkedin.com/in/nagoloum', icon: 'uil-linkedin-alt', label: 'LinkedIn' },
   { href: 'https://wa.me/33625839007',                   icon: 'uil-whatsapp',   label: 'WhatsApp' },
-  { href: 'https://github.com/Nagoloum',                 icon: 'uil-github-alt', label: 'GitHub'   },
+  { href: 'https://github.com/nagoloumdaniel',                 icon: 'uil-github-alt', label: 'GitHub'   },
 ];
 
 const navItems = [

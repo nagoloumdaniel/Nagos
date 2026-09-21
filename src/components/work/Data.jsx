@@ -99,7 +99,7 @@ export const projectsData = [
     tech: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Express 5', 'PostgreSQL (Neon)', 'BullMQ / Redis', 'API Gmail', 'Playwright'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://campaignmailer.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Campaign-Mailer' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Campaign-Mailer' },
     ],
   },
   {
@@ -122,7 +122,7 @@ export const projectsData = [
     ],
     tech: ['Python', 'FastAPI', 'MetaTrader 5', 'pandas', 'scikit-learn / LightGBM', 'NestJS', 'Prisma', 'Next.js 16', 'PostgreSQL'],
     links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/NexaGoldAI' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/NexaGoldAI' },
     ],
   },
   {
@@ -145,8 +145,8 @@ export const projectsData = [
     tech: ['React 19', 'Redux Toolkit', 'Tailwind CSS', 'i18next', 'Stripe', 'NestJS 11', 'MongoDB', 'Swagger'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://cynaapp.vercel.app' },
-      { kind: 'github', label: 'Frontend', url: 'https://github.com/Nagoloum/Frontend_cyna' },
-      { kind: 'github', label: 'Backend', url: 'https://github.com/Nagoloum/Backend_cyna' },
+      { kind: 'github', label: 'Frontend', url: 'https://github.com/nagoloumdaniel/Frontend_cyna' },
+      { kind: 'github', label: 'Backend', url: 'https://github.com/nagoloumdaniel/Backend_cyna' },
     ],
   },
   {
@@ -170,7 +170,7 @@ export const projectsData = [
     tech: ['NestJS', 'TypeORM', 'PostgreSQL', 'MinIO', 'React', 'Vite', 'Chakra UI v3', 'Docker', 'Prometheus / Grafana'],
     links: [
       { kind: 'demo', label: 'Voir la démo', url: 'https://daniel-nagoloum.stage2-div.rayan-drissi.com' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/portail' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/portail' },
     ],
   },
   {
@@ -194,7 +194,7 @@ export const projectsData = [
     tech: ['Next.js 16', 'TypeScript', 'Tailwind CSS v4', 'shadcn/ui', 'Supabase', 'next-intl', 'React PDF'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://trackship-eta.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Trackship' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Trackship' },
     ],
   },
   {
@@ -216,7 +216,7 @@ export const projectsData = [
     tech: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Recharts', 'WebSockets'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://fundatrade.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Fundatrade' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Fundatrade' },
     ],
   },
 
@@ -238,7 +238,7 @@ export const projectsData = [
     ],
     tech: ['Next.js', 'NestJS + Fastify', 'Prisma', 'PostgreSQL', 'Redis / BullMQ', 'Docker', 'Turborepo'],
     links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Findit' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Findit' },
     ],
   },
   {
@@ -261,7 +261,7 @@ export const projectsData = [
     ],
     tech: ['Python', 'FastAPI', 'OpenCV', 'Tesseract OCR', 'Cryptography', 'Docker', 'pytest'],
     links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/KYC-Checker' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/KYC-Checker' },
     ],
   },
   {
@@ -281,8 +281,8 @@ export const projectsData = [
     ],
     tech: ['Python', 'MetaTrader 5', 'pandas', 'MongoDB', 'Streamlit', 'Telegram'],
     links: [
-      { kind: 'github', label: 'XAUFxBot', url: 'https://github.com/Nagoloum/XAUFxBot' },
-      { kind: 'github', label: 'SYNFxBot', url: 'https://github.com/Nagoloum/SYNFxBot' },
+      { kind: 'github', label: 'XAUFxBot', url: 'https://github.com/nagoloumdaniel/XAUFxBot' },
+      { kind: 'github', label: 'SYNFxBot', url: 'https://github.com/nagoloumdaniel/SYNFxBot' },
     ],
   },
   {
@@ -303,8 +303,8 @@ export const projectsData = [
     tech: ['React', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Jest'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://rememberme-lemon-chi.vercel.app' },
-      { kind: 'github', label: 'Frontend', url: 'https://github.com/Nagoloum/Frontend_RememberMe' },
-      { kind: 'github', label: 'Backend', url: 'https://github.com/Nagoloum/Backend_RememberMe' },
+      { kind: 'github', label: 'Frontend', url: 'https://github.com/nagoloumdaniel/Frontend_RememberMe' },
+      { kind: 'github', label: 'Backend', url: 'https://github.com/nagoloumdaniel/Backend_RememberMe' },
     ],
   },
   {
@@ -324,7 +324,7 @@ export const projectsData = [
     ],
     tech: ['Angular', 'TypeScript', 'Tailwind CSS', 'NestJS', 'MongoDB', 'Passport JWT'],
     links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/libheros-task-app' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/libheros-task-app' },
     ],
   },
   {
@@ -344,7 +344,7 @@ export const projectsData = [
     tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Motion', 'Lenis', 'Turborepo'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://nagosui.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/NagosUI' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/NagosUI' },
     ],
   },
   {
@@ -363,7 +363,7 @@ export const projectsData = [
     ],
     tech: ['Flutter', 'Dart', 'Material 3', 'Python', 'Flask'],
     links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/SellCatalog' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/SellCatalog' },
     ],
   },
   {
@@ -384,7 +384,7 @@ export const projectsData = [
     tech: ['React', 'Vite', 'React Router', 'Tailwind CSS'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://wiyorent.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/wiyorent' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/wiyorent' },
     ],
   },
   {
@@ -403,7 +403,7 @@ export const projectsData = [
     tech: ['React', 'Vite', 'React Router', 'Tailwind CSS'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://krossty.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Krossty' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Krossty' },
     ],
   },
   {
@@ -422,7 +422,7 @@ export const projectsData = [
     tech: ['React', 'Vite', 'React Router', 'Tailwind CSS'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://creamy-milk-candies.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Creamy-milk-candies' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Creamy-milk-candies' },
     ],
   },
   {
@@ -443,7 +443,7 @@ export const projectsData = [
     tech: ['React', 'JavaScript', 'Canvas API', 'Three.js'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://qrstudio-lovat.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/QrStudioAd' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/QrStudioAd' },
     ],
   },
   {
@@ -466,7 +466,7 @@ export const projectsData = [
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Prisma', 'PostgreSQL', 'Zod'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://thebarber-ten.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Thebarber' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Thebarber' },
     ],
   },
   {
@@ -487,7 +487,7 @@ export const projectsData = [
     ],
     tech: ['Java', 'Spring Boot', 'Spring Security', 'JPA', 'MySQL', 'Vue.js', 'Pinia'],
     links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Springboot_project' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Springboot_project' },
     ],
   },
   {
@@ -507,7 +507,7 @@ export const projectsData = [
     ],
     tech: ['Kotlin', 'Jetpack Compose', 'Android'],
     links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Basic-shop-app' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Basic-shop-app' },
     ],
   },
   {
@@ -527,7 +527,7 @@ export const projectsData = [
     ],
     tech: ['Unity', 'C#'],
     links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Shadow_Escape' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Shadow_Escape' },
     ],
   },
   {
@@ -546,7 +546,7 @@ export const projectsData = [
     tech: ['React', 'Vite', 'React Router', 'Tailwind CSS'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://irene-hair-braids.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/irene-hair-braids' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/irene-hair-braids' },
     ],
   },
   {
@@ -568,7 +568,7 @@ export const projectsData = [
     tech: ['React', 'TypeScript', 'Vite', 'Framer Motion'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://urbanet-two.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Urbanet' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Urbanet' },
     ],
   },
   {
@@ -588,7 +588,7 @@ export const projectsData = [
     ],
     tech: ['PHP', 'MySQL', 'JavaScript', 'FPDF'],
     links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Gestion_tickets_bus' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Gestion_tickets_bus' },
     ],
   },
   {
@@ -608,7 +608,7 @@ export const projectsData = [
     ],
     tech: ['PHP', 'MySQL', 'JavaScript', 'CSS'],
     links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Gestion_Dechets' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Gestion_Dechets' },
     ],
   },
   {
@@ -628,7 +628,7 @@ export const projectsData = [
     ],
     tech: ['PHP', 'MySQL', 'JavaScript', 'AJAX'],
     links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/Feedback' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Feedback' },
     ],
   },
   {
@@ -648,7 +648,7 @@ export const projectsData = [
     tech: ['JavaScript', 'Jest', 'GitHub Actions'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://projet-citations-dusky.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/Nagoloum/projet-citations' },
+      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/projet-citations' },
     ],
   },
 ];
