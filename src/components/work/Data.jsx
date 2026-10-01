@@ -13,6 +13,8 @@ import qrStudioLogo   from '../../assets/logos/qr-studio.webp';
 import ireneLogo      from '../../assets/logos/irene-hair-braids.webp';
 import nexagoldLogo   from '../../assets/logos/nexagold.webp';
 import kycLogo        from '../../assets/logos/kyc-checker.webp';
+import mailfindLogo   from '../../assets/logos/mailfind.svg';
+import builditLogo    from '../../assets/logos/buildit.webp';
 
 /*
   Données projets, vérifiées sur les dépôts GitHub et les projets locaux (septembre 2026).
@@ -103,8 +105,8 @@ export const projectsData = [
     category: 'Full-Stack',
     status: 'Déployé · bêta',
     featured: true,
-    logo: null,
-    initials: 'MF',
+    logo: mailfindLogo,
+    logoCover: true,
     summary: "Recherche et vérification d'adresses e-mail professionnelles à partir d'un nom et d'un domaine.",
     description: "Mailfind retrouve l'adresse e-mail professionnelle la plus probable d'une personne à partir de son nom et du domaine de son entreprise, en combinant plusieurs schémas d'adresses courants avec une vérification de validité.",
     features: [],
@@ -120,8 +122,7 @@ export const projectsData = [
     status: 'En développement',
     featured: true,
     private: true,
-    logo: null,
-    initials: 'BI',
+    logo: builditLogo,
     summary: 'Projet en cours de développement.',
     description: "BuildIt est en cours de développement. Pas encore de lien public à ce stade.",
     features: [],
