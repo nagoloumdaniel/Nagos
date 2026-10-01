@@ -2,20 +2,15 @@ import allibuyLogo    from '../../assets/logos/allibuy.webp';
 import zolyaLogo      from '../../assets/logos/zolya.webp';
 import campaignLogo   from '../../assets/logos/campaign-mailer.svg';
 import cynaLogo       from '../../assets/logos/cyna.webp';
-import trackshipLogo  from '../../assets/logos/trackship.webp';
 import fundatradeLogo from '../../assets/logos/fundatrade.webp';
 import finditLogo     from '../../assets/logos/findit.webp';
-import botsLogo       from '../../assets/logos/xaufxbot.webp';
 import nagosuiLogo    from '../../assets/logos/nagosui.webp';
 import remembermeLogo from '../../assets/logos/rememberme.webp';
-import sellcatLogo    from '../../assets/logos/sellcatalog.webp';
 import krosstyLogo    from '../../assets/logos/krossty.webp';
 import creamyLogo     from '../../assets/logos/creamy-milk-candies.webp';
 import wiyorentLogo   from '../../assets/logos/wiyorent.webp';
 import qrStudioLogo   from '../../assets/logos/qr-studio.webp';
 import ireneLogo      from '../../assets/logos/irene-hair-braids.webp';
-import basicShopLogo  from '../../assets/logos/basic-shop.webp';
-import urbanetLogo    from '../../assets/logos/urbanet.svg';
 import nexagoldLogo   from '../../assets/logos/nexagold.webp';
 import kycLogo        from '../../assets/logos/kyc-checker.webp';
 
@@ -103,6 +98,37 @@ export const projectsData = [
     ],
   },
   {
+    id: 'mailfind',
+    title: 'Mailfind',
+    category: 'Full-Stack',
+    status: 'Déployé · bêta',
+    featured: true,
+    logo: null,
+    initials: 'MF',
+    summary: "Recherche et vérification d'adresses e-mail professionnelles à partir d'un nom et d'un domaine.",
+    description: "Mailfind retrouve l'adresse e-mail professionnelle la plus probable d'une personne à partir de son nom et du domaine de son entreprise, en combinant plusieurs schémas d'adresses courants avec une vérification de validité.",
+    features: [],
+    tech: [],
+    links: [
+      { kind: 'demo', label: 'Voir le site', url: 'https://mailfind.vercel.app' },
+    ],
+  },
+  {
+    id: 'buildit',
+    title: 'BuildIt',
+    category: 'Full-Stack',
+    status: 'En développement',
+    featured: true,
+    private: true,
+    logo: null,
+    initials: 'BI',
+    summary: 'Projet en cours de développement.',
+    description: "BuildIt est en cours de développement. Pas encore de lien public à ce stade.",
+    features: [],
+    tech: [],
+    links: [],
+  },
+  {
     id: 'nexagold',
     title: 'NexaGold',
     category: 'Data & IA',
@@ -116,7 +142,7 @@ export const projectsData = [
       'Kill switch persisté, limites de perte quotidienne et hebdomadaire, cooldowns',
       'Filtre d\'annonces économiques « fail-closed » : sans calendrier, aucun nouvel ordre',
       'Backtest évènementiel M1 avec spread et slippage simulés',
-      'Stratégie « liquidity sweep » multi-timeframe, en paper trading uniquement',
+      'Stratégies multi-timeframe (actuellement « scalp M5 ») évaluées en paper trading, promues manuellement seulement si elles passent le backtest',
       'Pipeline d\'entraînement walk-forward (scikit-learn, LightGBM) avec promotion manuelle des modèles',
       'Tests pytest et intégration continue GitHub Actions',
     ],
@@ -133,7 +159,7 @@ export const projectsData = [
     featured: true,
     logo: cynaLogo,
     summary: "E-commerce de services de cybersécurité (SOC, EDR, XDR) en abonnement, réalisé en équipe : front React et API NestJS.",
-    description: "Cyna vend des services de cybersécurité sous forme d'abonnements. Projet de formation mené en équipe : j'ai écrit la majeure partie du front-end et une bonne part de l'API. Le site couvre tout le parcours d'achat, du catalogue au paiement Stripe, puis l'espace client avec ses abonnements et licences, et un backoffice pour l'administration.",
+    description: "Cyna vend des services de cybersécurité sous forme d'abonnements. Projet de formation mené en équipe (5 personnes) : j'ai écrit la quasi-totalité du front-end (~90 % des commits) et contribué à l'API côté infrastructure et sécurité (déploiement, base de données, rotation des refresh tokens). Le site couvre tout le parcours d'achat, du catalogue au paiement Stripe, puis l'espace client avec ses abonnements et licences, et un backoffice pour l'administration.",
     features: [
       'Catalogue, panier, paiement Stripe et factures PDF',
       'Espace client : abonnements, licences, commandes',
@@ -147,54 +173,6 @@ export const projectsData = [
       { kind: 'demo', label: 'Voir le site', url: 'https://cynaapp.vercel.app' },
       { kind: 'github', label: 'Frontend', url: 'https://github.com/nagoloumdaniel/Frontend_cyna' },
       { kind: 'github', label: 'Backend', url: 'https://github.com/nagoloumdaniel/Backend_cyna' },
-    ],
-  },
-  {
-    id: 'portail-depot',
-    title: 'Portail de dépôt de pièces',
-    category: 'Full-Stack',
-    status: 'Déployé · test technique',
-    featured: true,
-    logo: null,
-    initials: 'PD',
-    summary: 'Un avocat génère un lien expirable protégé par PIN, son client y dépose ses pièces sans créer de compte.',
-    description: "Réalisé pendant un test technique, en deux jours. L'avocat crée une demande de dépôt et obtient un lien public qui expire, protégé par un code à quatre chiffres. Le client dépose ses documents sans compte. L'application est conteneurisée de bout en bout, déployée en HTTPS, et livrée avec sa supervision Prometheus et Grafana.",
-    features: [
-      'Lien public expirable, déverrouillage par PIN avec verrouillage après plusieurs échecs',
-      'Deux stratégies JWT séparées : un jeton client ne peut pas servir sur les routes avocat',
-      'Stockage des fichiers sur MinIO (compatible S3), journal d\'audit des accès',
-      'Logique de statut isolée et testée unitairement avec Jest',
-      'Métriques Prometheus, dashboards Grafana et règles d\'alerte',
-      'Installation en une commande, images publiées sur GitHub Container Registry',
-    ],
-    tech: ['NestJS', 'TypeORM', 'PostgreSQL', 'MinIO', 'React', 'Vite', 'Chakra UI v3', 'Docker', 'Prometheus / Grafana'],
-    links: [
-      { kind: 'demo', label: 'Voir la démo', url: 'https://daniel-nagoloum.stage2-div.rayan-drissi.com' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/portail' },
-    ],
-  },
-  {
-    id: 'trackship',
-    title: 'Trackship',
-    category: 'Full-Stack',
-    status: 'Déployé',
-    featured: true,
-    logo: trackshipLogo,
-    logoCover: true,
-    summary: 'Suivi de colis multilingue : page de suivi publique, dashboard admin et reçus PDF avec QR code et code-barres.',
-    description: "Trackship permet à une société de transport de publier le suivi de ses colis. Le client entre son numéro sur la page publique, sans inscription. L'administrateur gère les commandes et leurs étapes depuis un dashboard, et génère des reçus en PDF ou en PNG dans la langue du destinataire.",
-    features: [
-      'Page de suivi publique sans compte',
-      'Dashboard admin : commandes, évènements de suivi, messages, historique des reçus',
-      'Reçus PDF et PNG avec QR code et code-barres Code-128',
-      'Interface en français, anglais, espagnol et allemand',
-      'Supabase (PostgreSQL, Auth, RLS), clé de service utilisée côté serveur uniquement',
-      'Thème clair et sombre',
-    ],
-    tech: ['Next.js 16', 'TypeScript', 'Tailwind CSS v4', 'shadcn/ui', 'Supabase', 'next-intl', 'React PDF'],
-    links: [
-      { kind: 'demo', label: 'Voir le site', url: 'https://trackship-eta.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Trackship' },
     ],
   },
   {
@@ -231,7 +209,7 @@ export const projectsData = [
     description: "Findit centralise les offres d'alternance et de stage en développement publiées en Île-de-France et renvoie toujours vers l'annonce d'origine. Le socle public fonctionne : collecte planifiée, normalisation et recherche. La partie privée (analyse de CV et suivi de candidatures) est en cours, avec une règle stricte : ne jamais inventer une compétence ou une expérience.",
     features: [
       'Monorepo pnpm / Turborepo : web Next.js, API NestJS sur Fastify, worker BullMQ',
-      'Connecteurs Greenhouse, Lever et Workable, avec tests',
+      'Connecteurs Greenhouse et Lever actifs ; connecteur Workable implémenté et testé, pas encore planifié en production',
       'Pipeline de normalisation, classification et ingestion des offres',
       'API publique : recherche, filtres, statistiques',
       'Import de CV (PDF, DOCX, TXT) et structuration via une IA locale (Ollama), désactivée par défaut',
@@ -257,32 +235,11 @@ export const projectsData = [
       'Contrôles qualité de l\'image : résolution et netteté',
       'API FastAPI protégée par clé, images traitées en mémoire uniquement',
       'Archivage chiffré AES-256-GCM, recherche par jetons HMAC sans donnée personnelle en clair, journal d\'audit',
-      'SDK TypeScript pour Next.js, image Docker, 48 tests pytest',
+      'SDK TypeScript pour Next.js, image Docker, 50 tests pytest',
     ],
     tech: ['Python', 'FastAPI', 'OpenCV', 'Tesseract OCR', 'Cryptography', 'Docker', 'pytest'],
     links: [
       { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/KYC-Checker' },
-    ],
-  },
-  {
-    id: 'trading-bots',
-    title: 'XAUFxBot & SYNFxBot',
-    category: 'Data & IA',
-    status: 'Fonctionnel',
-    logo: botsLogo,
-    summary: "Deux bots de trading Python pour MetaTrader 5 : l'un sur l'or, l'autre sur les indices synthétiques.",
-    description: "Mes premiers projets de trading automatisé, construits sur la même base : connexion MetaTrader 5, historique des trades dans MongoDB, alertes Telegram et tableau de bord Streamlit. XAUFxBot trade l'or à partir de zones d'offre et de demande, avec un biais fondamental. SYNFxBot trade les indices de volatilité sur un alignement de tendance multi-timeframe et peut répliquer ses ordres sur plusieurs comptes.",
-    features: [
-      'XAUFxBot : zones offre / demande en H1, confirmations (BOS, FVG, sweep de liquidité), biais H4',
-      'XAUFxBot : score fondamental (inflation, DXY, actualités, saisonnalité…)',
-      'SYNFxBot : croisement EMA 20/50 en M1 aligné sur M15 et M30',
-      'Risque par trade fixe, stop à l\'ATR, break-even et trailing stop',
-      'Multi-comptes (SYNFxBot), alertes Telegram, courbe de capital sur Streamlit',
-    ],
-    tech: ['Python', 'MetaTrader 5', 'pandas', 'MongoDB', 'Streamlit', 'Telegram'],
-    links: [
-      { kind: 'github', label: 'XAUFxBot', url: 'https://github.com/nagoloumdaniel/XAUFxBot' },
-      { kind: 'github', label: 'SYNFxBot', url: 'https://github.com/nagoloumdaniel/SYNFxBot' },
     ],
   },
   {
@@ -298,7 +255,7 @@ export const projectsData = [
       'Listes, tâches, calendrier et vue des tâches à venir',
       'Mots de passe hachés avec bcrypt, routes protégées par JWT',
       'Isolation des données par utilisateur, couverte par des tests Jest + Supertest',
-      'Thème clair / sombre et changement de langue',
+      'Thème clair / sombre, bascule FR/EN basée sur la traduction native du navigateur',
     ],
     tech: ['React', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Jest'],
     links: [
@@ -308,62 +265,23 @@ export const projectsData = [
     ],
   },
   {
-    id: 'task-app',
-    title: 'Task App',
-    category: 'Full-Stack',
-    status: 'Terminé',
-    logo: null,
-    initials: 'TA',
-    summary: 'Gestion de listes et de tâches façon Wunderlist : front Angular, API NestJS et MongoDB.',
-    description: "Une application de listes de tâches inspirée de Wunderlist et Google Tasks, écrite avec Angular côté client et NestJS côté serveur. Le projet m'a servi à travailler l'architecture modulaire des deux frameworks : modules, services, DTO validés côté API ; guards et intercepteurs côté Angular.",
-    features: [
-      'Inscription et connexion avec JWT (Passport)',
-      'Listes et tâches : création, modification, suppression',
-      'Guard de route et intercepteur HTTP qui ajoute le jeton côté Angular',
-      'DTO validés avec class-validator côté API',
-    ],
-    tech: ['Angular', 'TypeScript', 'Tailwind CSS', 'NestJS', 'MongoDB', 'Passport JWT'],
-    links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/libheros-task-app' },
-    ],
-  },
-  {
     id: 'nagosui',
     title: 'NagosUI',
     category: 'Front-End',
     status: 'En développement',
     logo: nagosuiLogo,
     summary: 'Librairie de composants animés et site vitrine, organisés en monorepo pnpm + Turborepo.',
-    description: "NagosUI est ma librairie de composants front-end, distribuée à la manière de shadcn : on récupère le code source et on le garde. Toutes les valeurs visuelles (couleurs, rayons, ombres, courbes d'animation) passent par des tokens, pour pouvoir changer toute la direction artistique en un seul endroit. Le site vitrine sert de terrain d'essai.",
+    description: "NagosUI est ma librairie de composants front-end, pensée dans un monorepo pnpm/Turborepo pour rester lisible et éditable plutôt que packagée en boîte noire. Toutes les valeurs visuelles (couleurs, rayons, ombres, courbes d'animation) passent par des tokens, pour pouvoir changer toute la direction artistique en un seul endroit. Le site vitrine sert de terrain d'essai et de documentation.",
     features: [
       'Design tokens Tailwind CSS v4 et tokens d\'animation partagés',
-      'Composants animés avec Motion (bouton magnétique…)',
-      'Site vitrine avec pages composants, blocs, templates et documentation',
+      'Premier composant animé avec Motion (bouton magnétique, 5 variantes)',
+      'Site vitrine avec palette de commandes, thème clair/sombre et interface bilingue FR/EN ; pages Docs/Blocks/Templates en construction',
       'Scroll fluide avec Lenis',
     ],
     tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Motion', 'Lenis', 'Turborepo'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://nagosui.vercel.app' },
       { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/NagosUI' },
-    ],
-  },
-  {
-    id: 'sellcatalog',
-    title: 'SellCatalog',
-    category: 'Mobile',
-    status: 'Prototype fonctionnel',
-    logo: sellcatLogo,
-    summary: 'Catalogue de ventes privées en Flutter, connecté à une API Python Flask.',
-    description: "Une application Flutter qui consomme une petite API Flask. Au lancement, elle vérifie si une session existe déjà ; sinon elle affiche l'écran de connexion. L'utilisateur parcourt ensuite le catalogue des ventes privées, cherche un produit, filtre par catégorie et garde ses favoris d'une session à l'autre.",
-    features: [
-      'Inscription et connexion, session conservée localement',
-      'Catalogue chargé depuis l\'API avec image, catégorie et prix',
-      'Recherche et filtre par catégorie',
-      'Favoris persistants avec shared_preferences',
-    ],
-    tech: ['Flutter', 'Dart', 'Material 3', 'Python', 'Flask'],
-    links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/SellCatalog' },
     ],
   },
   {
@@ -396,7 +314,7 @@ export const projectsData = [
     summary: 'Site de vente de chips à Douala : catalogue de formats et commande par WhatsApp.',
     description: "Site vitrine pour une marque de chips basée à Douala. Le visiteur choisit un format sur la fiche produit, puis un bouton ouvre WhatsApp avec un message de commande déjà rempli (produit et prix). Pas de paiement en ligne : la commande se conclut directement avec le vendeur.",
     features: [
-      'Catalogue et fiches produit par format',
+      'Fiche produit avec sélection de format (50g / 100g / 150g)',
       'Commande via un message WhatsApp pré-rempli',
       'Carrousel, défilement animé et page de contact avec carte',
     ],
@@ -432,102 +350,18 @@ export const projectsData = [
     status: 'Déployé',
     logo: qrStudioLogo,
     summary: 'Générateur de QR codes personnalisables : dix types de contenu, styles, couleurs, logo et export en image.',
-    description: "QR Studio génère des QR codes directement dans le navigateur. L'encodeur est écrit à la main en JavaScript, d'après la norme ISO/IEC 18004 avec le niveau de correction d'erreur H, sans librairie de génération. On choisit le type de contenu, on personnalise le rendu, puis on télécharge l'image.",
+    description: "QR Studio génère des QR codes personnalisables directement dans le navigateur. L'encodage (norme ISO/IEC 18004, niveau de correction d'erreur H) passe par la librairie `qrcode` ; le travail fait main porte sur ce qui vient après : rendu SVG stylé, export et contrôle de scannabilité. On choisit le type de contenu, on personnalise le rendu, puis on télécharge l'image.",
     features: [
       'Dix types de contenu : lien, texte, e-mail, téléphone, SMS, Wi-Fi, vCard, crypto, géolocalisation, évènement',
-      'Encodeur QR maison (arithmétique GF(256), Reed-Solomon, masques)',
-      'Styles de modules, couleurs, dégradés, couleur des repères et logo central',
+      'Rendu SVG maison : formes de module, dégradés, couleur des repères, logo central',
+      'Vérification de scannabilité (contraste, couverture du logo selon le niveau de correction)',
       'Export PNG, JPG, WebP ou Base64',
-      'Thème clair / sombre et fond animé en Three.js',
+      'Thème clair / sombre',
     ],
     tech: ['React', 'JavaScript', 'Canvas API', 'Three.js'],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://qrstudio-lovat.vercel.app' },
       { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/QrStudioAd' },
-    ],
-  },
-  {
-    id: 'thebarber',
-    title: 'The Barber Studio',
-    category: 'Full-Stack',
-    status: 'Prototype',
-    logo: null,
-    // Marque du site : des ciseaux blancs dans un carré sombre (voir son site-header)
-    logoIcon: 'bx bx-cut',
-    logoBg: '#111111',
-    summary: 'Site de salon de coiffure avec prise de rendez-vous en ligne, en Next.js, Prisma et PostgreSQL.',
-    description: "Base d'un site pour un salon de coiffure en France : vitrine optimisée pour le référencement et parcours de réservation. Le modèle de données est pensé dès le départ pour la suite (équipe, horaires, créneaux bloqués, consentements RGPD, journal d'audit), mais seul le parcours de réservation est développé à ce stade.",
-    features: [
-      'Créneaux disponibles calculés selon la prestation et le coiffeur',
-      'Création du rendez-vous dans une action serveur, données validées avec Zod',
-      'Schéma Prisma complet : prestations, équipe, horaires, rendez-vous, consentements',
-      'Bandeau de consentement aux cookies, sitemap et robots.txt',
-    ],
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Prisma', 'PostgreSQL', 'Zod'],
-    links: [
-      { kind: 'demo', label: 'Voir le site', url: 'https://thebarber-ten.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Thebarber' },
-    ],
-  },
-  {
-    id: 'shop-spring',
-    title: 'Shop App',
-    category: 'Full-Stack',
-    status: 'Projet de formation',
-    logo: null,
-    initials: 'SA',
-    summary: 'Boutique en ligne avec API Java Spring Boot sécurisée par JWT et front Vue.js avec espace admin.',
-    description: "Une boutique complète réalisée en formation : l'API Spring Boot gère produits, catégories, commandes et utilisateurs, avec une authentification JWT via Spring Security. Le front Vue.js propose le catalogue, les commandes et le profil côté client, et un tableau de bord pour l'administrateur.",
-    features: [
-      'Inscription et connexion, filtre JWT sur Spring Security',
-      'Catalogue, fiche produit et commandes',
-      'Espace administrateur : produits, commandes, utilisateurs',
-      'Persistance JPA / Hibernate sur MySQL',
-      'Front Vue.js avec Vue Router, Pinia et Axios',
-    ],
-    tech: ['Java', 'Spring Boot', 'Spring Security', 'JPA', 'MySQL', 'Vue.js', 'Pinia'],
-    links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Springboot_project' },
-    ],
-  },
-  {
-    id: 'basic-shop-app',
-    title: 'Basic Shop App',
-    category: 'Mobile',
-    status: "Projet d'apprentissage",
-    logo: basicShopLogo,
-    logoCover: true,
-    summary: 'Application Android native en Kotlin et Jetpack Compose : liste de produits, liste de biens et fiches détail.',
-    description: "Un projet pour apprendre le développement Android natif avec Jetpack Compose. L'application affiche deux catalogues, des produits et des biens, chacun avec sa liste et sa fiche détail, reliés par la navigation Compose.",
-    features: [
-      'Interface déclarative en Jetpack Compose',
-      'Listes de produits et de biens avec composants de carte réutilisables',
-      'Écrans de détail et navigation entre écrans',
-      'Thème Material personnalisé (couleurs, typographie)',
-    ],
-    tech: ['Kotlin', 'Jetpack Compose', 'Android'],
-    links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Basic-shop-app' },
-    ],
-  },
-  {
-    id: 'shadow-escape',
-    title: 'Shadow Escape',
-    category: 'Jeu',
-    status: 'Projet de formation',
-    logo: null,
-    initials: 'SE',
-    summary: "Jeu d'infiltration 2D sous Unity : éviter les ennemis, se cacher dans l'ombre et trouver la sortie.",
-    description: "Un jeu d'infiltration réalisé avec Unity et C#. Le joueur traverse des niveaux gardés par des ennemis, se dissimule dans les zones d'ombre, récupère des clés de couleur pour ouvrir les portes correspondantes et active des interrupteurs pour atteindre la sortie.",
-    features: [
-      'Déplacement du joueur et intelligence artificielle des ennemis',
-      'Zones d\'ombre, clés de couleur, portes et interrupteurs',
-      'Plusieurs niveaux avec écran de sélection',
-      'Menus, options et interface persistante entre les scènes',
-    ],
-    tech: ['Unity', 'C#'],
-    links: [
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Shadow_Escape' },
     ],
   },
   {
@@ -547,28 +381,6 @@ export const projectsData = [
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://irene-hair-braids.vercel.app' },
       { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/irene-hair-braids' },
-    ],
-  },
-  {
-    id: 'urbanet',
-    title: 'Urbanet',
-    category: 'Front-End',
-    status: 'Déployé',
-    // Logo affiché sur le site déployé (celui du modèle intégré)
-    logo: urbanetLogo,
-    logoBg: '#0F0E17',
-    summary: 'Landing page immobilière en React et TypeScript, découpée en composants et hooks réutilisables.',
-    description: "Intégration d'une landing page immobilière en React et TypeScript. L'intérêt du projet est surtout dans l'organisation du code : les contenus sont séparés dans des fichiers de données, les interactions dans des hooks (accordéon, carrousel, lecteur vidéo) et l'interface dans de petits composants réutilisables.",
-    features: [
-      'Sections héros, biens, offres, équipements, témoignages et FAQ',
-      'Hooks personnalisés : accordéon, carrousel, lecteur vidéo',
-      'Kit de composants UI (boutons, cartes, liens)',
-      'Animations avec Framer Motion',
-    ],
-    tech: ['React', 'TypeScript', 'Vite', 'Framer Motion'],
-    links: [
-      { kind: 'demo', label: 'Voir le site', url: 'https://urbanet-two.vercel.app' },
-      { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/Urbanet' },
     ],
   },
   {
