@@ -8,7 +8,7 @@ const ParticleSphere = lazy(() => import('../particles/ParticleSphere'));
 
 const boxes = [
   { icon: 'bx bx-code-alt',  title: 'Projets',    sub: '30+ sur GitHub'     },
-  { icon: 'bx bx-medal',     title: 'Expérience', sub: 'Stage DATALIA'      },
+  { icon: 'bx bx-medal',     title: 'Expérience', sub: '+3 ans'             },
   { icon: 'bx bx-calendar',  title: 'Alternance', sub: '24 mois · sept. 2026' },
 ];
 
@@ -54,7 +54,7 @@ const About = () => {
 
           <div className="about__availability">
             <i className="uil uil-calendar-alt" />
-            <span>Dès sept. 2026 · 3 sem. entreprise / 1 sem. formation · Île-de-France</span>
+            <span>À la recherche · dès sept. 2026 · 3 sem. entreprise / 1 sem. formation · Île-de-France</span>
           </div>
 
           <a href={CV_tech} download="CV_Daniel_Nagoloum_Talla_Fullstack.pdf" className="button button--flex">
