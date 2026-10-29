@@ -9,11 +9,22 @@ const shortLabel = (link) => {
 };
 
 /* Logo du projet (pastille claire : les logos sont pensés pour un fond clair) */
-export const ProjectLogo = ({ item, variant }) => (
-  <div className={`work__logo work__logo--${variant}`}>
-    <img src={item.logo} alt={`Logo ${item.title}`} loading="lazy" decoding="async" />
-  </div>
-);
+export const ProjectLogo = ({ item, variant }) => {
+  if (!item.logo) {
+    const mono = item.monogram || item.title.slice(0, 2).toUpperCase();
+    const wide = mono.length > 2 ? ' work__logo--monogram-wide' : '';
+    return (
+      <div className={`work__logo work__logo--${variant} work__logo--monogram${wide}`} role="img" aria-label={`Logo ${item.title}`}>
+        <span aria-hidden="true">{mono}</span>
+      </div>
+    );
+  }
+  return (
+    <div className={`work__logo work__logo--${variant}${item.logoCover ? ' work__logo--cover' : ''}`}>
+      <img src={item.logo} alt={`Logo ${item.title}`} loading="lazy" decoding="async" />
+    </div>
+  );
+};
 
 /* Carte projet : toute la carte mène à la page détail */
 const Workitems = ({ item }) => {
