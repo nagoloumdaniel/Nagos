@@ -96,7 +96,7 @@ export const projectsData = [
       { value: '2', label: 'applications Flutter' },
       { value: '52', label: 'modèles Prisma' },
       { value: '~143', label: 'endpoints REST' },
-      { value: '350+', label: 'tests (backend et Flutter)' },
+      { value: '480', label: 'tests (271 backend, 210 Flutter)' },
     ],
     situation: {
       context: "Au Cameroun, la seconde main se vend surtout sur des groupes de réseaux sociaux et par messagerie. Les deux parties se connaissent rarement, on paie souvent à l'avance par Mobile Money (MTN, Orange), et la livraison se négocie à la main.",
@@ -317,7 +317,7 @@ export const projectsData = [
     challenges: [
       { title: 'API de courtage indisponible', text: "Deriv n'est pas accessible depuis la France : l'exécution est passée sur MetaTrader 5, ce qui limite l'application à Windows." },
       { title: 'Réduire le périmètre', text: "Le projet a été ramené à deux instruments, XAUUSD et BTCUSD, pour pouvoir valider sérieusement plutôt que survoler beaucoup de marchés." },
-      { title: 'Ne pas se mentir', text: "Tous les backtests finissent sous le seuil de 1,20. Une version validée à 1,0275 sur BTC tombe à 0,6909 sur le jeu scellé. La démonstration (22 trades, +14,90 EUR) n'est pas statistiquement significative." },
+      { title: 'Ne pas se mentir', text: "La version 1.3.0 validée à 1,0275 sur BTC tombe à 0,6909 sur le jeu scellé. La 1.4.0 atteint 1,3916 en validation (35 trades), mais son filtre a été trouvé en examinant 164 tranches des mêmes données et le jeu scellé n'est pas ouvert. La démonstration (22 trades, +14,90 EUR) n'est pas statistiquement significative." },
       { title: 'Séparer IA et décision', text: "L'IA ne peut que rejeter : la décision d'envoyer un ordre reste déterministe et testable." },
       { title: 'Documentation périmée', text: "Le fichier CLAUDE.md décrivait encore l'ancienne architecture Deriv. Il est signalé comme obsolète." },
     ],
