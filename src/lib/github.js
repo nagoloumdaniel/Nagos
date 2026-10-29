@@ -49,14 +49,15 @@ const iso = (d) => d.toISOString().slice(0, 10);
 
 /* ── Contributions des 3 derniers mois ───────────────────── */
 export function getContributions(force) {
-  return cached('gh:contrib:v1', CONTRIB_TTL, async () => {
+  return cached('gh:contrib:v2', CONTRIB_TTL, async () => {
     const json = await getJson(`${CONTRIB_API}/${GITHUB_USER}?y=last`);
     const start = new Date();
     start.setUTCDate(start.getUTCDate() - (WINDOW_DAYS - 1));
-    // Début sur un dimanche : colonnes de semaines pleines
-    start.setUTCDate(start.getUTCDate() - start.getUTCDay());
+    // Début sur un lundi : colonnes de semaines pleines, du lundi au dimanche
+    start.setUTCDate(start.getUTCDate() - ((start.getUTCDay() + 6) % 7));
     const from = iso(start);
-    return json.contributions.filter(d => d.date >= from);
+    const yearTotal = json.total?.lastYear ?? Object.values(json.total || {}).reduce((n, v) => n + v, 0);
+    return { days: json.contributions.filter(d => d.date >= from), yearTotal };
   }, force);
 }
 

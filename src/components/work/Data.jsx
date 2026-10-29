@@ -1,6 +1,7 @@
 import allibuyLogo  from '../../assets/logos/allibuy.webp';
 import campaignLogo from '../../assets/logos/campaign-mailer.svg';
 import cynaLogo     from '../../assets/logos/cyna.webp';
+import tradingagentLogo from '../../assets/logos/tradingagent.png';
 import zolyaLogo from '../../assets/logos/zolya.png';
 import finditLogo from '../../assets/logos/findit.png';
 import builditLogo from '../../assets/logos/buildit.webp';
@@ -260,6 +261,7 @@ export const projectsData = [
   /* ───────────────────────── TRADINGAGENT ───────────────────────── */
   {
     id: 'tradingagent',
+    logo: tradingagentLogo,
     title: 'TradingAgent',
     category: 'Full-Stack',
     status: 'Python · open source · démo uniquement',
@@ -361,7 +363,7 @@ export const projectsData = [
       languages: ['Français', 'Anglais'],
       period: 'Depuis septembre 2026',
       team: 'Solo, assisté par IA',
-      hosting: 'Pas de déploiement public confirmé',
+      hosting: 'Vercel (configurateur web : buildit.vercel.app)',
     },
     figures: [
       { value: '299', label: 'entrées dans le registre' },
@@ -421,6 +423,7 @@ export const projectsData = [
       { icon: 'uil-palette', title: 'Identité Forge', text: "Orange et cyan acier, deux thèmes, états d'erreur explicites plutôt que des squelettes de chargement." },
     ],
     links: [
+      { kind: 'demo', label: 'Voir le configurateur', url: 'https://buildit.vercel.app' },
       { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/BuildIt' },
     ],
   },

@@ -25,7 +25,7 @@ body.dark-theme .github, body.dark-theme .gh-repo {
 .gh-panel__link:hover { color: var(--title-color); text-decoration: underline; text-underline-offset: 4px; }
 
 /* Chiffres animés */
-.gh-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-bottom: 1.25rem; }
+.gh-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; }
 .gh-stat {
   display: flex; flex-direction: column; gap: 0.15rem;
   padding: 0.85rem 1rem; border: 1px solid var(--glass-border); min-width: 0;
@@ -39,9 +39,9 @@ body.dark-theme .github, body.dark-theme .gh-repo {
 
 /* Calendrier */
 .gh-scroll { overflow-x: auto; padding-bottom: 0.25rem; }
-.gh-canvas { position: relative; min-width: 560px; }
+.gh-canvas { position: relative; max-width: 640px; margin-inline: auto; }
 .gh-svg { display: block; width: 100%; height: auto; overflow: visible; }
-.gh-axis { font-family: var(--mono-font); font-size: 9px; fill: var(--text-color); }
+.gh-axis { font-family: var(--mono-font); font-size: 13px; fill: var(--text-color); }
 .gh-axis--c { text-anchor: middle; }
 .gh-cell { transform-box: fill-box; transform-origin: center; animation: gh-pop 420ms cubic-bezier(.2,.8,.2,1) both; transition: filter .15s; }
 .gh-cell:hover { filter: brightness(1.15); stroke: var(--title-color); stroke-width: 1; }
@@ -86,6 +86,7 @@ body.dark-theme .github, body.dark-theme .gh-repo {
 
 @media (max-width: 640px) {
   .gh-stats { grid-template-columns: repeat(2, 1fr); }
+  .gh-stats > :first-child:nth-child(odd):last-child, .gh-stats > :last-child:nth-child(odd) { grid-column: 1 / -1; }
   .gh-panel { padding: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) {
