@@ -4,6 +4,7 @@ import { projectsData } from '../components/work/Data';
 import { ProjectLogo } from '../components/work/Workitems';
 import NotFoundPage from './NotFoundPage';
 import { TerminalWindow } from '../components/ide/Ide';
+import RepoActivity from '../components/github/RepoActivity';
 import usePageMeta from '../hooks/usePageMeta';
 import '../components/work/Work.css';
 import './ProjectPage.css';
@@ -28,6 +29,7 @@ const ProjectDetail = ({ project, prev, next }) => {
 
   const demo = project.links.filter(l => l.kind === 'demo');
   const repos = project.links.filter(l => l.kind === 'github');
+  const repoNames = repos.map(l => l.url.split('/').pop());
   let n = 0;
 
   return (
@@ -79,6 +81,14 @@ const ProjectDetail = ({ project, prev, next }) => {
             </li>
           ))}
         </ul>
+
+        <Section index={++n} icon="uil-github-alt" title="Activité GitHub">
+          {repoNames.length > 0 ? (
+            <div className="pj-activity glass"><RepoActivity repos={repoNames} /></div>
+          ) : (
+            <p className="gh-note">Dépôt privé : les statistiques ne sont pas publiques.</p>
+          )}
+        </Section>
 
         <Section index={++n} icon="uil-info-circle" title="Contexte">
           <div className="pj-context">
