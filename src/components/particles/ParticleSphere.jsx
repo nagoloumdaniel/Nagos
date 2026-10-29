@@ -3,7 +3,7 @@ import {
   Scene, PerspectiveCamera, WebGLRenderer, Color,
   Points, BufferGeometry, Float32BufferAttribute, PointsMaterial,
   SphereGeometry, MeshBasicMaterial, InstancedMesh,
-  Matrix4, Group, Vector3, AdditiveBlending,
+  Matrix4, Group, Vector3, AdditiveBlending, NormalBlending,
 } from 'three';
 import gsap from 'gsap';
 import './ParticleSphere.css';
@@ -26,7 +26,8 @@ const CONFIG = {
     strength   : 0.85,           // [0 – 1]
     clickForce : 6,
   },
-  sphereColor: '#7B61FF',        // accent du portfolio
+  sphereColor: { dark: '#F5F5F5', light: '#171717' },
+  accentColor: '#9CDCFE',          // reflet bleu ciel : couleur des propriétés du code derrière
 };
 
 /* ─── Helpers (portés depuis le source Framer) ───────────── */
@@ -42,7 +43,7 @@ const mapCursorStrength    = ui => mapLinear(Math.max(0, Math.min(1, ui)), 0, 1,
 const CURSOR_PHYSICS = { RETURN_FORCE: 0.015, FRICTION: 0.94 };
 
 /* ═══════════════════════════════════════════════════════════ */
-const ParticleSphere = () => {
+const ParticleSphereScene = ({ dark }) => {
   const containerRef = useRef(null);
 
   /* Dérivés des config (identique aux useMemo Framer) */
@@ -63,7 +64,7 @@ const ParticleSphere = () => {
     const containerH = container.clientHeight || 400;
 
     /* Canvas 2.5× pour éviter le clipping (technique Framer) */
-    const OVF = 2.5;
+    const OVF = 2;
     const canvasW = containerW * OVF;
     const canvasH = containerH * OVF;
     const offsetX = (canvasW - containerW) / 2;
@@ -80,9 +81,9 @@ const ParticleSphere = () => {
     const sphereWorldRadius = 1 * scaleMultiplier;
     camera.position.z = Math.max(3, sphereWorldRadius + 1);
 
-    const renderer = new WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new WebGLRenderer({ antialias: false, alpha: true, powerPreference: 'high-performance' });
     renderer.setSize(canvasW, canvasH);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.outputColorSpace = 'srgb';
 
     const canvas = renderer.domElement;
@@ -103,7 +104,9 @@ const ParticleSphere = () => {
     const scatterVelocities = [];
     const vertices         = [];
 
-    const baseColor = new Color(CONFIG.sphereColor);
+    const baseColor = new Color(dark ? CONFIG.sphereColor.dark : CONFIG.sphereColor.light);
+    /* Additif = lumineux sur fond sombre ; normal pour les particules noires sur fond clair */
+    const blending = dark ? AdditiveBlending : NormalBlending;
 
     for (let i = 0; i < CONFIG.particlesCount; i++) {
       const y      = 1 - (i / (CONFIG.particlesCount - 1)) * 2;
@@ -125,10 +128,10 @@ const ParticleSphere = () => {
     /* ── Mesh de particules ── */
     let particles;
     if (CONFIG.particleShape === 'sphere') {
-      const sGeo = new SphereGeometry(particleSize * 0.15, 8, 8);
+      const sGeo = new SphereGeometry(particleSize * 0.15, 5, 4);
       const sMat = new MeshBasicMaterial({
         color: 0xffffff,
-        blending: AdditiveBlending,
+        blending,
         transparent: true,
         opacity: 0.9,
       });
@@ -136,7 +139,7 @@ const ParticleSphere = () => {
       const mat4 = new Matrix4();
       /* Couleur instance : gradient violet → mauve selon Y */
       const instColors = new Float32Array(CONFIG.particlesCount * 3);
-      const cB = new Color('#c084fc');
+      const cB = new Color(CONFIG.accentColor);
       for (let i = 0; i < CONFIG.particlesCount; i++) {
         const t = (basePositions[i].y + sphereRadius) / (2 * sphereRadius);
         const c = baseColor.clone().lerp(cB, t);
@@ -151,7 +154,7 @@ const ParticleSphere = () => {
       const pGeo = new BufferGeometry();
       pGeo.setAttribute('position', new Float32BufferAttribute(vertices, 3));
       const colors = new Float32Array(CONFIG.particlesCount * 3);
-      const cB = new Color('#c084fc');
+      const cB = new Color(CONFIG.accentColor);
       for (let i = 0; i < CONFIG.particlesCount; i++) {
         const t = (basePositions[i].y + sphereRadius) / (2 * sphereRadius);
         const c = baseColor.clone().lerp(cB, t);
@@ -160,7 +163,7 @@ const ParticleSphere = () => {
       pGeo.setAttribute('color', new Float32BufferAttribute(colors, 3));
       const pMat = new PointsMaterial({
         size: particleSize,
-        blending: AdditiveBlending,
+        blending,
         depthTest: false,
         transparent: true,
         opacity: 0.9,
@@ -199,6 +202,7 @@ const ParticleSphere = () => {
 
     /* Curseur (coordonnées canvas) */
     let mouseCanvas = null; // { x, y } en espace canvas
+    let settled = true;     // true : aucune particule déplacée, la physique est sautée (économie CPU)
 
     /* ── Boucle d'animation ── */
     let rafId = null;
@@ -255,7 +259,8 @@ const ParticleSphere = () => {
       const cursorR2 = cursorRadius * cursorRadius;
 
       /* ── Répulsion curseur (identique Framer) ── */
-      if (CONFIG.cursor.enabled) {
+      if (CONFIG.cursor.enabled && (mouseCanvas || !settled)) {
+        let energy = 0;
         /* Constantes de la frame, calculées une fois (et non par particule) */
         const friction    = Math.pow(CURSOR_PHYSICS.FRICTION, dF);
         const returnForce = CURSOR_PHYSICS.RETURN_FORCE * CONFIG.speed * dF;
@@ -297,6 +302,7 @@ const ParticleSphere = () => {
 
           /* Friction + rappel (toujours actif) */
           disp.multiplyScalar(friction * (1 - returnForce));
+          energy += disp.lengthSq();
         }
 
         /* Scatter velocities */
@@ -306,6 +312,7 @@ const ParticleSphere = () => {
           const disp = displacements[i];
           disp.addScaledVector(sv, dF * 0.1);
           sv.multiplyScalar(scatterFriction * (1 - returnForce));
+          energy += sv.lengthSq();
         }
 
         /* Mise à jour des positions */
@@ -324,6 +331,7 @@ const ParticleSphere = () => {
           }
           pos.needsUpdate = true;
         }
+        settled = !mouseCanvas && energy < 1e-9;
       }
 
       renderer.render(scene, camera);
@@ -332,8 +340,16 @@ const ParticleSphere = () => {
     animate();
 
     /* ── Pause hors écran (économise CPU/GPU) ── */
+    /* Pause quand l'onglet est masqué */
+    const onVisibility = () => {
+      if (document.hidden) { inView = false; }
+      else if (!inView && ioVisible && !rafId) { inView = true; lastFrameTime = performance.now(); animate(); }
+    };
+    let ioVisible = true;
+    document.addEventListener('visibilitychange', onVisibility);
     const io = new IntersectionObserver(([entry]) => {
-      inView = entry.isIntersecting;
+      ioVisible = entry.isIntersecting;
+      inView = entry.isIntersecting && !document.hidden;
       if (inView && !rafId) { lastFrameTime = performance.now(); animate(); }
     });
     io.observe(container);
@@ -442,6 +458,7 @@ const ParticleSphere = () => {
             const inv       = new Matrix4().copy(group.matrixWorld).invert();
             const localScat = worldScat.clone().applyMatrix4(inv);
             scatterVelocities[i].add(localScat);
+            settled = false;
           }
         }
       }
@@ -480,6 +497,7 @@ const ParticleSphere = () => {
     /* ── Cleanup ── */
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
+      document.removeEventListener('visibilitychange', onVisibility);
       io.disconnect();
       ro.disconnect();
       window.removeEventListener('resize', onResize);
@@ -501,7 +519,7 @@ const ParticleSphere = () => {
           : particles.material.dispose();
       }
     };
-  }, [rotationSpeed, scaleMultiplier, particleSize, cursorRadius, cursorStrength]);
+  }, [dark, rotationSpeed, scaleMultiplier, particleSize, cursorRadius, cursorStrength]);
 
   return (
     <div
@@ -511,5 +529,9 @@ const ParticleSphere = () => {
     />
   );
 };
+
+/* La sphère se pose sur le terminal de code (toujours sombre) : particules claires,
+   mélange additif, quel que soit le thème du site. */
+const ParticleSphere = () => <ParticleSphereScene dark />;
 
 export default ParticleSphere;

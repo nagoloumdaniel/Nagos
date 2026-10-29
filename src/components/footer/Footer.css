@@ -1,89 +1,87 @@
+/* ─── FOOTER : nom géant en verre, coupé par le bas de la page ──
+   Les icônes et le copyright passent par-dessus les lettres.
+   ──────────────────────────────────────────────────────────── */
 .footer {
-  background: var(--container-color);
-  border-top: 1px solid var(--card-border);
-  padding: 3.5rem 0 2.5rem;
+  --fs: clamp(2.5rem, 19.5vw, 24rem); /* taille du nom : ~ toute la largeur */
+  --glass-top: rgba(0, 0, 0, 0.16);
+  --glass-bottom: rgba(0, 0, 0, 0.02);
+  --glass-edge: rgba(0, 0, 0, 0.14);
+
   position: relative;
   z-index: 1;
+  overflow: hidden;
+  padding: 4rem 0 calc(var(--fs) * 0.5);
+  border-top: 1px dashed var(--guide);
 }
+body.dark-theme .footer {
+  --glass-top: rgba(255, 255, 255, 0.2);
+  --glass-bottom: rgba(255, 255, 255, 0.02);
+  --glass-edge: rgba(255, 255, 255, 0.18);
+}
+
 .footer__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-}
-.footer__logo {
-  font-family: var(--heading-font);
-  font-size: 1.5rem;
-  font-weight: var(--font-extra-bold);
-  color: var(--title-color);
-  letter-spacing: -0.03em;
+  position: relative;
+  z-index: 2; /* au-dessus du nom */
   display: flex;
   align-items: center;
-}
-.footer__logo-dot {
-  display: inline-block;
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  transform: translateY(6px);
-  margin-left: 7px;
-}
-.footer__list {
-  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.25rem;
 }
-.footer__link {
-  padding: 0.4rem 1rem;
-  font-size: var(--small-font-size);
-  font-weight: var(--font-medium);
-  color: var(--text-color);
-  border-radius: var(--radius-full);
-  transition: all var(--t-fast);
-}
-.footer__link:hover {
-  background: var(--accent);
-  color: #fff;
-}
-.footer__social {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+
+.footer__social { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .footer__social-link {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--body-color);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+          backdrop-filter: blur(var(--glass-blur));
   color: var(--title-color);
   font-size: 1.1rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--card-border);
-  transition: all var(--t-spring);
+  border: 1px solid var(--glass-border);
+  transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
 }
 .footer__social-link:hover {
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   border-color: var(--accent);
-  box-shadow: var(--shadow-accent);
 }
-/* Navbar flottante en bas (≤ 900px) : le fond du footer descend sous la barre,
-   le contenu garde sa place et reste visible au-dessus d'elle */
-@media screen and (max-width: 900px) {
-  .footer { padding-bottom: calc(2.5rem + var(--header-height) + 2rem); }
-}
+.footer__social-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 .footer__copy {
+  font-family: var(--mono-font);
   font-size: var(--smaller-font-size);
   color: var(--text-color);
-  opacity: 0.6;
 }
-.footer__copy span {
-  color: var(--accent);
-  font-weight: var(--font-semi-bold);
-  opacity: 1;
+.footer__copy span { color: var(--title-color); font-weight: var(--font-medium); }
+
+/* Nom géant : remplissage dégradé translucide + contour fin = effet verre.
+   Légèrement coupé en bas par overflow:hidden du footer. */
+.footer__name {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--fs) * -0.17);
+  transform: translateX(-50%);
+  z-index: 1;
+  font-family: var(--heading-font);
+  font-size: var(--fs);
+  font-weight: var(--font-bold);
+  line-height: 0.8;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  color: transparent;
+  background: linear-gradient(to bottom, var(--glass-top), var(--glass-bottom));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-stroke: 1px var(--glass-edge);
+}
+
+@media screen and (max-width: 700px) {
+  .footer { padding-top: 3rem; }
+  .footer__container { flex-direction: column; align-items: flex-start; }
 }

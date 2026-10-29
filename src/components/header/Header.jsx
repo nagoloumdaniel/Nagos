@@ -42,8 +42,15 @@ const Header = () => {
       }
     };
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    /* Au plus un calcul par frame (le scroll émet bien plus d'évènements) */
+    let ticking = false;
+    const onScrollRaf = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { ticking = false; onScroll(); });
+    };
+    window.addEventListener('scroll', onScrollRaf, { passive: true });
+    return () => window.removeEventListener('scroll', onScrollRaf);
   }, [location.pathname]);
 
   /* Lock body scroll when menu open */
@@ -56,7 +63,7 @@ const Header = () => {
   const closeMenu = () => setMenuOpen(false);
 
   const isActive = (link) => {
-    if (link.to === '/portfolio') return location.pathname === '/portfolio';
+    if (link.to === '/portfolio') return location.pathname.startsWith('/portfolio');
     if (link.to === '/blog')      return location.pathname === '/blog';
     return location.pathname === '/' && activeHash === link.hash;
   };
@@ -83,23 +90,15 @@ const Header = () => {
         />
       )}
 
-      <header className={`header${scrolled ? ' scroll-header' : ''}`}>
+      <header className={`header${scrolled ? ' scroll-header' : ''}${!scrolled && !location.pathname.startsWith('/portfolio') && location.pathname !== '/blog' ? ' header--on-hero' : ''}`}>
         <nav className="nav container">
 
           <Link to="/" className="nav__logo" onClick={closeMenu}>
-            Nagoloum <span className="nav__logo-dot" />
+            NAGOLOUM
           </Link>
 
-          <div className={`nav__menu${menuOpen ? ' show-menu nav__menuf' : ''}`}>
+          <div id="nav-menu" className={`nav__menu${menuOpen ? ' show-menu nav__menuf' : ''}`}>
 
-            <button
-              type="button"
-              className="nav__close"
-              onClick={closeMenu}
-              aria-label="Fermer le menu"
-            >
-              <i className="uil uil-times" />
-            </button>
 
             <ul className="nav__list">
               {navLinks.map((link) => {
@@ -123,7 +122,7 @@ const Header = () => {
                   );
                 }
 
-                // Dedicated route (Portfolio, Blog)
+                // Dedicated route (Portfolio)
                 return (
                   <li key={link.label} className="nav__item">
                     <Link
@@ -139,16 +138,18 @@ const Header = () => {
             </ul>
           </div>
 
-          {/* Desktop : thème après « Blog » · Mobile : thème à côté du bouton menu */}
+          {/* Desktop : thème après « Portfolio » · Mobile : thème à côté du bouton menu */}
           <div className="nav__actions">
             <ThemeToggle className="nav__theme" />
             <button
               type="button"
               className="nav__toggle"
-              onClick={openMenu}
-              aria-label="Ouvrir le menu"
+              onClick={menuOpen ? closeMenu : openMenu}
+              aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={menuOpen}
+              aria-controls="nav-menu"
             >
-              <i className="uil uil-apps" />
+              <i className={`uil ${menuOpen ? 'uil-times' : 'uil-apps'} nav__toggle-icon`} />
             </button>
           </div>
 

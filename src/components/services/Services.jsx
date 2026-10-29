@@ -8,7 +8,7 @@ const servicesData = [
   {
     id: 1,
     icon: 'uil-monitor',
-    color: '#7B61FF',
+    art: ['uil-monitor', 'uil-brackets-curly', 'uil-database'],
     title: 'Développement Web Full Stack',
     desc: 'Applications web complètes, de l\'interface utilisateur à l\'API, déploiement inclus.',
     modalDesc: 'Une trentaine de projets personnels et académiques (marketplaces, SaaS, dashboards) et un stage front-end chez DATALIA. Je prends en charge tout le cycle : interface, API, données et déploiement.',
@@ -22,7 +22,7 @@ const servicesData = [
   {
     id: 2,
     icon: 'uil-layers-alt',
-    color: '#F59E0B',
+    art: ['uil-layers-alt', 'uil-pen', 'uil-vector-square'],
     title: 'UI/UX Design & Intégration',
     desc: 'Interfaces modernes pixel-perfect, expérience utilisateur optimisée, prototypes interactifs.',
     modalDesc: 'Conception centrée utilisateur avec un fort sens du détail visuel. Je crée des maquettes et les intègre avec précision.',
@@ -36,7 +36,7 @@ const servicesData = [
   {
     id: 3,
     icon: 'uil-chart-line',
-    color: '#10B981',
+    art: ['uil-robot', 'uil-chart-bar', 'uil-analytics'],
     title: 'Data & IA',
     desc: 'Intégration de modèles d\'IA, scoring algorithmique, dashboards data et automatisation en Python.',
     modalDesc: 'J\'intègre la Data et l\'IA dans des applications concrètes : de l\'appel d\'API de modèles au scoring et à la visualisation.',
@@ -68,7 +68,7 @@ const ServiceModal = ({ service, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header band */}
-        <div className="svc-modal__header" style={{ '--svc-color': service.color }}>
+        <div className="svc-modal__header">
           <i className={`uil ${service.icon} svc-modal__icon`} />
           <button
             type="button"
@@ -89,7 +89,7 @@ const ServiceModal = ({ service, onClose }) => {
           <ul className="svc-modal__list">
             {service.items.map((item, i) => (
               <li key={i} className="svc-modal__item">
-                <span className="svc-modal__item-icon" style={{ '--svc-color': service.color }}>
+                <span className="svc-modal__item-icon">
                   <i className={`uil ${item.icon}`} />
                 </span>
                 <span className="svc-modal__item-text">{item.text}</span>
@@ -97,7 +97,7 @@ const ServiceModal = ({ service, onClose }) => {
             ))}
           </ul>
 
-          <Link to="/#contact" onClick={onClose} className="button button--accent button--flex" style={{ marginTop: '1.5rem' }}>
+          <Link to="/#contact" onClick={onClose} className="button button--flex" style={{ marginTop: '1.5rem' }}>
             Me contacter <i className="uil uil-message button__icon" />
           </Link>
         </div>
@@ -117,7 +117,7 @@ const Services = () => {
 
       <div className="services__container container grid">
         {servicesData.map((service, i) => {
-          const { id, icon, color, title, desc } = service;
+          const { id, title, desc, art } = service;
           const open = () => setActiveService(service);
           return (
             <div
@@ -131,18 +131,18 @@ const Services = () => {
                 if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
               }}
             >
-              {/* Top color bar */}
-              <div className="services__card-bar" style={{ background: color }} />
+              {/* Glyphes 2D (bibliothèque Unicons), assemblés en « objet » */}
+              <div className="services__art" aria-hidden="true">
+                <i className={`uil ${art[0]} services__art-main`} />
+                <i className={`uil ${art[1]} services__art-b`} />
+                <i className={`uil ${art[2]} services__art-c`} />
+              </div>
 
               <div className="services__card-body">
-                <span className="services__card-icon" style={{ '--svc-color': color }}>
-                  <i className={`uil ${icon}`} />
-                </span>
                 <h3 className="services__card-title">{title}</h3>
                 <p className="services__card-desc">{desc}</p>
-
                 <span className="services__card-btn" aria-hidden="true">
-                  Voir plus <i className="uil uil-arrow-right" />
+                  Voir plus <i className="uil uil-arrow-up-right" />
                 </span>
               </div>
             </div>

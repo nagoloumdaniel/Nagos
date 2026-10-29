@@ -5,6 +5,18 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
+    target: 'es2020',
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if (id.includes('node_modules/three')) return 'three';
+          if (id.includes('node_modules/gsap')) return 'gsap';
+          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/') || id.includes('node_modules/react-router')) return 'react';
+          return undefined;
+        },
+      },
+    },
     // Le chunk Three.js (~570 kB) est chargé à la demande par la sphère 3D
     chunkSizeWarningLimit: 650,
   },

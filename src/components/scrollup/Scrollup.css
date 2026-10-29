@@ -1,4 +1,4 @@
-.scrollup { position:fixed; right:2rem; bottom:-6rem; width:46px; height:46px; display:flex; align-items:center; justify-content:center; background:var(--accent); color:#fff; border-radius:var(--radius-sm); font-size:1.3rem; z-index:var(--z-tooltip); transition:bottom var(--t-spring),box-shadow var(--t-med); box-shadow:0 4px 20px rgba(var(--accent-rgb),.4); }
-.scrollup:hover { box-shadow:0 12px 36px rgba(var(--accent-rgb),.55); }
-.show-scroll { bottom:5rem; }
-@media screen and (max-width:900px) { .scrollup { right:1rem; } .show-scroll { bottom:calc(var(--header-height) + 2.5rem); } }
+.scrollup { position:fixed; right:2rem; bottom:-6rem; width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--container-color); color:var(--title-color); border:1px solid var(--card-border); font-size:1.3rem; z-index:var(--z-tooltip); transition:bottom var(--t-med), background var(--t-fast), color var(--t-fast), border-color var(--t-fast); }
+.scrollup:hover { background:var(--accent); color:var(--on-accent); border-color:var(--accent); }
+.show-scroll { bottom:2rem; }
+@media screen and (max-width:900px) { .scrollup { right:1rem; } .show-scroll { bottom:1.25rem; } }

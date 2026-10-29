@@ -19,7 +19,6 @@ const posts = [
     excerpt: "Un e-mail envoyé ne se rattrape pas. Comment j'ai conçu le moteur d'envoi de Campaign Mailer autour de cette contrainte, avec BullMQ et PostgreSQL.",
     tags: ['BullMQ', 'PostgreSQL', 'API Gmail', 'Express'],
     icon: 'uil-envelope-send',
-    color: '#0EA5E9',
     paragraphs: [
       "Campaign Mailer part d'un besoin très concret : envoyer des candidatures personnalisées sans y passer ses soirées. L'utilisateur connecte son compte Google, importe ses contacts en CSV, écrit un modèle avec des variables, et l'application envoie les messages depuis sa propre boîte Gmail, à un rythme raisonnable.",
       "**Le vrai risque, c'est le doublon.** Un bug d'affichage se corrige. Un e-mail envoyé deux fois à un recruteur, non. J'ai donc conçu le moteur d'envoi en partant des pannes possibles : un worker tué en plein envoi, une planification qui tourne deux fois, deux jobs qui tombent sur le même contact.",
@@ -39,7 +38,6 @@ const posts = [
     excerpt: "Une partie sans IA, une partie avec, et une application complète à déployer en HTTPS. Les choix que j'ai faits sous contrainte de temps, et un bug de sécurité instructif.",
     tags: ['NestJS', 'Docker', 'Sécurité', 'Algorithmie'],
     icon: 'uil-folder-upload',
-    color: '#14B8A6',
     paragraphs: [
       "En septembre, j'ai passé un test technique en deux parties. La première se faisait sans IA : deux clashs CodinGame en mode « le plus rapide » et un puzzle de l'Advent of Code. La seconde autorisait l'IA, à condition de livrer l'export complet des conversations. Le sujet : un portail où un avocat récupère les pièces de ses clients.",
       "**Sans IA : l'algorithmie.** Sur les deux clashs, j'ai validé 100 % des tests et terminé deuxième. Le puzzle consistait à suivre un garde sur une grille. Toute la difficulté de la seconde partie tenait à la détection des boucles : il faut suivre le couple (position, direction) et pas seulement la position, et ne tester comme obstacles que les cases du parcours d'origine.",
@@ -58,7 +56,6 @@ const posts = [
     excerpt: "874 tests au vert, aucun any, et pourtant une mise en production aurait marqué des commandes comme payées sans rien encaisser. Retour sur l'audit de ma marketplace.",
     tags: ['NestJS', 'Next.js', 'PostgreSQL', 'Audit'],
     icon: 'uil-shopping-cart-alt',
-    color: '#2563EB',
     paragraphs: [
       "Allibuy est mon plus gros projet : une marketplace multi-vendeurs pensée pour l'international, commencée en mai 2026. Tout tient dans un monorepo : une API NestJS, un site Next.js, des applications Expo pour chaque rôle et des paquets partagés pour les types et les schémas Zod.",
       "**Des indicateurs rassurants.** Début septembre, l'API comptait 49 modules et 505 endpoints, la base plus d'une centaine de modèles Prisma, et la suite backend 874 tests, tous au vert. Aucun any, aucun console.log, la row-level security PostgreSQL en place. Sur le papier, le projet était en bonne santé.",
@@ -77,7 +74,6 @@ const posts = [
     excerpt: "Claude Code est devenu mon principal outil de travail. Les règles que je me suis fixées pour garder la main sur le code, avec des exemples tirés de mes projets.",
     tags: ['Claude Code', 'IA', 'Workflow', 'Qualité'],
     icon: 'uil-robot',
-    color: '#8B5CF6',
     paragraphs: [
       "Claude Code est l'outil qui a le plus changé ma façon de travailler cette année, et j'ai passé la certification Claude Code d'Anthropic. Je l'utilise sur la plupart de mes projets, d'Allibuy à Campaign Mailer. Mais plus je m'en sers, plus je pose un cadre autour.",
       "**Un fichier de contexte par dépôt.** Allibuy et Campaign Mailer ont chacun un CLAUDE.md : architecture, commandes, conventions, pièges déjà rencontrés. L'agent démarre avec les informations qu'on donnerait à un nouveau développeur, et je n'ai pas à tout réexpliquer à chaque session.",
@@ -96,7 +92,6 @@ const posts = [
     excerpt: "J'ai construit un pipeline d'entraînement rigoureux pour filtrer des signaux de trading. Le verdict a été net : les features ne prédisaient rien. Voici ce que j'en ai fait.",
     tags: ['Python', 'FastAPI', 'Machine Learning', 'Backtesting'],
     icon: 'uil-chart-growth',
-    color: '#D8B35A',
     paragraphs: [
       "NexaGold est ma plateforme de trading algorithmique sur l'or. Un moteur Python/FastAPI décide et exécute sur un compte démo MetaTrader 5, une API NestJS gère rapports et alertes, et un dashboard Next.js affiche l'état du système. L'idée de départ : une stratégie déterministe propose des trades, et un modèle d'IA écarte les moins bons.",
       "**Un pipeline conçu pour ne pas se mentir.** Les labels sont calculés en rejouant uniquement les bougies postérieures au signal. Quand l'objectif et le stop sont touchés dans la même bougie, je compte une perte. L'entraînement se fait en walk-forward, dans l'ordre chronologique, et un modèle réentraîné n'est jamais promu automatiquement.",
@@ -116,7 +111,6 @@ const posts = [
     excerpt: "Trois mois sur KILICASA, une plateforme immobilière : l'espace agence, le mode sombre, et le quotidien d'un dépôt partagé avec une dizaine de développeurs.",
     tags: ['Stage', 'React', 'TypeScript', 'Travail en équipe'],
     icon: 'uil-briefcase-alt',
-    color: '#7B61FF',
     paragraphs: [
       "D'avril à juin 2026, j'ai effectué un stage de trois mois comme développeur front-end chez DATALIA, sur KILICASA, une plateforme immobilière. Je travaillais sur le dépôt de démonstration du produit, une application React et TypeScript qui sert de référence visuelle avant intégration dans le MVP.",
       "**Un dépôt partagé.** Une dizaine de personnes poussaient sur le même dépôt. Il fallait récupérer souvent le travail des autres, fusionner régulièrement la branche principale et garder des commits lisibles pour que chacun s'y retrouve.",
@@ -135,7 +129,6 @@ const posts = [
     excerpt: "Hachage des mots de passe, routes protégées, isolation des données : les bases de mon API Express. Et les limites que j'ai corrigées dans mes projets suivants.",
     tags: ['Node.js', 'Express', 'JWT', 'MongoDB'],
     icon: 'uil-lock-alt',
-    color: '#F59E0B',
     paragraphs: [
       "RememberMe est une application de tâches que j'ai développée de bout en bout : un front React avec Vite et Tailwind, une API Express avec MongoDB. Listes, calendrier, tâches à venir, rappels du jour. Rien de révolutionnaire, mais une bonne occasion de construire une API complète proprement.",
       "**L'authentification.** Les mots de passe sont hachés avec bcrypt, avec un coût de 12, dans un hook Mongoose exécuté avant l'enregistrement. À la connexion, l'API renvoie un JWT que le front transmet ensuite dans l'en-tête Authorization. Un middleware vérifie ce jeton sur chaque route protégée et ajoute l'identifiant de l'utilisateur à la requête.",
@@ -153,7 +146,6 @@ const posts = [
     excerpt: "Deux bots Python pour MetaTrader 5, l'un sur l'or, l'autre sur les indices synthétiques. Ce qui fonctionnait, ce qui coinçait, et pourquoi j'ai tout repris dans NexaGold.",
     tags: ['Python', 'MetaTrader 5', 'Streamlit', 'Trading'],
     icon: 'uil-chart-line',
-    color: '#10B981',
     paragraphs: [
       "Le trading algorithmique m'intéresse depuis longtemps. Début 2026, j'ai écrit deux bots Python qui pilotent MetaTrader 5 : XAUFxBot sur l'or, et SYNFxBot sur les indices de volatilité.",
       "**XAUFxBot, la version ambitieuse.** Le bot repère des zones d'offre et de demande en H1, les affine en M30, et n'entre en position qu'avec au moins deux confirmations parmi une cassure de structure, un fair value gap, un sweep de liquidité, le MACD ou le stochastique. La tendance H4 sert de filtre. Un score fondamental s'ajoute par-dessus : inflation, dollar, actualités, VIX, saisonnalité.",
@@ -178,7 +170,7 @@ const BlogCard = ({ post, onClick }) => (
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(post); }
     }}
   >
-    <div className="blog__card-header" style={{ '--post-color': post.color }}>
+    <div className="blog__card-header">
       <span className="blog__card-category">{post.category}</span>
       <i className={`uil ${post.icon} blog__card-icon`} />
     </div>
@@ -216,7 +208,7 @@ const BlogModal = ({ post, onClose }) => {
           <i className="uil uil-times" />
         </button>
 
-        <div className="blog__modal-header" style={{ '--post-color': post.color }}>
+        <div className="blog__modal-header">
           <span className="blog__card-category">{post.category}</span>
           <i className={`uil ${post.icon} blog__modal-icon`} />
         </div>

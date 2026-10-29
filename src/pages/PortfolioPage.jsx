@@ -4,8 +4,8 @@ import usePageMeta from '../hooks/usePageMeta';
 
 const PortfolioPage = () => {
   usePageMeta({
-    title: 'Projets - Daniel Nagoloum Talla | Portfolio Full-Stack',
-    description: 'Projets Full-Stack, Front-End, Data & IA et mobile de Daniel Nagoloum Talla : Allibuy, Zolya, Campaign Mailer, Mailfind, Cyna, NexaGold et plus, avec stack, fonctionnalités et liens.',
+    title: 'Projets - Daniel NAGOLOUM TALLA | Portfolio Full-Stack',
+    description: 'Projets de Daniel NAGOLOUM TALLA : Allibuy (marketplace multi-vendeurs), Cyna (SaaS de cybersécurité) et CampaignMailer (campagnes mail).',
     path: '/portfolio',
   });
   return (

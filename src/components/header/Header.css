@@ -5,44 +5,73 @@
    .header deviendrait le bloc conteneur du menu mobile (fixed).
    ══════════════════════════════════════════════════════════ */
 
-/* ─── BARRE FLOTTANTE ────────────────────────────────────── */
+/* ─── BARRE ──────────────────────────────────────────────────
+   En haut de page : pleine largeur, sans fond, ni flottante ni bulle.
+   Au scroll (.scroll-header) : la bulle « glass » apparaît.
+   ────────────────────────────────────────────────────────── */
 .header {
   position: fixed;
-  top: 1rem;
+  top: 0;
   left: 0;
   right: 0;
   margin-inline: auto;
-  width: calc(100% - 2rem);
-  max-width: 1100px;
+  width: 100%;
+  max-width: 100%;
   z-index: var(--z-fixed); /* 100 */
-  border-radius: var(--radius-full);
+  border-radius: 0;
+  transition:
+    top .35s cubic-bezier(0.4, 0, 0.2, 1),
+    width .35s cubic-bezier(0.4, 0, 0.2, 1),
+    max-width .35s cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius .35s ease;
 }
 .header::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
-  border-radius: inherit;
+  border-radius: 0;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  backdrop-filter: blur(18px) saturate(180%);
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-  box-shadow: var(--shadow-sm);
-  transition: background var(--t-med), box-shadow var(--t-med);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.scroll-header {
+  top: 0.75rem;
+  width: calc(100% - 2rem);
+  max-width: 1100px;
+  border-radius: 0;
 }
 .scroll-header::before {
-  background: var(--glass-bg-strong);
-  box-shadow: var(--shadow-md);
+  opacity: 1;
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+          backdrop-filter: blur(var(--glass-blur)) saturate(180%);
 }
+
+/* Par-dessus la photo du hero (toujours sombre) : encre claire tant que la bulle est absente */
+.header--on-hero {
+  --title-color: #F5F5F5;
+  --text-color: #D4D4D4;
+  --accent: #F5F5F5;
+  --accent-rgb: 245, 245, 245;
+  --on-accent: #080808;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.18);
+}
+/* Feuille de menu : verre sombre sur le hero (lisible quel que soit le thème) */
+.header--on-hero .nav__menu { --glass-bg-strong: rgba(18, 18, 18, 0.88); }
 
 .nav {
   height: 3.75rem;
-  max-width: none;
-  padding-inline: 1.5rem 0.75rem;
+  max-width: 1200px;
+  padding-inline: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: padding .35s ease;
 }
+.scroll-header .nav { padding-inline: 1.5rem 0.75rem; }
 
 /* ─── LOGO ───────────────────────────────────────────────── */
 .nav__logo {
@@ -50,17 +79,11 @@
   align-items: center;
   gap: 0.5rem;
   font-family: var(--heading-font);
-  font-weight: var(--font-extra-bold);
-  font-size: 1.1rem;
+  font-weight: var(--font-bold);
+  font-size: 1.05rem;
   color: var(--title-color);
-  letter-spacing: -0.02em;
-}
-.nav__logo-dot {
-  display: inline-block;
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  transform: translateY(4px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* ─── DESKTOP NAV LIST ───────────────────────────────────── */
@@ -79,7 +102,7 @@
   font-size: var(--small-font-size);
   font-weight: var(--font-medium);
   color: var(--text-color);
-  border-radius: var(--radius-full);
+  border-radius: 0;
   transition: color var(--t-fast), background var(--t-fast);
   white-space: nowrap;
 }
@@ -90,7 +113,7 @@
   transform: translateX(-50%) scaleX(0);
   width: 14px; height: 2px;
   background: var(--accent);
-  border-radius: 2px;
+  border-radius: 0;
   transition: transform var(--t-spring);
 }
 .nav__link:hover,
@@ -124,7 +147,6 @@
 
 /* Hide mobile-only elements on desktop */
 .nav__icon,
-.nav__close,
 .nav__toggle,
 .nav__overlay { display: none; }
 
@@ -137,15 +159,12 @@
    ══════════════════════════════════════════════════════════ */
 @media screen and (max-width: 900px) {
 
-  /* Barre flottante en bas */
-  .header {
-    top: auto;
-    bottom: 1rem;
-  }
   .nav {
     height: var(--header-height);
-    padding-inline: 1.25rem 0.4rem;
+    padding-inline: 1.25rem;
   }
+  .scroll-header { top: 0.5rem; width: calc(100% - 1rem); }
+  .scroll-header .nav { padding-inline: 1.25rem 0.4rem; }
   .nav__actions { margin-left: auto; gap: 0.4rem; }
   .nav__theme,
   .nav__theme .theme-toggle__track {
@@ -164,23 +183,23 @@
     z-index: 10;
   }
 
-  /* ── Feuille de menu glass, au-dessus de la barre ── */
+  /* ── Feuille de menu glass, sous la barre ── */
   .nav__menu {
     position: fixed;
     left: 1rem;
     right: 1rem;
-    bottom: calc(var(--header-height) + 1.75rem);
+    top: calc(var(--header-height) + 1.25rem);
     margin-inline: auto;
     max-width: 560px;
     background: var(--glass-bg-strong);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-radius: var(--radius-lg);
-    padding: 3.5rem 1.25rem 1.25rem;
+    border-radius: 0;
+    padding: 1rem;
     box-shadow: var(--shadow-lg);
     z-index: var(--z-navmenu); /* 110 */
-    transform: translateY(1rem);
+    transform: translateY(-1rem);
     opacity: 0;
     pointer-events: none;
     transition:
@@ -196,7 +215,7 @@
   /* ── Grille 4 colonnes ── */
   .nav__list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(5.25rem, 1fr));
     gap: 0.5rem;
   }
   .nav__item { display: flex; }
@@ -208,7 +227,7 @@
     justify-content: center;
     gap: 0.3rem;
     padding: 0.7rem 0.25rem;
-    border-radius: var(--radius-md);
+    border-radius: 0;
     font-size: 0.68rem;
     text-align: center;
     color: var(--text-color);
@@ -229,29 +248,6 @@
     font-size: 1.3rem;
   }
 
-  /* ── Bouton fermer ── */
-  .nav__close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0.875rem; right: 0.875rem;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    color: var(--text-color);
-    font-size: 1.2rem;
-    cursor: pointer;
-    z-index: 2;
-    transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
-  }
-  .nav__close:hover {
-    background: #ff4d4d;
-    color: #fff;
-    border-color: #ff4d4d;
-  }
-
   /* ── Bouton menu ── */
   .nav__toggle {
     display: flex;
@@ -262,24 +258,26 @@
     color: var(--title-color);
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    border-radius: 50%;
+    border-radius: 0;
     cursor: pointer;
     transition: background var(--t-fast), color var(--t-fast), border-color var(--t-fast);
     position: relative;
     z-index: calc(var(--z-fixed) + 1);
   }
+  .nav__toggle-icon { display: block; animation: toggleSpin .3s ease; }
+  @keyframes toggleSpin { from { transform: rotate(-90deg) scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+  .nav__toggle[aria-expanded='true'] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
   .nav__toggle:hover {
     background: var(--accent);
-    color: #fff;
+    color: var(--on-accent);
     border-color: var(--accent);
   }
 }
 
 /* ── Petits téléphones ── */
 @media screen and (max-width: 480px) {
-  .header { width: calc(100% - 1.5rem); bottom: 0.75rem; }
   .nav__list { gap: 0.35rem; }
-  .nav__menu { left: 0.75rem; right: 0.75rem; padding: 3.25rem 0.875rem 1rem; }
+  .nav__menu { left: 0.75rem; right: 0.75rem; padding: 0.875rem; }
   .nav__link { font-size: 0.6rem; padding: 0.6rem 0.2rem; }
   .nav__icon { font-size: 1.15rem; }
 }
