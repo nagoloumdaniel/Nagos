@@ -1,6 +1,15 @@
 import allibuyLogo  from '../../assets/logos/allibuy.webp';
 import campaignLogo from '../../assets/logos/campaign-mailer.svg';
 import cynaLogo     from '../../assets/logos/cyna.webp';
+import zolyaLogo from '../../assets/logos/zolya.png';
+import finditLogo from '../../assets/logos/findit.png';
+import builditLogo from '../../assets/logos/buildit.webp';
+import mailfindLogo from '../../assets/logos/mailfind.svg';
+import sarielleLogo from '../../assets/logos/sariellefashion.svg';
+import hairstyleLogo from '../../assets/logos/hairstylebypati.svg';
+import kycLogo from '../../assets/logos/kyc-checker.jpg';
+import remembermeLogo from '../../assets/logos/rememberme.png';
+import nagosuiLogo from '../../assets/logos/nagosui.png';
 
 /*
   Projets détaillés d'après les dépôts et les cahiers des charges.
@@ -75,6 +84,8 @@ export const projectsData = [
   /* ───────────────────────── ZOLYA ───────────────────────── */
   {
     id: 'zolya',
+    logo: zolyaLogo,
+    logoCover: true,
     title: 'Zolya',
     category: 'Mobile',
     status: 'Flutter · NestJS · dépôt privé',
@@ -160,6 +171,7 @@ export const projectsData = [
   /* ───────────────────────── FINDIT ───────────────────────── */
   {
     id: 'findit',
+    logo: finditLogo,
     title: 'Findit',
     category: 'Full-Stack',
     status: 'Web · en cours de développement',
@@ -334,6 +346,7 @@ export const projectsData = [
   /* ───────────────────────── BUILDIT ───────────────────────── */
   {
     id: 'buildit',
+    logo: builditLogo,
     title: 'BuildIt',
     category: 'Outils développeur',
     status: 'TypeScript · open source · pré-alpha',
@@ -415,6 +428,7 @@ export const projectsData = [
   /* ───────────────────────── MAILFIND ───────────────────────── */
   {
     id: 'mailfind',
+    logo: mailfindLogo,
     title: 'MailFind',
     category: 'Full-Stack',
     status: 'Web · bêta fermée',
@@ -503,6 +517,7 @@ export const projectsData = [
   /* ───────────────────────── SARIELLE FASHION ───────────────────────── */
   {
     id: 'sariellefashion',
+    logo: sarielleLogo,
     title: 'Sarielle Fashion',
     category: 'Full-Stack',
     status: 'Next.js · en production',
@@ -587,6 +602,7 @@ export const projectsData = [
   /* ───────────────────────── HAIRSTYLE BY PATRICIA ───────────────────────── */
   {
     id: 'hairstylebypati',
+    logo: hairstyleLogo,
     title: 'Hairstyle by Patricia',
     category: 'Full-Stack',
     status: 'Next.js · en production',
@@ -671,6 +687,8 @@ export const projectsData = [
   /* ───────────────────────── KYC CHECKER ───────────────────────── */
   {
     id: 'kyc-checker',
+    logo: kycLogo,
+    logoCover: true,
     title: 'KYC Checker',
     category: 'Back-End',
     status: 'Python · en cours de développement',
@@ -744,6 +762,7 @@ export const projectsData = [
   /* ───────────────────────── REMEMBERME ───────────────────────── */
   {
     id: 'rememberme',
+    logo: remembermeLogo,
     title: 'RememberMe',
     category: 'Full-Stack',
     status: 'React · Node · en production',
@@ -820,6 +839,7 @@ export const projectsData = [
   /* ───────────────────────── NAGOSUI ───────────────────────── */
   {
     id: 'nagosui',
+    logo: nagosuiLogo,
     title: 'NagosUI',
     category: 'Outils développeur',
     status: 'React · en cours de développement',
