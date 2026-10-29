@@ -4,8 +4,6 @@
   align-items: center;
   column-gap: 4rem;
 }
-
-/* ─── SPHERE WRAP (remplace l'image) ─────────────────────── */
 .about__sphere-wrap {
   position: relative;
   justify-self: center;
@@ -15,47 +13,112 @@
   justify-content: center;
 }
 
-/* ─── INFO BOXES ─────────────────────────────────────────── */
+/* Cartes « widget » : valeur en grand, libellé mono en petit */
 .about__info {
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.875rem;
+  gap: 1rem;
   margin-bottom: var(--mb-2);
 }
+/* ─── Cartes de chiffres ─────────────────────────────────── */
 .about__box {
-  background: var(--container-color);
-  border: 1.5px solid var(--card-border);
-  border-radius: var(--radius-md);
-  text-align: center;
-  padding: 1.5rem 0.75rem;
-  transition:
-    transform var(--t-spring),
-    box-shadow var(--t-med),
-    border-color var(--t-fast);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 11rem;
+  padding: 1.25rem 1rem;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+          backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  text-align: left;
   cursor: default;
 }
-.about__box:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--accent);
-}
-.about__icon {
-  font-size: 1.8rem;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
-  display: block;
-  transition: transform var(--t-spring);
-}
 .about__title {
-  font-family: var(--heading-font);
-  font-size: var(--small-font-size);
-  font-weight: var(--font-semi-bold);
-  color: var(--title-color);
-}
-.about__subtitle {
+  position: relative;
+  z-index: 1;
+  font-family: var(--mono-font);
   font-size: var(--tiny-font-size);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--text-color);
 }
+.about__value {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-family: var(--heading-font);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  font-weight: var(--font-medium);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--title-color);
+  font-variant-numeric: tabular-nums;
+}
+.about__unit { margin-left: 0.3rem; font-family: var(--mono-font); font-size: var(--small-font-size); letter-spacing: 0; color: var(--text-color); }
+.about__box--live .about__value { font-size: clamp(1.3rem, 2.2vw, 1.75rem); letter-spacing: -0.02em; }
+.about__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* ─── TEXT ───────────────────────────────────────────────── */
+/* Grosse icône : comme les tuiles Services (rognée par le coin, en filigrane) */
+.about__glyph {
+  position: absolute;
+  right: -0.9rem; top: -0.4rem;
+  font-size: 6.5rem;
+  line-height: 1;
+  color: var(--title-color);
+  opacity: 0.16;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(225deg, #000 35%, transparent 95%);
+          mask-image: linear-gradient(225deg, #000 35%, transparent 95%);
+}
+
+/* Bordure de chargement : se trace autour de la carte pendant le décompte */
+.about__ring { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.about__ring rect {
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  fill: none;
+  stroke: var(--title-color);
+  stroke-width: 2;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+.about__box--count[data-started] .about__ring rect { stroke-dashoffset: 0; transition: stroke-dashoffset 3.2s cubic-bezier(0.33, 1, 0.68, 1); }
+
+/* Alternance : scintillement (reflet qui balaie la carte + étincelles) */
+.about__box--live::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(var(--accent-rgb), 0.28) 50%, transparent 65%);
+  transform: translateX(-120%);
+  animation: aboutShine 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+.about__box--live::after {
+  content: '';
+  position: absolute;
+  left: 38%; top: 30%;
+  width: 4px; height: 4px;
+  background: var(--title-color);
+  box-shadow: 46px 18px 0 0 var(--title-color), 14px 52px 0 0 var(--title-color), 72px 60px 0 -1px var(--title-color);
+  opacity: 0;
+  animation: aboutTwinkle 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+.about__box--live { border-color: var(--text-color); }
+@keyframes aboutShine { 0%, 55% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+@keyframes aboutTwinkle { 0%, 100% { opacity: 0; } 35%, 65% { opacity: 0.9; } }
+@media (prefers-reduced-motion: reduce) {
+  .about__box--live::before, .about__box--live::after { animation: none; }
+  .about__box--count .about__ring rect { stroke-dashoffset: 0; transition: none; }
+}
+
 .about__description {
   margin-bottom: var(--mb-1-5);
   line-height: 1.85;
@@ -67,53 +130,32 @@
 }
 
 .about__availability {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: rgba(var(--accent-rgb), 0.1);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+          backdrop-filter: blur(var(--glass-blur));
   color: var(--title-color);
-  border: 1px solid rgba(var(--accent-rgb), 0.25);
-  border-radius: var(--radius-full);
-  padding: 0.5rem 1.25rem;
-  font-size: var(--small-font-size);
-  font-weight: var(--font-medium);
+  border: 1px solid var(--glass-border);
+  padding: 0.75rem 1rem;
+  font-family: var(--mono-font);
+  font-size: var(--smaller-font-size);
+  line-height: 1.6;
   margin-bottom: var(--mb-2);
 }
-.about__availability i {
-  color: var(--accent);
-  font-size: 1rem;
-}
+.about__availability i { color: var(--text-color); font-size: 1rem; margin-top: 0.1rem; }
 
-/* ─── BREAKPOINTS ────────────────────────────────────────── */
 @media screen and (max-width: 992px) {
-  .about__container {
-    grid-template-columns: 1fr;
-    row-gap: 2.5rem;
-  }
-  .about__data {
-    text-align: center;
-  }
-  .about__info {
-    justify-content: center;
-  }
-  .about__description {
-    padding: 0 1rem;
-  }
-  .about__availability {
-    justify-content: center;
-    width: 100%;
-  }
+  .about__container { grid-template-columns: 1fr; row-gap: 2.5rem; }
+  .about__description { padding: 0; }
 }
 @media screen and (max-width: 576px) {
-  .about__info {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .about__description {
-    padding: 0;
-  }
+  /* Mobile : deux cartes sur la première ligne, la troisième en dessous */
+  .about__info { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .about__box { min-height: 9rem; padding: 1rem 0.85rem; }
+  .about__box:nth-child(3) { grid-column: 1 / -1; min-height: 7.5rem; }
+  .about__glyph { font-size: 5rem; }
 }
-@media screen and (max-width: 350px) {
-  .about__info {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+
+

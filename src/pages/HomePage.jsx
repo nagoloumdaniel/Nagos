@@ -12,8 +12,8 @@ const HomePage = () => {
   const { hash } = useLocation();
 
   usePageMeta({
-    title: 'Daniel Nagoloum Talla - Développeur Full-Stack · Data · IA | Portfolio',
-    description: "Développeur Full-Stack diplômé d'un Bachelor Développement / Data (INGETIS Paris), en Mastère Développement Logiciel. React, Next.js, NestJS, PostgreSQL, Data & IA. Recherche d'alternance de 24 mois dès septembre 2026 en Île-de-France.",
+    title: 'Daniel NAGOLOUM TALLA - Développeur Full-Stack + IA | Portfolio',
+    description: "Développeur Full-Stack + IA, diplômé d'un Bachelor Développement Logiciel (INGETIS Paris) et intégrant un Mastère Développement Logiciel. React, Next.js, NestJS, PostgreSQL. Recherche d'alternance de 24 mois dès septembre 2026 en Île-de-France.",
     path: '/',
   });
 

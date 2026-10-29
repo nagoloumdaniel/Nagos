@@ -36,7 +36,7 @@ const Works = () => {
 
   return (
     <div ref={topRef} className="work__wrapper">
-      <div className="work__filters" role="group" aria-label="Filtrer les projets">
+      {projectsNav.length > 1 && <div className="work__filters" role="group" aria-label="Filtrer les projets">
         {projectsNav.map(({ name }) => (
           <button
             key={name}
@@ -46,7 +46,7 @@ const Works = () => {
             className={`${active === name ? 'active-work' : ''} work__item`}
           >{name}</button>
         ))}
-      </div>
+      </div>}
 
       <div className="work__container container grid">
         {visible.map(project => <Workitems item={project} key={project.id} />)}

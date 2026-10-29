@@ -1,0 +1,15 @@
+/* Terminal de code derrière, sphère devant */
+.sphere-stage { position: relative; width: 100%; height: 34rem; }
+/* L'éditeur recule vers la gauche (il déborde du conteneur) ; la sphère garde sa place */
+.sphere-stage .ide-win { position: absolute; top: 0; bottom: 0; left: -10rem; width: calc(100% + 10rem); height: 100%; }
+.sphere-stage .ide-code { font-size: 0.72rem; }
+.sphere-stage__sphere {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Le halo de la sphère n'a plus lieu d'être sur le terminal */
+.sphere-stage .particle-sphere::before { opacity: 0.5; }

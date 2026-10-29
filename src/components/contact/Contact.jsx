@@ -177,14 +177,13 @@ const Contact = () => {
                   className="contact__card"
                   aria-label={`${label} : ${data}`}
                 >
-                  <span className="contact__card-icon-wrap">
-                    <i className={`uil ${icon} contact__card-icon`} />
-                  </span>
+                  {/* Grosse icône en filigrane, rognée par le coin (comme les tuiles Services) */}
+                  <i className={`uil ${icon} contact__glyph`} aria-hidden="true" />
                   <span className="contact__card-title">{title}</span>
                   <span className="contact__card-data">{display || data}</span>
                   <span className="contact__button" aria-hidden="true">
                     {action}{" "}
-                    <i className="uil uil-arrow-right contact__button-icon" />
+                    <i className="uil uil-arrow-up-right contact__button-icon" />
                   </span>
                 </a>
               );
