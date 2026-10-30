@@ -1357,6 +1357,187 @@ export const projectsData = [
     ]
   },
 
+  /* ───────────────────────── AUTOCOPYTRADING ───────────────────────── */
+  {
+    id: "autocopytrading",
+    title: "AutoCopyTrading",
+    category: "IA",
+    status: "Web · en conception (pas de code)",
+    wip: true,
+    monogram: "AC",
+    summary: "Agent IA qui analyse et classe des fournisseurs de signaux sur Deriv MT5 puis supervise la copie, avec la préservation du capital comme priorité. Projet en phase de conception.",
+    overview: "AutoCopyTrading vise à sélectionner des traders selon des critères de risque (régularité, perte maximale, coûts, qualité des données), avec une IA en seconde opinion sous garde-fous déterministes. À ce jour, seul le cahier des charges est rédigé ; aucun code applicatif n'existe. Le trading comporte un risque de perte en capital : le projet ne promet aucune rentabilité et ne constitue pas un conseil.",
+    role: "Projet personnel : cadrage produit, spécification et architecture cible. Développé en solo, avec l'assistance de Claude.",
+    repos: [
+      "AutoCopyTrading"
+    ],
+    meta: {
+      languages: [
+        "Français"
+      ],
+      period: "Depuis octobre 2026",
+      team: "Solo, assisté par IA",
+      hosting: "Pas encore déployé"
+    },
+    figures: [
+      {
+        value: "0",
+        label: "ligne de code applicatif à ce jour"
+      }
+    ],
+    situation: {
+      context: "Copier des traders sur Deriv MT5 expose à des pertes si la sélection se limite au rendement affiché.",
+      problem: "Il faut évaluer régularité, pertes maximales, stabilité et coûts, et couper l'exposition quand le risque devient trop élevé.",
+      solution: "Un classement multicritère, un veto IA, des limites de perte, un arrêt d'urgence, un tableau de bord et des alertes Telegram (prévu)."
+    },
+    features: [
+      {
+        icon: "uil-chart-line",
+        title: "Classement des traders",
+        text: "Scoring multicritère axé sur le risque (prévu)."
+      },
+      {
+        icon: "uil-shield-check",
+        title: "Protection du capital",
+        text: "Limites de perte, marge contrôlée, arrêt d'urgence (prévu)."
+      },
+      {
+        icon: "uil-brain",
+        title: "IA en veto",
+        text: "Seconde opinion, jamais d'ordre sans contrôle déterministe (prévu)."
+      },
+      {
+        icon: "uil-bell",
+        title: "Alertes Telegram",
+        text: "Notifications et journal d'audit (prévu)."
+      }
+    ],
+    stack: [
+      {
+        label: "Front (cible)",
+        items: [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS"
+        ]
+      },
+      {
+        label: "Back (cible)",
+        items: [
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "Redis"
+        ]
+      },
+      {
+        label: "Trading (cible)",
+        items: [
+          "MetaTrader 5",
+          "Deriv MT5"
+        ]
+      }
+    ],
+    links: [
+      {
+        kind: "github",
+        label: "Code source",
+        url: "https://github.com/nagoloumdaniel/AutoCopyTrading"
+      }
+    ]
+  },
+
+  /* ───────────────────────── AUTOCLIPYT ───────────────────────── */
+  {
+    id: "autoclipyt",
+    title: "AutoclipYT",
+    category: "IA",
+    status: "Automatisation · en conception (pas de code)",
+    wip: true,
+    monogram: "AY",
+    summary: "Studio YouTube sans visage assisté par IA : de l'idée au script sourcé, à la voix off, au montage et aux exports 16:9 et 9:16, piloté par Telegram. Projet en phase de conception.",
+    overview: "AutoclipYT vise à automatiser la production de vidéos sur la science, les inventions et les technologies, avec validation humaine obligatoire avant toute publication. À ce jour, seul le cahier des charges est rédigé ; aucun code applicatif n'existe. Les droits des contenus sources et les CGU de YouTube et Telegram sont des contraintes de conception.",
+    role: "Projet personnel : cadrage produit, spécification et architecture cible. Développé en solo, avec l'assistance de Claude.",
+    repos: [
+      "AutoclipYT"
+    ],
+    meta: {
+      languages: [
+        "Français",
+        "Anglais"
+      ],
+      period: "Depuis octobre 2026",
+      team: "Solo, assisté par IA",
+      hosting: "Pas encore déployé"
+    },
+    figures: [
+      {
+        value: "0",
+        label: "ligne de code applicatif à ce jour"
+      }
+    ],
+    situation: {
+      context: "Produire des vidéos explicatives originales demande script, voix, visuels et montage répétitifs.",
+      problem: "Automatiser sans produire des vidéos interchangeables ni enfreindre droits et règles des plateformes.",
+      solution: "Une chaîne de production modulaire avec sources tracées, QA avant export et approbation humaine via Telegram (prévu)."
+    },
+    features: [
+      {
+        icon: "uil-file-edit-alt",
+        title: "Script sourcé",
+        text: "Recherche, registre de sources et vérification factuelle (prévu)."
+      },
+      {
+        icon: "uil-microphone",
+        title: "Voix off",
+        text: "TTS interchangeable avec repli local (prévu)."
+      },
+      {
+        icon: "uil-film",
+        title: "Montage",
+        text: "FFmpeg, sous-titres, exports 16:9 et 9:16 (prévu)."
+      },
+      {
+        icon: "uil-telegram-alt",
+        title: "Pilotage Telegram",
+        text: "Création, suivi et validation avant publication (prévu)."
+      }
+    ],
+    stack: [
+      {
+        label: "Back (cible)",
+        items: [
+          "Python",
+          "FastAPI",
+          "SQLite"
+        ]
+      },
+      {
+        label: "Bot (cible)",
+        items: [
+          "Telegram",
+          "aiogram"
+        ]
+      },
+      {
+        label: "Médias (cible)",
+        items: [
+          "FFmpeg",
+          "Manim",
+          "Blender",
+          "Piper"
+        ]
+      }
+    ],
+    links: [
+      {
+        kind: "github",
+        label: "Code source",
+        url: "https://github.com/nagoloumdaniel/AutoclipYT"
+      }
+    ]
+  },
+
   /* ───────────────────────── CYNA ───────────────────────── */
   {
     id: 'cyna',
