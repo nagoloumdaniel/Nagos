@@ -10,6 +10,7 @@ import sarielleLogo from '../../assets/logos/sariellefashion.svg';
 import hairstyleLogo from '../../assets/logos/hairstylebypati.svg';
 import kycLogo from '../../assets/logos/kyc-checker.jpg';
 import remembermeLogo from '../../assets/logos/rememberme.png';
+import qrstudioLogo from '../../assets/logos/qrstudio.png';
 import nagosuiLogo from '../../assets/logos/nagosui.png';
 
 /*
@@ -37,51 +38,151 @@ import nagosuiLogo from '../../assets/logos/nagosui.png';
 export const projectsData = [
   /* ───────────────────────── ALLIBUY ───────────────────────── */
   {
-    id: 'allibuy',
-    title: 'Allibuy',
-    category: 'Full-Stack',
-    status: 'Web & Mobile · dépôt privé',
-    private: true,
     logo: allibuyLogo,
-    summary: "Marketplace multi-vendeurs internationale, semblable à Amazon ou Alibaba, adaptée au marché africain.",
-    overview: "Allibuy est une marketplace multi-vendeurs pensée pour l'international (FCFA, EUR, USD, numéros de tous pays) et adaptée au marché africain, comme le seraient Amazon ou Alibaba. Tout vit dans un monorepo : une API NestJS, un site Next.js, quatre applications Expo (acheteur, vendeur, livreur, administration) et des paquets partagés pour les types et les validateurs Zod.",
-    role: null,
+    id: "allibuy",
+    title: "Allibuy",
+    category: "Full-Stack",
+    status: "En développement · dépôt privé",
+    private: true,
+    summary: "Marketplace multi-vendeurs internationale de produits, pensée mobile-first pour le marché africain : API, site web et quatre applications mobiles dans un seul monorepo.",
+    overview: "Allibuy est une marketplace multi-vendeurs de produits, ouverte à tous les pays (FCFA, EUR, USD, numéros de téléphone internationaux) avec un lancement axé Afrique. Tout vit dans un monorepo Turborepo : une API NestJS (49 modules, 505 endpoints), un site Next.js de 173 pages et quatre applications Expo (acheteur, vendeur Allisell, livreur Allidrivers, administration Alliadmin) qui partagent un socle commun. Le rôle prestataire de services a été retiré par décision produit en septembre 2026 pour recentrer le périmètre sur trois rôles professionnels. Le projet est en développement : le métier est largement livré, l'encaissement réel par mobile money reste à valider.",
+    role: "Conception et développement complets, en solo : modélisation, API, web, applications mobiles et audit du code.",
     meta: {
-      country: 'International, pensé pour le marché africain',
-      languages: ['Français', 'Anglais'],
-      hosting: 'Monorepo : API, web, mobile',
+      country: "International, lancement axé Afrique",
+      languages: [
+        "Français",
+        "Anglais"
+      ],
+      hosting: "Monorepo (API, web, 4 apps mobiles) · Docker Compose, pas encore déployé en production"
     },
     figures: [
-      { value: '100+', label: 'modèles Prisma' },
-      { value: '870+', label: 'tests backend' },
-      { value: '4', label: 'applications Expo' },
-      { value: '3', label: 'devises (FCFA, EUR, USD)' },
+      {
+        value: "118",
+        label: "modèles Prisma"
+      },
+      {
+        value: "505",
+        label: "endpoints API"
+      },
+      {
+        value: "874",
+        label: "tests backend"
+      },
+      {
+        value: "4",
+        label: "applications Expo"
+      }
     ],
     features: [
-      { icon: 'uil-users-alt', title: 'Quatre rôles', text: 'Acheteur, vendeur, livreur et administration, avec un RBAC stocké en base.' },
-      { icon: 'uil-shield-check', title: 'Sécurité côté base', text: "Row-level security PostgreSQL, triggers et journal d'audit." },
-      { icon: 'uil-wallet', title: 'Escrow et wallet', text: 'Escrow des paiements et wallet vendeur.' },
-      { icon: 'uil-search-alt', title: 'Recherche et temps réel', text: 'Recherche Meilisearch, files de tâches Redis / BullMQ, temps réel Socket.io.' },
-      { icon: 'uil-sitemap', title: 'Types partagés', text: "Types et schémas Zod partagés entre le web, le mobile et l'API." },
-      { icon: 'uil-mobile-android', title: 'Mobile money', text: "Paiement mobile money en cours d'intégration (adaptateur verrouillé jusqu'à validation en bac à sable)." },
+      {
+        icon: "uil-users-alt",
+        title: "Quatre rôles",
+        text: "Acheteur, vendeur, livreur et administration, avec un RBAC stocké en base et une 2FA TOTP obligatoire pour les admins."
+      },
+      {
+        icon: "uil-shield-check",
+        title: "Sécurité côté base",
+        text: "Row-level security PostgreSQL, triggers, journal d'audit, sessions révocables avec détection de rejeu des refresh tokens et anti-brute-force à escalade."
+      },
+      {
+        icon: "uil-wallet",
+        title: "Escrow et wallet",
+        text: "Paiements en escrow, wallet vendeur, montants en entiers BigInt (aucun Float) et taux de change figé sur chaque commande."
+      },
+      {
+        icon: "uil-globe",
+        title: "International",
+        text: "Multi-devises (FCFA, EUR, USD), téléphone E.164, interface FR/EN sur le web et les quatre applications mobiles."
+      },
+      {
+        icon: "uil-id-card",
+        title: "KYC différé",
+        text: "Vérification d'identité automatique via un service externe, avec repli en revue admin, complétée depuis le tableau de bord après l'inscription."
+      },
+      {
+        icon: "uil-mobile-android",
+        title: "Mobile money",
+        text: "Adaptateur MyCoolPay (Orange Money, MTN MoMo) écrit et testé, verrouillé jusqu'à validation en bac à sable."
+      }
     ],
     architecture: [
-      { icon: 'uil-server', label: 'API', text: 'NestJS, Prisma, PostgreSQL' },
-      { icon: 'uil-desktop', label: 'Web', text: 'Next.js 15, React 19' },
-      { icon: 'uil-mobile-android-alt', label: 'Mobile', text: 'Quatre applications Expo (acheteur, vendeur, livreur, administration)' },
-      { icon: 'uil-package', label: 'Paquets partagés', text: 'Types et validateurs Zod communs' },
+      {
+        icon: "uil-server",
+        label: "API",
+        text: "NestJS 10 et Prisma 6 sur PostgreSQL 16 (PostGIS, ltree, citext), Redis / BullMQ, Socket.IO"
+      },
+      {
+        icon: "uil-desktop",
+        label: "Web",
+        text: "Next.js 15 (App Router), React 19, Tailwind, shadcn/ui, TanStack Query, next-intl : espaces acheteur, vendeur et administration"
+      },
+      {
+        icon: "uil-mobile-android-alt",
+        label: "Mobile",
+        text: "Expo SDK 54 : Allibuy (acheteur), Allisell (vendeur), Allidrivers (livreur), Alliadmin (administration)"
+      },
+      {
+        icon: "uil-package",
+        label: "Paquets partagés",
+        text: "Types, validateurs Zod, design tokens, socle mobile (client API, auth, temps réel, push) et composants React Native communs"
+      },
+      {
+        icon: "uil-database",
+        label: "Modélisation",
+        text: "118 modèles, 91 enums et 32 migrations en une vingtaine de domaines ; RLS, partitionnement et vues matérialisées en SQL annexe"
+      }
     ],
     challenges: [
-      { title: 'Autorisations fiables', text: "Les droits ne reposent pas seulement sur l'API : le RBAC est stocké en base et renforcé par la row-level security PostgreSQL, les triggers et un journal d'audit." },
-      { title: 'Un contrat unique', text: "Web, mobile et API partagent les mêmes types et schémas Zod dans un seul monorepo." },
-      { title: 'Paiements prudents', text: "Escrow des paiements, et adaptateur mobile money verrouillé jusqu'à validation en bac à sable." },
+      {
+        title: "Autorisations fiables",
+        text: "Les droits ne reposent pas seulement sur l'API : le RBAC est en base, renforcé par la row-level security PostgreSQL, des triggers et un audit systématique."
+      },
+      {
+        title: "Un contrat unique",
+        text: "Web, mobile et API partagent types et schémas Zod dans un monorepo ; les frontières d'imports des paquets mobiles sont imposées par ESLint et un script de contrôle."
+      },
+      {
+        title: "Argent sans approximation",
+        text: "Montants stockés en XAF dans des BigInt, conversion à l'affichage, taux figé sur la commande : aucun Float dans le modèle."
+      },
+      {
+        title: "Pas de faux succès en production",
+        text: "Un audit du code a révélé que des simulateurs remplaçaient silencieusement les adaptateurs de paiement, e-mail et push. Le démarrage échoue désormais au lieu de simuler, et les adaptateurs Resend, Expo Push et MyCoolPay ont été écrits, ce dernier verrouillé jusqu'à validation."
+      }
     ],
     stack: [
-      { label: 'Front', items: ['Next.js 15', 'React 19', 'Expo (React Native)'] },
-      { label: 'Back', items: ['NestJS', 'Prisma', 'PostgreSQL'] },
-      { label: 'Services', items: ['Redis / BullMQ', 'Meilisearch', 'Socket.io', 'Docker'] },
+      {
+        label: "Front",
+        items: [
+          "Next.js 15",
+          "React 19",
+          "Expo (React Native)",
+          "Tailwind",
+          "NativeWind"
+        ]
+      },
+      {
+        label: "Back",
+        items: [
+          "NestJS",
+          "Prisma",
+          "PostgreSQL",
+          "Zod"
+        ]
+      },
+      {
+        label: "Services",
+        items: [
+          "Redis / BullMQ",
+          "Socket.IO",
+          "Meilisearch",
+          "Cloudflare R2",
+          "Docker",
+          "Turborepo"
+        ]
+      }
     ],
-    links: [],
+    links: []
   },
 
   /* ───────────────────────── ZOLYA ───────────────────────── */
@@ -944,6 +1045,316 @@ export const projectsData = [
       { kind: 'demo', label: 'Voir le site', url: 'https://nagosui.vercel.app' },
       { kind: 'github', label: 'GitHub', url: 'https://github.com/nagoloumdaniel/NagosUI' },
     ],
+  },
+
+  /* ───────────────────────── QR STUDIO ───────────────────────── */
+  {
+    logo: qrstudioLogo,
+    id: "qrstudio",
+    title: "QR Studio",
+    category: "Front-End",
+    status: "Web · en ligne",
+    wip: false,
+    monogram: "QR",
+    summary: "Générateur de QR codes personnalisables, entièrement exécuté dans le navigateur, avec vérification de scannabilité avant export.",
+    overview: "QR Studio génère des QR codes pour dix types de contenu (lien, texte, Wi-Fi, contact, e-mail, appel, SMS, événement, position GPS, adresse crypto), avec un contrôle fin du style et un export SVG, PNG, JPG ou WebP. Aucune donnée n'est envoyée à un serveur. L'interface est bilingue (français, anglais) avec thème clair et sombre.",
+    role: "Projet personnel : conception, interface et développement front-end.",
+    repos: [
+      "QrStudioAd"
+    ],
+    meta: {
+      country: "International",
+      languages: [
+        "Français",
+        "Anglais"
+      ],
+      team: "Solo",
+      hosting: "Vercel (https://qrstudio-lovat.vercel.app)"
+    },
+    figures: [
+      {
+        value: "10",
+        label: "types de contenu"
+      },
+      {
+        value: "4",
+        label: "formats d'export (SVG, PNG, JPG, WebP)"
+      },
+      {
+        value: "4096 px",
+        label: "taille d'export maximale"
+      },
+      {
+        value: "2",
+        label: "langues (FR, EN)"
+      }
+    ],
+    situation: {
+      context: "Les générateurs de QR codes en ligne imposent souvent un compte, envoient le contenu à un serveur ou produisent des codes illisibles une fois personnalisés.",
+      problem: "Personnaliser un QR code (couleurs, logo, formes) peut le rendre impossible à scanner, sans que l'utilisateur le sache avant d'imprimer.",
+      solution: "QR Studio calcule tout dans le navigateur et analyse en direct le contraste, la couverture du logo et la densité de la grille pour signaler les risques avant l'export."
+    },
+    howItWorks: [
+      {
+        title: "Choix du contenu",
+        text: "L'utilisateur choisit un type et remplit les champs ; le texte encodé est formaté selon les conventions des lecteurs mobiles."
+      },
+      {
+        title: "Personnalisation",
+        text: "Formes de modules, styles d'yeux, couleurs unies ou dégradés, zone de tranquillité, logo central."
+      },
+      {
+        title: "Vérification",
+        text: "Contraste (WCAG), inversion des couleurs, couverture du logo face au niveau de correction d'erreur, densité."
+      },
+      {
+        title: "Export",
+        text: "SVG vectoriel, rasterisation canvas en PNG, JPG ou WebP, ou copie dans le presse-papiers."
+      }
+    ],
+    features: [
+      {
+        icon: "uil-qrcode-scan",
+        title: "10 types de contenu",
+        text: "URL, texte, Wi-Fi, vCard, e-mail, téléphone, SMS, événement, géolocalisation, adresse crypto."
+      },
+      {
+        icon: "uil-palette",
+        title: "Style libre",
+        text: "Cinq formes de modules, trois styles d'yeux, dégradés linéaires et radiaux, logo central."
+      },
+      {
+        icon: "uil-shield-check",
+        title: "Contrôle de scannabilité",
+        text: "Alertes de contraste, de logo trop grand et de densité avant l'export."
+      },
+      {
+        icon: "uil-export",
+        title: "Export multi-format",
+        text: "SVG, PNG, JPG, WebP jusqu'à 4096 px, copie presse-papiers."
+      },
+      {
+        icon: "uil-globe",
+        title: "Bilingue",
+        text: "Français et anglais, préférence mémorisée localement."
+      },
+      {
+        icon: "uil-moon",
+        title: "Clair et sombre",
+        text: "Thème appliqué avant le premier rendu pour éviter le flash."
+      }
+    ],
+    architecture: [
+      {
+        icon: "uil-code-branch",
+        label: "features/qr/lib",
+        text: "payload, matrix, svg, export, scanCheck"
+      },
+      {
+        icon: "uil-window",
+        label: "features/qr/components",
+        text: "Panneaux Contenu, Style, Logo, Export et aperçu"
+      },
+      {
+        icon: "uil-language",
+        label: "i18n et theme",
+        text: "Traductions FR/EN et thème clair/sombre"
+      },
+      {
+        icon: "uil-cube",
+        label: "pages/NotFoundPage",
+        text: "Page 404 avec scène Three.js chargée à la demande"
+      }
+    ],
+    stack: [
+      {
+        label: "Front",
+        items: [
+          "React 18",
+          "React Router",
+          "Vite 6",
+          "Tailwind CSS 3"
+        ]
+      },
+      {
+        label: "QR",
+        items: [
+          "qrcode",
+          "Rendu SVG sur mesure",
+          "Canvas API"
+        ]
+      },
+      {
+        label: "Autre",
+        items: [
+          "Three.js (404)",
+          "lucide-react",
+          "Vercel"
+        ]
+      }
+    ],
+    challenges: [
+      {
+        title: "Un rendu SVG propre",
+        text: "La librairie qrcode fournit la matrice ; les formes, yeux, dégradés et logo sont dessinés par un rendu SVG maison, réutilisé pour l'aperçu, l'export SVG et la rasterisation."
+      },
+      {
+        title: "Prévenir les codes illisibles",
+        text: "Heuristiques de contraste, de couverture du logo et de densité pour avertir avant l'impression."
+      },
+      {
+        title: "Pas de tests automatisés",
+        text: "Le dépôt n'a que ESLint ; la vérification est manuelle."
+      }
+    ],
+    uiChallenges: [
+      {
+        icon: "uil-eye",
+        title: "Aperçu en direct",
+        text: "Le QR et le verdict de scannabilité se mettent à jour à chaque réglage."
+      },
+      {
+        icon: "uil-moon",
+        title: "Thème sans flash",
+        text: "Le thème enregistré est appliqué par un script en tête de page."
+      }
+    ],
+    links: [
+      {
+        kind: "demo",
+        label: "Démo",
+        href: "https://qrstudio-lovat.vercel.app"
+      },
+      {
+        kind: "github",
+        label: "Code",
+        href: "https://github.com/nagoloumdaniel/QrStudioAd"
+      }
+    ],
+    gallery: [
+      {
+        src: "/projects/qrstudio/generator-light.webp",
+        alt: "QR Studio, générateur en thème clair sur ordinateur",
+        caption: "Générateur, thème clair"
+      },
+      {
+        src: "/projects/qrstudio/generator-dark.webp",
+        alt: "QR Studio, générateur en thème sombre sur ordinateur",
+        caption: "Générateur, thème sombre"
+      },
+      {
+        src: "/projects/qrstudio/generator-mobile.webp",
+        alt: "QR Studio sur mobile",
+        caption: "Version mobile"
+      }
+    ]
+  },
+
+  /* ───────────────────────── FANOURS ───────────────────────── */
+  {
+    id: "fanours",
+    title: "Fanours",
+    category: "Full-Stack",
+    status: "Web · en cours (cadrage, pas de code)",
+    wip: true,
+    monogram: "FA",
+    summary: "Plateforme e-commerce B2B/B2C pour une boutique basée en Chine qui vend en gros à l'international, avec prix dégressifs, devis et estimation des taxes d'import. Projet en phase de cadrage.",
+    overview: "Fanours vise à permettre de découvrir des produits, comparer les tarifs selon les volumes, acheter des lots, demander des devis et suivre ses commandes. À ce jour, seuls le cahier des charges (29 sections), la roadmap en 7 phases et les plans d'exécution sont rédigés ; aucun code applicatif n'existe encore.",
+    role: "Projet personnel : cadrage produit, spécification, architecture cible et roadmap. Développé en solo, avec l'assistance de Claude.",
+    repos: [
+      "Fanours"
+    ],
+    meta: {
+      country: "Chine (vente), clientèle internationale",
+      languages: [
+        "Français",
+        "Anglais",
+        "Chinois simplifié"
+      ],
+      period: "Depuis octobre 2026",
+      team: "Solo, assisté par IA",
+      hosting: "Pas encore déployé"
+    },
+    figures: [
+      {
+        value: "29",
+        label: "sections au cahier des charges"
+      },
+      {
+        value: "7",
+        label: "phases de roadmap (0 à 6)"
+      },
+      {
+        value: "107",
+        label: "tâches planifiées sur 7 plans"
+      },
+      {
+        value: "0",
+        label: "ligne de code applicatif à ce jour"
+      }
+    ],
+    situation: {
+      context: "Une boutique basée en Chine vend surtout en gros à une clientèle internationale, avec parfois du détail.",
+      problem: "Les prix dépendent des volumes, les frais, taxes et droits d'import varient selon le pays, et les devis comme le suivi se gèrent à la main.",
+      solution: "Une plateforme unique avec paliers tarifaires, MOQ, devis, checkout transparent, estimation des taxes (présentée comme estimation) et dashboards client et administrateur."
+    },
+    features: [
+      {
+        icon: "uil-tag-alt",
+        title: "Prix par volume",
+        text: "Paliers tarifaires, MOQ et demandes de devis (prévu)."
+      },
+      {
+        icon: "uil-globe",
+        title: "Trois langues",
+        text: "Français, anglais, chinois simplifié et plusieurs devises (prévu)."
+      },
+      {
+        icon: "uil-calculator",
+        title: "Taxes et douane",
+        text: "Règles versionnées pour estimer taxes et droits d'import (prévu)."
+      },
+      {
+        icon: "uil-shield-check",
+        title: "Sécurité",
+        text: "RBAC, MFA, aucun numéro de carte stocké (prévu)."
+      }
+    ],
+    stack: [
+      {
+        label: "Front (cible)",
+        items: [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS"
+        ]
+      },
+      {
+        label: "Back (cible)",
+        items: [
+          "TypeScript",
+          "PostgreSQL",
+          "Drizzle",
+          "Redis",
+          "BullMQ"
+        ]
+      },
+      {
+        label: "Paiement et tests (cible)",
+        items: [
+          "Stripe",
+          "Vitest",
+          "Playwright"
+        ]
+      }
+    ],
+    links: [
+      {
+        kind: "github",
+        label: "Code source",
+        url: "https://github.com/nagoloumdaniel/Fanours"
+      }
+    ]
   },
 
   /* ───────────────────────── CYNA ───────────────────────── */

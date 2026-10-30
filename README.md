@@ -24,6 +24,7 @@ disponible en **alternance de 24 mois dès septembre 2026** (3 semaines entrepri
 
 ```
 public/
+├── projects/<id>/           # Images des galeries (WebP, 1600 px max)
 ├── og-image.png             # Image de partage 1200×630 (Open Graph / Twitter)
 ├── robots.txt · sitemap.xml
 src/
@@ -35,6 +36,8 @@ src/
 │   ├── contact/             # Formulaire EmailJS + moyens de contact
 │   ├── cursor/              # Curseur personnalisé (desktop)
 │   ├── footer/
+│   ├── gallery/             # Galerie d'images d'un projet + lightbox accessible (<dialog>)
+│   ├── github/              # Calendrier de contributions et graphiques d'activité par dépôt
 │   ├── header/              # Nav fixe (desktop) / bottom sheet (mobile)
 │   ├── home/                # Hero, réseaux sociaux, bascule de thème
 │   ├── particles/           # Sphère de particules Three.js
@@ -48,7 +51,8 @@ src/
 │   ├── useModalDismiss.js   # Escape + page verrouillée pour les modals
 │   ├── usePageMeta.js       # Titre / description / canonical / OG par page
 │   └── useScrollReveal.js   # Animations d'apparition au scroll
-├── pages/                   # HomePage, PortfolioPage, BlogPage, NotFoundPage (404)
+├── lib/github.js            # Client GitHub côté navigateur, avec cache localStorage
+├── pages/                   # HomePage, PortfolioPage, ProjectPage, BlogPage, NotFoundPage (404)
 ├── App.jsx                  # Layout + routes (pages secondaires en lazy loading)
 ├── App.css                  # Design tokens, styles globaux, fond aurora
 └── main.jsx
@@ -76,6 +80,7 @@ npm run preview   # prévisualiser le build
 |---|---|
 | `/` | Accueil : hero, à propos, compétences, services, qualifications, contact (`#contact`) |
 | `/portfolio` | Projets |
+| `/portfolio/:id` | Page détaillée d'un projet (sommaire latéral, galerie, activité GitHub) |
 | `/blog` | Articles |
 | `/contact` | Redirection vers `/#contact` (anciens liens) |
 | `*` | Page 404 (`noindex`) |
@@ -95,6 +100,17 @@ rayons, ombres, z-index). Le **thème sombre** redéfinit les variables sous `bo
 - Choix persisté dans `localStorage` (clé `theme`), appliqué **avant le rendu** par un script inline
   dans `index.html` (pas de flash, et thème correct sur toutes les pages).
 - Animation « wave » circulaire depuis le point de clic (`ThemeToggle.jsx`).
+
+---
+
+## 🐙 Activité GitHub
+
+Aucune clé ni serveur : tout est lu côté navigateur, avec un cache `localStorage`.
+
+- **Page d'accueil** : calendrier de contributions des 12 derniers mois (lundi à dimanche) avec le total
+  sur 12 mois, la série en cours et le record sur un jour. Source : API publique de contributions.
+- **Pages projet** : graphiques bleus des commits par semaine, nombre de branches, de commits et de
+  contributeurs, comptes d'IA exclus. Un dépôt privé ou introuvable n'affiche pas de graphique.
 
 ---
 
@@ -127,6 +143,13 @@ dépôts (liens « GitHub Frontend » / « GitHub Backend » dans la même carte
   son code.
 - **Carte cliquable** : le titre est un bouton dont la zone s'étend à toute la carte (`.work__open::after`) ;
   les liens de la carte passent au-dessus et restent utilisables séparément. Aucun déplacement au survol.
+- **Page détail** (`ProjectPage.jsx`) : chaque projet a sa page, pilotée par les données. Un sommaire
+  latéral fixe suit le défilement (`useSectionNav`) ; une section sans contenu disparaît (situation,
+  fonctionnement, architecture, modélisation, stack, difficultés, défis d'interface, galerie, liens).
+- **Galerie** : champ `gallery: [{ src, alt, caption }]`, images dans `public/projects/<id>/`. Grille de
+  1 à 3 colonnes, chargement différé, lightbox accessible (Échap, flèches, focus rendu à la vignette).
+  N'y mettre ni donnée personnelle, ni secret, ni photo de client.
+- **Statut** : `wip: true` affiche « en cours » ; les chiffres ne viennent que des dépôts ou rapports.
 - **Pagination** : 6 projets par page à partir de 993 px de large (grille à 3 colonnes), gérée dans
   `Works.jsx` avec `matchMedia`. En dessous (tablette, mobile), tous les projets restent affichés.
 
