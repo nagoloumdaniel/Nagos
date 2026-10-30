@@ -157,7 +157,6 @@ const posts = [
   },
 ];
 
-const CATEGORIES = ['Tous', 'Projet', 'Data & IA', 'Technique', 'Méthode', 'Parcours'];
 
 const BlogCard = ({ post, onClick }) => (
   <article
@@ -242,33 +241,16 @@ const BlogModal = ({ post, onClose }) => {
 };
 
 const Blog = () => {
-  const [activeCategory, setActiveCategory] = useState('Tous');
   const [selectedPost, setSelectedPost]     = useState(null);
-
-  const filtered = activeCategory === 'Tous'
-    ? posts
-    : posts.filter(p => p.category === activeCategory);
 
   return (
     <section className="blog section" id="blog">
       <span className="section__subtitle">Aventures & Apprentissages</span>
       <h2 className="section__title reveal">Mon Blog</h2>
 
-      <div className="blog__filters reveal d1">
-        {CATEGORIES.map(cat => (
-          <button
-            key={cat}
-            type="button"
-            className={`blog__filter-btn${activeCategory === cat ? ' blog__filter-btn--active' : ''}`}
-            onClick={() => setActiveCategory(cat)}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
 
       <div className="blog__grid container">
-        {filtered.map(post => (
+        {posts.map(post => (
           <BlogCard key={post.id} post={post} onClick={setSelectedPost} />
         ))}
       </div>

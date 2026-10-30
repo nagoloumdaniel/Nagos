@@ -1,0 +1,95 @@
+/* ─── ACTIVITÉ GITHUB : graphiques bleus, carrés, animés ─────── */
+.github, .gh-repo {
+  --gh-0: var(--elevated-color);
+  --gh-1: #bfdbfe;
+  --gh-2: #60a5fa;
+  --gh-3: #2563eb;
+  --gh-4: #1e40af;
+}
+body.dark-theme .github, body.dark-theme .gh-repo {
+  --gh-0: rgba(255,255,255,0.07);
+  --gh-1: #1e3a8a;
+  --gh-2: #2563eb;
+  --gh-3: #3b82f6;
+  --gh-4: #93c5fd;
+}
+
+.gh-panel { padding: 1.5rem; max-width: 1100px; margin-inline: auto; }
+.gh-panel__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+.gh-panel__title {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--mono-font); font-size: var(--smaller-font-size);
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--title-color);
+}
+.gh-panel__link { font-family: var(--mono-font); font-size: var(--smaller-font-size); color: var(--text-color); }
+.gh-panel__link:hover { color: var(--title-color); text-decoration: underline; text-underline-offset: 4px; }
+
+/* Chiffres animés */
+.gh-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; }
+.gh-stat {
+  display: flex; flex-direction: column; gap: 0.15rem;
+  padding: 0.85rem 1rem; border: 1px solid var(--glass-border); min-width: 0;
+}
+.gh-stat > i { font-size: 1.1rem; color: var(--gh-3); }
+.gh-stat__value {
+  font-family: var(--heading-font); font-size: var(--h2-font-size); font-weight: var(--font-bold);
+  color: var(--title-color); font-variant-numeric: tabular-nums; line-height: 1.1;
+}
+.gh-stat__label { font-family: var(--mono-font); font-size: var(--tiny-font-size); color: var(--text-color); letter-spacing: 0.04em; }
+
+/* Calendrier */
+.gh-scroll { overflow-x: auto; padding-bottom: 0.25rem; }
+.gh-canvas { position: relative; max-width: 640px; margin-inline: auto; }
+.gh-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.gh-axis { font-family: var(--mono-font); font-size: 13px; fill: var(--text-color); }
+.gh-axis--c { text-anchor: middle; }
+.gh-cell { transform-box: fill-box; transform-origin: center; animation: gh-pop 420ms cubic-bezier(.2,.8,.2,1) both; transition: filter .15s; }
+.gh-cell:hover { filter: brightness(1.15); stroke: var(--title-color); stroke-width: 1; }
+.gh-l0 { fill: var(--gh-0); background: var(--gh-0); }
+.gh-l1 { fill: var(--gh-1); background: var(--gh-1); }
+.gh-l2 { fill: var(--gh-2); background: var(--gh-2); }
+.gh-l3 { fill: var(--gh-3); background: var(--gh-3); }
+.gh-l4 { fill: var(--gh-4); background: var(--gh-4); }
+@keyframes gh-pop { from { opacity: 0; transform: scale(0.2); } to { opacity: 1; transform: scale(1); } }
+
+.gh-legend { display: flex; align-items: center; justify-content: flex-end; gap: 0.3rem; margin-top: 0.75rem; font-family: var(--mono-font); font-size: var(--tiny-font-size); color: var(--text-color); }
+.gh-legend__cell { display: inline-block; width: 11px; height: 11px; border-radius: 2px; animation: none; }
+
+/* Infobulle */
+.gh-tip {
+  position: absolute; z-index: 5; transform: translate(-50%, calc(-100% - 8px));
+  display: flex; flex-direction: column; gap: 0.1rem; padding: 0.4rem 0.6rem; pointer-events: none; white-space: nowrap;
+  background: var(--container-color); border: 1px solid var(--glass-border); box-shadow: 0 6px 20px rgba(0,0,0,.18);
+  font-family: var(--mono-font); font-size: var(--tiny-font-size); color: var(--text-color);
+}
+.gh-tip strong { color: var(--title-color); font-weight: var(--font-semi-bold); }
+
+/* Graphique par projet */
+.gh-svg--chart { min-width: 0; }
+.gh-chart { min-width: 0; }
+.gh-baseline { stroke: var(--glass-border); stroke-width: 1; }
+.gh-hit { fill: transparent; }
+.gh-bar { fill: var(--gh-3); opacity: .55; transform-box: fill-box; transform-origin: bottom; animation: gh-grow 600ms cubic-bezier(.2,.8,.2,1) both; transition: opacity .15s, fill .15s; }
+.gh-bar.is-active { opacity: 1; fill: var(--gh-4); }
+.gh-line { fill: none; stroke: var(--gh-3); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1; animation: gh-draw 1.4s ease-out .2s both; }
+.gh-area { animation: gh-fade 1s ease .5s both; }
+@keyframes gh-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes gh-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes gh-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.gh-foot, .gh-note { margin-top: 0.75rem; font-family: var(--mono-font); font-size: var(--tiny-font-size); color: var(--text-color); }
+.gh-note a { color: var(--title-color); text-decoration: underline; text-underline-offset: 3px; }
+
+.gh-skeleton { height: 180px; border: 1px solid var(--glass-border); background: linear-gradient(90deg, var(--gh-0) 25%, transparent 50%, var(--gh-0) 75%) 0 0 / 200% 100%; animation: gh-shimmer 1.4s linear infinite; }
+.gh-skeleton--repo { height: 240px; }
+@keyframes gh-shimmer { to { background-position: -200% 0; } }
+
+@media (max-width: 640px) {
+  .gh-stats { grid-template-columns: repeat(2, 1fr); }
+  .gh-stats > :first-child:nth-child(odd):last-child, .gh-stats > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .gh-panel { padding: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gh-cell, .gh-bar, .gh-line, .gh-area, .gh-skeleton { animation: none; }
+  .gh-line { stroke-dashoffset: 0; }
+}

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Home           from '../components/home/Home';
 import About          from '../components/about/About';
 import Skills         from '../components/skills/Skills';
+import GithubActivity from '../components/github/GithubActivity';
 import Services       from '../components/services/Services';
 import Qualifications from '../components/qualifications/Qualifications';
 import Contact        from '../components/contact/Contact';
@@ -31,6 +32,7 @@ const HomePage = () => {
       <Home />
       <About />
       <Skills />
+      <GithubActivity />
       <Services />
       <Qualifications />
       <Contact />
