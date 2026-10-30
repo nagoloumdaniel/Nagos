@@ -1223,12 +1223,12 @@ export const projectsData = [
       {
         kind: "demo",
         label: "Démo",
-        href: "https://qrstudio-lovat.vercel.app"
+        url: "https://qrstudio-lovat.vercel.app"
       },
       {
         kind: "github",
         label: "Code",
-        href: "https://github.com/nagoloumdaniel/QrStudioAd"
+        url: "https://github.com/nagoloumdaniel/QrStudioAd"
       }
     ],
     gallery: [
