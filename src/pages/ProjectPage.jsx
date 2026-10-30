@@ -4,6 +4,7 @@ import { projectsData } from '../components/work/Data';
 import { ProjectLogo } from '../components/work/Workitems';
 import NotFoundPage from './NotFoundPage';
 import { TerminalWindow } from '../components/ide/Ide';
+import Gallery from '../components/gallery/Gallery';
 import RepoActivity from '../components/github/RepoActivity';
 import usePageMeta from '../hooks/usePageMeta';
 import useSectionNav from '../hooks/useSectionNav';
@@ -92,6 +93,13 @@ const SECTIONS = [
         ))}
       </div>
     ),
+  },
+  {
+    id: 'galerie',
+    icon: 'uil-image',
+    title: 'Galerie',
+    has: p => p.gallery?.length,
+    render: p => <Gallery items={p.gallery} title={p.title} />,
   },
   {
     id: 'fonctionnement',

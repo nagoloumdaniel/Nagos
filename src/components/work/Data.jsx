@@ -28,6 +28,8 @@ import nagosuiLogo from '../../assets/logos/nagosui.png';
   - `architecture` : briques du projet.
   - `modeling`     : modélisation des données (intro + entités).
   - `stack`        : technologies groupées.
+  - `gallery`      : captures d'écran [{ src, alt, caption }] dans public/projects/<id>/ (webp, 1600 px max).
+                     Jamais de données personnelles ni de secrets. Absent = section masquée.
   - `challenges`   : difficultés rencontrées pendant le développement.
   - `uiChallenges` : défis d'interface.
   - `links`        : liens vérifiés. `kind` = 'demo' | 'github'.
@@ -85,6 +87,13 @@ export const projectsData = [
   /* ───────────────────────── ZOLYA ───────────────────────── */
   {
     id: 'zolya',
+    gallery: [
+      { src: '/projects/zolya/01-bienvenue.webp', alt: "Écran de bienvenue de l'application mobile Zolya, avec le bouton Commencer.", caption: 'Écran de bienvenue' },
+      { src: '/projects/zolya/02-acheter.webp', alt: "Écran d'accueil : acheter des vêtements d'occasion.", caption: 'Acheter' },
+      { src: '/projects/zolya/03-vendre.webp', alt: "Écran d'accueil : vendre ce qu'on ne porte plus.", caption: 'Vendre' },
+      { src: '/projects/zolya/04-livraison.webp', alt: "Écran d'accueil : livraison avec paiement mobile money et protection escrow.", caption: 'Livraison' },
+      { src: '/projects/zolya/05-verification.webp', alt: 'Écran de saisie du code de vérification à six chiffres (numéro fictif).', caption: 'Code de vérification' },
+    ],
     logo: zolyaLogo,
     logoCover: true,
     title: 'Zolya',
@@ -261,6 +270,15 @@ export const projectsData = [
   /* ───────────────────────── TRADINGAGENT ───────────────────────── */
   {
     id: 'tradingagent',
+    gallery: [
+      { src: '/projects/tradingagent/01-vue-ensemble-sombre.webp', alt: 'Tableau de bord TradingAgent en thème sombre : solde, résultat du jour, positions ouvertes et courbe de capital.', caption: "Vue d'ensemble, thème sombre" },
+      { src: '/projects/tradingagent/02-vue-ensemble-clair.webp', alt: 'Tableau de bord TradingAgent en thème clair avec courbe de capital et répartition par marché.', caption: "Vue d'ensemble, thème clair" },
+      { src: '/projects/tradingagent/03-positions.webp', alt: 'Page Positions : liste des positions papier XAUUSD et événements système.', caption: 'Positions et événements' },
+      { src: '/projects/tradingagent/04-risque.webp', alt: 'Page Risque : jauges de perte journalière, de perte hebdomadaire et de drawdown.', caption: 'Suivi du risque' },
+      { src: '/projects/tradingagent/05-rapport.webp', alt: 'Rapport quotidien : résultat net, nombre de trades, courbe de capital et résultat par marché.', caption: 'Rapport quotidien' },
+      { src: '/projects/tradingagent/06-scalping.webp', alt: 'Page Scalping : statistiques par session horaire et par jour de la semaine.', caption: 'Analyse du scalping' },
+      { src: '/projects/tradingagent/07-strategies.webp', alt: 'Page Stratégies : registre des stratégies et métriques de validation.', caption: 'Registre des stratégies' },
+    ],
     logo: tradingagentLogo,
     title: 'TradingAgent',
     category: 'Full-Stack',
@@ -348,6 +366,13 @@ export const projectsData = [
   /* ───────────────────────── BUILDIT ───────────────────────── */
   {
     id: 'buildit',
+    gallery: [
+      { src: '/projects/buildit/01-accueil.webp', alt: 'Accueil de BuildIt en thème clair : créer, cloner ou ouvrir un projet.', caption: 'Accueil' },
+      { src: '/projects/buildit/02-creer.webp', alt: "Parcours de création d'un projet, étape 1 sur 12.", caption: 'Création de projet' },
+      { src: '/projects/buildit/03-cloner.webp', alt: 'Écran pour cloner un dépôt Git depuis GitHub ou un lien.', caption: 'Clonage' },
+      { src: '/projects/buildit/04-ouvrir.webp', alt: 'Écran pour ouvrir un projet local existant.', caption: "Ouverture d'un projet local" },
+      { src: '/projects/buildit/05-accueil-sombre.webp', alt: 'Accueil de BuildIt en thème sombre.', caption: 'Thème sombre' },
+    ],
     logo: builditLogo,
     title: 'BuildIt',
     category: 'Outils développeur',
@@ -520,6 +545,10 @@ export const projectsData = [
   /* ───────────────────────── SARIELLE FASHION ───────────────────────── */
   {
     id: 'sariellefashion',
+    gallery: [
+      { src: '/projects/sariellefashion/01-accueil.webp', alt: "Page d'accueil de SarielleFashion sur ordinateur.", caption: 'Accueil, ordinateur' },
+      { src: '/projects/sariellefashion/02-accueil-mobile.webp', alt: "Page d'accueil de SarielleFashion sur mobile.", caption: 'Accueil, mobile' },
+    ],
     logo: sarielleLogo,
     title: 'Sarielle Fashion',
     category: 'Full-Stack',
@@ -605,6 +634,10 @@ export const projectsData = [
   /* ───────────────────────── HAIRSTYLE BY PATRICIA ───────────────────────── */
   {
     id: 'hairstylebypati',
+    gallery: [
+      { src: '/projects/hairstylebypati/01-catalogue.webp', alt: 'Page catalogue de HairStyleByPati sur ordinateur.', caption: 'Catalogue, ordinateur' },
+      { src: '/projects/hairstylebypati/02-catalogue-mobile.webp', alt: 'Page catalogue de HairStyleByPati sur mobile.', caption: 'Catalogue, mobile' },
+    ],
     logo: hairstyleLogo,
     title: 'Hairstyle by Patricia',
     category: 'Full-Stack',
@@ -690,6 +723,9 @@ export const projectsData = [
   /* ───────────────────────── KYC CHECKER ───────────────────────── */
   {
     id: 'kyc-checker',
+    gallery: [
+      { src: '/projects/kyc-checker/01-demo-cli.webp', alt: 'Démonstration en ligne de commande de KYC Checker sur un spécimen de passeport synthétique : pièce valide, falsifiée et nom différent.', caption: 'Démo CLI sur données synthétiques' },
+    ],
     logo: kycLogo,
     logoCover: true,
     title: 'KYC Checker',
@@ -765,6 +801,9 @@ export const projectsData = [
   /* ───────────────────────── REMEMBERME ───────────────────────── */
   {
     id: 'rememberme',
+    gallery: [
+      { src: '/projects/rememberme/01-accueil.webp', alt: "Page d'accueil de RememberMe avec aperçu de l'application de tâches.", caption: 'Accueil' },
+    ],
     logo: remembermeLogo,
     title: 'RememberMe',
     category: 'Full-Stack',
@@ -842,6 +881,9 @@ export const projectsData = [
   /* ───────────────────────── NAGOSUI ───────────────────────── */
   {
     id: 'nagosui',
+    gallery: [
+      { src: '/projects/nagosui/01-accueil.webp', alt: "Page d'accueil du site de démonstration NagosUI en thème sombre.", caption: 'Site de démonstration' },
+    ],
     logo: nagosuiLogo,
     title: 'NagosUI',
     category: 'Outils développeur',
@@ -907,6 +949,10 @@ export const projectsData = [
   /* ───────────────────────── CYNA ───────────────────────── */
   {
     id: 'cyna',
+    gallery: [
+      { src: '/projects/cyna/01-accueil.webp', alt: "Page d'accueil de la boutique Cyna : solutions et produits mis en avant.", caption: 'Accueil' },
+      { src: '/projects/cyna/02-produits.webp', alt: 'Page catalogue de produits de Cyna.', caption: 'Catalogue' },
+    ],
     title: 'Cyna',
     category: 'Full-Stack',
     status: 'Projet académique · en équipe',
@@ -958,6 +1004,9 @@ export const projectsData = [
   /* ───────────────────────── CAMPAIGN MAILER ───────────────────────── */
   {
     id: 'campaign-mailer',
+    gallery: [
+      { src: '/projects/campaign-mailer/01-connexion.webp', alt: 'Page de connexion de Campaign Mailer, avec connexion Google.', caption: 'Connexion' },
+    ],
     title: 'CampaignMailer',
     category: 'Full-Stack',
     status: 'Projet personnel',
