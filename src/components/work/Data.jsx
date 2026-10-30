@@ -44,6 +44,7 @@ export const projectsData = [
     category: "Full-Stack",
     status: "En développement · dépôt privé",
     private: true,
+    wip: true,
     summary: "Marketplace multi-vendeurs internationale de produits, pensée mobile-first pour le marché africain : API, site web et quatre applications mobiles dans un seul monorepo.",
     overview: "Allibuy est une marketplace multi-vendeurs de produits, ouverte à tous les pays (FCFA, EUR, USD, numéros de téléphone internationaux) avec un lancement axé Afrique. Tout vit dans un monorepo Turborepo : une API NestJS (49 modules, 505 endpoints), un site Next.js de 173 pages et quatre applications Expo (acheteur, vendeur Allisell, livreur Allidrivers, administration Alliadmin) qui partagent un socle commun. Le rôle prestataire de services a été retiré par décision produit en septembre 2026 pour recentrer le périmètre sur trois rôles professionnels. Le projet est en développement : le métier est largement livré, l'encaissement réel par mobile money reste à valider.",
     role: "Conception et développement complets, en solo : modélisation, API, web, applications mobiles et audit du code.",
