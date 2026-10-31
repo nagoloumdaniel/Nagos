@@ -10,7 +10,7 @@ const PAD = { l: 8, r: 8, t: 14, b: 22 };
 
 const fmtWeek = (iso) => new Date(`${iso}T12:00:00`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
 
-/* Graphique des commits par semaine (3 mois) + chiffres : commits, branches, contributeurs humains (IA exclues). */
+/* Graphique des commits par semaine (5 mois) + chiffres : commits, branches, contributeurs humains (IA exclues). */
 const RepoActivity = ({ repos }) => {
   const { data, status } = useAsyncData((force) => getRepos(repos, force), 10 * 60 * 1000);
   const [active, setActive] = useState(null);
@@ -38,7 +38,7 @@ const RepoActivity = ({ repos }) => {
     <div className="gh-repo">
       <ul className="gh-stats gh-stats--repo">
         <GithubStat value={data.totalCommits} label="commits au total" icon="uil-code-commit" />
-        <GithubStat value={data.recent} label="commits (3 mois)" icon="uil-chart-line" />
+        <GithubStat value={data.recent} label="commits (5 mois)" icon="uil-chart-line" />
         <GithubStat value={data.branches} label="branches" icon="uil-code-branch" />
         <GithubStat value={data.contributors} label="contributeurs (hors IA)" icon="uil-users-alt" />
       </ul>
