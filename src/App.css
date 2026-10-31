@@ -183,7 +183,8 @@ body {
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
   color: var(--text-color);
-  overflow-x: hidden;
+  /* clip (et non hidden) : hidden fait de body un conteneur de défilement et casse position: sticky */
+  overflow-x: clip;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
