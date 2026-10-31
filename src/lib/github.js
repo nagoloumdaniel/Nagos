@@ -4,7 +4,7 @@
    Cache localStorage ; en cas d'échec (quota, hors-ligne) on ressert la dernière valeur connue. */
 
 export const GITHUB_USER = 'nagoloumdaniel';
-export const WINDOW_DAYS = 91; // 13 semaines ≈ 3 mois
+export const WINDOW_DAYS = 154; // 22 semaines ≈ 5 mois
 
 const API = 'https://api.github.com';
 const CONTRIB_API = 'https://github-contributions-api.jogruber.de/v4';
@@ -47,7 +47,7 @@ const getJson = async (url) => {
 
 const iso = (d) => d.toISOString().slice(0, 10);
 
-/* ── Contributions des 3 derniers mois ───────────────────── */
+/* ── Contributions des 5 derniers mois ───────────────────── */
 export function getContributions(force) {
   return cached('gh:contrib:v2', CONTRIB_TTL, async () => {
     const json = await getJson(`${CONTRIB_API}/${GITHUB_USER}?y=last`);
@@ -80,7 +80,7 @@ async function loadRepo(repo) {
   const totalCommits = lastPage(totalRes) ?? (await totalRes.json()).length;
 
   const recent = [];
-  for (let page = 1; page <= 3; page++) {
+  for (let page = 1; page <= 6; page++) {
     const batch = await getJson(`${base}/commits?since=${since}&per_page=100&page=${page}`);
     recent.push(...batch);
     if (batch.length < 100) break;
@@ -95,9 +95,9 @@ async function loadRepo(repo) {
   };
 }
 
-export const getRepo = (repo, force) => cached(`gh:repo:v1:${repo}`, REPO_TTL, () => loadRepo(repo), force);
+export const getRepo = (repo, force) => cached(`gh:repo:v2:${repo}`, REPO_TTL, () => loadRepo(repo), force);
 
-/* Agrège plusieurs dépôts (ex. front + back) en séries hebdomadaires sur 13 semaines. */
+/* Agrège plusieurs dépôts (ex. front + back) en séries hebdomadaires sur 22 semaines. */
 export async function getRepos(repos, force) {
   const results = await Promise.all(repos.map(r => getRepo(r, force)));
   const weeks = Math.ceil(WINDOW_DAYS / 7);

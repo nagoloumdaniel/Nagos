@@ -83,7 +83,7 @@ const ContributionGraph = () => {
     <div className="gh-graph">
       <ul className="gh-stats">
         {yearTotal != null && <GithubStat value={yearTotal} label="contributions sur 12 mois" icon="uil-github-alt" />}
-        <GithubStat value={stats.total} label="contributions (3 mois)" icon="uil-code-branch" />
+        <GithubStat value={stats.total} label="contributions (5 mois)" icon="uil-code-branch" />
         <GithubStat value={stats.active} label="jours actifs" icon="uil-calendar-alt" />
         <GithubStat value={stats.streak} label="jours de série" icon="uil-fire" />
         <GithubStat value={stats.best} label="record sur 1 jour" icon="uil-trophy" />
@@ -95,7 +95,7 @@ const ContributionGraph = () => {
             className="gh-svg"
             viewBox={`0 0 ${width} ${height}`}
             role="img"
-            aria-label={`${stats.total} contributions GitHub sur les 3 derniers mois, ${stats.active} jours actifs`}
+            aria-label={`${stats.total} contributions GitHub sur les 5 derniers mois, ${stats.active} jours actifs`}
           >
             {layout.labels.map(l => (
               <text key={l.x} x={LEFT + l.x * STEP} y={14} className="gh-axis">{l.text}</text>

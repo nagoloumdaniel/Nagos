@@ -10,6 +10,7 @@ import useScrollReveal from './hooks/useScrollReveal';
 /* Pages secondaires chargées à la demande (code-splitting) */
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
 const BlogPage      = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage  = lazy(() => import('./pages/BlogPostPage'));
 const ProjectPage   = lazy(() => import('./pages/ProjectPage'));
 const NotFoundPage  = lazy(() => import('./pages/NotFoundPage'));
 
@@ -42,6 +43,7 @@ function App() {
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/portfolio/:id" element={<ProjectPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogPostPage />} />
             {/* Ancienne page : redirige vers la section Contact de l'accueil */}
             <Route path="/contact"   element={<Navigate to="/#contact" replace />} />
             <Route path="*"          element={<NotFoundPage />} />
