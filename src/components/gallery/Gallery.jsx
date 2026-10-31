@@ -80,7 +80,7 @@ const Gallery = ({ items, title }) => {
                 </button>
               )}
             </div>
-            <p className="gal-box__cap">{current.caption}</p>
+            {current.caption && <p className="gal-box__cap">{current.caption}</p>}
           </div>
         )}
       </dialog>
