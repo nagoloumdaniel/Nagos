@@ -73,7 +73,7 @@ const Gallery = ({ items, title }) => {
                   <i className="uil uil-angle-left" aria-hidden="true" />
                 </button>
               )}
-              <img className="gal-box__img" src={current.src} alt={current.alt} />
+              <img className="gal-box__img" src={current.src} alt={current.alt} decoding="async" />
               {count > 1 && (
                 <button type="button" className="gal-box__btn gal-box__nav" onClick={() => go(1)} aria-label="Image suivante">
                   <i className="uil uil-angle-right" aria-hidden="true" />
