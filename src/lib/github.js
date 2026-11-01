@@ -96,7 +96,7 @@ async function loadRepo(repo) {
   };
 }
 
-export const getRepo = (repo, force) => cached(`gh:repo:v2:${repo}`, REPO_TTL, () => loadRepo(repo), force);
+export const getRepo = (repo, force) => cached(`gh:repo:v3:${repo}`, REPO_TTL, () => loadRepo(repo), force);
 
 /* Agrège plusieurs dépôts (ex. front + back) en séries hebdomadaires sur 22 semaines. */
 export async function getRepos(repos, force) {

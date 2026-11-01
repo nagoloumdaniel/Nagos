@@ -337,7 +337,9 @@ body.dark-theme .pj-tag--wip { border-color: #60a5fa; color: #93c5fd; }
 .pj-nav__link.is-empty.is-active { opacity: 1; }
 
 /* ── Moyens et petits écrans : finitions ── */
-.pj, .pj-body, .pj-nav, .pj-head { min-width: 0; max-width: 100%; }
+.pj, .pj-body, .pj-nav, .pj-head { min-width: 0; }
+.pj, .pj-body, .pj-head { max-width: 100%; }
+.pj-nav__list { list-style: none; }
 .pj-card, .pj-feature, .pj-step > div, .pj-challenge > div, .pj-arch__item > div { min-width: 0; }
 .pj-features, .pj-sps, .pj-models, .pj-challenges, .pj-steps { min-width: 0; }
 .pj-features > li, .pj-models > li, .pj-arch > li, .pj-steps > li, .pj-challenges > li { min-width: 0; }
