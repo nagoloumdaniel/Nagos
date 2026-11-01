@@ -31,10 +31,33 @@ const computeStats = (days) => {
   return { total, active, best, streak };
 };
 
+const useMobile = () => {
+  const q = '(max-width: 640px)';
+  const [m, setM] = useState(() => typeof window !== 'undefined' && window.matchMedia(q).matches);
+  useEffect(() => {
+    const mq = window.matchMedia(q);
+    const on = () => setM(mq.matches);
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
+  return m;
+};
+
 const ContributionGraph = () => {
   const { data, status } = useAsyncData(getContributions);
   const [tip, setTip] = useState(null);
-  const days = data?.data?.days;
+  const allDays = data?.data?.days;
+  const mobile = useMobile();
+  // Mobile : 2 derniers mois seulement (9 semaines pleines, début un lundi)
+  const days = useMemo(() => {
+    if (!allDays || !mobile) return allDays;
+    const start = new Date();
+    start.setDate(start.getDate() - 62);
+    start.setDate(start.getDate() - ((start.getDay() + 6) % 7));
+    const from = start.toISOString().slice(0, 10);
+    return allDays.filter(d => d.date >= from);
+  }, [allDays, mobile]);
+  const months = mobile ? 2 : 8;
   const yearTotal = data?.data?.yearTotal;
 
   useEffect(() => {
@@ -92,7 +115,7 @@ const ContributionGraph = () => {
     <div className="gh-graph">
       <ul className="gh-stats">
         {yearTotal != null && <GithubStat value={yearTotal} label="contributions sur 12 mois" icon="uil-github-alt" />}
-        <GithubStat value={stats.total} label="contributions (8 mois)" icon="uil-code-branch" />
+        <GithubStat value={stats.total} label={`contributions (${months} mois)`} icon="uil-code-branch" />
         <GithubStat value={stats.active} label="jours actifs" icon="uil-calendar-alt" />
         <GithubStat value={stats.streak} label="jours de série" icon="uil-fire" />
         <GithubStat value={stats.best} label="record sur 1 jour" icon="uil-trophy" />
@@ -104,7 +127,7 @@ const ContributionGraph = () => {
             className="gh-svg"
             viewBox={`0 0 ${width} ${height}`}
             role="img"
-            aria-label={`${stats.total} contributions GitHub sur les 8 derniers mois, ${stats.active} jours actifs`}
+            aria-label={`${stats.total} contributions GitHub sur les ${months} derniers mois, ${stats.active} jours actifs`}
           >
             {layout.labels.map(l => (
               <text key={l.x} x={LEFT + l.x * STEP} y={14} className="gh-axis">{l.text}</text>
