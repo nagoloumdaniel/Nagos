@@ -110,17 +110,17 @@ export const projectsData = [
       {
         icon: "uil-server",
         label: "API",
-        text: "NestJS 10 et Prisma 6 sur PostgreSQL 16 (PostGIS, ltree, citext), Redis / BullMQ, Socket.IO"
+        text: "NestJS et Prisma sur PostgreSQL (PostGIS, ltree, citext), Redis / BullMQ, Socket.IO"
       },
       {
         icon: "uil-desktop",
         label: "Web",
-        text: "Next.js 15 (App Router), React 19, Tailwind, shadcn/ui, TanStack Query, next-intl : espaces acheteur, vendeur et administration"
+        text: "Next.js (App Router), React, Tailwind, shadcn/ui, TanStack Query, next-intl : espaces acheteur, vendeur et administration"
       },
       {
         icon: "uil-mobile-android-alt",
         label: "Mobile",
-        text: "Expo SDK 54 : Allibuy (acheteur), Allisell (vendeur), Allidrivers (livreur), Alliadmin (administration)"
+        text: "Expo : Allibuy (acheteur), Allisell (vendeur), Allidrivers (livreur), Alliadmin (administration)"
       },
       {
         icon: "uil-package",
@@ -155,8 +155,8 @@ export const projectsData = [
       {
         label: "Front",
         items: [
-          "Next.js 15",
-          "React 19",
+          "Next.js",
+          "React",
           "Expo (React Native)",
           "Tailwind",
           "NativeWind"
@@ -244,9 +244,9 @@ export const projectsData = [
     architecture: [
       { icon: 'uil-mobile-android-alt', label: 'apps/marketplace', text: 'Application Flutter acheteur / vendeur' },
       { icon: 'uil-truck', label: 'apps/delivery', text: 'Application Flutter livreur' },
-      { icon: 'uil-desktop', label: 'apps/admin-web', text: 'Administration Next.js 15' },
+      { icon: 'uil-desktop', label: 'apps/admin-web', text: 'Administration Next.js' },
       { icon: 'uil-package', label: 'packages', text: 'zolya_core, zolya_api_client, zolya_design (partagés entre les apps)' },
-      { icon: 'uil-server', label: 'backend', text: 'NestJS 10, Prisma, PostgreSQL 16, BullMQ / Redis' },
+      { icon: 'uil-server', label: 'backend', text: 'NestJS, Prisma, PostgreSQL, BullMQ / Redis' },
     ],
     modeling: {
       intro: "Le schéma Prisma compte 52 modèles, 21 enums et 12 migrations. Le point central est le grand livre : chaque mouvement d'argent est une écriture, jamais une mise à jour de solde.",
@@ -260,9 +260,9 @@ export const projectsData = [
       ],
     },
     stack: [
-      { label: 'Mobile', items: ['Flutter 3.41', 'Dart 3.11', 'BLoC', 'Clean architecture'] },
-      { label: 'Web admin', items: ['Next.js 15'] },
-      { label: 'Back', items: ['NestJS 10', 'Prisma 5', 'PostgreSQL 16', 'BullMQ', 'Redis 7'] },
+      { label: 'Mobile', items: ['Flutter', 'Dart', 'BLoC', 'Clean architecture'] },
+      { label: 'Web admin', items: ['Next.js'] },
+      { label: 'Back', items: ['NestJS', 'Prisma', 'PostgreSQL', 'BullMQ', 'Redis'] },
       { label: 'Services', items: ['Campay (Mobile Money)', 'Supabase Storage', 'Firebase FCM', 'Twilio'] },
     ],
     challenges: [
@@ -327,11 +327,11 @@ export const projectsData = [
       { icon: 'uil-chart-growth', title: 'Tableau de bord agent', text: "Suivi des exécutions, des coûts et des sources." },
     ],
     architecture: [
-      { icon: 'uil-desktop', label: 'apps/web', text: 'Next.js 16, React 19' },
-      { icon: 'uil-server', label: 'apps/api', text: 'NestJS 11 sur Fastify 5' },
+      { icon: 'uil-desktop', label: 'apps/web', text: 'Next.js, React' },
+      { icon: 'uil-server', label: 'apps/api', text: 'NestJS sur Fastify' },
       { icon: 'uil-processor', label: 'apps/worker', text: 'Agent et files BullMQ (Railway)' },
       { icon: 'uil-package', label: 'packages', text: '19 paquets partagés (domaine, extracteurs, outils, UI)' },
-      { icon: 'uil-database', label: 'Données', text: 'Neon PostgreSQL via Prisma 7, Redis' },
+      { icon: 'uil-database', label: 'Données', text: 'Neon PostgreSQL via Prisma, Redis' },
     ],
     modeling: {
       intro: "38 modèles Prisma et 33 migrations. Le modèle sépare ce que l'agent découvre (sources, exécutions) de ce qui est publié (offres) et de ce qui appartient au candidat (profils, CV).",
@@ -345,8 +345,8 @@ export const projectsData = [
       ],
     },
     stack: [
-      { label: 'Front', items: ['Next.js 16', 'React 19'] },
-      { label: 'Back', items: ['NestJS 11', 'Fastify 5', 'BullMQ 5', 'Prisma 7'] },
+      { label: 'Front', items: ['Next.js', 'React'] },
+      { label: 'Back', items: ['NestJS', 'Fastify', 'BullMQ', 'Prisma'] },
       { label: 'Données', items: ['Neon PostgreSQL', 'Redis'] },
       { label: 'Agent', items: ['DeepSeek', 'Brave Search', 'Apify', 'API France Travail', 'Cheerio', 'Playwright'] },
       { label: 'Outillage', items: ['TypeScript', 'Turborepo', 'pnpm', 'Vitest', 'Playwright'] },
@@ -428,7 +428,7 @@ export const projectsData = [
       { icon: 'uil-server', label: 'API & tableau de bord', text: 'FastAPI, Uvicorn, Jinja2, SSE' },
       { icon: 'uil-processor', label: 'Moteur', text: 'Stratégies, backtests, risque, portes de promotion' },
       { icon: 'uil-chart-bar', label: 'Exécution', text: 'MetaTrader 5 (Windows) et deux EA MQL5' },
-      { icon: 'uil-database', label: 'Données', text: 'PostgreSQL (Supabase), SQLAlchemy 2, Alembic' },
+      { icon: 'uil-database', label: 'Données', text: 'PostgreSQL (Supabase), SQLAlchemy, Alembic' },
       { icon: 'uil-globe', label: 'Site vitrine', text: 'Dossier site/ déployé sur Vercel' },
     ],
     modeling: {
@@ -442,7 +442,7 @@ export const projectsData = [
       ],
     },
     stack: [
-      { label: 'Back', items: ['Python 3.12', 'FastAPI', 'Pydantic', 'SQLAlchemy 2', 'Alembic'] },
+      { label: 'Back', items: ['Python', 'FastAPI', 'Pydantic', 'SQLAlchemy', 'Alembic'] },
       { label: 'Données', items: ['PostgreSQL (Supabase)', 'psycopg'] },
       { label: 'Trading', items: ['MetaTrader 5', 'MQL5'] },
       { label: 'IA & alertes', items: ['Anthropic API', 'python-telegram-bot'] },
@@ -520,7 +520,7 @@ export const projectsData = [
     ],
     architecture: [
       { icon: 'uil-package', label: 'packages', text: '13 paquets (moteur, registre, règles, CLI…)' },
-      { icon: 'uil-desktop', label: 'apps/web', text: 'Configurateur Next.js 15' },
+      { icon: 'uil-desktop', label: 'apps/web', text: 'Configurateur Next.js' },
       { icon: 'uil-terminal', label: 'CLI', text: 'pf, construite avec tsdown' },
       { icon: 'uil-layer-group', label: 'Trois couches', text: 'Manifeste, registre et compatibilité' },
     ],
@@ -534,10 +534,10 @@ export const projectsData = [
       ],
     },
     stack: [
-      { label: 'Langage', items: ['TypeScript', 'Node.js ≥ 20.11'] },
+      { label: 'Langage', items: ['TypeScript', 'Node.js'] },
       { label: 'Monorepo', items: ['pnpm', 'Turborepo', 'tsdown', 'changesets'] },
-      { label: 'Web', items: ['Next.js 15', 'React 19', 'Tailwind CSS 4'] },
-      { label: 'Qualité', items: ['Vitest', 'Biome', 'zod 4', 'lefthook', 'commitlint', 'secretlint'] },
+      { label: 'Web', items: ['Next.js', 'React', 'Tailwind CSS'] },
+      { label: 'Qualité', items: ['Vitest', 'Biome', 'zod', 'lefthook', 'commitlint', 'secretlint'] },
     ],
     challenges: [
       { title: 'Compatibilité cumulative', text: "L'audit a montré que 14 catégories se cumulent plutôt que de s'exclure ; les règles ont été réécrites et une règle d'écosystème a été ajoutée." },
@@ -598,14 +598,14 @@ export const projectsData = [
       { icon: 'uil-check-circle', title: 'Statuts honnêtes', text: "accept_all, unknown et unverified ne sont jamais présentés comme vérifiés." },
       { icon: 'uil-chart-pie-alt', title: 'Score détaillé', text: "0 à 100, décomposé critère par critère, sans pondération cachée." },
       { icon: 'uil-shield-check', title: 'Garde SSRF', text: "Refus des adresses privées et de métadonnées cloud, après résolution DNS et après chaque redirection." },
-      { icon: 'uil-code-branch', title: 'API publique /v1', text: "Clés hachées, limite de débit, idempotence, erreurs RFC 9457, webhooks signés, OpenAPI 3.1." },
+      { icon: 'uil-code-branch', title: 'API publique /v1', text: "Clés hachées, limite de débit, idempotence, erreurs RFC 9457, webhooks signés, OpenAPI." },
       { icon: 'uil-ban', title: 'Respect des sites', text: "robots.txt, page publique /robot pour demander l'exclusion, liste de suppression." },
     ],
     architecture: [
-      { icon: 'uil-desktop', label: 'Frontend', text: 'React 19 + Vite, Tailwind CSS 4, sur Vercel' },
-      { icon: 'uil-server', label: 'API', text: 'Express 5 sur Railway, avec /health et /ready' },
+      { icon: 'uil-desktop', label: 'Frontend', text: 'React + Vite, Tailwind CSS, sur Vercel' },
+      { icon: 'uil-server', label: 'API', text: 'Express sur Railway, avec /health et /ready' },
       { icon: 'uil-processor', label: 'Worker', text: 'Second service Railway qui vide les files BullMQ' },
-      { icon: 'uil-database', label: 'Données', text: 'PostgreSQL 18 (Neon), Redis Cloud, Cloudflare R2' },
+      { icon: 'uil-database', label: 'Données', text: 'PostgreSQL (Neon), Redis Cloud, Cloudflare R2' },
       { icon: 'uil-link-h', label: 'Intégration', text: 'API versionnée vers Campaign Mailer, jamais par sa base' },
     ],
     modeling: {
@@ -620,9 +620,9 @@ export const projectsData = [
       ],
     },
     stack: [
-      { label: 'Front', items: ['React 19', 'Vite', 'Tailwind CSS 4', 'TypeScript'] },
-      { label: 'Back', items: ['Express 5', 'zod 4', 'BullMQ', 'Cheerio'] },
-      { label: 'Données', items: ['PostgreSQL 18 (Neon)', 'Redis Cloud', 'Cloudflare R2'] },
+      { label: 'Front', items: ['React', 'Vite', 'Tailwind CSS', 'TypeScript'] },
+      { label: 'Back', items: ['Express', 'zod', 'BullMQ', 'Cheerio'] },
+      { label: 'Données', items: ['PostgreSQL (Neon)', 'Redis Cloud', 'Cloudflare R2'] },
       { label: 'Qualité', items: ['Vitest', 'Playwright (tests E2E)', 'ESLint', 'Prettier'] },
     ],
     challenges: [
@@ -694,7 +694,7 @@ export const projectsData = [
       { icon: 'uil-eye', title: 'Avis et galerie', text: "Avis clients, galerie, FAQ et informations pratiques." },
     ],
     architecture: [
-      { icon: 'uil-desktop', label: 'Application', text: 'Next.js 15 (App Router), pages publiques et dashboard' },
+      { icon: 'uil-desktop', label: 'Application', text: 'Next.js (App Router), pages publiques et dashboard' },
       { icon: 'uil-layer-group', label: 'Modules métier', text: '17 domaines dans src/modules, indépendants de src/app' },
       { icon: 'uil-database', label: 'Données', text: 'PostgreSQL (Neon) via Prisma' },
       { icon: 'uil-package', label: 'Fichiers', text: 'Cloudflare R2, URL présignées, traitement d’images avec sharp' },
@@ -712,9 +712,9 @@ export const projectsData = [
       ],
     },
     stack: [
-      { label: 'Application', items: ['Next.js 15', 'React 19', 'TypeScript strict', 'Tailwind CSS 4'] },
-      { label: 'Données', items: ['PostgreSQL (Neon)', 'Prisma 6', 'Cloudflare R2'] },
-      { label: 'Services', items: ['Auth.js', 'Zod 4', 'Nodemailer (SMTP Gmail)', 'sharp'] },
+      { label: 'Application', items: ['Next.js', 'React', 'TypeScript strict', 'Tailwind CSS'] },
+      { label: 'Données', items: ['PostgreSQL (Neon)', 'Prisma', 'Cloudflare R2'] },
+      { label: 'Services', items: ['Auth.js', 'Zod', 'Nodemailer (SMTP Gmail)', 'sharp'] },
       { label: 'Qualité', items: ['Vitest', 'Playwright', 'ESLint', 'Prettier', 'GitHub Actions'] },
     ],
     challenges: [
@@ -783,7 +783,7 @@ export const projectsData = [
       { icon: 'uil-lock', title: 'Photos privées', text: "Accès par URL présignée et purge automatique à échéance." },
     ],
     architecture: [
-      { icon: 'uil-desktop', label: 'Application', text: 'Next.js 15 (App Router) sur Vercel' },
+      { icon: 'uil-desktop', label: 'Application', text: 'Next.js (App Router) sur Vercel' },
       { icon: 'uil-layer-group', label: 'Modules métier', text: 'Un dossier par domaine dans src/modules' },
       { icon: 'uil-database', label: 'Données', text: 'PostgreSQL (Neon) via Prisma' },
       { icon: 'uil-package', label: 'Fichiers', text: 'Cloudflare R2, photos privées par URL présignée' },
@@ -801,8 +801,8 @@ export const projectsData = [
       ],
     },
     stack: [
-      { label: 'Application', items: ['Next.js 15', 'React 19', 'TypeScript strict', 'Tailwind CSS 4'] },
-      { label: 'Données', items: ['PostgreSQL (Neon)', 'Prisma 6', 'Cloudflare R2'] },
+      { label: 'Application', items: ['Next.js', 'React', 'TypeScript strict', 'Tailwind CSS'] },
+      { label: 'Données', items: ['PostgreSQL (Neon)', 'Prisma', 'Cloudflare R2'] },
       { label: 'Services', items: ['Auth.js', 'Zod', 'Nodemailer (SMTP Gmail)'] },
       { label: 'Qualité', items: ['Vitest', 'Playwright', 'axe-core', 'ESLint', 'Prettier'] },
     ],
@@ -814,7 +814,7 @@ export const projectsData = [
     ],
     uiChallenges: [
       { icon: 'uil-mobile-android', title: 'Pensé mobile', text: "Interface responsive en français, avec thème clair et sombre." },
-      { icon: 'uil-eye', title: 'Accessibilité visée', text: "Objectif WCAG 2.2 AA, contrôlé en partie avec axe-core dans les tests E2E." },
+      { icon: 'uil-eye', title: 'Accessibilité visée', text: "Objectif WCAG AA, contrôlé en partie avec axe-core dans les tests E2E." },
     ],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://hairstylebypati.vercel.app' },
@@ -883,7 +883,7 @@ export const projectsData = [
       ],
     },
     stack: [
-      { label: 'Langage', items: ['Python 3.11+'] },
+      { label: 'Langage', items: ['Python'] },
       { label: 'Vérification', items: ['mrz', 'OpenCV', 'Tesseract', 'NumPy', 'Pillow'] },
       { label: 'API et données', items: ['FastAPI', 'Uvicorn', 'cryptography', 'SQLite', 'Docker'] },
       { label: 'Qualité', items: ['pytest'] },
@@ -944,7 +944,7 @@ export const projectsData = [
       { icon: 'uil-shield-check', title: 'Isolation des comptes', text: "Un test d'intégration vérifie qu'un compte ne lit pas les tâches d'un autre." },
     ],
     architecture: [
-      { icon: 'uil-desktop', label: 'Frontend', text: 'React 19, Vite, Tailwind CSS 3, React Router 7, sur Vercel' },
+      { icon: 'uil-desktop', label: 'Frontend', text: 'React, Vite, Tailwind CSS, React Router, sur Vercel' },
       { icon: 'uil-server', label: 'API', text: 'Express en fonctions serverless sur Vercel, connexion MongoDB mise en cache' },
       { icon: 'uil-database', label: 'Données', text: 'MongoDB via Mongoose' },
       { icon: 'uil-shield-check', label: 'Accès', text: 'JWT, CORS en liste blanche' },
@@ -958,7 +958,7 @@ export const projectsData = [
       ],
     },
     stack: [
-      { label: 'Frontend', items: ['React 19', 'Vite', 'Tailwind CSS', 'React Router', 'Axios'] },
+      { label: 'Frontend', items: ['React', 'Vite', 'Tailwind CSS', 'React Router', 'Axios'] },
       { label: 'Backend', items: ['Node.js', 'Express', 'Mongoose', 'jsonwebtoken', 'bcryptjs'] },
       { label: 'Données', items: ['MongoDB'] },
       { label: 'Qualité', items: ['Jest', 'Supertest', 'mongodb-memory-server', 'ESLint'] },
@@ -1029,7 +1029,7 @@ export const projectsData = [
       { icon: 'uil-layer-group', label: 'Monorepo', text: 'pnpm et Turborepo' },
     ],
     stack: [
-      { label: 'Application', items: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS 4'] },
+      { label: 'Application', items: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'] },
       { label: 'Animation', items: ['Motion', 'GSAP', 'Lenis'] },
       { label: 'Outillage', items: ['pnpm', 'Turborepo', 'CVA', 'next-themes', 'cmdk'] },
     ],
@@ -1171,10 +1171,10 @@ export const projectsData = [
       {
         label: "Front",
         items: [
-          "React 18",
+          "React",
           "React Router",
-          "Vite 6",
-          "Tailwind CSS 3"
+          "Vite",
+          "Tailwind CSS"
         ]
       },
       {
@@ -1573,8 +1573,8 @@ export const projectsData = [
       { icon: 'uil-file-check-alt', title: 'Qualité', text: 'Webhook Stripe vérifié par signature, documentation Swagger, tests Jest et Vitest.' },
     ],
     architecture: [
-      { icon: 'uil-desktop', label: 'Frontend', text: 'React 19, Redux Toolkit, Tailwind CSS, i18next' },
-      { icon: 'uil-server', label: 'Backend', text: 'NestJS 11, MongoDB, Swagger' },
+      { icon: 'uil-desktop', label: 'Frontend', text: 'React, Redux Toolkit, Tailwind CSS, i18next' },
+      { icon: 'uil-server', label: 'Backend', text: 'NestJS, MongoDB, Swagger' },
       { icon: 'uil-credit-card', label: 'Paiement', text: 'Stripe, webhook signé' },
     ],
     challenges: [
@@ -1583,8 +1583,8 @@ export const projectsData = [
       { title: 'Paiements vérifiés', text: 'Le webhook Stripe est vérifié par signature.' },
     ],
     stack: [
-      { label: 'Front', items: ['React 19', 'Redux Toolkit', 'Tailwind CSS', 'i18next'] },
-      { label: 'Back', items: ['NestJS 11', 'MongoDB', 'Swagger'] },
+      { label: 'Front', items: ['React', 'Redux Toolkit', 'Tailwind CSS', 'i18next'] },
+      { label: 'Back', items: ['NestJS', 'MongoDB', 'Swagger'] },
       { label: 'Paiement', items: ['Stripe'] },
     ],
     links: [
@@ -1618,7 +1618,7 @@ export const projectsData = [
       { value: '3', label: "niveaux d'idempotence" },
     ],
     features: [
-      { icon: 'uil-google', title: 'Google OAuth 2.0', text: "Connexion Google et envoi via l'API Gmail." },
+      { icon: 'uil-google', title: 'Google OAuth', text: "Connexion Google et envoi via l'API Gmail." },
       { icon: 'uil-file-import', title: 'Modèles', text: 'Import CSV, modèles avec variables et aperçu en direct.' },
       { icon: 'uil-clock-three', title: 'Cadence maîtrisée', text: "Plafond de 450 envois par 24 h glissantes, pause aléatoire entre deux messages, envoi limité aux heures de bureau dans le fuseau de la campagne." },
       { icon: 'uil-history', title: 'Historique', text: "Historique des envois, relances, export des données et suppression du compte." },
@@ -1626,10 +1626,10 @@ export const projectsData = [
       { icon: 'uil-check-circle', title: 'Tests', text: 'Tests backend et parcours Playwright.' },
     ],
     architecture: [
-      { icon: 'uil-desktop', label: 'Frontend', text: 'React 19, TypeScript, Vite, Tailwind CSS' },
-      { icon: 'uil-server', label: 'API', text: 'Express 5, PostgreSQL (Neon)' },
+      { icon: 'uil-desktop', label: 'Frontend', text: 'React, TypeScript, Vite, Tailwind CSS' },
+      { icon: 'uil-server', label: 'API', text: 'Express, PostgreSQL (Neon)' },
       { icon: 'uil-processor', label: 'Worker', text: "Moteur d'envoi BullMQ / Redis" },
-      { icon: 'uil-envelope', label: 'Messagerie', text: 'API Gmail, Google OAuth 2.0' },
+      { icon: 'uil-envelope', label: 'Messagerie', text: 'API Gmail, Google OAuth' },
     ],
     challenges: [
       { title: 'Jamais deux fois le même message', text: "Un contact ne doit jamais recevoir deux fois le même mail, même si le worker s'arrête en plein envoi. Le moteur est idempotent sur trois niveaux : id de job, claim SQL et index unique." },
@@ -1637,9 +1637,9 @@ export const projectsData = [
       { title: 'Envoyer au bon moment', text: "Les envois restent dans les heures de bureau, selon le fuseau horaire de la campagne." },
     ],
     stack: [
-      { label: 'Front', items: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS'] },
-      { label: 'Back', items: ['Express 5', 'PostgreSQL (Neon)', 'BullMQ / Redis'] },
-      { label: 'Intégrations', items: ['API Gmail', 'Google OAuth 2.0', 'Playwright'] },
+      { label: 'Front', items: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'] },
+      { label: 'Back', items: ['Express', 'PostgreSQL (Neon)', 'BullMQ / Redis'] },
+      { label: 'Intégrations', items: ['API Gmail', 'Google OAuth', 'Playwright'] },
     ],
     links: [
       { kind: 'demo', label: 'Voir le site', url: 'https://campaignmailer.vercel.app' },
