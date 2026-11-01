@@ -76,14 +76,14 @@ const ContributionGraph = () => {
   const show = (e, d, x, y) => {
     const box = e.currentTarget.ownerSVGElement.getBoundingClientRect();
     const scale = box.width / width;
-    setTip({ d, left: (LEFT + x * STEP + CELL / 2) * scale, top: (TOP + y * STEP) * scale });
+    setTip({ d, below: y < 2, left: (LEFT + x * STEP + CELL / 2) * scale, top: (TOP + (y + (y < 2 ? 1 : 0)) * STEP) * scale });
   };
 
   return (
     <div className="gh-graph">
       <ul className="gh-stats">
         {yearTotal != null && <GithubStat value={yearTotal} label="contributions sur 12 mois" icon="uil-github-alt" />}
-        <GithubStat value={stats.total} label="contributions (5 mois)" icon="uil-code-branch" />
+        <GithubStat value={stats.total} label="contributions (8 mois)" icon="uil-code-branch" />
         <GithubStat value={stats.active} label="jours actifs" icon="uil-calendar-alt" />
         <GithubStat value={stats.streak} label="jours de série" icon="uil-fire" />
         <GithubStat value={stats.best} label="record sur 1 jour" icon="uil-trophy" />
@@ -95,7 +95,7 @@ const ContributionGraph = () => {
             className="gh-svg"
             viewBox={`0 0 ${width} ${height}`}
             role="img"
-            aria-label={`${stats.total} contributions GitHub sur les 5 derniers mois, ${stats.active} jours actifs`}
+            aria-label={`${stats.total} contributions GitHub sur les 8 derniers mois, ${stats.active} jours actifs`}
           >
             {layout.labels.map(l => (
               <text key={l.x} x={LEFT + l.x * STEP} y={14} className="gh-axis">{l.text}</text>
@@ -119,7 +119,7 @@ const ContributionGraph = () => {
             )))}
           </svg>
           {tip && (
-            <div className="gh-tip" style={{ left: tip.left, top: tip.top }} role="status">
+            <div className={`gh-tip${tip.below ? " gh-tip--below" : ""}`} style={{ left: tip.left, top: tip.top }} role="status">
               <strong>{tip.d.count} contribution{tip.d.count > 1 ? 's' : ''}</strong>
               <span>{fmtDate(tip.d.date)}</span>
             </div>
