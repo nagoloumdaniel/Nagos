@@ -180,6 +180,10 @@ VITE_EMAILJS_TEMPLATE_ID=...
 VITE_EMAILJS_PUBLIC_KEY=...
 ```
 
+Le modèle HTML du mail reçu (minimaliste, aux couleurs du design system, clair/sombre) est dans
+`emails/contact-notification.html` : à coller dans EmailJS (Email Templates > Edit Content > Code Editor).
+Variables : `{{name}}`, `{{email}}`, `{{message}}`, `{{date}}` ; Reply To = `{{email}}`.
+
 ---
 
 ## 🔍 SEO
