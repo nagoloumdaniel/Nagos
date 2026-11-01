@@ -11,7 +11,7 @@
     Variables : {{name}}, {{email}}, {{message}}, {{date}} (envoyées par Contact.jsx).
     Dans EmailJS : Email Templates > Content > Edit Content > Code Editor, coller ce fichier.
     Réglages : Subject = « Nouveau message de {{name}} », Reply To = {{email}}.
-    Aucune variable ne sert d'URL ni d'attribut HTML (EmailJS échappe le texte, pas les liens).
+    {{email}} sert aussi dans les liens mailto : EmailJS échappe les variables en {{double accolades}}.
   -->
   <style>
     @media (prefers-color-scheme: dark) {
@@ -72,7 +72,7 @@
                       </tr>
                       <tr>
                         <td width="90" valign="top" style="font-family:'JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#737373;padding:3px 0;" class="muted">Email</td>
-                        <td valign="top" class="ink" style="font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#171717;padding:0;">{{email}}</td>
+                        <td valign="top" class="ink" style="font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:1.5;color:#171717;padding:0;"><a href="mailto:{{email}}" class="ink" style="color:#171717;text-decoration:underline;">{{email}}</a></td>
                       </tr>
                     </table>
                   </td>
@@ -86,12 +86,12 @@
                   </td>
                 </tr>
 
-                <!-- Action : répondre (le bouton de mailto utilise Reply To ; lien volontairement absent des variables) -->
+                <!-- Action : répondre -->
                 <tr>
-                  <td class="pad rule" style="padding:24px 36px 36px 36px;border-top:1px solid #E5E5E5;">
-                    <div class="muted" style="font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-size:13px;line-height:1.6;color:#737373;">
-                      Répondez directement à cet e-mail : la réponse part vers {{name}}.
-                    </div>
+                  <td class="pad rule" style="padding:28px 36px 36px 36px;border-top:1px solid #E5E5E5;">
+                    <a href="mailto:{{email}}?subject=Re:%20Message%20depuis%20mon%20portfolio" class="btn" style="display:inline-block;background-color:#171717;color:#FAFAFA;font-family:Inter,'Helvetica Neue',Arial,sans-serif;font-size:14px;font-weight:600;line-height:1;text-decoration:none;padding:15px 26px;border-radius:0;">
+                      Répondre à {{name}} &rarr;
+                    </a>
                   </td>
                 </tr>
 
@@ -102,7 +102,8 @@
           <!-- Pied -->
           <tr>
             <td style="padding:20px 0 0 0;font-family:'JetBrains Mono',Menlo,Consolas,monospace;font-size:11px;letter-spacing:0.08em;color:#A3A3A3;" class="muted">
-              Envoyé depuis le formulaire de contact · nagoloum.vercel.app
+              Daniel Nagoloum Talla · Développeur Full Stack<br>
+              Formulaire de contact · nagoloum.vercel.app
             </td>
           </tr>
 
