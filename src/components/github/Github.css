@@ -57,12 +57,11 @@ body.dark-theme .github, body.dark-theme .gh-repo {
 
 /* Infobulle */
 .gh-tip {
-  position: absolute; z-index: 5; transform: translate(-50%, calc(-100% - 8px));
+  position: fixed; z-index: 1000; transform: translate(-50%, calc(-100% - 8px));
   display: flex; flex-direction: column; gap: 0.1rem; padding: 0.4rem 0.6rem; pointer-events: none; white-space: nowrap;
   background: var(--container-color); border: 1px solid var(--glass-border); box-shadow: 0 6px 20px rgba(0,0,0,.18);
   font-family: var(--mono-font); font-size: var(--tiny-font-size); color: var(--text-color);
 }
-.gh-tip--below { transform: translate(-50%, 8px); }
 .gh-tip strong { color: var(--title-color); font-weight: var(--font-semi-bold); }
 
 /* Graphique par projet */
