@@ -4,8 +4,8 @@ import usePageMeta from '../hooks/usePageMeta';
 
 const BlogPage = () => {
   usePageMeta({
-    title: 'Blog - Daniel NAGOLOUM TALLA | Retours d’expérience tech',
-    description: "Articles de Daniel NAGOLOUM TALLA : moteur d'envoi de Campaign Mailer, audit d'Allibuy, IA et backtesting sur NexaGold, stage chez DATALIA, sécurité JWT et travail avec Claude Code.",
+    title: 'Blog - Daniel NAGOLOUM TALLA | Actualité, idées et regards critiques sur la tech',
+    description: "Blog de Daniel NAGOLOUM TALLA : actualité tech, pensée critique et philosophique (IA, vie privée, logiciel libre, attention), divers et retours d'expérience sur ses projets.",
     path: '/blog',
   });
   return (

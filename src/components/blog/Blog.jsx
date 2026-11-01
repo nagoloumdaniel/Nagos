@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { posts } from './posts';
 import './Blog.css';
@@ -30,15 +30,38 @@ const BlogCard = ({ post }) => (
   </Link>
 );
 
+const ALL = 'Tous';
+
 const Blog = () => {
+  const [filter, setFilter] = useState(ALL);
+  const categories = useMemo(() => [ALL, ...new Set(posts.map(p => p.category))], []);
+  const shown = filter === ALL ? posts : posts.filter(p => p.category === filter);
+
   return (
     <section className="blog section" id="blog">
-      <span className="section__subtitle">Aventures & Apprentissages</span>
+      <span className="section__subtitle">Actualité, idées & regards critiques</span>
       <h2 className="section__title reveal">Mon Blog</h2>
+      <p className="blog__intro container">
+        Ce que je lis, ce que j'observe et ce que je pense de la tech : actualité, remises en question,
+        réflexions de fond et quelques retours d'expérience sur mes projets.
+      </p>
 
+      <div className="blog__filters container" role="group" aria-label="Filtrer par catégorie">
+        {categories.map(c => (
+          <button
+            key={c}
+            type="button"
+            className={`blog__filter${filter === c ? ' is-active' : ''}`}
+            aria-pressed={filter === c}
+            onClick={() => setFilter(c)}
+          >
+            {c}
+          </button>
+        ))}
+      </div>
 
       <div className="blog__grid container">
-        {posts.map(post => (
+        {shown.map(post => (
           <BlogCard key={post.id} post={post} />
         ))}
       </div>

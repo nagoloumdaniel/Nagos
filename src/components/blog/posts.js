@@ -1,13 +1,101 @@
 /* Un paragraphe commence par un intertitre en gras : '**Intertitre.** Texte…' */
 /*
-  Articles rédigés à partir des dépôts et de la documentation des projets (septembre 2026).
-  Chaque fait technique (chiffre, choix, bug) est vérifiable dans le code du projet concerné.
+  Ligne éditoriale : actualité tech, divers, pensée critique et philosophique sur la tech.
+  Les articles « Retour d'expérience » viennent des dépôts et de la documentation des projets (septembre 2026) :
+  chaque fait technique (chiffre, choix, bug) y est vérifiable dans le code du projet concerné.
+  Les articles d'opinion n'avancent aucun chiffre non sourcé.
   Un paragraphe peut commencer par un intertitre en gras : '**Intertitre.** Texte…'
 */
 export const posts = [
   {
+    id: 'ia-code-comprendre',
+    category: 'Pensée critique',
+    date: 'Novembre 2026',
+    readTime: '5 min',
+    title: "Quand l'IA écrit le code, que reste-t-il à comprendre ?",
+    excerpt: "Générer du code n'a jamais été aussi facile. Comprendre ce qu'on livre, lui, n'a pas changé de prix. Une réflexion de développeur qui utilise ces outils tous les jours.",
+    tags: ['IA', 'Développement', 'Responsabilité'],
+    icon: 'uil-brain',
+    paragraphs: [
+      "J'utilise des assistants de code tous les jours, et je ne reviendrai pas en arrière. Mais plus je les utilise, plus une question me poursuit : si le code arrive plus vite que ma capacité à le lire, qui répond de ce qui part en production ?",
+      "**Écrire n'est pas comprendre.** Pendant longtemps, écrire du code et le comprendre étaient un seul geste. On ne pouvait pas produire ce qu'on ne saisissait pas. Aujourd'hui les deux se séparent. On peut obtenir un module qui compile, passe les tests et se lit proprement, sans avoir traversé le raisonnement qui l'a produit.",
+      "**Le risque est discret.** Un code faux qui plante se voit. Un code plausible qui se trompe sur un cas limite dort jusqu'au jour où il coûte cher. Plus l'outil est fluide, plus la tentation de relire en diagonale grandit. C'est un biais humain ordinaire, pas un défaut de l'outil.",
+      "**Ma règle personnelle.** Je ne fusionne rien que je ne sache expliquer à voix haute, ligne par ligne si nécessaire. Si je n'y arrive pas, soit je demande à l'outil de m'expliquer et je vérifie sa réponse, soit je réécris à la main la partie qui m'échappe. Cela coûte moins cher qu'un bug.",
+      "**Ce qui prend de la valeur.** Savoir formuler un problème, découper, choisir ce qu'il ne faut pas faire, relire avec méfiance, écrire le test qui piège le cas limite. Ces gestes ont toujours existé. Ils deviennent simplement le cœur du métier, au lieu d'en être la périphérie.",
+      "**Une question ouverte.** Je ne sais pas ce que devient un débutant qui n'a jamais écrit une boucle à la main. Peut-être qu'il apprendra autrement, peut-être qu'il lui manquera quelque chose. Je préfère le dire plutôt que de faire semblant d'avoir la réponse.",
+    ],
+  },
+  {
+    id: 'vitesse-et-attention',
+    category: 'Philosophie',
+    date: 'Novembre 2026',
+    readTime: '5 min',
+    title: "Aller vite : ce que la tech nous a pris en échange",
+    excerpt: "Chaque outil promet de nous faire gagner du temps. Où va ce temps gagné ? Une réflexion sur la vitesse, l'attention et le sens de ce qu'on construit.",
+    tags: ['Attention', 'Productivité', 'Réflexion'],
+    icon: 'uil-hourglass',
+    paragraphs: [
+      "On mesure la tech à sa vitesse : pages qui chargent en un éclair, messages instantanés, livraisons en continu. Pourtant, le sentiment d'avoir du temps n'a rarement été aussi faible. Ce décalage mérite qu'on s'y arrête.",
+      "**Le temps gagné ne reste pas libre.** Un outil qui fait gagner une heure ne la laisse presque jamais vide : elle est aussitôt remplie par une tâche de plus. Le gain de productivité se transforme en hausse des attentes. Je l'observe partout, de l'e-mail au déploiement continu.",
+      "**L'attention est le vrai goulot.** On peut accélérer les machines. On ne peut pas accélérer la compréhension d'un problème difficile. Une notification n'interrompt pas seulement une tâche, elle coûte le temps de retrouver le fil. Concevoir un produit qui sollicite sans cesse, c'est puiser dans une ressource que l'utilisateur ne peut pas recréer.",
+      "**Ce que je change à mon échelle.** Des plages de travail sans messagerie, des notifications coupées par défaut, et une question avant d'ajouter une fonctionnalité : fait-elle gagner du temps à l'utilisateur, ou lui en prend-elle ? Ce ne sont pas de grands principes, juste des garde-fous.",
+      "**La lenteur a des qualités.** Une décision d'architecture réfléchie pendant une journée vaut souvent mieux que dix versions bâclées. Aller vite est utile quand on sait où l'on va. Sinon, on arrive plus tôt au mauvais endroit.",
+    ],
+  },
+  {
+    id: 'vie-privee-gratuit',
+    category: 'Pensée critique',
+    date: 'Novembre 2026',
+    readTime: '5 min',
+    title: "« C'est gratuit » : qui paie vraiment le service ?",
+    excerpt: "Derrière beaucoup de services gratuits, il y a un modèle économique. Comment le lire, et ce que cela change quand on construit soi-même une application.",
+    tags: ['Vie privée', 'Données', 'Éthique'],
+    icon: 'uil-shield-check',
+    paragraphs: [
+      "Un service gratuit a toujours un coût, il est simplement porté par quelqu'un ou quelque chose d'autre. Le plus souvent, par notre attention ou par nos données. La formule est connue. Ce qu'elle implique pour ceux qui développent l'est moins.",
+      "**Lire le modèle économique.** Avant d'adopter un outil, je me pose une question simple : comment gagne-t-il de l'argent ? Abonnement, publicité, revente de données, investisseurs qui attendent une croissance à tout prix. Chaque réponse oriente les décisions du produit, y compris celles qu'on ne voit pas.",
+      "**Quand on construit, on choisit.** Chaque champ ajouté à un formulaire, chaque traceur ajouté à une page est une décision. Collecter par défaut est facile. Se demander de quoi on a réellement besoin l'est moins, et c'est pourtant la meilleure protection : une donnée qu'on ne stocke pas ne peut ni fuiter ni être détournée.",
+      "**Le consentement n'est pas un décor.** Une bannière qu'on accepte par lassitude ne vaut pas un vrai choix. Je préfère un site qui collecte peu et le dit clairement à un site qui collecte beaucoup derrière une interface pensée pour qu'on clique sur « accepter ».",
+      "**Mon avis, assumé.** Payer un service à son juste prix est souvent plus sain que le recevoir « gratuitement ». Et pour un développeur, concevoir en sobriété de données relève autant du métier que de l'éthique.",
+    ],
+  },
+  {
+    id: 'logiciel-libre-confiance',
+    category: 'Actualité tech',
+    date: 'Novembre 2026',
+    readTime: '4 min',
+    title: "Logiciel libre : pourquoi la confiance ne se décrète pas",
+    excerpt: "Ouvrir le code ne suffit pas à le rendre sûr. Ce que le libre apporte réellement, ce qu'il ne garantit pas, et pourquoi la maintenance reste le sujet oublié.",
+    tags: ['Open source', 'Sécurité', 'Maintenance'],
+    icon: 'uil-code-branch',
+    paragraphs: [
+      "Presque tous mes projets reposent sur des briques libres : un framework, une bibliothèque, un moteur de base de données. J'en dépends sans toujours en mesurer le poids. Le sujet reste d'actualité dans la tech, parce que cette dépendance est devenue totale.",
+      "**Code visible ne veut pas dire code vérifié.** On entend souvent que le libre est plus sûr parce que tout le monde peut le lire. En pratique, très peu de gens lisent réellement chaque dépendance. La possibilité de vérifier est précieuse, mais elle ne remplace pas quelqu'un qui le fait.",
+      "**Des mainteneurs rarement rémunérés.** Des bibliothèques utilisées par de très nombreuses applications reposent parfois sur une ou deux personnes, souvent bénévoles. Quand l'une d'elles s'épuise, tout l'écosystème en aval en subit les conséquences. Le risque n'est pas seulement technique, il est humain.",
+      "**Ce que je fais concrètement.** Je limite le nombre de dépendances, je regarde l'activité d'un dépôt avant de l'adopter, je fige les versions et je lance régulièrement un audit de dépendances. Quand un projet me sert beaucoup, je signale ses bugs proprement, ou je contribue quand j'en suis capable.",
+      "**La confiance se construit.** Elle vient de la transparence, de la régularité et de la manière dont un projet traite ses failles. C'est un meilleur critère de choix que le nombre d'étoiles.",
+    ],
+  },
+  {
+    id: 'apprendre-loin-des-poles-tech',
+    category: 'Divers',
+    date: 'Novembre 2026',
+    readTime: '4 min',
+    title: "Apprendre à coder loin des grands pôles tech : ce que j'en retiens",
+    excerpt: "Pas besoin d'être dans la bonne ville pour progresser. Mais certaines contraintes, connexion, matériel, ressources en français, façonnent une façon de travailler.",
+    tags: ['Parcours', 'Apprentissage', 'Sobriété'],
+    icon: 'uil-globe',
+    paragraphs: [
+      "On parle beaucoup de la tech depuis les grands pôles où elle se fabrique. On parle moins de ce que c'est que d'apprendre et de construire depuis un autre point de départ. Voici quelques réflexions personnelles, sans prétention de généralité.",
+      "**Les contraintes enseignent.** Quand la connexion est lente ou le matériel limité, on apprend vite à écrire des pages légères, à penser hors ligne, à ne pas gaspiller. Ces réflexes servent partout : une application sobre fonctionne mieux chez tout le monde.",
+      "**La langue est un sujet à part entière.** Beaucoup de documentation de qualité est en anglais. Lire l'anglais technique est devenu une compétence de base, mais je reste convaincu qu'il faut aussi expliquer en français, pour que d'autres entrent plus facilement dans le métier.",
+      "**Construire en public aide.** Documenter ses projets, publier ses erreurs, écrire sur ce qu'on apprend : cela remplace en partie le réseau qu'on n'a pas autour de soi. C'est une des raisons d'être de ce blog.",
+      "**Ce que j'aimerais voir.** Plus de produits pensés pour des usages locaux, plus de ressources techniques en français, plus de place pour des profils qui ne ressemblent pas au portrait habituel du développeur. Ce n'est pas une revendication, c'est une direction.",
+    ],
+  },
+  {
     id: 'campaign-mailer-idempotence',
-    category: 'Projet',
+    category: "Retour d'expérience",
     date: 'Septembre 2026',
     readTime: '6 min',
     title: 'Campaign Mailer : ne jamais envoyer deux fois le même e-mail',
@@ -26,7 +114,7 @@ export const posts = [
   },
   {
     id: 'portail-test-technique',
-    category: 'Projet',
+    category: "Retour d'expérience",
     date: 'Septembre 2026',
     readTime: '5 min',
     title: 'Deux jours de test technique : le portail de dépôt de pièces',
@@ -44,7 +132,7 @@ export const posts = [
   },
   {
     id: 'allibuy-audit',
-    category: 'Projet',
+    category: "Retour d'expérience",
     date: 'Septembre 2026',
     readTime: '5 min',
     title: "Allibuy : ce que l'audit de mon propre code m'a appris",
@@ -62,7 +150,7 @@ export const posts = [
   },
   {
     id: 'claude-code-methode',
-    category: 'Méthode',
+    category: "Retour d'expérience",
     date: 'Septembre 2026',
     readTime: '4 min',
     title: 'Coder avec Claude Code sans lui laisser le volant',
@@ -80,7 +168,7 @@ export const posts = [
   },
   {
     id: 'nexagold-ia',
-    category: 'Data & IA',
+    category: "Retour d'expérience",
     date: 'Juillet 2026',
     readTime: '6 min',
     title: "NexaGold : quand mon modèle d'IA a fait moins bien que le hasard",
@@ -99,7 +187,7 @@ export const posts = [
   },
   {
     id: 'stage-datalia',
-    category: 'Parcours',
+    category: "Retour d'expérience",
     date: 'Juillet 2026',
     readTime: '4 min',
     title: 'Mon stage de développeur front-end chez DATALIA',
@@ -117,7 +205,7 @@ export const posts = [
   },
   {
     id: 'rememberme-jwt',
-    category: 'Technique',
+    category: "Retour d'expérience",
     date: 'Janvier 2026',
     readTime: '4 min',
     title: "RememberMe : sécuriser une API REST avec JWT, et ce que j'ai changé depuis",
@@ -134,7 +222,7 @@ export const posts = [
   },
   {
     id: 'bots-trading-mt5',
-    category: 'Data & IA',
+    category: "Retour d'expérience",
     date: 'Janvier 2026',
     readTime: '5 min',
     title: 'XAUFxBot et SYNFxBot : mes premiers bots de trading et leurs limites',

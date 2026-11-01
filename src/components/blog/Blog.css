@@ -1,4 +1,36 @@
 /* ─── BLOG ───────────────────────────────────────────────── */
+/* ── Intro + filtres ── */
+.blog__intro {
+  max-width: 46rem;
+  margin: -0.5rem auto 1.75rem;
+  text-align: center;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+.blog__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.blog__filter {
+  min-height: 40px;
+  padding: 0.4rem 0.9rem;
+  font-family: var(--mono-font);
+  font-size: var(--tiny-font-size);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  background: transparent;
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+}
+.blog__filter:hover { color: var(--title-color); border-color: var(--text-color); }
+.blog__filter.is-active { color: var(--title-color); border-color: var(--accent); background: var(--glass-bg); }
+.blog__filter:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
 /* ── Grid ── */
 .blog__grid {
   display: grid;
