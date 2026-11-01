@@ -207,7 +207,7 @@ export const projectsData = [
     summary: "Marketplace de vêtements de seconde main entre particuliers au Cameroun, avec paiement Mobile Money sécurisé par séquestre et livraison dédiée.",
     overview: "Zolya met en relation vendeurs et acheteurs de vêtements d'occasion à Douala et Yaoundé. L'argent de l'acheteur reste bloqué en séquestre jusqu'à la réception de l'article, et une application dédiée aux livreurs (Zolya Delivery) assure le dernier kilomètre. Le code est quasiment complet ; l'application se prépare à la publication et n'est pas encore sur les stores.",
     role: "Projet personnel de bout en bout : produit, architecture, API, applications mobiles et administration web. Développé en solo, avec l'assistance de Claude.",
-    repos: ['Zolya'],
+    repos: [],
     meta: {
       country: 'Cameroun (Douala, Yaoundé)',
       languages: ['Français', 'Anglais'],
@@ -301,7 +301,7 @@ export const projectsData = [
       hosting: 'Vercel (web et API), Railway (worker)',
     },
     figures: [
-      { value: '284', label: 'commits en 3 mois' },
+      { value: '288', label: 'commits depuis juillet 2026' },
       { value: '38', label: 'modèles Prisma' },
       { value: '6', label: 'types de contrat' },
       { value: '19', label: 'paquets dans le monorepo' },
