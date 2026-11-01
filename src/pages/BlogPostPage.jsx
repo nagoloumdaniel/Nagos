@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { posts, getSections } from '../components/blog/posts';
+import { posts, getSections, defaultPoints } from '../components/blog/posts';
 import NotFoundPage from './NotFoundPage';
 import usePageMeta from '../hooks/usePageMeta';
 import useSectionNav from '../hooks/useSectionNav';
@@ -70,6 +70,13 @@ const PostDetail = ({ post, prev, next }) => {
                 {s.paras.map((t, k) => <p key={k} className="pj-prose">{t}</p>)}
               </section>
             ))}
+
+            <aside className="pj-points" aria-labelledby="pj-points-title">
+              <h2 id="pj-points-title" className="pj-points__title">À retenir sur ce blog</h2>
+              <ul className="pj-points__list">
+                {defaultPoints.map(pt => <li key={pt}>{pt}</li>)}
+              </ul>
+            </aside>
           </main>
         </div>
 

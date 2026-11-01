@@ -5,27 +5,24 @@ import './Blog.css';
 
 
 
-const BlogCard = ({ post }) => (
+const BlogCard = ({ post, index }) => (
   <Link
     to={`/blog/${post.id}`}
     className="blog__card reveal-scale"
     aria-label={`Lire l'article : ${post.title}`}
   >
-    <div className="blog__card-header">
+    <div className="blog__card-top">
+      <span className="blog__card-no" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
       <span className="blog__card-category">{post.category}</span>
-      <i className={`uil ${post.icon} blog__card-icon`} aria-hidden="true" />
     </div>
-    <div className="blog__card-body">
-      <div className="blog__card-meta">
-        <span><i className="uil uil-calendar-alt" aria-hidden="true" /> {post.date}</span>
-        <span><i className="uil uil-clock" aria-hidden="true" /> {post.readTime}</span>
-      </div>
-      <h3 className="blog__card-title">{post.title}</h3>
-      <p className="blog__card-excerpt">{post.excerpt}</p>
-      <div className="blog__card-tags">
-        {post.tags.map(tag => <span key={tag} className="blog__tag">{tag}</span>)}
-      </div>
-      <span className="blog__read-btn" aria-hidden="true">Lire l'article <i className="uil uil-arrow-right" /></span>
+    <h3 className="blog__card-title">{post.title}</h3>
+    <p className="blog__card-excerpt">{post.excerpt}</p>
+    <div className="blog__card-tags">
+      {post.tags.slice(0, 3).map(tag => <span key={tag} className="blog__tag">{tag}</span>)}
+    </div>
+    <div className="blog__card-foot">
+      <span className="blog__card-meta">{post.date} · {post.readTime}</span>
+      <span className="blog__read-btn" aria-hidden="true">Lire <i className="uil uil-arrow-right" /></span>
     </div>
   </Link>
 );
@@ -61,8 +58,8 @@ const Blog = () => {
       </div>
 
       <div className="blog__grid container">
-        {shown.map(post => (
-          <BlogCard key={post.id} post={post} />
+        {shown.map((post, i) => (
+          <BlogCard key={post.id} post={post} index={i} />
         ))}
       </div>
 
