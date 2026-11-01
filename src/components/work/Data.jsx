@@ -301,7 +301,6 @@ export const projectsData = [
       hosting: 'Vercel (web et API), Railway (worker)',
     },
     figures: [
-      { value: '288', label: 'commits depuis juillet 2026' },
       { value: '38', label: 'modèles Prisma' },
       { value: '6', label: 'types de contrat' },
       { value: '19', label: 'paquets dans le monorepo' },
