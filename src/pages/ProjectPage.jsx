@@ -284,6 +284,18 @@ const SECTIONS = [
   },
 ];
 
+/* Raison affichée quand une section n'a pas (encore) de contenu : toutes les pages gardent les mêmes 12 points. */
+const emptyReason = (s, p) => {
+  if (s.id === 'github' && !p.private) return 'Aucun dépôt public pour le moment.';
+  if (p.private) return 'Privé : cette partie n’est pas publiée pour ce projet.';
+  if (p.wip) return 'À venir : le projet est en cours de développement.';
+  return 'Non renseigné pour le moment.';
+};
+
+const Empty = ({ text }) => (
+  <p className="pj-empty"><i className="uil uil-info-circle" aria-hidden="true" /> {text}</p>
+);
+
 const ProjectDetail = ({ project, prev, next }) => {
   usePageMeta({
     title: `${project.title} - Projet | Daniel NAGOLOUM TALLA`,
@@ -291,7 +303,8 @@ const ProjectDetail = ({ project, prev, next }) => {
     path: `/portfolio/${project.id}`,
   });
 
-  const sections = useMemo(() => SECTIONS.filter(s => s.has(project)), [project]);
+  // Toujours les 12 mêmes sections, dans le même ordre ; `filled` indique si elles ont du contenu
+  const sections = useMemo(() => SECTIONS.map(s => ({ ...s, filled: Boolean(s.has(project)) })), [project]);
   const ids = useMemo(() => sections.map(s => s.id), [sections]);
   const active = useSectionNav(ids);
 
@@ -351,7 +364,7 @@ const ProjectDetail = ({ project, prev, next }) => {
                 <li key={s.id}>
                   <a
                     href={`#${s.id}`}
-                    className={`pj-nav__link${active === s.id ? ' is-active' : ''}`}
+                    className={`pj-nav__link${active === s.id ? ' is-active' : ''}${s.filled ? '' : ' is-empty'}`}
                     aria-current={active === s.id ? 'true' : undefined}
                   >
                     <span className="pj-nav__no">{String(i + 1).padStart(2, '0')}</span>
@@ -377,7 +390,7 @@ const ProjectDetail = ({ project, prev, next }) => {
                   <i className={`uil ${s.icon}`} aria-hidden="true" />
                   {s.title}
                 </h2>
-                {s.render(project)}
+                {s.filled ? s.render(project) : <Empty text={emptyReason(s, project)} />}
               </section>
             ))}
           </main>
