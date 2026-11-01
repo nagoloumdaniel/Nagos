@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
+import React, { useEffect, useMemo, useState } from 'react';
 import { getContributions, GITHUB_USER } from '../../lib/github';
 import useAsyncData from '../../hooks/useAsyncData';
 import GithubStat from './GithubStat';
@@ -35,6 +36,13 @@ const ContributionGraph = () => {
   const [tip, setTip] = useState(null);
   const days = data?.data?.days;
   const yearTotal = data?.data?.yearTotal;
+
+  useEffect(() => {
+    if (!tip) return undefined;
+    const hide = () => setTip(null);
+    window.addEventListener('scroll', hide, { passive: true });
+    return () => window.removeEventListener('scroll', hide);
+  }, [tip]);
 
   const layout = useMemo(() => {
     if (!days) return null;
@@ -73,17 +81,18 @@ const ContributionGraph = () => {
   const stats = computeStats(days);
   const width = LEFT + layout.weeks.length * STEP;
   const height = TOP + 7 * STEP;
-  const show = (e, d, x, y) => {
-    const box = e.currentTarget.ownerSVGElement.getBoundingClientRect();
-    const scale = box.width / width;
-    setTip({ d, left: (LEFT + x * STEP + CELL / 2) * scale, top: (TOP + y * STEP) * scale });
+  // Position fixe (viewport) : l'infobulle sort du conteneur scrollable et passe au-dessus de la section précédente
+  const show = (e, d) => {
+    const r = e.currentTarget.getBoundingClientRect();
+    setTip({ d, left: r.left + r.width / 2, top: r.top });
   };
+
 
   return (
     <div className="gh-graph">
       <ul className="gh-stats">
         {yearTotal != null && <GithubStat value={yearTotal} label="contributions sur 12 mois" icon="uil-github-alt" />}
-        <GithubStat value={stats.total} label="contributions (5 mois)" icon="uil-code-branch" />
+        <GithubStat value={stats.total} label="contributions (8 mois)" icon="uil-code-branch" />
         <GithubStat value={stats.active} label="jours actifs" icon="uil-calendar-alt" />
         <GithubStat value={stats.streak} label="jours de série" icon="uil-fire" />
         <GithubStat value={stats.best} label="record sur 1 jour" icon="uil-trophy" />
@@ -95,7 +104,7 @@ const ContributionGraph = () => {
             className="gh-svg"
             viewBox={`0 0 ${width} ${height}`}
             role="img"
-            aria-label={`${stats.total} contributions GitHub sur les 5 derniers mois, ${stats.active} jours actifs`}
+            aria-label={`${stats.total} contributions GitHub sur les 8 derniers mois, ${stats.active} jours actifs`}
           >
             {layout.labels.map(l => (
               <text key={l.x} x={LEFT + l.x * STEP} y={14} className="gh-axis">{l.text}</text>
@@ -113,17 +122,17 @@ const ContributionGraph = () => {
                 rx="5"
                 className={`gh-cell gh-l${d.count === 0 ? 0 : d.level}`}
                 style={{ animationDelay: `${x * 28 + y * 6}ms` }}
-                onMouseEnter={(e) => show(e, d, x, y)}
-                onTouchStart={(e) => show(e, d, x, y)}
+                onMouseEnter={(e) => show(e, d)}
+                onTouchStart={(e) => show(e, d)}
               />
             )))}
           </svg>
-          {tip && (
+          {tip && createPortal(
             <div className="gh-tip" style={{ left: tip.left, top: tip.top }} role="status">
               <strong>{tip.d.count} contribution{tip.d.count > 1 ? 's' : ''}</strong>
               <span>{fmtDate(tip.d.date)}</span>
             </div>
-          )}
+          , document.body)}
         </div>
       </div>
 

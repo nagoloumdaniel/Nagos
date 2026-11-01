@@ -5,6 +5,7 @@
 
 export const GITHUB_USER = 'nagoloumdaniel';
 export const WINDOW_DAYS = 154; // 22 semaines ≈ 5 mois
+export const CONTRIB_DAYS = 252; // 36 semaines ≈ 8 mois, pour remplir la largeur du calendrier
 
 const API = 'https://api.github.com';
 const CONTRIB_API = 'https://github-contributions-api.jogruber.de/v4';
@@ -47,12 +48,12 @@ const getJson = async (url) => {
 
 const iso = (d) => d.toISOString().slice(0, 10);
 
-/* ── Contributions des 5 derniers mois ───────────────────── */
+/* ── Contributions des 8 derniers mois ───────────────────── */
 export function getContributions(force) {
-  return cached('gh:contrib:v2', CONTRIB_TTL, async () => {
+  return cached('gh:contrib:v3', CONTRIB_TTL, async () => {
     const json = await getJson(`${CONTRIB_API}/${GITHUB_USER}?y=last`);
     const start = new Date();
-    start.setUTCDate(start.getUTCDate() - (WINDOW_DAYS - 1));
+    start.setUTCDate(start.getUTCDate() - (CONTRIB_DAYS - 1));
     // Début sur un lundi : colonnes de semaines pleines, du lundi au dimanche
     start.setUTCDate(start.getUTCDate() - ((start.getUTCDay() + 6) % 7));
     const from = iso(start);
