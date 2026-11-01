@@ -394,3 +394,10 @@ body.dark-theme .pj-tag--wip { border-color: #60a5fa; color: #93c5fd; }
 
 /* ── Article de blog ── */
 .pj-prose { max-width: 46rem; line-height: 1.85; color: var(--text-color); margin-bottom: 1rem; }
+
+/* Liste de points par défaut, identique sur tous les articles */
+.pj-points { max-width: 46rem; margin-top: 2rem; padding: 1.5rem 1.75rem; border: 1px solid var(--glass-border); border-radius: 0; background: var(--glass-bg); }
+.pj-points__title { font-family: var(--mono-font); font-size: var(--tiny-font-size); letter-spacing: 0.12em; text-transform: uppercase; color: var(--title-color); margin-bottom: 1rem; }
+.pj-points__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.pj-points__list li { position: relative; padding-left: 1.4rem; line-height: 1.7; color: var(--text-color); }
+.pj-points__list li::before { content: ''; position: absolute; left: 0; top: 0.7em; width: 0.5rem; height: 0.5rem; background: var(--accent); }
