@@ -8,7 +8,7 @@ import Services       from '../components/services/Services';
 import Qualifications from '../components/qualifications/Qualifications';
 import Contact        from '../components/contact/Contact';
 import usePageMeta    from '../hooks/usePageMeta';
-import useHomeCraft   from '../lib/craft/useHomeCraft';
+import useHomeCraft, { goToSection } from '../lib/craft/useHomeCraft';
 
 const HomePage = () => {
   const { hash } = useLocation();
@@ -21,12 +21,7 @@ const HomePage = () => {
   });
 
   useEffect(() => {
-    if (!hash) return;
-    const id = hash.slice(1);
-    requestAnimationFrame(() => {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+    if (hash) goToSection(hash.slice(1));
   }, [hash]);
 
   return (

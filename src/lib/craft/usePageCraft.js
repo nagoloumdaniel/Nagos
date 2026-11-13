@@ -60,11 +60,7 @@ export default function usePageCraft(rootRef) {
         if (last && top - last.top < vh * 0.6) last.items.push(t);
         else bands.push({ top, items: [t] });
       });
-      const bandPlans = bands.map((b) => ({
-        top: b.top,
-        plan: planCraft(root, b.items.map(({ top, ...t }, i) => ({ ...t, at: at(top - b.top, i) - 0.15 }))),
-      }));
-      if (!mainPlan && !navPlan && !bandPlans.length) { if (headerMine) releaseHeader(); return; }
+      if (!mainPlan && !navPlan && !bands.length) { if (headerMine) releaseHeader(); return; }
 
       /* ─── Écriture ─── */
       const parts = [];
@@ -76,32 +72,54 @@ export default function usePageCraft(rootRef) {
       tl.timeScale(Math.max(1, tl.duration() / MAX_DUR));
       tl.play();
 
-      const bandCrafts = bandPlans.map(({ plan, top }) => {
-        const btl = gsap.timeline({ paused: true });
-        const craft = buildCraft(btl, { plan, k: 1, lanes: Math.min(8, Math.max(3, Math.ceil(plan.items.length / 3))), frame: false });
-        btl.timeScale(Math.max(1, btl.duration() / 4));
-        btl.eventCallback('onComplete', () => { craft.finish(); craft.dispose(); });
+      /* Une bande est mesurée au moment où elle arrive à l'écran, pas au chargement :
+         images, données et polices arrivées entre-temps sont prises en compte, et un
+         contenu ajouté plus tard (projet, article) se construit à ses vraies cotes. */
+      const bandCrafts = bands.map((b) => {
+        const els = b.items.map((t) => t.el);
+        els.forEach((el) => el.classList.add('craft-wait-el'));
+        const band = { started: false, btl: null, craft: null, st: null, els };
+        band.run = () => {
+          if (band.started || !alive) return;
+          band.started = true;
+          band.st?.kill();
+          els.forEach((el) => el.classList.remove('craft-wait-el'));
+          /* Repère = bloc parent : si le contenu au-dessus change de hauteur, les cadres suivent */
+          const plan = planCraft(els[0].parentElement || root, b.items.map(({ top, ...t }, i) => ({ ...t, at: at(top - b.top, i) - 0.15 })));
+          const btl = gsap.timeline({ paused: true });
+          const craft = buildCraft(btl, { plan, k: 1, lanes: Math.min(8, Math.max(3, Math.ceil(plan.items.length / 3))), frame: false });
+          btl.timeScale(Math.max(1, btl.duration() / 4));
+          btl.eventCallback('onComplete', () => { craft.finish(); craft.dispose(); });
+          band.btl = btl;
+          band.craft = craft;
+          btl.play();
+        };
         /* Départ borné au scroll maximal : un bloc tout en bas de page se construit quand même */
-        const st = ScrollTrigger.create({
-          start: () => Math.min(Math.max(0, top - vh * 0.88), Math.max(0, ScrollTrigger.maxScroll(window) - 2)),
+        const first = els[0];
+        band.st = ScrollTrigger.create({
+          start: () => {
+            const top = first.isConnected ? first.getBoundingClientRect().top + window.scrollY : b.top;
+            return Math.min(Math.max(0, top - vh * 0.88), Math.max(0, ScrollTrigger.maxScroll(window) - 2));
+          },
           end: () => ScrollTrigger.maxScroll(window) + 1,
           once: true,
-          onEnter: () => btl.play(),
+          onEnter: band.run,
         });
-        return { btl, craft, st };
+        return band;
       });
 
       /* Termine tout de suite (bandes comprises, ou seulement celles déjà commencées) */
       const settle = (all) => {
         if (tl.progress() < 1) tl.progress(1);
-        bandCrafts.forEach(({ btl, st }) => {
-          if (all || btl.progress() > 0) { st.kill(); btl.progress(1); }
+        bandCrafts.forEach((band) => {
+          if (all && !band.started) band.run();
+          if (band.started) band.btl.progress(1);
         });
       };
       /* Filet : en bas de page (page raccourcie après mesure), tout ce qui reste se construit */
       const onBottom = () => {
         if (window.scrollY < ScrollTrigger.maxScroll(window) - 2) return;
-        bandCrafts.forEach(({ btl, st }) => { if (btl.progress() === 0 && !btl.isActive()) { st.kill(); btl.play(); } });
+        bandCrafts.forEach((band) => band.run());
       };
       /* Clavier (Tab) : le contenu masqué serait inatteignable, on termine tout */
       const onTab = (e) => { if (e.key === 'Tab') settle(true); };
@@ -124,12 +142,14 @@ export default function usePageCraft(rootRef) {
         finishMain();
         parts.forEach((p) => p.dispose());
         tl.kill();
-        bandCrafts.forEach(({ btl, craft, st }) => {
-          st.kill();
-          btl.progress(1);
-          craft.finish();
-          craft.dispose();
-          btl.kill();
+        bandCrafts.forEach((band) => {
+          band.st?.kill();
+          band.els.forEach((el) => el.classList.remove('craft-wait-el'));
+          if (!band.started) return;
+          band.btl.progress(1);
+          band.craft.finish();
+          band.craft.dispose();
+          band.btl.kill();
         });
       };
     };

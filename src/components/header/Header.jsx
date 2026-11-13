@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { leaveTo } from '../../lib/craft/leave';
+import { goToSection } from '../../lib/craft/useHomeCraft';
 import './Header.css';
 import ThemeToggle from '../home/ThemeToggle';
 
@@ -69,14 +71,16 @@ const Header = () => {
   };
 
   const handleSectionClick = (e, hash) => {
+    /* Clic déjà pris en charge par le départ animé (uncraft puis navigation) */
+    const taken = e.defaultPrevented;
     e.preventDefault();
     closeMenu();
+    if (taken) return;
     if (location.pathname === '/') {
-      const el = document.getElementById(hash.slice(1));
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      goToSection(hash.slice(1));
       setActiveHash(hash);
     } else {
-      navigate(`/${hash}`);
+      leaveTo(`/${hash}`, navigate);
     }
   };
 

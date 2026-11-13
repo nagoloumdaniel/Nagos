@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { leaveTo } from '../lib/craft/leave';
 import usePageMeta from '../hooks/usePageMeta';
 import useMediaQuery, { DESKTOP_QUERY } from '../hooks/useMediaQuery';
 import { EditorWindow, Prompt, TermLine } from '../components/ide/Ide';
@@ -90,7 +91,7 @@ const Terminal = ({ pathname, navigate }) => {
 
   const go = useCallback((route) => {
     setLines(l => [...l, { k: 'out', t: `→ ${route.path}` }]);
-    setTimeout(() => navigate(route.path), 350);
+    setTimeout(() => leaveTo(route.path, navigate), 350);
   }, [navigate]);
 
   const run = useCallback((raw) => {
@@ -278,7 +279,7 @@ const NotFoundPage = () => {
 
       {isDesktop && (
       <section className="nf-ide container" aria-label="Éditeur et terminal">
-        <EditorWindow files={buildFiles(pathname)} onRoute={(p) => navigate(p)} linkable={LINKABLE} statusLeft={<span className="ide-status__err">✕ 1 erreur</span>} />
+        <EditorWindow files={buildFiles(pathname)} onRoute={(p) => leaveTo(p, navigate)} linkable={LINKABLE} statusLeft={<span className="ide-status__err">✕ 1 erreur</span>} />
         <Terminal pathname={pathname} navigate={navigate} />
       </section>
       )}
