@@ -21,7 +21,7 @@ fichier absent masque la section sur le site.
 ├── 01-apercu/             infos.json, statut.txt, description.md, chiffres.json, logo.(png|webp|svg)
 ├── 02-github/             depot.txt
 ├── 03-situation/          situation.md
-├── 04-galerie/            images (8 max)
+├── 04-galerie/            images (10 max)
 ├── 05-fonctionnement/     fonctionnement.json
 ├── 06-fonctionnalites/    fonctionnalites.json
 ├── 07-architecture/       architecture.json
@@ -31,10 +31,10 @@ fichier absent masque la section sur le site.
 ├── 11-interface/          defis-interface.json
 └── 12-liens/              liens.txt
 
-Règles de contenu : le titre du projet commence par une majuscule. Si le dépôt est privé, seuls le code source (aucun lien github) et les données sensibles sont exclus : galerie, fonctionnement, architecture et tout le reste se remplissent normalement. Les listes (fonctionnement, fonctionnalites,
-architecture, stack, defis, defis-interface) contiennent PLUSIEURS entrées, toutes réelles. La galerie contient 8
-images au maximum, uniquement les écrans importants. Ne crée pas d'images ni de logo : liste-moi les écrans à capturer
-et dis-moi si un logo existe dans le dépôt et où.
+Règles de contenu : le titre du projet commence par une majuscule. Si le dépôt est privé, seuls le code source (aucun lien github) et les données sensibles sont exclus : galerie, fonctionnement, architecture et tout le reste se remplissent normalement. Pour un dépôt privé, ne lis, ne recopie et n'écris JAMAIS de lien GitHub ni de donnée sensible (secret, e-mail, URL interne), même si je les ai saisis par erreur dans une consigne ou un fichier. Les listes (fonctionnement, fonctionnalites,
+architecture, stack, defis, defis-interface) contiennent PLUSIEURS entrées, toutes réelles. La galerie contient 10
+images au maximum, uniquement les écrans importants (la 11e n'est jamais lue). Chaque projet a un logo : ne le crée
+pas, ne l'invente pas. Dis-moi s'il existe dans le dépôt et où, sinon demande-le-moi. Ne crée pas d'images : liste-moi les écrans à capturer.
 
 Contenu de chaque fichier :
 
@@ -66,7 +66,7 @@ Contraintes de forme : JSON valide (guillemets doubles, pas de virgule finale, U
 Phrases courtes, un fait par phrase.
 
 Quand tu as fini, réponds avec : 1) l'arborescence créée, 2) la liste des fichiers volontairement omis et pourquoi,
-3) la liste des 8 captures d'écran les plus importantes à faire (dossier 04-galerie, nom de fichier = légende affichée,
+3) la liste des 10 captures d'écran au maximum les plus importantes à faire (dossier 04-galerie, nom de fichier = légende affichée,
 format "01 - Titre de la capture.webp", 1600 px de large max), 4) les informations que seul moi peux fournir.
 ````
 

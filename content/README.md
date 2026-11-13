@@ -13,10 +13,10 @@ content/
 ├── _modele-projet/              Modèle à copier (12 dossiers, ignoré par le site)
 ├── _modele-article/             Modèle à copier (4 dossiers, ignoré par le site)
 ├── projets/<nom-du-projet>/
-│   ├── 01-apercu/               infos.json, statut.txt, description.md, chiffres.json, logo
+│   ├── 01-apercu/               infos.json, statut.txt, description.md, chiffres.json, logo (obligatoire)
 │   ├── 02-github/               depot.txt
 │   ├── 03-situation/            situation.md
-│   ├── 04-galerie/              8 images maximum (+ alt.json facultatif)
+│   ├── 04-galerie/              10 images maximum (+ alt.json facultatif)
 │   ├── 05-fonctionnement/       fonctionnement.json
 │   ├── 06-fonctionnalites/      fonctionnalites.json
 │   ├── 07-architecture/         architecture.json
@@ -40,8 +40,14 @@ Règles de contenu :
 - **Titre** : toujours une majuscule au début (appliquée automatiquement à l'affichage).
 - **Plusieurs entrées** : fonctionnement, fonctionnalités, architecture, stack, défis et défis d'interface
   sont des listes, avec autant d'entrées que nécessaire.
-- **Galerie** : 8 images au maximum, uniquement les écrans importants (au-delà, les suivantes sont ignorées).
+- **Logo** : chaque projet a un logo dans `01-apercu/` (`logo.png`, `logo.webp` ou `logo.svg`). Il est fourni par le propriétaire du projet et n'est jamais inventé ni généré. S'il manque, le demander ; en attendant, le site affiche le monogramme.
+- **Galerie** : 10 images au maximum, uniquement les écrans importants. La 11e image et les suivantes ne sont jamais lues.
+  Écran moyen et grand (640 px et plus) : rangées justifiées comme Google Photos, cadres de tailles différentes
+  qui suivent le format réel de chaque image, quel que soit leur nombre. Petit écran : un seul cadre groupé
+  comme sur WhatsApp (4 vignettes, « +N » sur la dernière), qui ouvre la visionneuse avec pagination,
+  balayage tactile et croix de fermeture.
 - **Dépôt privé** : seuls le code source et les données sensibles restent cachés. Galerie, fonctionnement, architecture et le reste s'affichent normalement ; une section sans donnée affiche « Cette information n'a pas encore été ajoutée sur le site ».
+  Un lien GitHub n'est jamais lu ni affiché pour un projet privé, même s'il a été saisi par erreur dans `liens.txt` : le chargeur l'ignore.
 - **Aucune version de techno** ("React", pas "React 19").
 
 ## Projets
