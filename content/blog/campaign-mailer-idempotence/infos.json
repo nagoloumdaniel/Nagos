@@ -1,0 +1,15 @@
+{
+  "titre": "Campaign Mailer : ne jamais envoyer deux fois le même e-mail",
+  "categorie": "Retour d'expérience",
+  "date": "Septembre 2026",
+  "dureeLecture": "6 min",
+  "resume": "Un e-mail envoyé ne se rattrape pas. Comment j'ai conçu le moteur d'envoi de Campaign Mailer autour de cette contrainte, avec BullMQ et PostgreSQL.",
+  "tags": [
+    "BullMQ",
+    "PostgreSQL",
+    "API Gmail",
+    "Express"
+  ],
+  "icone": "uil-envelope-send",
+  "ordre": 6
+}

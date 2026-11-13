@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import './About.css';
-const CV_URL = '/CV_Daniel_NAGOLOUM_TALLA.pdf';
+import { cv } from '../../lib/contenu/cv';
 import useMediaQuery, { DESKTOP_QUERY } from '../../hooks/useMediaQuery';
 
 /* Three.js + GSAP chargés à part pour alléger le bundle initial */
@@ -126,9 +126,9 @@ const About = () => {
             septembre 2026 afin de poursuivre mon évolution technique.
           </p>
 
-          <a href={CV_URL} download="CV_Daniel_NAGOLOUM_TALLA.pdf" className="button button--flex">
+          {cv && <a href={cv.url} download={cv.fileName} className="button button--flex">
             Télécharger mon CV <i className="uil uil-import button__icon" />
-          </a>
+          </a>}
         </div>
 
       </div>

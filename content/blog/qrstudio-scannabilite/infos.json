@@ -1,0 +1,15 @@
+{
+  "titre": "QR Studio : prévenir un QR code illisible avant l'impression",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "4 min",
+  "resume": "Un générateur de QR codes qui calcule tout dans le navigateur et vérifie la scannabilité avant l'export. Rendu SVG maison et heuristiques de contraste.",
+  "tags": [
+    "React",
+    "SVG",
+    "Front-end",
+    "Accessibilité"
+  ],
+  "icone": "uil-qrcode-scan",
+  "ordre": 23
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "icone": "uil-server",
+    "libelle": "API & tableau de bord",
+    "texte": "FastAPI, Uvicorn, Jinja2, SSE"
+  },
+  {
+    "icone": "uil-processor",
+    "libelle": "Moteur",
+    "texte": "Stratégies, backtests, risque, portes de promotion"
+  },
+  {
+    "icone": "uil-chart-bar",
+    "libelle": "Exécution",
+    "texte": "MetaTrader 5 (Windows) et deux EA MQL5"
+  },
+  {
+    "icone": "uil-database",
+    "libelle": "Données",
+    "texte": "PostgreSQL (Supabase), SQLAlchemy, Alembic"
+  },
+  {
+    "icone": "uil-globe",
+    "libelle": "Site vitrine",
+    "texte": "Dossier site/ déployé sur Vercel"
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "valeur": "2",
+    "libelle": "composants livrés"
+  },
+  {
+    "valeur": "0",
+    "libelle": "paquet publié sur npm"
+  }
+]

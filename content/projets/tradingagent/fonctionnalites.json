@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-chart-line",
+    "titre": "XAUUSD et BTCUSD",
+    "texte": "Périmètre volontairement réduit à deux instruments."
+  },
+  {
+    "icone": "uil-shield-check",
+    "titre": "Garde-fous de risque",
+    "texte": "17 contrôles et deux conseillers experts MQL5 de garde."
+  },
+  {
+    "icone": "uil-brain",
+    "titre": "IA qui ne fait que rejeter",
+    "texte": "L'IA recherche et améliore, mais ne décide pas de chaque trade."
+  },
+  {
+    "icone": "uil-dashboard",
+    "titre": "Tableau de bord",
+    "texte": "Dix pages web, flux temps réel (SSE), thèmes clair et sombre."
+  },
+  {
+    "icone": "uil-telegram-alt",
+    "titre": "Alertes",
+    "texte": "Notifications Telegram."
+  },
+  {
+    "icone": "uil-clipboard-notes",
+    "titre": "Rapports honnêtes",
+    "texte": "Résultats publiés avec leurs limites, y compris les échecs."
+  }
+]

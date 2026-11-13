@@ -1,0 +1,18 @@
+[
+  {
+    "valeur": "2",
+    "libelle": "applications Flutter"
+  },
+  {
+    "valeur": "52",
+    "libelle": "modèles Prisma"
+  },
+  {
+    "valeur": "~143",
+    "libelle": "endpoints REST"
+  },
+  {
+    "valeur": "480",
+    "libelle": "tests (271 backend, 210 Flutter)"
+  }
+]

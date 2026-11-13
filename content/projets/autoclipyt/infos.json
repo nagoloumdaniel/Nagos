@@ -1,0 +1,16 @@
+{
+  "titre": "AutoclipYT",
+  "categorie": "IA",
+  "etiquette": "Automatisation · en conception (pas de code)",
+  "resume": "Studio YouTube sans visage assisté par IA : de l'idée au script sourcé, à la voix off, au montage et aux exports 16:9 et 9:16, piloté par Telegram. Projet en phase de conception.",
+  "role": "Projet personnel : cadrage produit, spécification et architecture cible. Développé en solo, avec l'assistance de Claude.",
+  "ordre": 15,
+  "monogramme": "AY",
+  "langues": [
+    "Français",
+    "Anglais"
+  ],
+  "periode": "Depuis octobre 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "Pas encore déployé"
+}

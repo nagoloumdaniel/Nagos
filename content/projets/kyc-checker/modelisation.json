@@ -1,0 +1,13 @@
+{
+  "intro": "Le coffre utilise SQLite ; le contenu chiffré est stocké en fichiers. Deux tables.",
+  "entites": [
+    {
+      "nom": "records",
+      "texte": "Dossier archivé : jetons HMAC du nom et du numéro de document, statut, score, rétention."
+    },
+    {
+      "nom": "audit_log",
+      "texte": "Trace des accès : acteur, date, action."
+    }
+  ]
+}

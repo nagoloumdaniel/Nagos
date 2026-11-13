@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "Recherche",
+    "texte": "L'IA propose et améliore des stratégies à partir de la bibliothèque (trois stratégies) et de l'historique de marché."
+  },
+  {
+    "titre": "Backtest et validation",
+    "texte": "Backtest sur historique, puis validation hors échantillon, puis jeu de test scellé jamais utilisé pour l'optimisation."
+  },
+  {
+    "titre": "Portes de promotion",
+    "texte": "Neuf portes décident si une version peut passer en démonstration : facteur de profit minimal de 1,20, volume d'échantillon, stabilité."
+  },
+  {
+    "titre": "Contrôles de risque",
+    "texte": "17 contrôles s'appliquent avant chaque ordre (exposition, perte journalière, spread, horaires…). L'IA ne peut que rejeter."
+  },
+  {
+    "titre": "Exécution et suivi",
+    "texte": "Ordres sur compte de démonstration MetaTrader 5, deux conseillers experts MQL5 de garde, tableau de bord web avec flux temps réel (SSE) et alertes Telegram."
+  }
+]

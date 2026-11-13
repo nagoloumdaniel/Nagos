@@ -1,0 +1,25 @@
+{
+  "intro": "23 tables et 9 migrations Alembic. Le modèle suit le cycle de vie d'une stratégie, de sa version à ses ordres et à ses rapports.",
+  "entites": [
+    {
+      "nom": "Strategy / StrategyVersion",
+      "texte": "Une stratégie et ses versions successives, chacune évaluée séparément."
+    },
+    {
+      "nom": "BacktestRun",
+      "texte": "Résultats d'un backtest : métriques, période, paramètres."
+    },
+    {
+      "nom": "PromotionGate",
+      "texte": "Décisions des portes de promotion pour une version."
+    },
+    {
+      "nom": "Order / Position",
+      "texte": "Ordres et positions sur le compte de démonstration."
+    },
+    {
+      "nom": "RiskEvent",
+      "texte": "Rejets et alertes issus des contrôles de risque."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-search-alt",
+    "titre": "Six types de contrat",
+    "texte": "Alternance, stage, CDI, CDD, intérim et job étudiant."
+  },
+  {
+    "icone": "uil-robot",
+    "titre": "Orchestrateur LLM",
+    "texte": "DeepSeek décide du plan, des outils déterministes exécutent."
+  },
+  {
+    "icone": "uil-balance-scale",
+    "titre": "Conformité en base",
+    "texte": "Un registre indique le statut d'accès de chaque source, et le robots.txt est respecté."
+  },
+  {
+    "icone": "uil-dollar-alt",
+    "titre": "Garde-fou de budget",
+    "texte": "Plafonds de coût par exécution, mesurés en micro-dollars."
+  },
+  {
+    "icone": "uil-file-alt",
+    "titre": "CV et lettres",
+    "texte": "Génération en PDF (@react-pdf/renderer) et en Word (docx)."
+  },
+  {
+    "icone": "uil-chart-growth",
+    "titre": "Tableau de bord agent",
+    "texte": "Suivi des exécutions, des coûts et des sources."
+  }
+]

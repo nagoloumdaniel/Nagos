@@ -1,0 +1,15 @@
+{
+  "titre": "NexaGold : quand mon modèle d'IA a fait moins bien que le hasard",
+  "categorie": "Retour d'expérience",
+  "date": "Juillet 2026",
+  "dureeLecture": "6 min",
+  "resume": "J'ai construit un pipeline d'entraînement rigoureux pour filtrer des signaux de trading. Le verdict a été net : les features ne prédisaient rien. Voici ce que j'en ai fait.",
+  "tags": [
+    "Python",
+    "FastAPI",
+    "Machine Learning",
+    "Backtesting"
+  ],
+  "icone": "uil-chart-growth",
+  "ordre": 10
+}

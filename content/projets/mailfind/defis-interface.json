@@ -1,0 +1,17 @@
+[
+  {
+    "icone": "uil-question-circle",
+    "titre": "Montrer l'incertain",
+    "texte": "Un disque plein pour une boîte vérifiée, un cercle vide quand le serveur accepte tout : la forme distingue, pas seulement la couleur."
+  },
+  {
+    "icone": "uil-eye",
+    "titre": "Accessibilité",
+    "texte": "Audit axe-core sur 15 vues, deux thèmes, deux largeurs : 45 problèmes trouvés et corrigés."
+  },
+  {
+    "icone": "uil-table",
+    "titre": "Longues listes",
+    "texte": "Tri, recherche, filtres reflétés dans l'URL et actions en masse sur plus de 1 000 adresses."
+  }
+]

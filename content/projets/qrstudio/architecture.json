@@ -1,0 +1,22 @@
+[
+  {
+    "icone": "uil-code-branch",
+    "libelle": "features/qr/lib",
+    "texte": "payload, matrix, svg, export, scanCheck"
+  },
+  {
+    "icone": "uil-window",
+    "libelle": "features/qr/components",
+    "texte": "Panneaux Contenu, Style, Logo, Export et aperçu"
+  },
+  {
+    "icone": "uil-language",
+    "libelle": "i18n et theme",
+    "texte": "Traductions FR/EN et thème clair/sombre"
+  },
+  {
+    "icone": "uil-cube",
+    "libelle": "pages/NotFoundPage",
+    "texte": "Page 404 avec scène Three.js chargée à la demande"
+  }
+]

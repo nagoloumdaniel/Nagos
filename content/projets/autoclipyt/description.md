@@ -1,0 +1,1 @@
+AutoclipYT vise à automatiser la production de vidéos sur la science, les inventions et les technologies, avec validation humaine obligatoire avant toute publication. À ce jour, seul le cahier des charges est rédigé ; aucun code applicatif n'existe. Les droits des contenus sources et les CGU de YouTube et Telegram sont des contraintes de conception.

@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-clock-three",
+    "titre": "Réservation en ligne",
+    "texte": "Créneaux protégés contre la double réservation, option coiffure à domicile avec frais de déplacement."
+  },
+  {
+    "icone": "uil-globe",
+    "titre": "Bilingue FR / DE",
+    "texte": "Allemand sous /de, métadonnées localisées avec canonical et hreflang, e-mails dans la langue de la demande."
+  },
+  {
+    "icone": "uil-check-circle",
+    "titre": "Compatibilité capillaire",
+    "texte": "Questions conditionnelles et règles configurables par prestation."
+  },
+  {
+    "icone": "uil-envelope",
+    "titre": "Demandes sur mesure",
+    "texte": "Coiffures personnalisées avec photos de référence, et liste d'attente."
+  },
+  {
+    "icone": "uil-dashboard",
+    "titre": "Back-office",
+    "texte": "Prestations, disponibilités, calendrier, messagerie centralisée, statistiques et journal d'audit."
+  },
+  {
+    "icone": "uil-eye",
+    "titre": "Avis et galerie",
+    "texte": "Avis clients, galerie, FAQ et informations pratiques."
+  }
+]

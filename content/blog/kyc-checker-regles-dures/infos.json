@@ -1,0 +1,15 @@
+{
+  "titre": "KYC Checker : pourquoi un score élevé ne doit jamais blanchir une erreur",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "5 min",
+  "resume": "Un moteur de vérification de pièces d'identité. Règles dures contre score pondéré, OCR de la zone MRZ et limites assumées d'un prototype.",
+  "tags": [
+    "Python",
+    "OCR",
+    "MRZ",
+    "Vérification"
+  ],
+  "icone": "uil-shield-check",
+  "ordre": 21
+}

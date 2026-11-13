@@ -1,0 +1,27 @@
+[
+  {
+    "icone": "uil-desktop",
+    "libelle": "Frontend",
+    "texte": "React + Vite, Tailwind CSS, sur Vercel"
+  },
+  {
+    "icone": "uil-server",
+    "libelle": "API",
+    "texte": "Express sur Railway, avec /health et /ready"
+  },
+  {
+    "icone": "uil-processor",
+    "libelle": "Worker",
+    "texte": "Second service Railway qui vide les files BullMQ"
+  },
+  {
+    "icone": "uil-database",
+    "libelle": "Données",
+    "texte": "PostgreSQL (Neon), Redis Cloud, Cloudflare R2"
+  },
+  {
+    "icone": "uil-link-h",
+    "libelle": "Intégration",
+    "texte": "API versionnée vers Campaign Mailer, jamais par sa base"
+  }
+]

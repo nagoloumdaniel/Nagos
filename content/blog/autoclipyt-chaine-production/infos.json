@@ -1,0 +1,15 @@
+{
+  "titre": "AutoclipYT : automatiser une chaîne vidéo sans produire de vidéos interchangeables",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "4 min",
+  "resume": "Un studio YouTube sans visage assisté par IA, piloté par Telegram. Sources tracées, contrôle qualité avant export et approbation humaine : le cadrage d'un projet en conception.",
+  "tags": [
+    "IA",
+    "Vidéo",
+    "Automatisation",
+    "Conception"
+  ],
+  "icone": "uil-video",
+  "ordre": 27
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "groupe": "Frontend",
+    "elements": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "React Router",
+      "Axios"
+    ]
+  },
+  {
+    "groupe": "Backend",
+    "elements": [
+      "Node.js",
+      "Express",
+      "Mongoose",
+      "jsonwebtoken",
+      "bcryptjs"
+    ]
+  },
+  {
+    "groupe": "Données",
+    "elements": [
+      "MongoDB"
+    ]
+  },
+  {
+    "groupe": "Qualité",
+    "elements": [
+      "Jest",
+      "Supertest",
+      "mongodb-memory-server",
+      "ESLint"
+    ]
+  }
+]

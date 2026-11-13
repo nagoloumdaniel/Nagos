@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { posts } from './posts';
+import { posts } from '../../lib/contenu/blog';
 import './Blog.css';
 
 

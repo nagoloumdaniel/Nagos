@@ -1,0 +1,22 @@
+[
+  {
+    "icone": "uil-package",
+    "libelle": "packages",
+    "texte": "13 paquets (moteur, registre, règles, CLI…)"
+  },
+  {
+    "icone": "uil-desktop",
+    "libelle": "apps/web",
+    "texte": "Configurateur Next.js"
+  },
+  {
+    "icone": "uil-terminal",
+    "libelle": "CLI",
+    "texte": "pf, construite avec tsdown"
+  },
+  {
+    "icone": "uil-layer-group",
+    "libelle": "Trois couches",
+    "texte": "Manifeste, registre et compatibilité"
+  }
+]

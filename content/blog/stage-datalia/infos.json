@@ -1,0 +1,15 @@
+{
+  "titre": "Mon stage de développeur front-end chez DATALIA",
+  "categorie": "Retour d'expérience",
+  "date": "Juillet 2026",
+  "dureeLecture": "4 min",
+  "resume": "Trois mois sur KILICASA, une plateforme immobilière : l'espace agence, le mode sombre, et le quotidien d'un dépôt partagé avec une dizaine de développeurs.",
+  "tags": [
+    "Stage",
+    "React",
+    "TypeScript",
+    "Travail en équipe"
+  ],
+  "icone": "uil-briefcase-alt",
+  "ordre": 11
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "titre": "Choix du contenu",
+    "texte": "L'utilisateur choisit un type et remplit les champs ; le texte encodé est formaté selon les conventions des lecteurs mobiles."
+  },
+  {
+    "titre": "Personnalisation",
+    "texte": "Formes de modules, styles d'yeux, couleurs unies ou dégradés, zone de tranquillité, logo central."
+  },
+  {
+    "titre": "Vérification",
+    "texte": "Contraste (WCAG), inversion des couleurs, couverture du logo face au niveau de correction d'erreur, densité."
+  },
+  {
+    "titre": "Export",
+    "texte": "SVG vectoriel, rasterisation canvas en PNG, JPG ou WebP, ou copie dans le presse-papiers."
+  }
+]

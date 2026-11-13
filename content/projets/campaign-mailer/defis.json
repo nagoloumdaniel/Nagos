@@ -1,0 +1,14 @@
+[
+  {
+    "titre": "Jamais deux fois le même message",
+    "texte": "Un contact ne doit jamais recevoir deux fois le même mail, même si le worker s'arrête en plein envoi. Le moteur est idempotent sur trois niveaux : id de job, claim SQL et index unique."
+  },
+  {
+    "titre": "Respecter les quotas de Google",
+    "texte": "Plafond de 450 envois par 24 h glissantes et pause aléatoire entre deux messages."
+  },
+  {
+    "titre": "Envoyer au bon moment",
+    "texte": "Les envois restent dans les heures de bureau, selon le fuseau horaire de la campagne."
+  }
+]

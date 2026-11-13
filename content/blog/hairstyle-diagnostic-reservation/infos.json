@@ -1,0 +1,15 @@
+{
+  "titre": "Hairstyle by Patricia : qualifier avant de réserver, sans bloquer les clientes",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "5 min",
+  "resume": "Un site de réservation pour une coiffeuse à Dakar. Diagnostic de compatibilité, photos privées, FCFA sans décimales et notifications qui ne cassent jamais une réservation.",
+  "tags": [
+    "Next.js",
+    "RGPD",
+    "Tests",
+    "Réservation"
+  ],
+  "icone": "uil-scissors",
+  "ordre": 20
+}

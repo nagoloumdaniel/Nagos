@@ -1,0 +1,12 @@
+[
+  {
+    "icone": "uil-globe",
+    "titre": "Langues",
+    "texte": "Interface en anglais ; le bouton FR / EN s'appuie sur la traduction native du navigateur."
+  },
+  {
+    "icone": "uil-moon",
+    "titre": "Thème",
+    "texte": "Thème clair et sombre mémorisé."
+  }
+]

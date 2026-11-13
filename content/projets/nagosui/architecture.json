@@ -1,0 +1,17 @@
+[
+  {
+    "icone": "uil-package",
+    "libelle": "packages/ui",
+    "texte": "@nagos/ui : tokens, hooks et composants"
+  },
+  {
+    "icone": "uil-desktop",
+    "libelle": "apps/showcase",
+    "texte": "Site vitrine et documentation Next.js"
+  },
+  {
+    "icone": "uil-layer-group",
+    "libelle": "Monorepo",
+    "texte": "pnpm et Turborepo"
+  }
+]

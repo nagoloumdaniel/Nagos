@@ -1,0 +1,36 @@
+[
+  {
+    "groupe": "Mobile",
+    "elements": [
+      "Flutter",
+      "Dart",
+      "BLoC",
+      "Clean architecture"
+    ]
+  },
+  {
+    "groupe": "Web admin",
+    "elements": [
+      "Next.js"
+    ]
+  },
+  {
+    "groupe": "Back",
+    "elements": [
+      "NestJS",
+      "Prisma",
+      "PostgreSQL",
+      "BullMQ",
+      "Redis"
+    ]
+  },
+  {
+    "groupe": "Services",
+    "elements": [
+      "Campay (Mobile Money)",
+      "Supabase Storage",
+      "Firebase FCM",
+      "Twilio"
+    ]
+  }
+]

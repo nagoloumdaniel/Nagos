@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "Choix",
+    "texte": "On part d'un préréglage certifié (saas, dashboard, api, fullstack) ou on compose son stack dans le configurateur."
+  },
+  {
+    "titre": "Manifeste",
+    "texte": "Les choix sont enregistrés dans un manifeste validé par zod."
+  },
+  {
+    "titre": "Compatibilité",
+    "texte": "Le moteur confronte le manifeste au registre et applique les règles de compatibilité cumulatives par catégorie."
+  },
+  {
+    "titre": "Génération",
+    "texte": "La CLI pf produit la structure du projet et l'outillage associé."
+  },
+  {
+    "titre": "Diagnostic",
+    "texte": "Project Doctor note l'état du projet généré (89/100 sur le dépôt lui-même)."
+  }
+]

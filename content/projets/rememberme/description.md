@@ -1,0 +1,1 @@
+RememberMe est un seul projet réparti sur deux dépôts : une application web React (Frontend_RememberMe) et une API REST Express avec MongoDB et JWT (Backend_RememberMe). Les deux sont en production. La récupération de mot de passe est incomplète : les écrans existent dans l'interface mais ne sont pas branchés à l'API.

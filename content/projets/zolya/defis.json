@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "Un argent qui ne se perd jamais",
+    "texte": "Les soldes ne se modifient pas : chaque mouvement est une écriture immuable dans un grand livre à double entrée. On peut ainsi rejouer l'historique et prouver un solde."
+  },
+  {
+    "titre": "Des codes qui ne fuient pas",
+    "texte": "Les codes de collecte et de réception sont hachés et vérifiés côté serveur, pour qu'une base copiée ne permette pas de valider une livraison."
+  },
+  {
+    "titre": "Une livraison sans disponibilité garantie",
+    "texte": "Les offres sont proposées l'une après l'autre avec un repli après 20 minutes, puis une annulation automatique après 48 h si rien n'avance."
+  },
+  {
+    "titre": "CI bloquée au niveau du compte",
+    "texte": "GitHub Actions est désactivé sur le compte. La vérification passe par un script local, avec GitLab CI et Codemagic comme solutions de repli."
+  },
+  {
+    "titre": "Dette de documentation",
+    "texte": "Plusieurs documents internes ont vieilli par rapport au code (nombre de modèles, guide d'interfaces). Le code et les migrations font foi."
+  }
+]

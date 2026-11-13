@@ -1,0 +1,18 @@
+[
+  {
+    "titre": "Compatibilité cumulative",
+    "texte": "L'audit a montré que 14 catégories se cumulent plutôt que de s'exclure ; les règles ont été réécrites et une règle d'écosystème a été ajoutée."
+  },
+  {
+    "titre": "Certifié ou seulement déclaré",
+    "texte": "Seules 32 entrées sur 299 sont certifiées. L'interface doit le dire clairement plutôt que de laisser croire que tout est testé."
+  },
+  {
+    "titre": "Registre qui grossit",
+    "texte": "Les compteurs de la documentation (283) ont divergé du registre réel (299) ; le registre fait foi."
+  },
+  {
+    "titre": "CI GitHub dormante",
+    "texte": "La vérification passe en local (lefthook) ; les workflows GitHub restent inactifs."
+  }
+]

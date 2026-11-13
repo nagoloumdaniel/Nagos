@@ -1,0 +1,12 @@
+[
+  {
+    "icone": "uil-filter",
+    "titre": "Filtres lisibles",
+    "texte": "Six types de contrat, des lieux et des dates à combiner sans noyer l'utilisateur."
+  },
+  {
+    "icone": "uil-file-edit-alt",
+    "titre": "Génération de documents",
+    "texte": "Un même contenu doit sortir proprement en PDF et en Word."
+  }
+]

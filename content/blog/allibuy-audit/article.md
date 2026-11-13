@@ -1,0 +1,11 @@
+Allibuy est mon plus gros projet : une marketplace multi-vendeurs pensée pour l'international, commencée en mai 2026. Tout tient dans un monorepo : une API NestJS, un site Next.js, des applications Expo pour chaque rôle et des paquets partagés pour les types et les schémas Zod.
+
+**Des indicateurs rassurants.** Début septembre, l'API comptait 49 modules et 505 endpoints, la base plus d'une centaine de modèles Prisma, et la suite backend 874 tests, tous au vert. Aucun any, aucun console.log, la row-level security PostgreSQL en place. Sur le papier, le projet était en bonne santé.
+
+**Ce que l'audit a révélé.** J'ai fait un état des lieux en lisant le code plutôt que la documentation, avec pour chaque constat un fichier ou une commande pour le vérifier. Trois intégrations n'existaient pas encore : le paiement, l'e-mail et les notifications push. Le code les remplaçait sans prévenir par des simulateurs qui répondaient « payé » et « envoyé ». En production, les commandes auraient été marquées payées sans le moindre encaissement. L'espace compte de l'acheteur contenait aussi trois formulaires qui affichaient un succès sans appeler l'API.
+
+**Les corrections.** Première règle : plus de repli silencieux. Si un service externe n'est pas configuré, l'application refuse de démarrer au lieu de simuler. J'ai ensuite écrit les adaptateurs Resend pour l'e-mail et Expo Push pour les notifications, puis branché les formulaires factices. L'adaptateur de paiement mobile money est écrit, mais volontairement verrouillé tant qu'il n'a pas été validé en bac à sable.
+
+**Réduire le périmètre.** Le même travail m'a conduit à retirer un rôle entier, celui des prestataires de services : Allibuy reste une marketplace de produits. Six modèles, un module d'API, dix pages web et une application mobile ont été supprimés en une seule passe. Moins de surface, c'est aussi moins de code à sécuriser avant de pouvoir encaisser.
+
+**Ce que j'en retiens.** Un pourcentage d'avancement calculé sur le volume de code ne veut pas dire grand-chose. L'audit situait le projet autour de 62 % du code livré, mais à 0 % de capacité d'encaissement. Pour une marketplace, c'est le second chiffre qui compte. Depuis, une tâche n'est cochée dans la roadmap que sur preuve : typecheck, tests ou essai réel contre l'API.

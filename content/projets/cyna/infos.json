@@ -1,0 +1,15 @@
+{
+  "titre": "Cyna",
+  "categorie": "Full-Stack",
+  "etiquette": "Projet académique · en équipe",
+  "resume": "Plateforme SaaS de cybersécurité (Web & Mobile) : e-commerce de services en abonnement avec backoffice administrateur.",
+  "role": "Projet de formation mené en équipe de 5 personnes. J'ai écrit la quasi-totalité du front-end (environ 90 % des commits) et contribué à l'API côté infrastructure et sécurité : déploiement, base de données, rotation des refresh tokens.",
+  "ordre": 16,
+  "langues": [
+    "Français",
+    "Anglais",
+    "Arabe (RTL)"
+  ],
+  "equipe": "Équipe de 5 personnes",
+  "deploiement": "Vercel"
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "icone": "uil-palette",
+    "titre": "Identité or et noir",
+    "texte": "Dégradés or sur fond noir, effets de verre, icônes Lucide, avec une migration vers un système de design partagé (zolya_design)."
+  },
+  {
+    "icone": "uil-eye",
+    "titre": "Accessibilité",
+    "texte": "Correction de contraste (texte secondaire), cibles tactiles de 44 px, 31 libellés anglais codés en dur traduits."
+  },
+  {
+    "icone": "uil-shield-exclamation",
+    "titre": "Interface honnête",
+    "texte": "Un faux assistant de support a été remplacé par un vrai chat, pour ne pas laisser croire à un humain."
+  }
+]

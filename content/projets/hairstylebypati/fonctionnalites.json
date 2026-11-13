@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-clock-three",
+    "titre": "Réservation sans doublon",
+    "texte": "Verrou consultatif, index d'unicité sur les réservations actives et test de concurrence E2E."
+  },
+  {
+    "icone": "uil-check-circle",
+    "titre": "Compatibilité capillaire",
+    "texte": "Règles revérifiées côté serveur à la réservation ; une évaluation acceptée ne réserve jamais un créneau automatiquement."
+  },
+  {
+    "icone": "uil-history",
+    "titre": "Liste d'attente et rappels",
+    "texte": "Liste d'attente et rappel e-mail H-24."
+  },
+  {
+    "icone": "uil-envelope",
+    "titre": "Messagerie",
+    "texte": "Messagerie centralisée avec notes internes et notifications."
+  },
+  {
+    "icone": "uil-dashboard",
+    "titre": "Back-office",
+    "texte": "Catalogue, disponibilités, absences, promotions, calendrier, fiches clientes, statistiques et journal d'audit."
+  },
+  {
+    "icone": "uil-lock",
+    "titre": "Photos privées",
+    "texte": "Accès par URL présignée et purge automatique à échéance."
+  }
+]

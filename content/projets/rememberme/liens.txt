@@ -1,0 +1,4 @@
+# type | libellé | adresse
+demo | Voir l'application | https://rememberme-lemon-chi.vercel.app
+github | GitHub (interface) | https://github.com/nagoloumdaniel/Frontend_RememberMe
+github | GitHub (API) | https://github.com/nagoloumdaniel/Backend_RememberMe

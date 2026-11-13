@@ -1,0 +1,14 @@
+{
+  "titre": "Logiciel libre : pourquoi la confiance ne se décrète pas",
+  "categorie": "Actualité tech",
+  "date": "Novembre 2026",
+  "dureeLecture": "4 min",
+  "resume": "Ouvrir le code ne suffit pas à le rendre sûr. Ce que le libre apporte réellement, ce qu'il ne garantit pas, et pourquoi la maintenance reste le sujet oublié.",
+  "tags": [
+    "Open source",
+    "Sécurité",
+    "Maintenance"
+  ],
+  "icone": "uil-code-branch",
+  "ordre": 4
+}

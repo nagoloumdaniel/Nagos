@@ -1,0 +1,18 @@
+[
+  {
+    "valeur": "636",
+    "libelle": "adresses relevées à la recette (100 lignes)"
+  },
+  {
+    "valeur": "5 min 42",
+    "libelle": "pour 99 entreprises"
+  },
+  {
+    "valeur": "18",
+    "libelle": "migrations, 26 tables"
+  },
+  {
+    "valeur": "~800",
+    "libelle": "cas de test"
+  }
+]

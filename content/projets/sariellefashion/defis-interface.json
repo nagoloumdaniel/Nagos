@@ -1,0 +1,12 @@
+[
+  {
+    "icone": "uil-globe",
+    "titre": "Deux langues",
+    "texte": "Dictionnaires typés : une clé allemande manquante fait échouer la compilation."
+  },
+  {
+    "icone": "uil-moon",
+    "titre": "Thème clair et sombre",
+    "texte": "Interface responsive, avec bascule de thème."
+  }
+]

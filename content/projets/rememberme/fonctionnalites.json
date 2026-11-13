@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-check-circle",
+    "titre": "Tâches",
+    "texte": "Création, modification, suppression, état terminé, priorité, date et heure d'échéance."
+  },
+  {
+    "icone": "uil-clipboard-notes",
+    "titre": "Listes",
+    "texte": "Regroupement des tâches dans des listes personnalisées."
+  },
+  {
+    "icone": "uil-clock-three",
+    "titre": "Calendrier et à venir",
+    "texte": "Choix d'une date, navigation par mois, tâches à échéance proche."
+  },
+  {
+    "icone": "uil-bell",
+    "titre": "Notifications",
+    "texte": "Préférences d'activation et d'heure ; tâches du jour via l'API."
+  },
+  {
+    "icone": "uil-moon",
+    "titre": "Thème clair / sombre",
+    "texte": "Bascule mémorisée, préférence système prise en compte."
+  },
+  {
+    "icone": "uil-shield-check",
+    "titre": "Isolation des comptes",
+    "texte": "Un test d'intégration vérifie qu'un compte ne lit pas les tâches d'un autre."
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "Découverte",
+    "texte": "L'orchestrateur planifie des recherches (Brave Search, Apify, API France Travail) et repère des sources d'offres par métier et par zone."
+  },
+  {
+    "titre": "Collecte",
+    "texte": "Les files BullMQ lancent des extracteurs : JSON-LD en cascade, ATS agrégés, Cheerio, puis Playwright en dernier recours."
+  },
+  {
+    "titre": "Normalisation et dédoublonnage",
+    "texte": "Chaque offre est ramenée à un modèle commun (contrat, lieu, entreprise) puis comparée aux offres déjà connues."
+  },
+  {
+    "titre": "Publication",
+    "texte": "Les offres validées apparaissent sur le site public, filtrables par type de contrat."
+  },
+  {
+    "titre": "Espace candidat",
+    "texte": "Le candidat dépose son CV, reçoit un score de correspondance et peut générer un CV et une lettre au format PDF ou Word."
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "titre": "CampaignMailer",
+  "categorie": "Full-Stack",
+  "etiquette": "Projet personnel",
+  "resume": "Application web de campagnes mail : envois depuis son compte Gmail, avec suivi d'envoi et dashboard.",
+  "role": "Projet personnel.",
+  "ordre": 17,
+  "langues": [
+    "Français"
+  ],
+  "deploiement": "Vercel"
+}

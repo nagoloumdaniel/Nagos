@@ -1,0 +1,37 @@
+[
+  {
+    "groupe": "Langage",
+    "elements": [
+      "TypeScript",
+      "Node.js"
+    ]
+  },
+  {
+    "groupe": "Monorepo",
+    "elements": [
+      "pnpm",
+      "Turborepo",
+      "tsdown",
+      "changesets"
+    ]
+  },
+  {
+    "groupe": "Web",
+    "elements": [
+      "Next.js",
+      "React",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "groupe": "Qualité",
+    "elements": [
+      "Vitest",
+      "Biome",
+      "zod",
+      "lefthook",
+      "commitlint",
+      "secretlint"
+    ]
+  }
+]

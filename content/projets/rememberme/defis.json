@@ -1,0 +1,18 @@
+[
+  {
+    "titre": "Déploiement Vercel",
+    "texte": "Adapter une API Express au mode serverless (point d'entrée dédié, réécriture des routes, connexion MongoDB en cache). Côté interface, une réécriture vers index.html corrige les 404 sur les routes directes."
+  },
+  {
+    "titre": "CORS",
+    "texte": "Passage à une liste blanche d'origines, avec gestion explicite des requêtes OPTIONS."
+  },
+  {
+    "titre": "Tests réparés",
+    "texte": "La suite d'intégration du backend était cassée ; elle a été réparée et passe."
+  },
+  {
+    "titre": "Récupération de mot de passe",
+    "texte": "Les écrans existent mais ne sont pas branchés à l'API : la fonction est incomplète."
+  }
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "valeur": "26",
+    "libelle": "modèles Prisma"
+  },
+  {
+    "valeur": "15",
+    "libelle": "migrations"
+  },
+  {
+    "valeur": "439",
+    "libelle": "tests Vitest"
+  },
+  {
+    "valeur": "13",
+    "libelle": "fichiers de test E2E"
+  }
+]

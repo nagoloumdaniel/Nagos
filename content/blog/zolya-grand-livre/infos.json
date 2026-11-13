@@ -1,0 +1,15 @@
+{
+  "titre": "Zolya : un argent qui ne se perd jamais, grâce à un grand livre immuable",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "5 min",
+  "resume": "Une marketplace de seconde main avec paiement Mobile Money sous séquestre. Pourquoi aucun solde n'est jamais modifié, et ce que cela change dans l'architecture.",
+  "tags": [
+    "Flutter",
+    "NestJS",
+    "PostgreSQL",
+    "Paiement"
+  ],
+  "icone": "uil-lock-alt",
+  "ordre": 14
+}

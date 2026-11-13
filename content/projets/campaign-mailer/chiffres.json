@@ -1,0 +1,14 @@
+[
+  {
+    "valeur": "450",
+    "libelle": "envois max / 24 h glissantes"
+  },
+  {
+    "valeur": "5",
+    "libelle": "pièces jointes max"
+  },
+  {
+    "valeur": "3",
+    "libelle": "niveaux d'idempotence"
+  }
+]

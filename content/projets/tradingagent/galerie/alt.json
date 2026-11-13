@@ -1,0 +1,9 @@
+{
+  "01 - Vue d'ensemble, thème sombre.webp": "Tableau de bord TradingAgent en thème sombre : solde, résultat du jour, positions ouvertes et courbe de capital.",
+  "02 - Vue d'ensemble, thème clair.webp": "Tableau de bord TradingAgent en thème clair avec courbe de capital et répartition par marché.",
+  "03 - Positions et événements.webp": "Page Positions : liste des positions papier XAUUSD et événements système.",
+  "04 - Suivi du risque.webp": "Page Risque : jauges de perte journalière, de perte hebdomadaire et de drawdown.",
+  "05 - Rapport quotidien.webp": "Rapport quotidien : résultat net, nombre de trades, courbe de capital et résultat par marché.",
+  "06 - Analyse du scalping.webp": "Page Scalping : statistiques par session horaire et par jour de la semaine.",
+  "07 - Registre des stratégies.webp": "Page Stratégies : registre des stratégies et métriques de validation."
+}

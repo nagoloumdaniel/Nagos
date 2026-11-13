@@ -1,0 +1,37 @@
+[
+  {
+    "groupe": "Front",
+    "elements": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "TypeScript"
+    ]
+  },
+  {
+    "groupe": "Back",
+    "elements": [
+      "Express",
+      "zod",
+      "BullMQ",
+      "Cheerio"
+    ]
+  },
+  {
+    "groupe": "Données",
+    "elements": [
+      "PostgreSQL (Neon)",
+      "Redis Cloud",
+      "Cloudflare R2"
+    ]
+  },
+  {
+    "groupe": "Qualité",
+    "elements": [
+      "Vitest",
+      "Playwright (tests E2E)",
+      "ESLint",
+      "Prettier"
+    ]
+  }
+]

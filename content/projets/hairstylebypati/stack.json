@@ -1,0 +1,37 @@
+[
+  {
+    "groupe": "Application",
+    "elements": [
+      "Next.js",
+      "React",
+      "TypeScript strict",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "groupe": "Données",
+    "elements": [
+      "PostgreSQL (Neon)",
+      "Prisma",
+      "Cloudflare R2"
+    ]
+  },
+  {
+    "groupe": "Services",
+    "elements": [
+      "Auth.js",
+      "Zod",
+      "Nodemailer (SMTP Gmail)"
+    ]
+  },
+  {
+    "groupe": "Qualité",
+    "elements": [
+      "Vitest",
+      "Playwright",
+      "axe-core",
+      "ESLint",
+      "Prettier"
+    ]
+  }
+]

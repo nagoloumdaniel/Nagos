@@ -1,0 +1,18 @@
+[
+  {
+    "valeur": "2 789",
+    "libelle": "tests réussis (rapport du 10 oct.)"
+  },
+  {
+    "valeur": "23",
+    "libelle": "tables, 9 migrations"
+  },
+  {
+    "valeur": "17",
+    "libelle": "contrôles de risque"
+  },
+  {
+    "valeur": "9",
+    "libelle": "portes de promotion"
+  }
+]

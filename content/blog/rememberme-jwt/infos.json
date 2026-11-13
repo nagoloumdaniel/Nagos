@@ -1,0 +1,15 @@
+{
+  "titre": "RememberMe : sécuriser une API REST avec JWT, et ce que j'ai changé depuis",
+  "categorie": "Retour d'expérience",
+  "date": "Janvier 2026",
+  "dureeLecture": "4 min",
+  "resume": "Hachage des mots de passe, routes protégées, isolation des données : les bases de mon API Express. Et les limites que j'ai corrigées dans mes projets suivants.",
+  "tags": [
+    "Node.js",
+    "Express",
+    "JWT",
+    "MongoDB"
+  ],
+  "icone": "uil-lock-alt",
+  "ordre": 12
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "groupe": "Front",
+    "elements": [
+      "React",
+      "React Router",
+      "Vite",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "groupe": "QR",
+    "elements": [
+      "qrcode",
+      "Rendu SVG sur mesure",
+      "Canvas API"
+    ]
+  },
+  {
+    "groupe": "Autre",
+    "elements": [
+      "Three.js (404)",
+      "lucide-react",
+      "Vercel"
+    ]
+  }
+]

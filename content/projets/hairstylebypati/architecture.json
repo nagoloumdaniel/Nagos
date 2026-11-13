@@ -1,0 +1,27 @@
+[
+  {
+    "icone": "uil-desktop",
+    "libelle": "Application",
+    "texte": "Next.js (App Router) sur Vercel"
+  },
+  {
+    "icone": "uil-layer-group",
+    "libelle": "Modules métier",
+    "texte": "Un dossier par domaine dans src/modules"
+  },
+  {
+    "icone": "uil-database",
+    "libelle": "Données",
+    "texte": "PostgreSQL (Neon) via Prisma"
+  },
+  {
+    "icone": "uil-package",
+    "libelle": "Fichiers",
+    "texte": "Cloudflare R2, photos privées par URL présignée"
+  },
+  {
+    "icone": "uil-envelope",
+    "libelle": "Notifications",
+    "texte": "File idempotente puis SMTP Gmail"
+  }
+]

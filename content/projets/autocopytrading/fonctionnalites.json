@@ -1,0 +1,22 @@
+[
+  {
+    "icone": "uil-chart-line",
+    "titre": "Classement des traders",
+    "texte": "Scoring multicritère axé sur le risque (prévu)."
+  },
+  {
+    "icone": "uil-shield-check",
+    "titre": "Protection du capital",
+    "texte": "Limites de perte, marge contrôlée, arrêt d'urgence (prévu)."
+  },
+  {
+    "icone": "uil-brain",
+    "titre": "IA en veto",
+    "texte": "Seconde opinion, jamais d'ordre sans contrôle déterministe (prévu)."
+  },
+  {
+    "icone": "uil-bell",
+    "titre": "Alertes Telegram",
+    "texte": "Notifications et journal d'audit (prévu)."
+  }
+]

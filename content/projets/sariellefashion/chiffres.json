@@ -1,0 +1,18 @@
+[
+  {
+    "valeur": "26",
+    "libelle": "modèles Prisma"
+  },
+  {
+    "valeur": "16",
+    "libelle": "migrations"
+  },
+  {
+    "valeur": "17",
+    "libelle": "domaines métier"
+  },
+  {
+    "valeur": "4",
+    "libelle": "tâches planifiées (cron)"
+  }
+]

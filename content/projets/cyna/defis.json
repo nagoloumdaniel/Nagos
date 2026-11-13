@@ -1,0 +1,14 @@
+[
+  {
+    "titre": "Sessions sûres",
+    "texte": "Cookies JWT httpOnly avec rotation des refresh tokens, 2FA et rate limiting côté API."
+  },
+  {
+    "titre": "Arabe et RTL",
+    "texte": "Trois langues dont l'arabe : la mise en page bascule en droite-à-gauche."
+  },
+  {
+    "titre": "Paiements vérifiés",
+    "texte": "Le webhook Stripe est vérifié par signature."
+  }
+]

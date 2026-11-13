@@ -1,0 +1,17 @@
+[
+  {
+    "icone": "uil-desktop",
+    "libelle": "Frontend",
+    "texte": "React, Redux Toolkit, Tailwind CSS, i18next"
+  },
+  {
+    "icone": "uil-server",
+    "libelle": "Backend",
+    "texte": "NestJS, MongoDB, Swagger"
+  },
+  {
+    "icone": "uil-credit-card",
+    "libelle": "Paiement",
+    "texte": "Stripe, webhook signé"
+  }
+]

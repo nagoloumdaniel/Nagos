@@ -1,0 +1,15 @@
+{
+  "titre": "MailFind : trouver des adresses e-mail sans mentir sur leur fiabilité",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "6 min",
+  "resume": "Un pipeline qui transforme une liste d'entreprises en adresses classées. Budget à zéro euro, faille SSRF en IPv6 et recette sur de vrais sites.",
+  "tags": [
+    "BullMQ",
+    "Sécurité",
+    "SSRF",
+    "Données personnelles"
+  ],
+  "icone": "uil-envelope-search",
+  "ordre": 18
+}

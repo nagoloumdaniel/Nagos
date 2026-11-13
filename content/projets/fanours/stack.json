@@ -1,0 +1,28 @@
+[
+  {
+    "groupe": "Front (cible)",
+    "elements": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "groupe": "Back (cible)",
+    "elements": [
+      "TypeScript",
+      "PostgreSQL",
+      "Drizzle",
+      "Redis",
+      "BullMQ"
+    ]
+  },
+  {
+    "groupe": "Paiement et tests (cible)",
+    "elements": [
+      "Stripe",
+      "Vitest",
+      "Playwright"
+    ]
+  }
+]

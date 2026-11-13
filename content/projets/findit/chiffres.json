@@ -1,0 +1,14 @@
+[
+  {
+    "valeur": "38",
+    "libelle": "modèles Prisma"
+  },
+  {
+    "valeur": "6",
+    "libelle": "types de contrat"
+  },
+  {
+    "valeur": "19",
+    "libelle": "paquets dans le monorepo"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "icone": "uil-tag-alt",
+    "titre": "Prix par volume",
+    "texte": "Paliers tarifaires, MOQ et demandes de devis (prévu)."
+  },
+  {
+    "icone": "uil-globe",
+    "titre": "Trois langues",
+    "texte": "Français, anglais, chinois simplifié et plusieurs devises (prévu)."
+  },
+  {
+    "icone": "uil-calculator",
+    "titre": "Taxes et douane",
+    "texte": "Règles versionnées pour estimer taxes et droits d'import (prévu)."
+  },
+  {
+    "icone": "uil-shield-check",
+    "titre": "Sécurité",
+    "texte": "RBAC, MFA, aucun numéro de carte stocké (prévu)."
+  }
+]

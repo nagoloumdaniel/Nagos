@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-qrcode-scan",
+    "titre": "10 types de contenu",
+    "texte": "URL, texte, Wi-Fi, vCard, e-mail, téléphone, SMS, événement, géolocalisation, adresse crypto."
+  },
+  {
+    "icone": "uil-palette",
+    "titre": "Style libre",
+    "texte": "Cinq formes de modules, trois styles d'yeux, dégradés linéaires et radiaux, logo central."
+  },
+  {
+    "icone": "uil-shield-check",
+    "titre": "Contrôle de scannabilité",
+    "texte": "Alertes de contraste, de logo trop grand et de densité avant l'export."
+  },
+  {
+    "icone": "uil-export",
+    "titre": "Export multi-format",
+    "texte": "SVG, PNG, JPG, WebP jusqu'à 4096 px, copie presse-papiers."
+  },
+  {
+    "icone": "uil-globe",
+    "titre": "Bilingue",
+    "texte": "Français et anglais, préférence mémorisée localement."
+  },
+  {
+    "icone": "uil-moon",
+    "titre": "Clair et sombre",
+    "texte": "Thème appliqué avant le premier rendu pour éviter le flash."
+  }
+]

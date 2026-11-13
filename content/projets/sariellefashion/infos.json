@@ -1,0 +1,17 @@
+{
+  "titre": "Sarielle Fashion",
+  "categorie": "Full-Stack",
+  "etiquette": "Next.js · en production",
+  "resume": "Site vitrine bilingue (FR / DE), réservation en ligne et back-office pour un salon de coiffure, make-up, pose de lace et de cils à Clausthal-Zellerfeld (Allemagne).",
+  "role": "Projet client de bout en bout, développé en solo avec l'assistance de Claude.",
+  "ordre": 7,
+  "monogramme": "SF",
+  "pays": "Allemagne (Basse-Saxe)",
+  "langues": [
+    "Français",
+    "Allemand"
+  ],
+  "periode": "Depuis octobre 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "Vercel, Neon (PostgreSQL), Cloudflare R2"
+}

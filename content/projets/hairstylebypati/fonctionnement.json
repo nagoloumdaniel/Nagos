@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "Catalogue",
+    "texte": "Prestations avec photos, prix en FCFA et durée."
+  },
+  {
+    "titre": "Diagnostic",
+    "texte": "Questions conditionnelles propres à la prestation ; la photo d'évaluation est stockée en privé."
+  },
+  {
+    "titre": "Réservation",
+    "texte": "Réservation en 8 étapes. Le serveur prend un verrou PostgreSQL (pg_advisory_xact_lock) avant de revérifier le créneau et d'insérer."
+  },
+  {
+    "titre": "Notification",
+    "texte": "Un e-mail est mis en file (idempotent, repris sur échec, jamais bloquant pour l'enregistrement), avec un rappel H-24."
+  },
+  {
+    "titre": "Annulation",
+    "texte": "Lien sécurisé à durée limitée ; le délai est de 30 minutes par défaut, configurable. Paiement sur place."
+  }
+]

@@ -1,0 +1,3 @@
+# type | libellé | adresse
+demo | Voir le configurateur | https://buildit.vercel.app
+github | GitHub | https://github.com/nagoloumdaniel/BuildIt

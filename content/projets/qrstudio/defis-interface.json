@@ -1,0 +1,12 @@
+[
+  {
+    "icone": "uil-eye",
+    "titre": "Aperçu en direct",
+    "texte": "Le QR et le verdict de scannabilité se mettent à jour à chaque réglage."
+  },
+  {
+    "icone": "uil-moon",
+    "titre": "Thème sans flash",
+    "texte": "Le thème enregistré est appliqué par un script en tête de page."
+  }
+]

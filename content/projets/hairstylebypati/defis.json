@@ -1,0 +1,18 @@
+[
+  {
+    "titre": "Double réservation",
+    "texte": "Un contrôle suivi d'une insertion laisse passer deux requêtes simultanées ; résolu par un verrou consultatif dans la transaction et un index d'unicité limité aux réservations actives."
+  },
+  {
+    "titre": "Devise sans décimales",
+    "texte": "Le schéma stocke en 1/100 alors que le FCFA n'a pas de décimales ; la conversion est centralisée."
+  },
+  {
+    "titre": "Photos privées et RGPD",
+    "texte": "Évaluations stockées en privé, accès par URL présignée, purge automatique à échéance."
+  },
+  {
+    "titre": "Notifications fiables",
+    "texte": "Une file idempotente garantit qu'un échec SMTP n'annule jamais une réservation."
+  }
+]

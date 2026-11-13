@@ -1,0 +1,18 @@
+{
+  "titre": "Fanours",
+  "categorie": "Full-Stack",
+  "etiquette": "Web · en cours (cadrage, pas de code)",
+  "resume": "Plateforme e-commerce B2B/B2C pour une boutique basée en Chine qui vend en gros à l'international, avec prix dégressifs, devis et estimation des taxes d'import. Projet en phase de cadrage.",
+  "role": "Projet personnel : cadrage produit, spécification, architecture cible et roadmap. Développé en solo, avec l'assistance de Claude.",
+  "ordre": 13,
+  "monogramme": "FA",
+  "pays": "Chine (vente), clientèle internationale",
+  "langues": [
+    "Français",
+    "Anglais",
+    "Chinois simplifié"
+  ],
+  "periode": "Depuis octobre 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "Pas encore déployé"
+}

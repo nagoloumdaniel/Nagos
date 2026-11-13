@@ -1,0 +1,16 @@
+{
+  "titre": "NagosUI",
+  "categorie": "Outils développeur",
+  "etiquette": "React · en cours de développement",
+  "resume": "Design system React animé : tokens, composants et site de documentation. Au stade initial, seuls Button et MagneticButton sont livrés.",
+  "role": "Projet personnel. Développé avec l'assistance de Claude.",
+  "ordre": 11,
+  "monogramme": "NU",
+  "langues": [
+    "Français",
+    "Anglais"
+  ],
+  "periode": "Depuis mai 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "Vercel (site de démonstration)"
+}

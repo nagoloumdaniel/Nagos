@@ -1,0 +1,22 @@
+[
+  {
+    "icone": "uil-desktop",
+    "libelle": "Frontend",
+    "texte": "React, TypeScript, Vite, Tailwind CSS"
+  },
+  {
+    "icone": "uil-server",
+    "libelle": "API",
+    "texte": "Express, PostgreSQL (Neon)"
+  },
+  {
+    "icone": "uil-processor",
+    "libelle": "Worker",
+    "texte": "Moteur d'envoi BullMQ / Redis"
+  },
+  {
+    "icone": "uil-envelope",
+    "libelle": "Messagerie",
+    "texte": "API Gmail, Google OAuth"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "titre": "QR Studio",
+  "categorie": "Front-End",
+  "etiquette": "Web · en ligne",
+  "resume": "Générateur de QR codes personnalisables, entièrement exécuté dans le navigateur, avec vérification de scannabilité avant export.",
+  "role": "Projet personnel : conception, interface et développement front-end.",
+  "ordre": 12,
+  "monogramme": "QR",
+  "pays": "International",
+  "langues": [
+    "Français",
+    "Anglais"
+  ],
+  "equipe": "Solo",
+  "deploiement": "Vercel (https://qrstudio-lovat.vercel.app)"
+}
