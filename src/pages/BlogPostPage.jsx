@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
+import usePageCraft from '../lib/craft/usePageCraft';
 import { Link, useParams } from 'react-router-dom';
 import { posts } from '../lib/contenu/blog';
 import { getSections, defaultPoints } from '../components/blog/articleSections';
@@ -9,6 +10,8 @@ import '../components/work/Work.css';
 import './ProjectPage.css';
 
 const PostDetail = ({ post, prev, next }) => {
+  const craftRef = useRef(null);
+  usePageCraft(craftRef);
   usePageMeta({
     title: `${post.title} | Blog - Daniel NAGOLOUM TALLA`,
     description: post.excerpt,
@@ -19,7 +22,7 @@ const PostDetail = ({ post, prev, next }) => {
   const active = useSectionNav(useMemo(() => sections.map(s => s.id), [sections]));
 
   return (
-    <div className="page project">
+    <div className="page project" ref={craftRef}>
       <div className="pj container">
         <nav className="pj-crumbs" aria-label="Fil d'Ariane">
           <Link to="/blog"><i className="uil uil-arrow-left" aria-hidden="true" /> Blog</Link>

@@ -89,6 +89,13 @@
   <body>
     <script>
       try { if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-theme'); } catch (e) {}
+      /* Crafting : le site reste masqué (sauf la photo) jusqu'à ce que l'animation prenne la main ; filet de sécurité à 5 s */
+      try {
+        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.documentElement.classList.add('craft-pending', 'craft-on');
+          setTimeout(function () { document.documentElement.classList.remove('craft-pending'); }, 5000);
+        }
+      } catch (e) {}
     </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

@@ -34,15 +34,25 @@ const useCountUp = (target, start) => {
   return v;
 };
 
-const StatCard = ({ title, icon, kind, value, prefix = '', unit = '', text, index }) => {
+const StatCard = ({ title, icon, kind, value, prefix = '', unit = '', text }) => {
   const ref = useRef(null);
   const [started, setStarted] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return undefined;
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setStarted(true); io.disconnect(); } }, { threshold: 0.4 });
+    /* La carte peut être encore « en construction » (masquée par le crafting) : on attend qu'elle soit vraiment affichée */
+    let poll = 0;
+    const shown = () => {
+      const cs = getComputedStyle(el);
+      return cs.visibility !== 'hidden' && parseFloat(cs.opacity) > 0.9;
+    };
+    const check = () => {
+      if (shown()) { setStarted(true); return; }
+      poll = setTimeout(check, 150);
+    };
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); check(); } }, { threshold: 0.4 });
     io.observe(el);
-    return () => io.disconnect();
+    return () => { io.disconnect(); clearTimeout(poll); };
   }, []);
   const n = useCountUp(value ?? 0, started && kind === 'count');
   const isCount = kind === 'count';
@@ -50,8 +60,7 @@ const StatCard = ({ title, icon, kind, value, prefix = '', unit = '', text, inde
   return (
     <div
       ref={ref}
-      /* className statique : l'état « started » passe par un attribut, sinon React effacerait la classe `revealed` posée au scroll */
-      className={`about__box ${isCount ? 'about__box--count' : 'about__box--live'} reveal d${index + 2}`}
+      className={`about__box ${isCount ? 'about__box--count' : 'about__box--live'}`}
       data-started={started ? 'true' : undefined}
     >
       {/* Bordure de chargement carrée, tracée pendant le décompte */}
@@ -95,12 +104,12 @@ const About = () => {
   return (
     <section className="about section" id="about">
       <span className="section__subtitle">Qui suis-je ?</span>
-      <h2 className="section__title reveal d1">À propos de moi</h2>
+      <h2 className="section__title">À propos de moi</h2>
       <div className="about__container container grid">
 
         {/* ── 3D Particle Sphere ── */}
         {isDesktop && (
-          <div className="about__sphere-wrap reveal-left d2" ref={sphereRef}>
+          <div className="about__sphere-wrap" ref={sphereRef} data-craft="nano">
             {sphereNear
               ? (
                 <Suspense fallback={<div className="sphere-stage" />}>
@@ -112,9 +121,9 @@ const About = () => {
         )}
 
         {/* ── Text data ── */}
-        <div className="about__data reveal-right d2">
+        <div className="about__data">
           <div className="about__info grid">
-            {boxes.map((box, i) => <StatCard key={box.title} index={i} {...box} />)}
+            {boxes.map((box) => <StatCard key={box.title} {...box} />)}
           </div>
 
           <p className="about__description">

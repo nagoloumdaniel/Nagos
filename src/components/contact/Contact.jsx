@@ -162,10 +162,10 @@ const Contact = () => {
   return (
     <section className="contact section" id="contact">
       <span className="section__subtitle">Travaillons ensemble</span>
-      <h2 className="section__title reveal">Entrer en contact</h2>
+      <h2 className="section__title">Entrer en contact</h2>
 
       <div className="contact__container container grid">
-        <div className="contact__col reveal-left d2">
+        <div className="contact__col">
           <div className="contact__info">
             {contactCards.map(({ icon, title, data, display, href, label, action = "Contacter" }) => {
               const external = href.startsWith("http");
@@ -191,7 +191,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="contact__col reveal-right d2">
+        <div className="contact__col">
           <form ref={formRef} onSubmit={sendEmail} className="contact__form" noValidate>
             <Field id="contact-name" label="Nom" error={errors.name}>
               <input

@@ -30,7 +30,7 @@ export const ProjectLogo = ({ item, variant }) => {
 const Workitems = ({ item }) => {
   const techShown = item.stack.flatMap(g => g.items);
   return (
-    <article className="work__card reveal-scale">
+    <article className="work__card">
       <header className="work__bar">
         <span className="work__category-tag"><i className="uil uil-brackets-curly" aria-hidden="true" /> {item.category}</span>
         {item.status && <span className="work__status-tag">{item.status}</span>}

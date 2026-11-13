@@ -200,7 +200,8 @@ img { max-width: 100%; height: auto; }
 .section { padding: 4rem 0 4rem; }
 .section + .section { border-top: 1px dashed var(--guide); }
 /* Les sections hors écran ne sont ni mises en page ni peintes tant qu'on n'y arrive pas */
-.section:not(.about):not(.work):not(.project) { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+/* Désactivé pendant le crafting : le moteur doit mesurer les vraies positions des sections */
+html:not(.craft-on) .section:not(.about):not(.work):not(.project) { content-visibility: auto; contain-intrinsic-size: auto 900px; }
 .container { max-width: 1200px; margin-inline: auto; padding-inline: 2rem; }
 .grid { display: grid; gap: 1.5rem; }
 
@@ -296,18 +297,6 @@ img { max-width: 100%; height: auto; }
 .button--sm { padding: 0.5rem 1.1rem; font-size: var(--smaller-font-size); }
 
 /* ─── SCROLL-REVEAL ──────────────────────────────────────── */
-.reveal       { opacity:0; transform:translateY(32px);  transition:opacity .75s ease,transform .75s ease; }
-.reveal.revealed { opacity:1; transform:translateY(0); }
-.reveal-left  { opacity:0; transform:translateX(-40px); transition:opacity .75s ease,transform .75s ease; }
-.reveal-left.revealed  { opacity:1; transform:translateX(0); }
-.reveal-right { opacity:0; transform:translateX(40px);  transition:opacity .75s ease,transform .75s ease; }
-.reveal-right.revealed { opacity:1; transform:translateX(0); }
-.reveal-scale { opacity:0; transform:scale(.88);         transition:opacity .75s ease,transform .75s ease; }
-.reveal-scale.revealed { opacity:1; transform:scale(1); }
-
-.d1{transition-delay:.10s!important} .d2{transition-delay:.20s!important}
-.d3{transition-delay:.30s!important} .d4{transition-delay:.40s!important}
-.d5{transition-delay:.50s!important} .d6{transition-delay:.60s!important}
 
 /* ─── THEME WAVE ─────────────────────────────────────────── */
 body::after {

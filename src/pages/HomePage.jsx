@@ -8,9 +8,11 @@ import Services       from '../components/services/Services';
 import Qualifications from '../components/qualifications/Qualifications';
 import Contact        from '../components/contact/Contact';
 import usePageMeta    from '../hooks/usePageMeta';
+import useHomeCraft   from '../lib/craft/useHomeCraft';
 
 const HomePage = () => {
   const { hash } = useLocation();
+  useHomeCraft();
 
   usePageMeta({
     title: 'Daniel NAGOLOUM TALLA - Développeur Full-Stack + IA | Portfolio',
