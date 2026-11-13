@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nagoloum.vercel.app/sitemap.xml
+Sitemap: https://nagoloum.dev/sitemap.xml
