@@ -79,7 +79,19 @@ const EditorWindowImpl = ({ files, onRoute, linkable, label = 'Fichiers', classN
     const firstLine = el.querySelector('.ide-line');
     if (firstLine) lhRef.current = firstLine.getBoundingClientRect().height || 19;
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return undefined;
-    let raf; let last = performance.now(); let dir = 1; let pos = 0;
+    let raf = 0; let last = performance.now(); let dir = 1; let pos = el.scrollTop;
+    /* Hors écran ou onglet caché : boucle arrêtée (aucun coût pendant le scroll du reste de la page) */
+    let seen = false;
+    const resume = () => {
+      if (raf || !seen || document.hidden) return;
+      last = performance.now();
+      raf = requestAnimationFrame(tick);
+    };
+    const pause = () => { cancelAnimationFrame(raf); raf = 0; };
+    const io = new IntersectionObserver(([e]) => { seen = e.isIntersecting; if (seen) resume(); else pause(); });
+    io.observe(el);
+    const onVis = () => { if (document.hidden) pause(); else resume(); };
+    document.addEventListener('visibilitychange', onVis);
     const tick = (now) => {
       const lh = lhRef.current;
       const max = el.scrollHeight - el.clientHeight;
@@ -91,8 +103,7 @@ const EditorWindowImpl = ({ files, onRoute, linkable, label = 'Fichiers', classN
       last = now;
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    return () => { pause(); io.disconnect(); document.removeEventListener('visibilitychange', onVis); };
   }, [autoScroll, active]);
 
   const select = (name) => {

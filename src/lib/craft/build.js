@@ -70,6 +70,38 @@ export const collectTargets = (root, { max = 60 } = {}) => {
   return out;
 };
 
+/* Boîte de l'« encre » : union des lignes de texte réelles et des icônes, pas la boîte
+   CSS (un titre en largeur fixe, un paragraphe centré ou un lien en bloc ont une boîte
+   bien plus large que leur texte). Le cadre et le curseur de saisie collent ainsi au texte,
+   quelle que soit la mise en page future. */
+const LEAF = 'i,svg,img,canvas,video,picture,input,textarea,select';
+export const inkRect = (el) => {
+  let l = Infinity; let t = Infinity; let r = -Infinity; let b = -Infinity;
+  const add = (q) => {
+    if (q.width < 0.5 || q.height < 0.5) return;
+    l = Math.min(l, q.left); t = Math.min(t, q.top); r = Math.max(r, q.right); b = Math.max(b, q.bottom);
+  };
+  const range = document.createRange();
+  const tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT, {
+    acceptNode: (n) => {
+      if (n.nodeType === 3) return n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      if (n.getAttribute('aria-hidden') === 'true' && !n.matches(LEAF)) return NodeFilter.FILTER_SKIP;
+      return n.matches(LEAF) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+    },
+  });
+  for (let n = tw.nextNode(); n; n = tw.nextNode()) {
+    if (n.nodeType === 3) {
+      range.selectNodeContents(n);
+      for (const q of range.getClientRects()) add(q);
+    } else {
+      add(n.getBoundingClientRect());
+      // Une icône peut contenir du texte (ligatures) : inutile de descendre
+    }
+  }
+  if (!Number.isFinite(l)) return el.getBoundingClientRect();
+  return { left: l, top: t, width: r - l, height: b - t, right: r, bottom: b };
+};
+
 /* ─── Mesures : une seule passe de lecture, avant toute écriture ───
    Lire puis écrire en alternance force un recalcul de mise en page à chaque élément
    (saccades au chargement des grandes sections). Tout est donc mesuré ici, d'un coup. */
@@ -80,13 +112,35 @@ export function planCraft(root, items, { fixed = false } = {}) {
   const rb = root.getBoundingClientRect();
   const origin = { ox: rb.left + sx, oy: rb.top + sy, fixed };
   const rel = (b) => ({ x: b.left + sx - origin.ox, y: b.top + sy - origin.oy, w: b.width, h: b.height });
+  /* Ancêtre sticky ou fixed : il bouge avec le défilement, ses cadres devront le suivre */
+  const pins = new Map();
+  const pinOf = (el) => {
+    if (fixed) return null;
+    const chain = [];
+    let found = null;
+    for (let n = el; n && n !== document.body; n = n.parentElement) {
+      if (pins.has(n)) { found = pins.get(n); break; }
+      chain.push(n);
+      const pos = getComputedStyle(n).position;
+      if (pos === 'sticky' || pos === 'fixed') { found = n; break; }
+    }
+    chain.forEach((n) => pins.set(n, found));
+    return found;
+  };
   const measured = items.map((item) => {
     const { el } = item;
     const cs = getComputedStyle(el);
-    const r = rel(el.getBoundingClientRect());
+    const eb = rel(el.getBoundingClientRect());
+    /* Texte : cadre sur l'encre ; composant : cadre sur la boîte CSS */
+    const r = item.effect === 'type' ? rel(inkRect(el)) : eb;
+    const pin = pinOf(el);
     const m = {
       ...item,
       r,
+      eb,
+      pin,
+      pinAt: pin ? rel(pin.getBoundingClientRect()) : null,
+      radius: cs.borderRadius,
       at: typeof item.at === 'function' ? item.at(r) : (item.at || 0),
       color: cs.color,
       lh: parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.3 || r.h,
@@ -110,7 +164,7 @@ export function planCraft(root, items, { fixed = false } = {}) {
         const b = ln.getBoundingClientRect();
         const inside = b.height > 1 && b.bottom > box.top + m.barH && b.top < box.bottom;
         if (inside && m.lines.length < 18) {
-          m.lines.push({ el: ln, r: rel(b), chars: Math.max(4, Math.min(60, ln.textContent.trim().length)) });
+          m.lines.push({ el: ln, r: rel(b), eb: rel(b), chars: Math.max(4, Math.min(60, ln.textContent.trim().length)) });
         } else if (inside) m.rest.push(ln);
       });
       const status = el.querySelector('.ide-win__status');
@@ -140,6 +194,9 @@ const CURSOR_SVG =
   '<svg class="craft-cursor__arrow" width="18" height="20" viewBox="0 0 18 20" aria-hidden="true">' +
   '<path d="M1.2 1.2v15l4.1-3.8 2.8 6.2 2.6-1.1-2.7-6.1h5.7z"/></svg>';
 
+/* « Pas de découpe » sans le mot-clé none : GSAP lirait alors le style calculé */
+const NOCLIP = 'inset(-9999px)';
+
 const frameName = (root) =>
   root.id || (root.className && String(root.className).split(' ')[0]) || 'frame';
 
@@ -150,6 +207,13 @@ const frameName = (root) =>
 export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '', frame = true, offset = 0 }) {
   const P = plan || planCraft(root, items);
   const { origin: group, R } = P;
+  /* Transforms lues une fois, toutes avant la première écriture : GSAP les met en cache
+     et ne relance plus getComputedStyle (un recalcul de style forcé par élément sinon) */
+  P.items.forEach((m) => {
+    const list = [...(m.kids || []), ...(m.bar || [])];
+    if (m.effect === 'drag') list.push(m.el);
+    list.forEach((el) => gsap.getProperty(el, 'x'));
+  });
   const world = group.fixed ? getFixedWorld() : getWorld();
   const nodes = [];
   const nanos = [];
@@ -162,14 +226,39 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
   const place = () => { g.style.transform = `translate3d(${group.ox}px, ${group.oy}px, 0)`; };
   place();
 
+  /* Cadres d'un élément sticky ou fixed : sous-calque décalé du déplacement réel de
+     l'élément épinglé depuis la mesure, recalculé à chaque défilement */
+  let host = g;
+  const subs = new Map();
+  const syncSubs = () => {
+    subs.forEach((sub, pin) => {
+      const b = pin.getBoundingClientRect();
+      const dx = b.left + window.scrollX - group.ox - sub.at.x;
+      const dy = b.top + window.scrollY - group.oy - sub.at.y;
+      sub.el.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+    });
+  };
+  const subFor = (m) => {
+    if (!m.pin) return g;
+    if (!subs.has(m.pin)) {
+      const el = document.createElement('div');
+      el.className = 'craft-group';
+      g.appendChild(el);
+      subs.set(m.pin, { el, at: m.pinAt });
+    }
+    return subs.get(m.pin).el;
+  };
   const mk = (cls, html = '') => {
     const n = document.createElement('div');
     n.className = `craft-${cls}`;
     if (html) n.innerHTML = html;
-    g.appendChild(n);
+    host.appendChild(n);
     return n;
   };
-  const box = (n, r) => gsap.set(n, { left: r.x, top: r.y, width: r.w, height: r.h, autoAlpha: 0 });
+  /* Écriture directe : un gsap.set relirait le style calculé d'un nœud tout neuf */
+  const box = (n, r) => {
+    n.style.cssText += `left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px;opacity:0;visibility:hidden;clip-path:${NOCLIP}`;
+  };
   /* Styles inline d'origine, restaurés tels quels à la fin (React ou le code existant peuvent en poser) */
   const STYLE_KEYS = ['opacity', 'visibility', 'clip-path', 'transform', 'translate', 'rotate', 'scale', 'transition'];
   const original = new Map();
@@ -181,7 +270,13 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
         el.style.setProperty('transition', 'none');
       }
       const set = touched.get(el) || new Set();
-      props.forEach((p) => set.add(p));
+      /* Valeur inline de départ : GSAP la lit au lieu du style calculé (pas de recalcul forcé) */
+      props.forEach((p) => {
+        set.add(p);
+        if (p === 'opacity' && !el.style.opacity) el.style.opacity = String(P.alpha?.get(el) ?? 1);
+        else if (p === 'visibility' && !el.style.visibility) el.style.visibility = 'inherit';
+        else if (p === 'clipPath' && !el.style.clipPath) el.style.clipPath = NOCLIP;
+      });
       touched.set(el, set);
     });
   };
@@ -200,7 +295,7 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
     rl.firstChild.textContent = `${Math.round(r.x)}`;
     box(rl, { x: 0, y: r.y + Math.min(r.h / 2, 40), w: r.x, h: 1 });
     tl.set(rl, { autoAlpha: 1 }, at);
-    tl.fromTo(rl, { scaleX: 0 }, { scaleX: 1, duration: 0.3 * k, ease: 'power2.out' }, at);
+    tl.fromTo(rl, { width: 0 }, { width: r.x, duration: 0.3 * k, ease: 'power2.out' }, at);
     tl.to(rl, { autoAlpha: 0, duration: 0.25 * k }, at + 0.6 * k);
   };
   /* Repères d'alignement qui s'allument quand un élément « s'aimante » à sa place */
@@ -234,7 +329,9 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
     const left = i % 2 === 0;
     const x = left ? -group.ox - 40 : P.vw - group.ox + 30;
     const y = 30 + i * 64 + (sorted[i] ? sorted[i].r.y * 0.5 : 0);
-    gsap.set(c, { x, y, autoAlpha: 0 });
+    c.style.opacity = '0';
+    c.style.visibility = 'hidden';
+    gsap.set(c, { x, y });
     return { el: c, x, y, free: -Infinity, used: false, last: 0 };
   });
 
@@ -244,27 +341,32 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
   };
 
   /* Frappe : ligne par ligne (ou caractère par caractère) avec curseur de saisie */
-  const typeIn = (els, r, chars, lines, at, cur, maxDur = 1.3) => {
+  const typeIn = (els, r, chars, lines, at, cur, maxDur = 1.3, eb = r) => {
     const mv = Math.max(12, r.h * 0.5);
     const mh = 14;
     const dur = Math.min(maxDur, 0.4 + chars * 0.02 + (lines - 1) * 0.1) * k;
+    /* Le clip s'exprime dans la boîte de l'élément ; il balaie exactement l'encre r */
+    const fromR = eb.x + eb.w - r.x;
+    const toR = eb.x + eb.w - (r.x + r.w);
+    const fromB = eb.y + eb.h - r.y;
+    const toB = eb.y + eb.h - (r.y + r.h);
     hide(els, at);
     touch(els, ['clipPath']);
     const caret = mk('caret');
     if (lines === 1) {
-      tl.fromTo(els, { clipPath: `inset(-${mv}px ${r.w + mh}px -${mv}px -${mh}px)` },
-        { clipPath: `inset(-${mv}px -${mh}px -${mv}px -${mh}px)`, duration: dur, ease: `steps(${chars})` }, at);
+      tl.fromTo(els, { clipPath: `inset(-${mv}px ${fromR}px -${mv}px -${mh}px)` },
+        { clipPath: `inset(-${mv}px ${toR - mh}px -${mv}px -${mh}px)`, duration: dur, ease: `steps(${chars})` }, at);
       box(caret, { x: r.x, y: r.y, w: 2, h: r.h });
       tl.set(caret, { autoAlpha: 1 }, at);
-      tl.fromTo(caret, { x: 0 }, { x: r.w, duration: dur, ease: `steps(${chars})`, immediateRender: false }, at);
+      tl.fromTo(caret, { left: r.x }, { left: r.x + r.w, duration: dur, ease: `steps(${chars})`, immediateRender: false }, at);
       if (cur) moveCursor(cur, r.x + r.w + 8, r.y + r.h * 0.65, at, dur, `steps(${chars})`);
     } else {
-      tl.fromTo(els, { clipPath: `inset(-${mh}px -${mh}px ${r.h + mh}px -${mh}px)` },
-        { clipPath: `inset(-${mh}px -${mh}px -${mh}px -${mh}px)`, duration: dur, ease: `steps(${lines})` }, at);
+      tl.fromTo(els, { clipPath: `inset(-${mh}px -${mh}px ${fromB}px -${mh}px)` },
+        { clipPath: `inset(-${mh}px -${mh}px ${toB - mh}px -${mh}px)`, duration: dur, ease: `steps(${lines})` }, at);
       caret.classList.add('craft-caret--scan');
       box(caret, { x: r.x, y: r.y, w: r.w, h: 1 });
       tl.set(caret, { autoAlpha: 1 }, at);
-      tl.fromTo(caret, { y: 0 }, { y: r.h, duration: dur, ease: `steps(${lines})`, immediateRender: false }, at);
+      tl.fromTo(caret, { top: r.y }, { top: r.y + r.h, duration: dur, ease: `steps(${lines})`, immediateRender: false }, at);
       if (cur) moveCursor(cur, r.x - 10, r.y + r.h, at, dur, `steps(${lines})`);
     }
     tl.set(caret, { autoAlpha: 0 }, at + dur + 0.05 * k);
@@ -273,6 +375,7 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
 
   sorted.forEach((m, idx) => {
     const { el, effect, r } = m;
+    host = subFor(m);
     const els = [el, ...(m.with || [])];
     /* Chaque UI démarre à son heure, sans attendre un curseur libre : les constructions
        se chevauchent. Un curseur libre vient l'accompagner, sinon elle se construit seule. */
@@ -291,6 +394,7 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
     const sel = mk('sel', '<i></i><i></i><i></i><i></i><span class="craft-sel__dim"></span>');
     sel.lastChild.textContent = `${Math.round(r.w)} × ${Math.round(r.h)}`;
     box(sel, r);
+    if (effect !== 'type' && m.radius && m.radius !== '0px') sel.style.borderRadius = m.radius;
     tl.set(sel, { autoAlpha: 1 }, t);
     tl.fromTo(sel, { clipPath: `inset(-2px ${r.w + 2}px ${r.h + 2}px -2px)` },
       { clipPath: 'inset(-6px -6px -26px -6px)', duration: D.draw, ease: 'power2.inOut' }, t);
@@ -301,13 +405,13 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
 
     if (effect === 'type') {
       const lines = Math.max(1, Math.round(r.h / m.lh));
-      const dur = typeIn(els, r, m.chars, lines, t, cur);
+      const dur = typeIn(els, r, m.chars, lines, t, cur, 1.3, m.eb);
       /* Guide pointillé sous les titres, comme un repère d'alignement */
       if (m.heading) {
         const gd = mk('guide');
         box(gd, { x: 0, y: r.y + r.h, w: R.w, h: 1 });
         tl.set(gd, { autoAlpha: 1 }, t);
-        tl.fromTo(gd, { scaleX: 0 }, { scaleX: 1, duration: 0.45 * k, ease: 'power3.out' }, t);
+        tl.fromTo(gd, { width: 0 }, { width: R.w, duration: 0.45 * k, ease: 'power3.out' }, t);
         tl.to(gd, { autoAlpha: 0, duration: 0.3 * k }, t + dur);
         redline(r, t);
       }
@@ -316,6 +420,7 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
       const gh = mk('ghost', '<span></span>');
       gh.firstChild.textContent = m.label;
       box(gh, r);
+      if (m.radius) gh.style.borderRadius = m.radius;
       tl.set(gh, { autoAlpha: 1 }, t);
       tl.fromTo(gh, { clipPath: `inset(0px ${r.w}px ${r.h}px 0px)` },
         { clipPath: 'inset(-22px -4px -4px -4px)', duration: 0.3 * k, ease: 'power2.out' }, t);
@@ -401,7 +506,7 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
       }
       let lt = t + 0.5 * k + m.bar.length * 0.06 * k;
       m.lines.forEach((ln) => {
-        const d = typeIn(ln.el, ln.r, ln.chars, 1, lt, null, 0.7) * 0.75;
+        const d = typeIn(ln.el, ln.r, ln.chars, 1, lt, null, 0.7, ln.eb) * 0.75;
         lt += d;
       });
       const bodyDur = Math.max(0.35 * k, lt - (t + 0.5 * k));
@@ -457,6 +562,13 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
     if (cur) { cur.free = end - 0.15 * k; cur.last = end; }
   });
 
+  host = g;
+  syncSubs();
+  /* Zone déplacée après la mesure (image, données, contenu chargé au-dessus) :
+     le calque la suit à chaque défilement */
+  const follow = () => { if (!group.fixed) reposition(); else syncSubs(); };
+  window.addEventListener('scroll', follow, { passive: true });
+
   /* Les curseurs quittent la zone une fois leur travail fini */
   cursors.forEach((cur, i) => {
     if (!cur.used) return;
@@ -489,16 +601,18 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
 
   const dispose = () => {
     nanos.forEach(removeNano);
+    window.removeEventListener('scroll', follow);
     nodes.forEach((n) => n.remove());
   };
 
   /* Après un rafraîchissement de ScrollTrigger : réaligne le groupe sur sa zone */
-  const reposition = () => {
+  function reposition() {
     const b = P.root.getBoundingClientRect();
     group.ox = b.left + (group.fixed ? 0 : window.scrollX);
     group.oy = b.top + (group.fixed ? 0 : window.scrollY);
     place();
-  };
+    syncSubs();
+  }
 
   return { finish, rearm, dispose, reposition };
 }

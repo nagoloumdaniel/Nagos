@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { buildCraft, collectTargets, isVisible, planCraft } from './build';
 import { installLeave } from './leave';
-import { craftEnabled, releasePending, setCraftOn, claimHeader, releaseHeader, waitFonts, fontsReady } from './env';
+import { craftEnabled, releasePending, setCraftOn, claimHeader, releaseHeader, waitFonts, fontsReady, onLateFonts } from './env';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -175,7 +175,9 @@ export default function useHomeCraft() {
       const crafts = new Map();
       const maxScroll = () => ScrollTrigger.maxScroll(window);
 
-      /* Lecture : toutes les sections sont mesurées avant la moindre écriture */
+      /* Une section est mesurée et construite seulement quand elle approche de l'écran :
+         ses mesures portent sur la mise en page réelle du moment (polices, images, données
+         chargées), pas sur celle du chargement. D'ici là, son contenu reste masqué. */
       const plan = (root) => planCraft(root, collectTargets(root).map((t) => ({ ...t, at: (r) => Math.max(0, r.y) * 0.85 })));
 
       const build = (root, p) => {
@@ -203,7 +205,7 @@ export default function useHomeCraft() {
         /* Fin atteinte (même via le lissage du scrub) : le DOM retrouve son CSS d'origine */
         tl.eventCallback('onComplete', craft.finish);
         tl.eventCallback('onUpdate', () => { if (tl.progress() < 1) craft.rearm(); });
-        crafts.set(root, { tl, st, craft, h: p.R.h });
+        crafts.set(root, { tl, st, craft, h: root.offsetHeight, w: root.offsetWidth });
       };
 
       const destroy = (root) => {
@@ -218,44 +220,68 @@ export default function useHomeCraft() {
       };
 
       const buildAll = (list) => {
+        list.forEach((root) => root.classList.remove('craft-wait'));
+        /* Lecture d'abord (toutes les sections du lot), écriture ensuite */
         const plans = list.map((root) => [root, plan(root)]);
         plans.forEach(([root, p]) => build(root, p));
         ScrollTrigger.refresh();
-        crafts.forEach(({ tl, st }) => { tl.progress(st.progress); st.getTween()?.progress(1); });
+        list.forEach((root) => {
+          const c = crafts.get(root);
+          if (c) { c.tl.progress(c.st.progress); c.st.getTween()?.progress(1); }
+        });
       };
-      buildAll(roots);
 
-      /* Contenu qui change de taille (données GitHub, images) : on reconstruit la section */
+      roots.forEach((r) => r.classList.add('craft-wait'));
+      const queue = new Set();
+      let raf = 0;
+      const flush = () => {
+        raf = 0;
+        if (!alive || settled || !queue.size) return;
+        const list = roots.filter((r) => queue.has(r));
+        queue.clear();
+        buildAll(list);
+      };
+      /* Marge large dans les deux sens : rien n'est encore masqué quand on y arrive */
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting || crafts.has(e.target)) return;
+          io.unobserve(e.target);
+          queue.add(e.target);
+        });
+        if (queue.size && !raf) raf = requestAnimationFrame(flush);
+      }, { rootMargin: '100% 0px 150% 0px' });
+      roots.forEach((r) => io.observe(r));
+
+      /* Contenu qui change de taille (données GitHub, images, ajout d'un projet) : la section
+         est remesurée et reconstruite, comme un squelette qui suit son contenu */
       let timer = 0;
       const dirty = new Set();
       const rebuild = () => {
         if (!alive || settled) return;
-        const list = [...dirty];
+        const list = [...dirty].filter((r) => crafts.has(r));
         dirty.clear();
+        if (!list.length) return;
         list.forEach(destroy);
         buildAll(list);
       };
+      const later = (ms) => { clearTimeout(timer); timer = setTimeout(rebuild, ms); };
       const ro = new ResizeObserver((entries) => {
         entries.forEach((e) => {
           const c = crafts.get(e.target);
-          if (c && Math.abs(e.target.offsetHeight - c.h) > 40) dirty.add(e.target);
+          if (c && (Math.abs(e.target.offsetHeight - c.h) > 1 || Math.abs(e.target.offsetWidth - c.w) > 1)) dirty.add(e.target);
         });
-        if (dirty.size) { clearTimeout(timer); timer = setTimeout(rebuild, 250); }
+        if (dirty.size) later(200);
       });
       roots.forEach((r) => ro.observe(r));
-      let lastW = window.innerWidth;
-      const onResize = () => {
-        if (Math.abs(window.innerWidth - lastW) < 40) return;
-        lastW = window.innerWidth;
-        roots.forEach((r) => dirty.add(r));
-        clearTimeout(timer);
-        timer = setTimeout(rebuild, 300);
-      };
-      window.addEventListener('resize', onResize);
+      /* Police arrivée après les mesures : les cadres de texte sont faux, on remesure */
+      const offFonts = onLateFonts(() => { crafts.forEach((_, r) => dirty.add(r)); later(120); });
       cleanups.push(() => {
         clearTimeout(timer);
+        cancelAnimationFrame(raf);
+        io.disconnect();
         ro.disconnect();
-        window.removeEventListener('resize', onResize);
+        offFonts();
+        roots.forEach((r) => r.classList.remove('craft-wait'));
         [...crafts.keys()].forEach(destroy);
       });
 
@@ -263,6 +289,8 @@ export default function useHomeCraft() {
       settle = () => {
         settled = true;
         if (prog() < 1) complete();
+        io.disconnect();
+        roots.forEach((r) => r.classList.remove('craft-wait'));
         [...crafts.keys()].forEach(destroy);
       };
       cleanups.push(installLeave((to) => navRef.current(to), () => settle()));
