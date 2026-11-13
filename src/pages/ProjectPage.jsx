@@ -286,10 +286,10 @@ const SECTIONS = [
 
 /* Raison affichée quand une section n'a pas (encore) de contenu : toutes les pages gardent les mêmes 12 points. */
 const emptyReason = (s, p) => {
-  if (s.id === 'github' && !p.private) return 'Aucun dépôt public pour le moment.';
-  if (p.private) return 'Privé : cette partie n’est pas publiée pour ce projet.';
+  // Un dépôt privé ne masque que le code source et les données sensibles, jamais le reste de la fiche.
+  if (s.id === 'github') return p.private ? 'Dépôt privé : le code source n’est pas public.' : 'Aucun dépôt public pour le moment.';
   if (p.wip) return 'À venir : le projet est en cours de développement.';
-  return 'Non renseigné pour le moment.';
+  return 'Cette information n’a pas encore été ajoutée sur le site.';
 };
 
 const Empty = ({ text }) => (

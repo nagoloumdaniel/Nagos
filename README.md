@@ -24,15 +24,15 @@ disponible en **alternance de 24 mois dès septembre 2026** (3 semaines entrepri
 
 ```
 content/                     # Tout le contenu du site : un dossier = un élément (voir content/README.md)
-├── projets/<nom>/           # Un projet : infos, description, liens, statut, logo, galerie/
-├── blog/<nom>/              # Un article : infos.json, article.md, statut.txt
+├── projets/<nom>/           # Un projet : 12 dossiers numérotés (01-apercu ... 12-liens)
+├── blog/<nom>/              # Un article : 01-infos, 02-couverture, 03-article, 04-points
 ├── etudes/<nom>/            # Une ligne de la frise « Éducation »
 ├── experiences/<nom>/       # Une ligne de la frise « Expérience »
 ├── certifications/<nom>/    # Une certification : infos.json + PDF
 └── cv/                      # Le PDF du CV (remplacer le fichier suffit)
 public/
 ├── og-image.png             # Image de partage 1200×630 (Open Graph / Twitter)
-├── robots.txt · sitemap.xml
+├── robots.txt · sitemap.xml (généré par scripts/generate-sitemap.mjs)
 src/
 ├── assets/                  # Images WebP du site
 ├── components/
@@ -152,7 +152,7 @@ n'est pas affichée. Une carte par produit, même quand il a plusieurs dépôts 
 - **Page détail** (`ProjectPage.jsx`) : chaque projet a sa page, pilotée par les données. Un sommaire
   latéral fixe suit le défilement (`useSectionNav`) ; une section sans contenu disparaît (situation,
   fonctionnement, architecture, modélisation, stack, difficultés, défis d'interface, galerie, liens).
-- **Galerie** : toute image déposée dans `galerie/` apparaît, la légende est le nom du fichier
+- **Galerie** : toute image déposée dans `04-galerie/` apparaît (8 maximum, les plus importantes), la légende est le nom du fichier
   (`02 - Acheter.webp` donne « Acheter »). Grille de 1 à 3 colonnes, chargement différé, lightbox
   accessible (Échap, flèches, focus rendu à la vignette). N'y mettre ni donnée personnelle, ni secret,
   ni photo de client.

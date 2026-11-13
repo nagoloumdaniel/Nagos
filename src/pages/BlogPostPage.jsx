@@ -42,6 +42,8 @@ const PostDetail = ({ post, prev, next }) => {
           </div>
         </header>
 
+        {post.cover && <img className="blog__cover" src={post.cover} alt="" decoding="async" />}
+
         <div className="pj-body">
           <nav className="pj-nav" aria-label="Plan de l'article">
             <span className="pj-nav__title">Dans cet article</span>
