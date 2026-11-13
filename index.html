@@ -15,7 +15,9 @@
     />
     <meta name="author" content="Daniel NAGOLOUM TALLA" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#080808" />
+    <!-- Couleurs identiques partout : le site gère lui-même son thème, pas d'assombrissement forcé par le navigateur -->
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#FAFAFA" />
     <link rel="canonical" href="https://nagoloum.vercel.app/" />
 
     <!-- Open Graph -->
@@ -89,6 +91,17 @@
   <body>
     <script>
       try { if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark-theme'); } catch (e) {}
+      /* Barre du navigateur mobile et contrôles natifs alignés sur le thème choisi, à chaque bascule */
+      (function () {
+        var meta = document.querySelector('meta[name="theme-color"]');
+        var sync = function () {
+          var dark = document.body.classList.contains('dark-theme');
+          document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+          if (meta) meta.setAttribute('content', dark ? '#080808' : '#FAFAFA');
+        };
+        sync();
+        new MutationObserver(sync).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      })();
       /* Crafting : le site reste masqué (sauf la photo) jusqu'à ce que l'animation prenne la main ; filet de sécurité à 5 s */
       try {
         if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
