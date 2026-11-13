@@ -1,0 +1,42 @@
+[
+  {
+    "icone": "uil-layers",
+    "libelle": "Application Next.js",
+    "texte": "Rendu serveur avec composants serveur, routes API pour le paiement, les webhooks, les téléchargements et les documents, déployée sur Vercel."
+  },
+  {
+    "icone": "uil-sitemap",
+    "libelle": "Code par domaine",
+    "texte": "Chaque métier a son dossier : catalogue, paiement, facturation, livraison, compte, RGPD, e-mails, administration, consentement, visites. Les pages restent minces."
+  },
+  {
+    "icone": "uil-database",
+    "libelle": "PostgreSQL et Drizzle",
+    "texte": "Base hébergée sur Supabase derrière un pooler. Schéma typé, migrations SQL versionnées, trigger pour la règle qui ne doit jamais être contournée : les documents comptables ne se modifient pas."
+  },
+  {
+    "icone": "uil-lock",
+    "libelle": "Stockage privé",
+    "texte": "Compartiment privé Supabase Storage pour les fichiers payants. Aucun lien public, tout passe par un contrôle des droits."
+  },
+  {
+    "icone": "uil-bolt",
+    "libelle": "Paiement et webhook",
+    "texte": "Stripe encaisse, un webhook signé et idempotent confirme. Une transaction unique crée la commande payée, les droits et la facture."
+  },
+  {
+    "icone": "uil-envelope-send",
+    "libelle": "E-mails Resend",
+    "texte": "Envoi depuis un sous-domaine dédié. Chaque message part avec une version texte et une version HTML, et chaque envoi est journalisé."
+  },
+  {
+    "icone": "uil-shield-exclamation",
+    "libelle": "Anti-abus",
+    "texte": "Turnstile sur les formulaires sensibles, limitation de débit en base, plafonds de téléchargement et vérification de l'origine des requêtes."
+  },
+  {
+    "icone": "uil-monitor-heart-rate",
+    "libelle": "Suivi et CI",
+    "texte": "Sentry pour les erreurs, tâche planifiée Vercel pour la publication, tests unitaires et E2E lancés par GitHub Actions."
+  }
+]

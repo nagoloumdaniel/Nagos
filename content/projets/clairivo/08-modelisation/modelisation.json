@@ -1,0 +1,33 @@
+{
+  "intro": "La base compte trente tables PostgreSQL, regroupées par rôle. Tous les montants sont des entiers en centimes. Les documents comptables sont protégés par un trigger SQL.",
+  "entites": [
+    {
+      "nom": "Comptes",
+      "texte": "users, sessions, accounts, verifications, two_factors, auth_rate_limits : identités, connexions Google, double authentification et limites de tentatives."
+    },
+    {
+      "nom": "Catalogue",
+      "texte": "categories, series, products, pack_items, product_versions, product_files, favorites. Un produit est un guide, un modèle, un cours ou un pack, en brouillon, publié ou archivé, disponible ou bientôt."
+    },
+    {
+      "nom": "Ventes",
+      "texte": "orders, order_items, payments, payment_events, refunds, order_notes. Le titre et le prix de chaque ligne sont copiés au moment de l'achat."
+    },
+    {
+      "nom": "Droits et livraison",
+      "texte": "entitlements et download_events : qui a accès à quoi, depuis quand, et chaque téléchargement servi."
+    },
+    {
+      "nom": "Comptabilité",
+      "texte": "invoices, credit_notes, document_counters. Factures et avoirs sont figés, liés l'un à l'autre, numérotés par série et par année, et refusent toute modification."
+    },
+    {
+      "nom": "Communication",
+      "texte": "email_logs avec adresse masquée et empreinte, et waitlist_signups conservée pour l'historique."
+    },
+    {
+      "nom": "Conformité et exploitation",
+      "texte": "consent_records pour la preuve de consentement, audit_logs pour les actions sensibles et rate_limits pour la limitation de débit."
+    }
+  ]
+}

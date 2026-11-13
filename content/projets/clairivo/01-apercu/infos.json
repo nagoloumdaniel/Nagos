@@ -1,0 +1,15 @@
+{
+  "titre": "Clairivo",
+  "categorie": "Web",
+  "etiquette": "Next.js · Stripe · dépôt privé",
+  "resume": "Boutique française de ressources numériques (guides, modèles, mini-cours) de 2,99 € à 14,99 €, avec paiement par carte, accès immédiat, factures PDF et espace client.",
+  "role": "Projet personnel de bout en bout : produit, design, base de données, paiement, facturation, administration et déploiement. Développé en solo, avec l'assistance de Claude.",
+  "monogramme": "C",
+  "pays": "France",
+  "langues": [
+    "Français"
+  ],
+  "periode": "Depuis novembre 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "En ligne sur Vercel, paiements Stripe activés"
+}

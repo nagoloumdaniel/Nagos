@@ -1,0 +1,26 @@
+[
+  {
+    "titre": "Ne jamais faire confiance au navigateur",
+    "texte": "Le panier ne transporte que des identifiants. Le serveur relit les prix, la disponibilité, les droits et le rôle de l'utilisateur à chaque étape."
+  },
+  {
+    "titre": "Un paiement qui arrive deux fois",
+    "texte": "Le webhook est signé, idempotent et transactionnel. Un double clic, un second onglet ou un événement rejoué ne créent ni commande ni facture en double."
+  },
+  {
+    "titre": "Des factures impossibles à modifier",
+    "texte": "Un trigger SQL interdit toute mise à jour des factures et avoirs. La numérotation par série et par année de Paris évite les trous, y compris autour du 31 décembre."
+  },
+  {
+    "titre": "Livrer sans exposer les fichiers",
+    "texte": "Stockage privé, liens signés de cinq minutes, plafonds par produit et par compte. L'achat sans compte passe par un lien signé."
+  },
+  {
+    "titre": "Des e-mails lisibles partout",
+    "texte": "Le même gabarit HTML tient dans les clients de messagerie, thème clair forcé, avec une version texte envoyée dans le même message."
+  },
+  {
+    "titre": "Respecter la loi dès la conception",
+    "texte": "Consentement aux cookies avec preuve, mesure d'audience sans cookie, export et suppression du compte, conservation des factures dix ans. Le build échoue si les mentions légales sont incomplètes."
+  }
+]

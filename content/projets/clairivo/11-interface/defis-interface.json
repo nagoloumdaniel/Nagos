@@ -1,0 +1,27 @@
+[
+  {
+    "icone": "uil-palette",
+    "titre": "Une identité propre",
+    "texte": "Palette ivoire, encre, corail et violet, polices Sora et Inter, cartes produit à encoche. Pas de gabarit générique."
+  },
+  {
+    "icone": "uil-moon",
+    "titre": "Thèmes clair et sombre",
+    "texte": "Les deux thèmes sont soignés écran par écran."
+  },
+  {
+    "icone": "uil-apps",
+    "titre": "Un design system vivant",
+    "texte": "Trente-cinq composants réutilisables, tous visibles sur une page /design, avec champs, listes déroulantes et boutons personnalisés."
+  },
+  {
+    "icone": "uil-exclamation-triangle",
+    "titre": "Des états d'erreur soignés",
+    "texte": "Pages 404, 500, 401, 403, 429, maintenance et hors ligne dans le style du site, avec une sortie claire."
+  },
+  {
+    "icone": "uil-mobile-android",
+    "titre": "Responsive et clavier",
+    "texte": "Navigation flottante, mise en page pensée dès 360 px, focus visible, respect de la réduction des animations."
+  }
+]
