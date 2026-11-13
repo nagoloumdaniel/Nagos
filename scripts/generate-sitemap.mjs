@@ -6,7 +6,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SITE = 'https://nagoloum.vercel.app';
+const SITE = 'https://nagoloum.dev';
 
 const flag = (file) => existsSync(file)
   ? readFileSync(file, 'utf8').split(/\r?\n/)[0].trim().toLowerCase().normalize('NFD').replace(/\p{M}/gu, '') : '';

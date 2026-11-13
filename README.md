@@ -225,7 +225,7 @@ le dernier par ordre alphabétique est pris.
 
 ## 🔗 Liens
 
-- **Portfolio :** https://nagoloum.vercel.app
+- **Portfolio :** https://nagoloum.dev
 - **LinkedIn :** [linkedin.com/in/nagoloum](https://www.linkedin.com/in/nagoloum)
 - **GitHub :** [github.com/nagoloumdaniel](https://github.com/nagoloumdaniel)
 - **Contact :** nagoloumtalladanielparfait@gmail.com · 06 25 83 90 07
