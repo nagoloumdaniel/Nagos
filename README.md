@@ -220,8 +220,6 @@ Le CV téléchargeable est le PDF de `content/cv/`. Pour le mettre à jour, remp
 bouton de `Home.jsx` et `About.jsx` le charge tout seul, sous le nom du fichier. Avec plusieurs PDF,
 le dernier par ordre alphabétique est pris.
 
-> `cv/generate_cv.py` régénère ce PDF (il écrit dans `content/cv/`) : l'exécuter écrase le CV actuel.
-
 ---
 
 ## 🔗 Liens
