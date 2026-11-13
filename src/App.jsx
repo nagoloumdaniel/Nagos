@@ -15,11 +15,11 @@ const ProjectPage   = lazy(() => import('./pages/ProjectPage'));
 const NotFoundPage  = lazy(() => import('./pages/NotFoundPage'));
 
 function ScrollToTop() {
-  const { pathname, hash } = useLocation();
+  const { pathname } = useLocation();
+  /* Nouvelle page : départ en haut, même avec une ancre (l'accueil défile ensuite jusqu'à la section) */
   useEffect(() => {
-    if (hash) return;
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, [pathname, hash]);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
   return null;
 }
 

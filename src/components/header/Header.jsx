@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { leaveTo } from '../../lib/craft/leave';
+import { goToSection } from '../../lib/craft/useHomeCraft';
 import './Header.css';
 import ThemeToggle from '../home/ThemeToggle';
 
@@ -76,8 +77,7 @@ const Header = () => {
     closeMenu();
     if (taken) return;
     if (location.pathname === '/') {
-      const el = document.getElementById(hash.slice(1));
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      goToSection(hash.slice(1));
       setActiveHash(hash);
     } else {
       leaveTo(`/${hash}`, navigate);
