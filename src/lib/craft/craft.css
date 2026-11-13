@@ -8,7 +8,9 @@ html.craft-pending .home__inner,
 html.craft-pending .home ~ .section,
 html.craft-pending .main > .page,
 html.craft-pending .main > .nf,
-html.craft-pending .footer > * {
+html.craft-pending .footer > *,
+html.craft-hold .main > .page,
+html.craft-hold .main > .nf {
   visibility: hidden;
 }
 
@@ -113,6 +115,30 @@ body.dark-theme .craft-layer,
 }
 .craft-frame__name { left: 0; text-transform: capitalize; }
 .craft-frame__dim { right: 0; }
+
+/* Cote de marge façon « redline » */
+.craft-redline {
+  transform-origin: 0 50%;
+  background: var(--ink);
+  opacity: 0.55;
+}
+.craft-redline::before,
+.craft-redline::after { content: ''; position: absolute; top: -3px; width: 1px; height: 7px; background: var(--ink); }
+.craft-redline::before { left: 0; }
+.craft-redline::after { right: 0; }
+.craft-redline > span {
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%);
+  font: 500 9px/1.3 var(--mono-font);
+  color: var(--ink);
+}
+
+/* Repères magnétiques quand un composant s'aimante à sa place */
+.craft-snap { opacity: 0.4; }
+.craft-snap--v { background: repeating-linear-gradient(to bottom, var(--ink) 0 3px, transparent 3px 7px); }
+.craft-snap--h { background: repeating-linear-gradient(to right, var(--ink) 0 3px, transparent 3px 7px); }
 
 @media (prefers-reduced-motion: reduce) {
   .craft-layer { display: none; }

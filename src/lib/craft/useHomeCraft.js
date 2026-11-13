@@ -1,32 +1,43 @@
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { buildCraft, collectTargets, isVisible } from './build';
+import { buildCraft, collectTargets, isVisible, planCraft } from './build';
+import { installLeave } from './leave';
 import { craftEnabled, releasePending, setCraftOn, claimHeader, releaseHeader, waitFonts, fontsReady } from './env';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PX = 280; // 1 « seconde » d'animation = 280 px de défilement
+const DIST = 1600; // px de molette pour parcourir tout le hero quand le scroll prend la main
 
-/* Éléments de l'en-tête, dans l'ordre de construction (logo, liens, boutons) */
-export const headerItems = (start = 0.15, step = 0.1) => {
-  const list = [];
-  const logo = document.querySelector('.nav__logo');
-  if (logo && isVisible(logo)) list.push({ el: logo, effect: 'type', at: start });
-  let t = start + 0.25;
-  document.querySelectorAll('.nav__item, .nav__theme, .nav__toggle').forEach((el) => {
+/* Nav : plan mesuré dans le repère de l'écran (l'en-tête est fixe), construit sans hâte */
+export const planHeader = (start = 0.15, step = 0.22) => {
+  const header = document.querySelector('.header');
+  if (!header || !isVisible(header)) return null;
+  const items = [];
+  const logo = header.querySelector('.nav__logo');
+  if (logo && isVisible(logo)) items.push({ el: logo, effect: 'type', at: start });
+  let t = start + 0.3;
+  header.querySelectorAll('.nav__item, .nav__theme, .nav__toggle').forEach((el) => {
     if (!isVisible(el)) return;
-    list.push({ el, effect: 'wire', at: t });
+    items.push({ el, effect: el.matches('.nav__item') ? 'type' : 'radial', at: t });
     t += step;
   });
-  return list;
+  return items.length ? planCraft(header, items, { fixed: true }) : null;
 };
 
 const q = (root, sel) => root.querySelector(sel);
 
-/* Accueil : le hero se construit tout seul (le scroll accélère ou rembobine),
-   puis chaque section se construit au fil du défilement, réversible. */
+/* Accueil : le hero se construit tout seul ; dès que l'utilisateur fait défiler, il suit
+   le rythme exact du scroll (dans les deux sens). Les sections se construisent au fil
+   du défilement, réversibles. */
 export default function useHomeCraft() {
+  const navigate = useNavigate();
+  /* Ref : l'identité de navigate peut changer avec l'URL (ancre), sans devoir tout reconstruire */
+  const navRef = useRef(navigate);
+  useLayoutEffect(() => { navRef.current = navigate; });
+
   useLayoutEffect(() => {
     if (!craftEnabled()) { setCraftOn(false); releasePending(); return undefined; }
     setCraftOn(true);
@@ -40,43 +51,60 @@ export default function useHomeCraft() {
       const home = document.getElementById('home');
       if (!home) return;
 
-      /* ─── Hero ─── */
-      const items = headerMine ? headerItems() : [];
+      /* ─── Mesures du hero et de la nav, d'un seul bloc ─── */
+      const navPlan = headerMine ? planHeader() : null;
       const title = q(home, '.home__layer--solid .home__title');
       const outline = q(home, '.home__layer--outline .home__title');
       const hero = [
-        [title, 'type', 1.05, outline ? [outline] : []],
-        [q(home, '.home__greeting'), 'type', 1.55],
-        [q(home, '.home__subtitle'), 'type', 1.8],
-        [q(home, '.home__scroll'), 'wire', 2.05],
-        [q(home, '.home__description'), 'type', 2.3],
-        ...[...home.querySelectorAll('.home__cta > *')].map((el, i) => [el, 'wire', 2.75 + i * 0.15]),
-        [q(home, '.home__social'), 'assemble', 3.1],
+        [title, 'type', 0.9, outline ? [outline] : []],
+        [q(home, '.home__greeting'), 'type', 1.5],
+        [q(home, '.home__subtitle'), 'type', 1.85],
+        [q(home, '.home__scroll'), 'radial', 2.2],
+        [q(home, '.home__description'), 'type', 2.4],
+        ...[...home.querySelectorAll('.home__cta > *')].map((el, i) => [el, i ? 'wire' : 'resize', 2.9 + i * 0.25]),
+        [q(home, '.home__social'), 'assemble', 3.4],
       ];
+      const items = [];
       hero.forEach(([el, effect, at, w]) => { if (el && isVisible(el)) items.push({ el, effect, at, with: w }); });
+      const heroPlan = planCraft(home, items);
 
       const heroTl = gsap.timeline({ paused: true });
-      const heroCraft = buildCraft(heroTl, { root: home, items, k: 1, lanes: 5, tone: 'dark', frame: 'Hero' });
-      heroTl.eventCallback('onComplete', () => heroCraft.finish());
-      const heroIncomplete = () => heroTl.progress() < 1;
+      const heroCraft = buildCraft(heroTl, { plan: heroPlan, k: 1, lanes: 4, tone: 'dark', frame: 'Hero' });
+      const navCraft = navPlan ? buildCraft(heroTl, { plan: navPlan, k: 1, lanes: 2, tone: 'dark', frame: 'Nav' }) : null;
+      const finishHero = () => { heroCraft.finish(); navCraft?.finish(); };
+      heroTl.eventCallback('onComplete', finishHero);
 
-      const heroScale = Math.max(1, heroTl.duration() / 4.6);
-      if (window.location.hash) heroTl.progress(1);
-      else heroTl.timeScale(heroScale).play();
+      /* Lecture auto : environ 6 s, rythme posé */
+      let mode = 'auto';
+      let target = 0;
+      const prog = () => (mode === 'scroll' ? target : heroTl.progress());
+      const complete = () => {
+        gsap.killTweensOf(heroTl);
+        mode = 'scroll';
+        target = 1;
+        heroTl.progress(1);
+      };
+      if (window.location.hash) complete();
+      else heroTl.timeScale(Math.max(1, heroTl.duration() / 6)).play();
 
-      /* Pendant la construction, la page reste en haut : bas = accélère, haut = rembobine */
       /* Après un redimensionnement, les mesures du hero sont périmées : on le termine et on ne le défait plus */
       let heroStale = false;
       const heroW = window.innerWidth;
       const onHeroResize = () => {
         if (heroStale || Math.abs(window.innerWidth - heroW) < 40) return;
         heroStale = true;
-        heroTl.timeScale(1).progress(1);
+        complete();
       };
-      const locked = () => !heroStale && (heroIncomplete() || window.scrollY <= 0);
+      /* Bas : on construit tant que le hero n'est pas fini. Haut : on défait seulement tout en haut. */
+      const wants = (dir) => !heroStale && (dir > 0 ? prog() < 1 : window.scrollY <= 0 && prog() > 0);
+      const drive = (delta) => {
+        if (mode === 'auto') { mode = 'scroll'; heroTl.pause(); target = heroTl.progress(); }
+        target = Math.max(0, Math.min(1, target + delta / DIST));
+        gsap.to(heroTl, { progress: target, duration: 0.5, ease: 'power2.out', overwrite: true });
+      };
       /* Molette ou doigt dans une zone qui défile elle-même : on la laisse faire */
-      const ownScroll = (target, dir) => {
-        for (let n = target instanceof Element ? target : null; n && n !== document.body; n = n.parentElement) {
+      const ownScroll = (el, dir) => {
+        for (let n = el instanceof Element ? el : null; n && n !== document.body; n = n.parentElement) {
           const oy = getComputedStyle(n).overflowY;
           if ((oy === 'auto' || oy === 'scroll') && n.scrollHeight > n.clientHeight + 1) {
             if (dir > 0 ? n.scrollTop + n.clientHeight < n.scrollHeight - 1 : n.scrollTop > 0) return true;
@@ -84,37 +112,34 @@ export default function useHomeCraft() {
         }
         return false;
       };
-      const push = (dir) => {
-        if (dir > 0) {
-          if (!heroIncomplete()) return false;
-          heroTl.timeScale(heroScale * 5).play();
-          return true;
-        }
-        if (window.scrollY > 1) return false;
-        if (heroTl.progress() <= 0) return true;
-        heroTl.timeScale(heroScale * 2.5).reverse();
-        return true;
-      };
       const onWheel = (e) => {
-        if (!locked() || Math.abs(e.deltaY) < 1 || ownScroll(e.target, Math.sign(e.deltaY))) return;
-        if (push(Math.sign(e.deltaY)) && e.cancelable) e.preventDefault();
+        const dir = Math.sign(e.deltaY);
+        if (!dir || !wants(dir) || ownScroll(e.target, dir)) return;
+        if (e.cancelable) e.preventDefault();
+        const d = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
+        drive(Math.max(-240, Math.min(240, d)));
       };
       let ty = null;
       const onTouchStart = (e) => { ty = e.touches[0]?.clientY ?? null; };
       const onTouchMove = (e) => {
-        if (ty == null || !locked()) return;
-        const dy = ty - (e.touches[0]?.clientY ?? ty);
-        if (Math.abs(dy) < 6 || ownScroll(e.target, Math.sign(dy))) return;
-        if (push(Math.sign(dy)) && e.cancelable) e.preventDefault();
+        const y = e.touches[0]?.clientY;
+        if (ty == null || y == null) return;
+        const dy = ty - y;
+        const dir = Math.sign(dy);
+        if (!dir || !wants(dir) || ownScroll(e.target, dir)) return;
+        if (e.cancelable) e.preventDefault();
+        ty = y;
+        drive(dy * 2.2);
       };
-      const KEYS = { ArrowDown: 1, PageDown: 1, ' ': 1, End: 1, ArrowUp: -1, PageUp: -1, Home: -1 };
+      const KEYS = { ArrowDown: 1, PageDown: 3, ' ': 3, End: 10, ArrowUp: -1, PageUp: -3, Home: -10 };
       const onKey = (e) => {
-        const dir = KEYS[e.key];
-        if (!dir || !locked() || e.target.closest?.('input,textarea,select,[contenteditable]')) return;
-        if (push(dir)) e.preventDefault();
+        const n = KEYS[e.key];
+        if (!n || !wants(Math.sign(n)) || e.target.closest?.('input,textarea,select,[contenteditable]')) return;
+        e.preventDefault();
+        drive(n * DIST * 0.06);
       };
       /* Saut direct (lien d'ancre, barre de défilement) : le hero se termine aussitôt */
-      const onScroll = () => { if (window.scrollY > 4 && heroIncomplete()) heroTl.timeScale(1).progress(1); };
+      const onScroll = () => { if (window.scrollY > 4 && prog() < 1) complete(); };
       window.addEventListener('wheel', onWheel, { passive: false });
       window.addEventListener('touchstart', onTouchStart, { passive: true });
       window.addEventListener('touchmove', onTouchMove, { passive: false });
@@ -128,28 +153,29 @@ export default function useHomeCraft() {
         window.removeEventListener('touchmove', onTouchMove);
         window.removeEventListener('keydown', onKey);
         window.removeEventListener('scroll', onScroll);
-        if (headerMine && heroIncomplete()) releaseHeader();
+        if (headerMine && heroTl.progress() < 1) releaseHeader();
+        gsap.killTweensOf(heroTl);
         heroTl.progress(1);
-        heroCraft.finish();
+        finishHero();
         heroCraft.dispose();
+        navCraft?.dispose();
         heroTl.kill();
       });
 
       /* ─── Sections : construites par le scroll ─── */
       const roots = [...document.querySelectorAll('main .section:not(.home)'), document.querySelector('.footer')].filter(Boolean);
       const crafts = new Map();
+      const maxScroll = () => ScrollTrigger.maxScroll(window);
 
-      const build = (root) => {
+      /* Lecture : toutes les sections sont mesurées avant la moindre écriture */
+      const plan = (root) => planCraft(root, collectTargets(root).map((t) => ({ ...t, at: (r) => Math.max(0, r.y) * 0.85 })));
+
+      const build = (root, p) => {
         const tl = gsap.timeline({ paused: true });
-        const top = root.getBoundingClientRect().top;
-        const targets = collectTargets(root).map((t) => ({
-          ...t,
-          at: Math.max(0, t.el.getBoundingClientRect().top - top) * 0.85,
-        }));
-        const craft = buildCraft(tl, { root, items: targets, k: PX, lanes: Math.min(10, Math.max(4, Math.ceil(targets.length / 4))), frame: root.id || 'footer' });
+        const n = p.items.length;
+        const craft = buildCraft(tl, { plan: p, k: PX, lanes: Math.min(10, Math.max(4, Math.ceil(n / 4))), frame: root.id || 'footer' });
         /* Distance de construction : proportionnelle à la section, jamais plus longue qu'elle */
-        const L = Math.max(200, Math.min(tl.duration(), root.offsetHeight * 0.85 + window.innerHeight * 0.25));
-        const maxScroll = () => ScrollTrigger.maxScroll(window);
+        const L = Math.max(200, Math.min(tl.duration(), p.R.h * 0.85 + window.innerHeight * 0.25));
         const startAt = () => {
           const vh = window.innerHeight;
           const s = root.getBoundingClientRect().top + window.scrollY - vh * 0.88;
@@ -168,7 +194,7 @@ export default function useHomeCraft() {
         });
         /* Fin atteinte (même via le lissage du scrub) : le DOM retrouve son CSS d'origine */
         tl.eventCallback('onComplete', craft.finish);
-        crafts.set(root, { tl, st, craft, h: root.offsetHeight });
+        crafts.set(root, { tl, st, craft, h: p.R.h });
       };
 
       const destroy = (root) => {
@@ -182,19 +208,23 @@ export default function useHomeCraft() {
         crafts.delete(root);
       };
 
-      roots.forEach(build);
-      ScrollTrigger.refresh();
-      crafts.forEach(({ tl, st }) => { tl.progress(st.progress); st.getTween()?.progress(1); });
+      const buildAll = (list) => {
+        const plans = list.map((root) => [root, plan(root)]);
+        plans.forEach(([root, p]) => build(root, p));
+        ScrollTrigger.refresh();
+        crafts.forEach(({ tl, st }) => { tl.progress(st.progress); st.getTween()?.progress(1); });
+      };
+      buildAll(roots);
 
       /* Contenu qui change de taille (données GitHub, images) : on reconstruit la section */
       let timer = 0;
       const dirty = new Set();
       const rebuild = () => {
         if (!alive) return;
-        dirty.forEach((root) => { destroy(root); build(root); });
+        const list = [...dirty];
         dirty.clear();
-        ScrollTrigger.refresh();
-        crafts.forEach(({ tl, st }) => { tl.progress(st.progress); st.getTween()?.progress(1); });
+        list.forEach(destroy);
+        buildAll(list);
       };
       const ro = new ResizeObserver((entries) => {
         entries.forEach((e) => {
@@ -219,6 +249,8 @@ export default function useHomeCraft() {
         window.removeEventListener('resize', onResize);
         [...crafts.keys()].forEach(destroy);
       });
+
+      cleanups.push(installLeave((to) => navRef.current(to)));
     };
 
     if (fontsReady()) start();

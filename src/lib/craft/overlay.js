@@ -4,6 +4,7 @@
 
 let layer = null;
 let world = null;
+let fixedWorld = null;
 let canvas = null;
 let ctx2d = null;
 let raf = 0;
@@ -33,13 +34,21 @@ export const getWorld = () => {
   ctx2d = canvas.getContext('2d');
   world = document.createElement('div');
   world.className = 'craft-world';
-  layer.append(canvas, world);
+  /* Monde fixe : pour les éléments en position fixe (en-tête), il ne suit pas le défilement */
+  fixedWorld = document.createElement('div');
+  fixedWorld.className = 'craft-world craft-world--fixed';
+  layer.append(canvas, world, fixedWorld);
   document.body.appendChild(layer);
   window.addEventListener('scroll', syncWorld, { passive: true });
   window.addEventListener('resize', sizeCanvas);
   sizeCanvas();
   syncWorld();
   return world;
+};
+
+export const getFixedWorld = () => {
+  getWorld();
+  return fixedWorld;
 };
 
 /* ─── Particules « nanotech » ────────────────────────────────
@@ -95,8 +104,8 @@ const draw = () => {
   jobs.forEach((job) => {
     const { p } = job;
     if (p <= 0 || p >= 1) return;
-    const ox = job.group.ox - sx;
-    const oy = job.group.oy - sy;
+    const ox = job.group.ox - (job.group.fixed ? 0 : sx);
+    const oy = job.group.oy - (job.group.fixed ? 0 : sy);
     const fade = p > 0.82 ? 1 - (p - 0.82) / 0.18 : 1;
     ctx2d.fillStyle = job.color;
     for (let k = 0; k < job.parts.length; k += 1) {

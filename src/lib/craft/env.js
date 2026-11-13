@@ -9,7 +9,14 @@ const root = () => document.documentElement;
 
 /* `craft-pending` masque le site (sauf la photo du hero) jusqu'à ce que le moteur prenne la main */
 export const holdPending = () => root().classList.add('craft-pending');
-export const releasePending = () => root().classList.remove('craft-pending');
+export const releasePending = () => root().classList.remove('craft-pending', 'craft-hold');
+/* Entre deux crafts (page quittée, remontage) : le contenu reste masqué, jamais plus de 1,5 s */
+let holdTimer = 0;
+export const holdPage = () => {
+  root().classList.add('craft-hold');
+  clearTimeout(holdTimer);
+  holdTimer = setTimeout(() => root().classList.remove('craft-hold'), 1500);
+};
 export const setCraftOn = (on) => root().classList.toggle('craft-on', on);
 
 /* L'en-tête ne se construit qu'au premier chargement complet de la page */
