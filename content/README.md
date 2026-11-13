@@ -7,9 +7,9 @@ dès qu'un fichier change ; en production, on pousse sur GitHub et Vercel redép
 ```
 content/
 ├── cv/                          Le PDF du CV. Remplacer le fichier suffit.
-├── etudes/<nom>/infos.json      Une ligne de la frise « Éducation »
-├── experiences/<nom>/infos.json Une ligne de la frise « Expérience »
-├── certifications/<nom>/        infos.json + le PDF du certificat
+├── etudes/<nom>/01-infos/infos.json        Une ligne de la frise « Éducation »
+├── experiences/<nom>/01-infos/infos.json   Une ligne de la frise « Expérience »
+├── certifications/<nom>/                   01-infos/infos.json + 02-certificat/<le PDF>
 ├── _modele-projet/              Modèle à copier (12 dossiers, ignoré par le site)
 ├── _modele-article/             Modèle à copier (4 dossiers, ignoré par le site)
 ├── projets/<nom-du-projet>/
@@ -41,6 +41,7 @@ Règles de contenu :
 - **Plusieurs entrées** : fonctionnement, fonctionnalités, architecture, stack, défis et défis d'interface
   sont des listes, avec autant d'entrées que nécessaire.
 - **Galerie** : 8 images au maximum, uniquement les écrans importants (au-delà, les suivantes sont ignorées).
+- **Dépôt privé** : seuls le code source et les données sensibles restent cachés. Galerie, fonctionnement, architecture et le reste s'affichent normalement ; une section sans donnée affiche « Cette information n'a pas encore été ajoutée sur le site ».
 - **Aucune version de techno** ("React", pas "React 19").
 
 ## Projets
@@ -96,7 +97,7 @@ Remplacer le PDF dans `cv/`. Si plusieurs PDF s'y trouvent, le dernier par ordre
 
 ## Études, expériences, certifications
 
-Un dossier par ligne de la frise « Mon parcours ». Une rubrique sans dossier disparaît (l'onglet aussi).
+Un dossier par ligne de la frise « Mon parcours » (`infos.json` dans `01-infos/`). Une rubrique sans dossier disparaît (l'onglet aussi).
 
 ```json
 {
@@ -109,7 +110,7 @@ Un dossier par ligne de la frise « Mon parcours ». Une rubrique sans dossier d
 
 - **ordre** : 1 en haut de la frise. Le côté gauche/droite alterne tout seul.
 - **Expériences** : `dateCourte` (facultatif) sert à la ligne « git log » du terminal ; sinon `dates`.
-- **Certifications** : déposer le PDF dans le dossier (téléchargement automatique, sous le nom du fichier)
+- **Certifications** : déposer le PDF dans `02-certificat/` (téléchargement automatique, sous le nom du fichier)
   et, si le certificat est vérifiable en ligne, ajouter `"verification": "https://..."` dans `infos.json`
   (bouton « Vérifier »). Sans PDF, pas de bouton Télécharger. Le bloc `certifications.json` du faux
   éditeur est généré depuis ces dossiers.

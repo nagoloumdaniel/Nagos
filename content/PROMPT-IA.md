@@ -31,7 +31,7 @@ fichier absent masque la section sur le site.
 ├── 11-interface/          defis-interface.json
 └── 12-liens/              liens.txt
 
-Règles de contenu : le titre du projet commence par une majuscule. Les listes (fonctionnement, fonctionnalites,
+Règles de contenu : le titre du projet commence par une majuscule. Si le dépôt est privé, seuls le code source (aucun lien github) et les données sensibles sont exclus : galerie, fonctionnement, architecture et tout le reste se remplissent normalement. Les listes (fonctionnement, fonctionnalites,
 architecture, stack, defis, defis-interface) contiennent PLUSIEURS entrées, toutes réelles. La galerie contient 8
 images au maximum, uniquement les écrans importants. Ne crée pas d'images ni de logo : liste-moi les écrans à capturer
 et dis-moi si un logo existe dans le dépôt et où.
@@ -101,12 +101,12 @@ informations réelles que je te donne ou du document joint. N'invente aucune dat
 adresse de vérification : si une info manque, omets le champ et dis-le moi. Français naturel, sans tirets cadratins.
 
 <nom>/
-├── infos.json   { "titre": "Intitulé exact", "details": "Établissement ou entreprise - précision",
+├── 01-infos/infos.json   { "titre": "Intitulé exact", "details": "Établissement ou entreprise - précision",
 │                  "dates": "2025 / 2026", "ordre": 1,
 │                  "dateCourte": "sept. 2026",                       (expériences seulement)
 │                  "verification": "https://adresse-de-verification" (certifications seulement, si elle existe) }
-└── <fichier>.pdf   (certifications : le certificat; ne le crée pas, dis-moi où le déposer)
+└── 02-certificat/<fichier>.pdf   (certifications : le certificat; ne le crée pas, dis-moi où le déposer)
 
-Le dossier va dans content/etudes/, content/experiences/ ou content/certifications/. "ordre" 1 = en haut de la frise.
+Un dossier privé n'est pas une raison de cacher du contenu : seuls le code source et les données sensibles sont exclus (pas de lien github, pas de secret). Le dossier va dans content/etudes/, content/experiences/ ou content/certifications/. "ordre" 1 = en haut de la frise.
 Termine par l'arborescence créée et ce que seul moi peux fournir.
 ````
