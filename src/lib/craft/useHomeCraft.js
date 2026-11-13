@@ -9,6 +9,7 @@ import { craftEnabled, reducedMotion, releasePending, setCraftOn, claimHeader, r
 gsap.registerPlugin(ScrollTrigger);
 
 const PX = 280; // 1 « seconde » d'animation = 280 px de défilement
+const ENTRY = 0.9; // un élément de section commence à se construire à 90 % de la hauteur d'écran
 const DIST = 1600; // px de molette pour parcourir tout le hero quand le scroll prend la main
 
 /* Nav : plan mesuré dans le repère de l'écran (l'en-tête est fixe), construit sans hâte */
@@ -197,7 +198,9 @@ export default function useHomeCraft() {
       /* Une section est mesurée et construite seulement quand elle approche de l'écran :
          ses mesures portent sur la mise en page réelle du moment (polices, images, données
          chargées), pas sur celle du chargement. D'ici là, son contenu reste masqué. */
-      const plan = (root) => planCraft(root, collectTargets(root).map((t) => ({ ...t, at: (r) => Math.max(0, r.y) * 0.85 })));
+      /* Échelle 1:1 entre la timeline et le scroll : chaque élément démarre quand son haut
+         atteint ENTRY de l'écran, et se défait à la remontée au même endroit, bien visible */
+      const plan = (root) => planCraft(root, collectTargets(root).map((t) => ({ ...t, at: (r) => Math.max(0, r.y) })));
 
       /* cap : position de scroll où la section doit être finie (section construite d'office
          lors d'un saut) ; en remontant au-dessus, elle se défait comme les autres */
@@ -205,11 +208,10 @@ export default function useHomeCraft() {
         const tl = gsap.timeline({ paused: true });
         const n = p.items.length;
         const craft = buildCraft(tl, { plan: p, k: PX, lanes: Math.min(10, Math.max(4, Math.ceil(n / 4))), frame: root.id || 'footer' });
-        /* Distance de construction : proportionnelle à la section, jamais plus longue qu'elle */
-        const L = Math.max(200, Math.min(tl.duration(), p.R.h * 0.85 + window.innerHeight * 0.25));
+        const L = Math.max(200, tl.duration());
         const startAt = () => {
           const vh = window.innerHeight;
-          const s = root.getBoundingClientRect().top + window.scrollY - vh * 0.88;
+          const s = root.getBoundingClientRect().top + window.scrollY - vh * ENTRY;
           const m = maxScroll();
           if (cap != null) return Math.max(0, Math.min(s, cap - L));
           if (s + L <= m) return Math.max(0, s);
@@ -220,7 +222,7 @@ export default function useHomeCraft() {
           start: startAt,
           end: () => Math.min(startAt() + L, maxScroll(), cap ?? Infinity),
           animation: tl,
-          scrub: 0.6,
+          scrub: 0.3,
           invalidateOnRefresh: false,
           onRefresh: () => craft.reposition(),
         });
@@ -258,6 +260,7 @@ export default function useHomeCraft() {
       roots.forEach((r) => r.classList.add('craft-wait'));
       const queue = new Set();
       const done = new Set(); // sections terminées d'office (saut vers une section)
+      const caps = new Map(); // position où une section construite d'office est déjà finie
       let jumping = false;
       let raf = 0;
       const flush = () => {
@@ -265,7 +268,7 @@ export default function useHomeCraft() {
         if (!alive || settled || jumping || !queue.size) return;
         const list = roots.filter((r) => queue.has(r) && !done.has(r));
         queue.clear();
-        buildAll(list);
+        buildAll(list, caps);
       };
       /* Marge large dans les deux sens : rien n'est encore masqué quand on y arrive */
       const io = new IntersectionObserver((entries) => {
@@ -287,9 +290,9 @@ export default function useHomeCraft() {
         const list = [...dirty].filter((r) => crafts.has(r));
         dirty.clear();
         if (!list.length) return;
-        const caps = new Map(list.map((r) => [r, crafts.get(r).cap]));
+        const prev = new Map(list.map((r) => [r, crafts.get(r).cap]));
         list.forEach(destroy);
-        buildAll(list, caps);
+        buildAll(list, prev);
       };
       const later = (ms) => { clearTimeout(timer); timer = setTimeout(rebuild, ms); };
       const ro = new ResizeObserver((entries) => {
@@ -352,9 +355,9 @@ export default function useHomeCraft() {
       const rejoin = (list) => {
         const todo = list.filter((r) => done.has(r) && !autos.has(r));
         if (!todo.length || settled) return;
-        todo.forEach((r) => done.delete(r));
+        /* Reconstruites à l'approche seulement : rien à mesurer à l'arrivée, pas de saccade */
         const y = window.scrollY;
-        buildAll(todo, new Map(todo.map((r) => [r, y])));
+        todo.forEach((r) => { done.delete(r); caps.set(r, y); io.observe(r); });
       };
       let jumpId = 0;
       jump = (id) => {
@@ -367,6 +370,7 @@ export default function useHomeCraft() {
         /* Avant : construit d'office. La cible : masquée jusqu'à l'arrivée. */
         roots.slice(0, idx + 1).forEach((r) => {
           done.add(r);
+          caps.delete(r);
           io.unobserve(r);
           queue.delete(r);
           destroy(r);

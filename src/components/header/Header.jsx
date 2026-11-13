@@ -21,6 +21,20 @@ const Header = () => {
   const [menuOpen,    setMenuOpen]    = useState(false);
   const [activeHash,  setActiveHash]  = useState('#home');
   const [scrolled,    setScrolled]    = useState(false);
+  /* Changement de page : la page repart en haut, la barre reprend tout de suite sa forme
+     du haut (sans transition), avant que le craft de la nouvelle page la mesure */
+  const [path, setPath] = useState(location.pathname);
+  const [snap, setSnap] = useState(false);
+  if (path !== location.pathname) {
+    setPath(location.pathname);
+    setScrolled(false);
+    setSnap(true);
+  }
+  useEffect(() => {
+    if (!snap) return undefined;
+    let id = requestAnimationFrame(() => { id = requestAnimationFrame(() => setSnap(false)); });
+    return () => cancelAnimationFrame(id);
+  }, [snap]);
 
   /* Active section on scroll (only on home) */
   useEffect(() => {
@@ -94,7 +108,7 @@ const Header = () => {
         />
       )}
 
-      <header className={`header${scrolled ? ' scroll-header' : ''}${!scrolled && !location.pathname.startsWith('/portfolio') && location.pathname !== '/blog' ? ' header--on-hero' : ''}`}>
+      <header className={`header${snap ? ' header--snap' : ''}${scrolled ? ' scroll-header' : ''}${!scrolled && !location.pathname.startsWith('/portfolio') && location.pathname !== '/blog' ? ' header--on-hero' : ''}`}>
         <nav className="nav container">
 
           <Link to="/" className="nav__logo" onClick={closeMenu}>
