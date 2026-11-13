@@ -274,3 +274,6 @@
   .blog__grid { grid-template-columns: 1fr; }
   .blog__modal-body { padding: .5rem; }
 }
+/* Couverture facultative (02-couverture/) : ratio fixe, aucune animation au survol */
+.blog__card-cover { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border: 1px solid var(--glass-border); }
+.blog__cover { display: block; width: 100%; max-height: 22rem; aspect-ratio: 16 / 9; object-fit: cover; margin: 1.5rem 0; border: 1px solid var(--glass-border); }

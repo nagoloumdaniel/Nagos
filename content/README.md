@@ -6,40 +6,46 @@ dès qu'un fichier change ; en production, on pousse sur GitHub et Vercel redép
 
 ```
 content/
-├── cv/                      Le PDF du CV. Remplacer le fichier suffit (un seul PDF).
-├── etudes/<nom>/infos.json          Une ligne de la frise « Éducation »
-├── experiences/<nom>/infos.json     Une ligne de la frise « Expérience »
-├── certifications/<nom>/            infos.json + le PDF du certificat (n'importe quel nom)
+├── cv/                          Le PDF du CV. Remplacer le fichier suffit.
+├── etudes/<nom>/infos.json      Une ligne de la frise « Éducation »
+├── experiences/<nom>/infos.json Une ligne de la frise « Expérience »
+├── certifications/<nom>/        infos.json + le PDF du certificat
+├── _modele-projet/              Modèle à copier (12 dossiers, ignoré par le site)
+├── _modele-article/             Modèle à copier (4 dossiers, ignoré par le site)
 ├── projets/<nom-du-projet>/
-│   ├── infos.json           Identité du projet (voir plus bas)
-│   ├── statut.txt           en-cours | termine | brouillon (brouillon = masqué)
-│   ├── depot.txt            public | prive
-│   ├── liens.txt            Une ligne par lien : demo | Voir le site | https://...
-│   ├── description.md       Présentation longue
-│   ├── situation.md         Trois titres : ## Mise en situation, ## Problème, ## Solution
-│   ├── chiffres.json        [{ "valeur": "505", "libelle": "endpoints API" }]
-│   ├── fonctionnement.json  [{ "titre", "texte" }]
-│   ├── fonctionnalites.json [{ "icone", "titre", "texte" }]
-│   ├── architecture.json    [{ "icone", "libelle", "texte" }]
-│   ├── modelisation.json    { "intro", "entites": [{ "nom", "texte" }] }
-│   ├── stack.json           [{ "groupe": "Back", "elements": ["NestJS", "Prisma"] }]
-│   ├── defis.json           [{ "titre", "texte" }]
-│   ├── defis-interface.json [{ "icone", "titre", "texte" }]
-│   ├── logo.png|webp|svg    Logo (sans logo : monogramme)
-│   └── galerie/             Captures d'écran, chargées toutes seules
+│   ├── 01-apercu/               infos.json, statut.txt, description.md, chiffres.json, logo
+│   ├── 02-github/               depot.txt
+│   ├── 03-situation/            situation.md
+│   ├── 04-galerie/              8 images maximum (+ alt.json facultatif)
+│   ├── 05-fonctionnement/       fonctionnement.json
+│   ├── 06-fonctionnalites/      fonctionnalites.json
+│   ├── 07-architecture/         architecture.json
+│   ├── 08-modelisation/         modelisation.json
+│   ├── 09-stack/                stack.json
+│   ├── 10-defis/                defis.json
+│   ├── 11-interface/            defis-interface.json
+│   └── 12-liens/                liens.txt
 └── blog/<nom-de-l-article>/
-    ├── infos.json           titre, categorie, date, dureeLecture, resume, tags, icone, ordre
-    ├── statut.txt           publie | brouillon
-    ├── article.md           Le texte : paragraphes séparés par une ligne vide
-    └── points.md            Facultatif : remplace la liste « À retenir sur ce blog »
+    ├── 01-infos/                infos.json, statut.txt
+    ├── 02-couverture/           une image facultative
+    ├── 03-article/              article.md
+    └── 04-points/               points.md (facultatif)
 ```
 
-**Règle générale : un fichier absent = la section n'apparaît pas.** Aucun fichier n'est obligatoire,
-sauf le dossier lui-même (et `article.md` pour un article).
+Chaque dossier numéroté correspond à une section de la page projet (ou de l'article). Un dossier vide ou un
+fichier absent masque la section. Le plus simple : copier `_modele-projet/` ou `_modele-article/`, il contient un
+`LISEZ-MOI.md` par dossier avec le format et un exemple.
+
+Règles de contenu :
+- **Titre** : toujours une majuscule au début (appliquée automatiquement à l'affichage).
+- **Plusieurs entrées** : fonctionnement, fonctionnalités, architecture, stack, défis et défis d'interface
+  sont des listes, avec autant d'entrées que nécessaire.
+- **Galerie** : 8 images au maximum, uniquement les écrans importants (au-delà, les suivantes sont ignorées).
+- **Aucune version de techno** ("React", pas "React 19").
 
 ## Projets
 
-`infos.json` (tout est facultatif) :
+`01-apercu/infos.json` (tout est facultatif) :
 
 ```json
 {
@@ -60,23 +66,28 @@ sauf le dossier lui-même (et `article.md` pour un article).
 ```
 
 - **Nom du dossier** = adresse de la page (`/portfolio/<nom>`). Minuscules et tirets, sans accent.
+- **statut.txt** (`01-apercu`) : `en-cours`, `termine` ou `brouillon` (masqué, et absent du sitemap).
 - **ordre** : numéro d'affichage (1 en premier). Sans ordre, le projet passe en fin de liste.
-- **Galerie** : déposer une image dans `galerie/`. La **légende est le nom du fichier** : `02 - Acheter.webp`
-  donne « Acheter ». Le préfixe numérique sert seulement à l'ordre et disparaît de la légende. Formats :
-  webp, png, jpg, avif, gif, svg (1600 px de large maximum, jamais de donnée personnelle ni de secret).
-  Texte alternatif détaillé facultatif : `galerie/alt.json` → `{ "02 - Acheter.webp": "Description pour lecteur d'écran" }`.
-- **Liens** : `demo` ou `github`. Une adresse github.com seule est reconnue comme dépôt. L'activité GitHub
-  du projet est lue depuis ces liens (uniquement si `depot.txt` vaut `public`).
-- **Dépôt privé** : `depot.txt` = `prive`, et aucun lien GitHub.
+- **Galerie** (`04-galerie`) : la **légende est le nom du fichier** : `02 - Acheter.webp` donne « Acheter ».
+  Le préfixe numérique sert à l'ordre. Formats : webp, png, jpg, avif, gif, svg (1600 px de large maximum,
+  jamais de donnée personnelle ni de secret). Texte alternatif : `alt.json` → `{ "02 - Acheter.webp": "Description" }`.
+- **Liens** (`12-liens/liens.txt`) : `demo` ou `github`. L'activité GitHub est lue depuis ces liens,
+  uniquement si `02-github/depot.txt` vaut `public`. Dépôt privé : `prive` et aucun lien GitHub.
 - **Icônes** : noms Unicons (`uil-server`, `uil-shield-check`…).
 
 ## Articles
 
 - **Nom du dossier** = adresse (`/blog/<nom>`).
-- **article.md** : un paragraphe peut commencer par un intertitre en gras (`**Mon intertitre.** Le texte…`) ;
+- **03-article/article.md** : un paragraphe peut commencer par un intertitre en gras (`**Mon intertitre.** Le texte…`) ;
   les intertitres alimentent le plan latéral.
+- **02-couverture** : une image facultative, affichée sur la carte et en tête de l'article.
 - **ordre** (facultatif) : sans ordre, un nouvel article apparaît en tête de liste.
 - `dureeLecture` absent = calculée. `resume` absent = début de l'article.
+
+## Sitemap
+
+`public/sitemap.xml` est généré par `scripts/generate-sitemap.mjs` (automatiquement avant `npm run build`,
+ou à la main avec `npm run sitemap`) : une URL par projet et par article publié, brouillons exclus.
 
 ## CV
 

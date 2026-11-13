@@ -13,60 +13,61 @@ fonctionnalité ou choix technique doit être vérifiable dans le code ou la doc
 introuvable, omets le fichier ou le champ correspondant au lieu de l'inventer. N'écris jamais de numéro de version de
 techno ("React", pas "React 19"). Aucun secret, clé, e-mail ou donnée personnelle.
 
-Crée le dossier `<nom-du-projet>/` (minuscules, tirets, sans accent) avec cette structure. Tous les fichiers sont
-facultatifs : un fichier absent masque la section sur le site.
+Crée le dossier `<nom-du-projet>/` (minuscules, tirets, sans accent) avec EXACTEMENT ces 12 sous-dossiers
+numérotés, même ceux qui resteront vides (mets un fichier `.gitkeep` dans un dossier vide). Un dossier vide ou un
+fichier absent masque la section sur le site.
 
 <nom-du-projet>/
-├── infos.json
-├── statut.txt
-├── depot.txt
-├── liens.txt
-├── description.md
-├── situation.md
-├── chiffres.json
-├── fonctionnement.json
-├── fonctionnalites.json
-├── architecture.json
-├── modelisation.json
-├── stack.json
-├── defis.json
-├── defis-interface.json
-├── logo.(png|webp|svg)     <- ne le crée pas, dis-moi s'il existe dans le dépôt et où
-└── galerie/                <- ne crée pas d'images, liste-moi les écrans à capturer (nom de fichier proposé)
+├── 01-apercu/             infos.json, statut.txt, description.md, chiffres.json, logo.(png|webp|svg)
+├── 02-github/             depot.txt
+├── 03-situation/          situation.md
+├── 04-galerie/            images (8 max)
+├── 05-fonctionnement/     fonctionnement.json
+├── 06-fonctionnalites/    fonctionnalites.json
+├── 07-architecture/       architecture.json
+├── 08-modelisation/       modelisation.json
+├── 09-stack/              stack.json
+├── 10-defis/              defis.json
+├── 11-interface/          defis-interface.json
+└── 12-liens/              liens.txt
+
+Règles de contenu : le titre du projet commence par une majuscule. Les listes (fonctionnement, fonctionnalites,
+architecture, stack, defis, defis-interface) contiennent PLUSIEURS entrées, toutes réelles. La galerie contient 8
+images au maximum, uniquement les écrans importants. Ne crée pas d'images ni de logo : liste-moi les écrans à capturer
+et dis-moi si un logo existe dans le dépôt et où.
 
 Contenu de chaque fichier :
 
-infos.json (objet, tous champs facultatifs) :
+01-apercu/infos.json (objet, tous champs facultatifs) :
 { "titre": "", "categorie": "Full-Stack | Mobile | Frontend | Backend | IA | Outil...", "etiquette": "courte ligne
 techno · statut · dépôt", "resume": "1 à 2 phrases pour la carte", "role": "mon rôle en une phrase", "ordre": 1,
 "monogramme": "2 lettres si pas de logo", "pays": "", "langues": [""], "periode": "", "equipe": "", "deploiement": "" }
-
-statut.txt : une seule ligne parmi  en-cours | termine | brouillon
-depot.txt : une seule ligne parmi  public | prive
-liens.txt : une ligne par lien vérifié, format  type | libellé | adresse   (type = demo ou github), exemple :
-  demo | Voir le site | https://exemple.com
-  github | GitHub | https://github.com/utilisateur/depot
-  Lignes commençant par # = commentaire. Dépôt privé : aucun lien github. Ne mets que des liens réels.
-description.md : présentation longue, 1 à 3 paragraphes (quoi, pour qui, état réel du projet).
-situation.md : exactement trois titres :
+01-apercu/statut.txt : une seule ligne parmi  en-cours | termine | brouillon
+01-apercu/description.md : présentation longue, 1 à 3 paragraphes (quoi, pour qui, état réel du projet).
+01-apercu/chiffres.json : [{ "valeur": "505", "libelle": "endpoints API" }]  (4 chiffres max, comptés dans le code)
+02-github/depot.txt : une seule ligne parmi  public | prive
+03-situation/situation.md : exactement trois titres :
   ## Mise en situation
   ## Problème
   ## Solution
-chiffres.json : [{ "valeur": "505", "libelle": "endpoints API" }]  (4 chiffres max, comptés dans le code)
-fonctionnement.json : [{ "titre": "", "texte": "" }]  (étapes dans l'ordre)
-fonctionnalites.json : [{ "icone": "uil-...", "titre": "", "texte": "" }]  (icônes Unicons, ex. uil-shield-check)
-architecture.json : [{ "icone": "uil-...", "libelle": "API", "texte": "technos et rôle de la brique" }]
-modelisation.json : { "intro": "", "entites": [{ "nom": "", "texte": "" }] }  (seulement s'il y a une base de données)
-stack.json : [{ "groupe": "Front", "elements": ["", ""] }]
-defis.json : [{ "titre": "", "texte": "" }]  (vraies difficultés techniques rencontrées et comment elles ont été résolues)
-defis-interface.json : [{ "icone": "uil-...", "titre": "", "texte": "" }]  (uniquement s'il y a une interface)
+05-fonctionnement/fonctionnement.json : [{ "titre": "", "texte": "" }]  (étapes dans l'ordre)
+06-fonctionnalites/fonctionnalites.json : [{ "icone": "uil-...", "titre": "", "texte": "" }]  (icônes Unicons)
+07-architecture/architecture.json : [{ "icone": "uil-...", "libelle": "API", "texte": "technos et rôle de la brique" }]
+08-modelisation/modelisation.json : { "intro": "", "entites": [{ "nom": "", "texte": "" }] }  (seulement s'il y a une base de données)
+09-stack/stack.json : [{ "groupe": "Front", "elements": ["", ""] }]
+10-defis/defis.json : [{ "titre": "", "texte": "" }]  (vraies difficultés techniques et comment elles ont été résolues)
+11-interface/defis-interface.json : [{ "icone": "uil-...", "titre": "", "texte": "" }]  (uniquement s'il y a une interface)
+12-liens/liens.txt : une ligne par lien vérifié, format  type | libellé | adresse   (type = demo ou github), exemple :
+  demo | Voir le site | https://exemple.com
+  github | GitHub | https://github.com/utilisateur/depot
+  Lignes commençant par # = commentaire. Dépôt privé : aucun lien github. Ne mets que des liens réels.
 
 Contraintes de forme : JSON valide (guillemets doubles, pas de virgule finale, UTF-8), fichiers texte en UTF-8.
 Phrases courtes, un fait par phrase.
 
 Quand tu as fini, réponds avec : 1) l'arborescence créée, 2) la liste des fichiers volontairement omis et pourquoi,
-3) la liste des captures d'écran à faire (nom de fichier = légende affichée, format "01 - Titre de la capture.webp",
-1600 px de large max), 4) les informations que seul moi peux fournir.
+3) la liste des 8 captures d'écran les plus importantes à faire (dossier 04-galerie, nom de fichier = légende affichée,
+format "01 - Titre de la capture.webp", 1600 px de large max), 4) les informations que seul moi peux fournir.
 ````
 
 ---
@@ -78,14 +79,16 @@ Quand tu as fini, réponds avec : 1) l'arborescence créée, 2) la liste des fic
 pour mon blog, en français, ton naturel et personnel, sans tirets cadratins ni formules d'IA. Aucun chiffre non
 vérifiable, et si l'article parle d'un projet, chaque fait doit être vérifiable dans son code.
 
-<nom-de-l-article>/
-├── infos.json   { "titre": "", "categorie": "Pensée critique | Philosophie | Retour d'expérience | Actualité...",
-│                  "date": "Novembre 2026", "dureeLecture": "5 min", "resume": "2 phrases", "tags": ["", ""],
-│                  "icone": "uil-...", "ordre": 1 }
-├── statut.txt   publie  (ou brouillon)
-├── article.md   5 à 7 paragraphes séparés par une ligne vide. Chaque paragraphe sauf le premier commence par un
-│                intertitre en gras suivi du texte : **Mon intertitre.** Le texte du paragraphe.
-└── points.md    facultatif : une puce "- " par ligne, remplace la liste "À retenir" par défaut
+<nom-de-l-article>/   (4 sous-dossiers, même vides, avec un `.gitkeep` si vide)
+├── 01-infos/        infos.json { "titre": "", "categorie": "Pensée critique | Philosophie | Retour d'expérience | Actualité...",
+│                    "date": "Novembre 2026", "dureeLecture": "5 min", "resume": "2 phrases", "tags": ["", ""],
+│                    "icone": "uil-...", "ordre": 1 }  +  statut.txt : publie  (ou brouillon)
+├── 02-couverture/   une image facultative (ne la crée pas, dis-moi quelle image conviendrait)
+├── 03-article/      article.md : 5 à 7 paragraphes séparés par une ligne vide. Chaque paragraphe sauf le premier
+│                    commence par un intertitre en gras suivi du texte : **Mon intertitre.** Le texte du paragraphe.
+└── 04-points/       points.md facultatif : une puce "- " par ligne, remplace la liste "À retenir" par défaut
+
+Le titre commence par une majuscule.
 
 Termine par : l'arborescence créée et les points que seul moi peux vérifier.
 ````

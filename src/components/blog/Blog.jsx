@@ -11,6 +11,7 @@ const BlogCard = ({ post, index }) => (
     className="blog__card reveal-scale"
     aria-label={`Lire l'article : ${post.title}`}
   >
+    {post.cover && <img className="blog__card-cover" src={post.cover} alt="" loading="lazy" decoding="async" />}
     <div className="blog__card-top">
       <span className="blog__card-no" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
       <span className="blog__card-category">{post.category}</span>
