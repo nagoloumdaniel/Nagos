@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const SITE_URL = 'https://nagoloum.vercel.app';
+const SITE_URL = 'https://nagoloum.dev';
 
 const upsertMeta = (attr, key, content) => {
   let el = document.head.querySelector(`meta[${attr}="${key}"]`);
