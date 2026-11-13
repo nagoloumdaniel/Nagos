@@ -23,6 +23,10 @@
   /* Glass */
   --glass-bg:        rgba(255,255,255,0.65);
   --glass-bg-strong: rgba(255,255,255,0.85);
+  /* Équivalents opaques du verre pour les cartes posées sur le fond fixe :
+     même teinte, sans backdrop-filter (le flou coûtait cher au défilement) */
+  --glass-solid:        #FDFDFD;
+  --glass-solid-strong: #FEFEFE;
   --glass-border:    rgba(0,0,0,0.08);
   --glass-blur:      16px;
 
@@ -114,6 +118,8 @@ body.dark-theme {
 
   --glass-bg:        rgba(255,255,255,0.06);
   --glass-bg-strong: rgba(255,255,255,0.10);
+  --glass-solid:        #171717;
+  --glass-solid-strong: #1F1F1F;
   --glass-border:    rgba(255,255,255,0.14);
   --glass-blur:      20px;
 
@@ -232,9 +238,7 @@ html:not(.craft-on) .section:not(.about):not(.work):not(.project) { content-visi
 
 /* ─── GLASSMORPHISM : surface commune des composants (carrée) ─── */
 .glass {
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-          backdrop-filter: blur(var(--glass-blur));
+  background: var(--glass-solid);
   border: 1px solid var(--glass-border);
 }
 

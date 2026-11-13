@@ -36,9 +36,7 @@ body.dark-theme .footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-          backdrop-filter: blur(var(--glass-blur));
+  background: var(--glass-solid);
   color: var(--title-color);
   font-size: 1.1rem;
   border: 1px solid var(--glass-border);
