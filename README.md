@@ -10,7 +10,7 @@ disponible en **alternance de 24 mois dès septembre 2026** (3 semaines entrepri
 
 | Couche | Technologie |
 |---|---|
-| Framework | React 19 + Vite 7 + react-router-dom 7 |
+| Framework | React + Vite + react-router-dom |
 | 3D / animation | Three.js (sphère de particules) + GSAP, chargés à la demande |
 | Styles | CSS Variables (design tokens) + un fichier CSS par composant |
 | Icons | Unicons Line + Boxicons (CDN) |
@@ -74,7 +74,8 @@ cd Nagos
 npm install
 npm run dev       # développement
 npm run lint      # ESLint
-npm run build     # build de production
+npm run build     # build de production (régénère aussi public/sitemap.xml)
+npm run sitemap   # régénérer le sitemap seul
 npm run preview   # prévisualiser le build
 ```
 
@@ -231,4 +232,9 @@ le dernier par ordre alphabétique est pris.
 
 ---
 
-© 2026 Daniel Nagoloum Talla · Tous droits réservés
+## Licence
+
+Code source sous licence MIT (voir `LICENSE`). Le contenu personnel (`content/`, logos, captures, CV) reste
+tous droits réservés (voir `content/LICENSE.md`).
+
+© 2026 Daniel Nagoloum Talla
