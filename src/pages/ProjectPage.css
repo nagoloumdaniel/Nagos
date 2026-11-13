@@ -28,9 +28,7 @@
 /* ── Carte premium : verre dépoli, repère d'angle, survol discret ── */
 .pj-card {
   position: relative;
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-          backdrop-filter: blur(var(--glass-blur));
+  background: var(--glass-solid);
   border: 1px solid var(--glass-border);
   padding: 1.5rem;
   height: 100%;
@@ -57,7 +55,7 @@
 }
 .pj-card:hover {
   border-color: var(--text-color);
-  background: var(--glass-bg-strong);
+  background: var(--glass-solid-strong);
   transform: translateY(-2px);
 }
 .pj-card:hover::before { opacity: 1; }
@@ -271,7 +269,7 @@ body.dark-theme .pj-tag--wip { border-color: #60a5fa; color: #93c5fd; }
 .pj-pager { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 4rem; }
 .pj-pager__link { display: flex; flex-direction: column; gap: 0.5rem; padding: 1.25rem 1.5rem; transition: border-color var(--t-fast), background var(--t-fast); }
 .pj-pager__link--next { text-align: right; align-items: flex-end; }
-.pj-pager__link:hover { border-color: var(--text-color); background: var(--glass-bg-strong); }
+.pj-pager__link:hover { border-color: var(--text-color); background: var(--glass-solid-strong); }
 .pj-pager__link strong { font-family: var(--heading-font); font-size: var(--h3-font-size); font-weight: var(--font-medium); color: var(--title-color); }
 .pj a:focus-visible, .pj-nav__link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 

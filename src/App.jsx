@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { Suspense, lazy, useLayoutEffect } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import './App.css';
 import Header          from './components/header/Header';
@@ -16,8 +16,9 @@ const NotFoundPage  = lazy(() => import('./pages/NotFoundPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  /* Nouvelle page : départ en haut, même avec une ancre (l'accueil défile ensuite jusqu'à la section) */
-  useEffect(() => {
+  /* Nouvelle page : départ en haut, même avec une ancre (l'accueil défile ensuite jusqu'à la section).
+     Effet de mise en page, placé avant <main> : il passe avant les mesures du craft de la page. */
+  useLayoutEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [pathname]);
   return null;

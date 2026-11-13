@@ -8,14 +8,12 @@
   position: relative;
   overflow: hidden;
   display: flex;
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-          backdrop-filter: blur(var(--glass-blur));
+  background: var(--glass-solid);
   border: 1px solid var(--glass-border);
   cursor: pointer;
   transition: border-color var(--t-fast), background var(--t-fast);
 }
-.services__card:hover { border-color: var(--text-color); background: var(--glass-bg-strong); }
+.services__card:hover { border-color: var(--text-color); background: var(--glass-solid-strong); }
 .services__card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 /* Rythme du bento : grande tuile à gauche, deux tuiles larges à droite */

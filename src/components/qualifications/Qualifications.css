@@ -3,9 +3,7 @@
   display: flex;
   width: fit-content;
   margin: 0 auto var(--mb-2-5);
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-          backdrop-filter: blur(var(--glass-blur));
+  background: var(--glass-solid);
   border: 1px solid var(--glass-border);
 }
 .qualification__button {

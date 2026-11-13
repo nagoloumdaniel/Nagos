@@ -44,14 +44,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-          backdrop-filter: blur(var(--glass-blur));
+  background: var(--glass-solid);
   border: 1px solid var(--glass-border);
   cursor: pointer;
   transition: opacity .75s ease, border-color var(--t-fast), background var(--t-fast);
 }
-.work__card:hover { border-color: var(--text-color); background: var(--glass-bg-strong); }
+.work__card:hover { border-color: var(--text-color); background: var(--glass-solid-strong); }
 .work__card:has(.work__open:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .work__bar {

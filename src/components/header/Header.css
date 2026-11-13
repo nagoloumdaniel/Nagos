@@ -37,6 +37,11 @@
   opacity: 0;
   transition: opacity .3s ease;
 }
+/* Changement de page : forme finale immédiate, le craft mesure la barre à sa vraie place */
+.header--snap,
+.header--snap::before,
+.header--snap .nav { transition: none !important; }
+
 .scroll-header {
   top: 0.75rem;
   width: calc(100% - 2rem);
