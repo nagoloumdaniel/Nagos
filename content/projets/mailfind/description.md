@@ -1,0 +1,1 @@
+MailFind part d'un CSV d'entreprises, lit leurs sites, cherche les adresses publiées, enrichit et contrôle chacune, puis exporte ou envoie la liste en campagne brouillon dans Campaign Mailer. Le principe : chaque adresse a une source, et une adresse non vérifiée n'est jamais présentée comme vérifiée. Le code est public mais propriétaire (tous droits réservés).

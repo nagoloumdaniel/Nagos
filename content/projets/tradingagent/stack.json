@@ -1,0 +1,43 @@
+[
+  {
+    "groupe": "Back",
+    "elements": [
+      "Python",
+      "FastAPI",
+      "Pydantic",
+      "SQLAlchemy",
+      "Alembic"
+    ]
+  },
+  {
+    "groupe": "Données",
+    "elements": [
+      "PostgreSQL (Supabase)",
+      "psycopg"
+    ]
+  },
+  {
+    "groupe": "Trading",
+    "elements": [
+      "MetaTrader 5",
+      "MQL5"
+    ]
+  },
+  {
+    "groupe": "IA & alertes",
+    "elements": [
+      "Anthropic API",
+      "python-telegram-bot"
+    ]
+  },
+  {
+    "groupe": "Qualité",
+    "elements": [
+      "pytest",
+      "mypy",
+      "ruff",
+      "pre-commit",
+      "GitHub Actions"
+    ]
+  }
+]

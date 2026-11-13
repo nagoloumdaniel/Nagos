@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "Catalogue",
+    "texte": "La cliente parcourt les prestations (prix en euros, durée, photos) et ouvre une fiche détaillée."
+  },
+  {
+    "titre": "Compatibilité",
+    "texte": "Une évaluation à questions conditionnelles, avec photo privée, vérifie qu'une coiffure convient au type de cheveux."
+  },
+  {
+    "titre": "Réservation",
+    "texte": "Parcours en plusieurs étapes ; le créneau est contrôlé dans une transaction qui prend un verrou consultatif PostgreSQL avant d'insérer."
+  },
+  {
+    "titre": "Confirmation",
+    "texte": "La cliente reçoit un lien d'annulation sécurisé à durée limitée. Une réservation en attente porte une échéance, passé laquelle le créneau est libéré."
+  },
+  {
+    "titre": "Gestion",
+    "texte": "Le back-office suit les réservations (machine à statuts, reprogrammation), les clients, les demandes et la messagerie."
+  }
+]

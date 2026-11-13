@@ -1,0 +1,29 @@
+{
+  "intro": "Le schéma Prisma compte 52 modèles, 21 enums et 12 migrations. Le point central est le grand livre : chaque mouvement d'argent est une écriture, jamais une mise à jour de solde.",
+  "entites": [
+    {
+      "nom": "User / Profile",
+      "texte": "Comptes, rôles et profils vendeur, acheteur, livreur."
+    },
+    {
+      "nom": "Listing",
+      "texte": "Annonces : catégorie, taille, état, prix, photos."
+    },
+    {
+      "nom": "Order",
+      "texte": "Commande et machine d'états (paiement, collecte, livraison, réception, annulation)."
+    },
+    {
+      "nom": "LedgerEntry",
+      "texte": "Écritures du grand livre à double entrée, immuables."
+    },
+    {
+      "nom": "DeliveryOffer",
+      "texte": "Offres envoyées aux livreurs, avec délai et repli."
+    },
+    {
+      "nom": "Dispute / Payout",
+      "texte": "Litiges ouverts par les parties et retraits des vendeurs."
+    }
+  ]
+}

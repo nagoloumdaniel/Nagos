@@ -1,0 +1,29 @@
+[
+  {
+    "groupe": "Application",
+    "elements": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "groupe": "Animation",
+    "elements": [
+      "Motion",
+      "GSAP",
+      "Lenis"
+    ]
+  },
+  {
+    "groupe": "Outillage",
+    "elements": [
+      "pnpm",
+      "Turborepo",
+      "CVA",
+      "next-themes",
+      "cmdk"
+    ]
+  }
+]

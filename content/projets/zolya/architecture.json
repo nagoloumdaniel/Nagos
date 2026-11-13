@@ -1,0 +1,27 @@
+[
+  {
+    "icone": "uil-mobile-android-alt",
+    "libelle": "apps/marketplace",
+    "texte": "Application Flutter acheteur / vendeur"
+  },
+  {
+    "icone": "uil-truck",
+    "libelle": "apps/delivery",
+    "texte": "Application Flutter livreur"
+  },
+  {
+    "icone": "uil-desktop",
+    "libelle": "apps/admin-web",
+    "texte": "Administration Next.js"
+  },
+  {
+    "icone": "uil-package",
+    "libelle": "packages",
+    "texte": "zolya_core, zolya_api_client, zolya_design (partagés entre les apps)"
+  },
+  {
+    "icone": "uil-server",
+    "libelle": "backend",
+    "texte": "NestJS, Prisma, PostgreSQL, BullMQ / Redis"
+  }
+]

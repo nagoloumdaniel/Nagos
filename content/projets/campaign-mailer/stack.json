@@ -1,0 +1,27 @@
+[
+  {
+    "groupe": "Front",
+    "elements": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "groupe": "Back",
+    "elements": [
+      "Express",
+      "PostgreSQL (Neon)",
+      "BullMQ / Redis"
+    ]
+  },
+  {
+    "groupe": "Intégrations",
+    "elements": [
+      "API Gmail",
+      "Google OAuth",
+      "Playwright"
+    ]
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "titre": "RememberMe",
+  "categorie": "Full-Stack",
+  "etiquette": "React · Node · en production",
+  "resume": "Gestionnaire de tâches et de rappels organisés par listes : une interface React et une API REST Node / Express.",
+  "role": "Projet personnel de bout en bout.",
+  "ordre": 10,
+  "monogramme": "RM",
+  "langues": [
+    "Anglais (traduction FR / EN par le navigateur)"
+  ],
+  "deploiement": "Vercel (interface et API serverless), MongoDB"
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "titre": "Autorisations fiables",
+    "texte": "Les droits ne reposent pas seulement sur l'API : le RBAC est en base, renforcé par la row-level security PostgreSQL, des triggers et un audit systématique."
+  },
+  {
+    "titre": "Un contrat unique",
+    "texte": "Web, mobile et API partagent types et schémas Zod dans un monorepo ; les frontières d'imports des paquets mobiles sont imposées par ESLint et un script de contrôle."
+  },
+  {
+    "titre": "Argent sans approximation",
+    "texte": "Montants stockés en XAF dans des BigInt, conversion à l'affichage, taux figé sur la commande : aucun Float dans le modèle."
+  },
+  {
+    "titre": "Pas de faux succès en production",
+    "texte": "Un audit du code a révélé que des simulateurs remplaçaient silencieusement les adaptateurs de paiement, e-mail et push. Le démarrage échoue désormais au lieu de simuler, et les adaptateurs Resend, Expo Push et MyCoolPay ont été écrits, ce dernier verrouillé jusqu'à validation."
+  }
+]

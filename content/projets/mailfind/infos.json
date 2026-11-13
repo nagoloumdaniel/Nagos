@@ -1,0 +1,16 @@
+{
+  "titre": "MailFind",
+  "categorie": "Full-Stack",
+  "etiquette": "Web · bêta fermée",
+  "resume": "Transforme une liste d'entreprises (CSV) en adresses e-mail professionnelles classées, avec la source, le statut de vérification et le score de chaque adresse.",
+  "role": "Projet personnel de bout en bout, conçu en complément de Campaign Mailer. Développé avec l'assistance de Claude.",
+  "ordre": 6,
+  "monogramme": "MF",
+  "pays": "France d’abord (SIREN, API Recherche d’entreprises)",
+  "langues": [
+    "Français"
+  ],
+  "periode": "Septembre – octobre 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "Vercel (web), Railway (API et worker), Neon, Redis Cloud, Cloudflare R2"
+}

@@ -1,0 +1,25 @@
+[
+  {
+    "groupe": "Front",
+    "elements": [
+      "React",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "i18next"
+    ]
+  },
+  {
+    "groupe": "Back",
+    "elements": [
+      "NestJS",
+      "MongoDB",
+      "Swagger"
+    ]
+  },
+  {
+    "groupe": "Paiement",
+    "elements": [
+      "Stripe"
+    ]
+  }
+]

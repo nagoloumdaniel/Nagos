@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "Publication d'une annonce",
+    "texte": "Le vendeur photographie son article, renseigne catégorie, taille et état, et fixe son prix. Les photos partent dans Supabase Storage."
+  },
+  {
+    "titre": "Achat et séquestre",
+    "texte": "L'acheteur paie par Mobile Money via Campay. Le montant est inscrit dans un grand livre à double entrée immuable et reste bloqué."
+  },
+  {
+    "titre": "Livraison par paliers",
+    "texte": "Quatre paliers de livraison selon la distance. Une offre est proposée séquentiellement aux livreurs, avec un repli après 20 minutes."
+  },
+  {
+    "titre": "Codes de remise",
+    "texte": "Le code de collecte (vendeur → livreur) et le code de réception (livreur → acheteur) sont hachés en base et vérifiés côté serveur."
+  },
+  {
+    "titre": "Libération des fonds",
+    "texte": "À la réception confirmée, la commission est prélevée (10 % + 500 XAF jusqu'à 10 000 XAF, puis 5 % + 500 XAF) et le reste va au portefeuille du vendeur. Sans action sous 48 h, la commande s'annule automatiquement."
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "groupe": "Front (cible)",
+    "elements": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "groupe": "Back (cible)",
+    "elements": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "Redis"
+    ]
+  },
+  {
+    "groupe": "Trading (cible)",
+    "elements": [
+      "MetaTrader 5",
+      "Deriv MT5"
+    ]
+  }
+]

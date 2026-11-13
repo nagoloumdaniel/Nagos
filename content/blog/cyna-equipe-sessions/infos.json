@@ -1,0 +1,15 @@
+{
+  "titre": "Cyna : ma part dans un projet d'équipe, front-end, sessions et arabe",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "5 min",
+  "resume": "Une plateforme SaaS de cybersécurité menée à cinq. J'ai écrit l'essentiel du front-end et contribué à l'API : cookies httpOnly, rotation des refresh tokens et interface en arabe.",
+  "tags": [
+    "Travail en équipe",
+    "Sécurité",
+    "RTL",
+    "Stripe"
+  ],
+  "icone": "uil-users-alt",
+  "ordre": 24
+}

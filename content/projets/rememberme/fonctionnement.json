@@ -1,0 +1,18 @@
+[
+  {
+    "titre": "Compte",
+    "texte": "Inscription et connexion par e-mail et mot de passe ; l'API renvoie un jeton JWT."
+  },
+  {
+    "titre": "Requêtes",
+    "texte": "Axios joint le jeton à chaque requête ; une réponse 401 vide la session."
+  },
+  {
+    "titre": "Isolation",
+    "texte": "Un middleware vérifie le jeton et place l'identifiant utilisateur dans la requête ; tâches, listes et profils sont filtrés par cet identifiant."
+  },
+  {
+    "titre": "Consultation",
+    "texte": "Tâches par liste, par date dans le calendrier, ou à échéance proche."
+  }
+]

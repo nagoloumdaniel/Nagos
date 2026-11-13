@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { projectsData } from '../components/work/Data';
+import { projectsData } from '../lib/contenu/projets';
 import { ProjectLogo } from '../components/work/Workitems';
 import NotFoundPage from './NotFoundPage';
 import { TerminalWindow } from '../components/ide/Ide';

@@ -1,0 +1,15 @@
+{
+  "titre": "TradingAgent : ne pas se mentir avec un backtest",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "6 min",
+  "resume": "Une stratégie validée à 1,0275 qui tombe à 0,6909 sur un jeu de test scellé. Comment une plateforme de trading algorithmique m'a appris à me méfier de mes propres résultats.",
+  "tags": [
+    "Python",
+    "Backtesting",
+    "Risque",
+    "MetaTrader 5"
+  ],
+  "icone": "uil-chart-growth",
+  "ordre": 16
+}

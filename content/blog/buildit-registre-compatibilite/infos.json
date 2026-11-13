@@ -1,0 +1,15 @@
+{
+  "titre": "BuildIt : dire clairement ce qui est testé et ce qui ne l'est pas",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "5 min",
+  "resume": "Une CLI et un configurateur qui assemblent un environnement de développement. Seules 32 entrées sur 299 sont certifiées, et l'interface doit le dire.",
+  "tags": [
+    "TypeScript",
+    "CLI",
+    "Compatibilité",
+    "Pré-alpha"
+  ],
+  "icone": "uil-constructor",
+  "ordre": 17
+}

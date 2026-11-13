@@ -1,0 +1,1 @@
+Zolya met en relation vendeurs et acheteurs de vêtements d'occasion à Douala et Yaoundé. L'argent de l'acheteur reste bloqué en séquestre jusqu'à la réception de l'article, et une application dédiée aux livreurs (Zolya Delivery) assure le dernier kilomètre. Le code est quasiment complet ; l'application se prépare à la publication et n'est pas encore sur les stores.

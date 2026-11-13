@@ -1,0 +1,15 @@
+{
+  "titre": "NagosUI : changer un token pour changer toute la direction artistique",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "4 min",
+  "resume": "Un design system React animé, encore à ses débuts : deux composants livrés, aucun paquet publié. Pourquoi commencer par les tokens.",
+  "tags": [
+    "React",
+    "Design system",
+    "Tokens",
+    "Animation"
+  ],
+  "icone": "uil-palette",
+  "ordre": 22
+}

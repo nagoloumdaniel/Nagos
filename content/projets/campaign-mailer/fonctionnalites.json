@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-google",
+    "titre": "Google OAuth",
+    "texte": "Connexion Google et envoi via l'API Gmail."
+  },
+  {
+    "icone": "uil-file-import",
+    "titre": "Modèles",
+    "texte": "Import CSV, modèles avec variables et aperçu en direct."
+  },
+  {
+    "icone": "uil-clock-three",
+    "titre": "Cadence maîtrisée",
+    "texte": "Plafond de 450 envois par 24 h glissantes, pause aléatoire entre deux messages, envoi limité aux heures de bureau dans le fuseau de la campagne."
+  },
+  {
+    "icone": "uil-history",
+    "titre": "Historique",
+    "texte": "Historique des envois, relances, export des données et suppression du compte."
+  },
+  {
+    "icone": "uil-chart-line",
+    "titre": "Observabilité",
+    "texte": "Logs structurés, Sentry, endpoints de santé."
+  },
+  {
+    "icone": "uil-check-circle",
+    "titre": "Tests",
+    "texte": "Tests backend et parcours Playwright."
+  }
+]

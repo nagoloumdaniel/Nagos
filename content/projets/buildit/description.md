@@ -1,0 +1,1 @@
+BuildIt (moteur « Forge ») décrit un projet par un manifeste, vérifie que les technologies choisies sont compatibles entre elles, puis génère la structure. La CLI s'appelle pf (@nagoloum/cli) ; un configurateur Next.js guide la sélection en 12 étapes sur 18 écrans. Le projet est en pré-alpha.

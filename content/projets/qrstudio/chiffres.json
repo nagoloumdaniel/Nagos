@@ -1,0 +1,18 @@
+[
+  {
+    "valeur": "10",
+    "libelle": "types de contenu"
+  },
+  {
+    "valeur": "4",
+    "libelle": "formats d'export (SVG, PNG, JPG, WebP)"
+  },
+  {
+    "valeur": "4096 px",
+    "libelle": "taille d'export maximale"
+  },
+  {
+    "valeur": "2",
+    "libelle": "langues (FR, EN)"
+  }
+]

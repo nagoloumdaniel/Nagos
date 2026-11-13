@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-shopping-cart",
+    "titre": "Parcours d'achat",
+    "texte": "Catalogue, panier, paiement Stripe et factures PDF."
+  },
+  {
+    "icone": "uil-user-circle",
+    "titre": "Espace client",
+    "texte": "Abonnements, licences et commandes."
+  },
+  {
+    "icone": "uil-chart-bar",
+    "titre": "Backoffice",
+    "texte": "Administration avec graphiques Chart.js."
+  },
+  {
+    "icone": "uil-globe",
+    "titre": "Multilingue",
+    "texte": "Interface en français, anglais et arabe, avec support RTL."
+  },
+  {
+    "icone": "uil-lock",
+    "titre": "API sécurisée",
+    "texte": "Cookies JWT httpOnly avec rotation, 2FA, rate limiting, Helmet."
+  },
+  {
+    "icone": "uil-file-check-alt",
+    "titre": "Qualité",
+    "texte": "Webhook Stripe vérifié par signature, documentation Swagger, tests Jest et Vitest."
+  }
+]

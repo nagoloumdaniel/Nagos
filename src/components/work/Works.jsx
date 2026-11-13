@@ -1,5 +1,5 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { projectsData, projectsNav } from './Data';
+import { projectsData, projectsNav } from '../../lib/contenu/projets';
 import Workitems from './Workitems';
 import useMediaQuery, { DESKTOP_QUERY } from '../../hooks/useMediaQuery';
 

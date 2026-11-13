@@ -1,0 +1,26 @@
+[
+  {
+    "titre": "Coût de l'agent",
+    "texte": "Les premières exécutions coûtaient plusieurs milliers de micro-dollars. Après plan plus court et outils déterministes, le coût d'une exécution est passé de 5 419 à 782 µ$."
+  },
+  {
+    "titre": "Boucles de planification",
+    "texte": "L'orchestrateur pouvait replanifier en boucle. Il a fallu borner les itérations et rendre les décisions vérifiables."
+  },
+  {
+    "titre": "Routage sur Vercel",
+    "texte": "Le routage à segment unique de Vercel a imposé des fichiers de relais pour exposer l'API proprement."
+  },
+  {
+    "titre": "Agrégateurs d'ATS",
+    "texte": "Les offres d'un même ATS vivent sous des sous-domaines clients différents : il a fallu énumérer les tenants plutôt que de scraper chaque site."
+  },
+  {
+    "titre": "Tableau de bord ouvert",
+    "texte": "Le tableau de bord de l'agent était accessible sans authentification. Il est maintenant protégé par un proxy d'authentification."
+  },
+  {
+    "titre": "Fuite de clé",
+    "texte": "Une clé a été exposée par erreur. Elle a été révoquée et remplacée, et la procédure de gestion des secrets a été durcie."
+  }
+]

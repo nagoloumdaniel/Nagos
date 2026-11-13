@@ -1,0 +1,17 @@
+{
+  "titre": "TradingAgent",
+  "categorie": "Full-Stack",
+  "etiquette": "Python · open source · démo uniquement",
+  "resume": "Plateforme de trading algorithmique sur XAUUSD et BTCUSD : recherche de stratégies, backtests, garde-fous de risque et tableau de bord, sur compte de démonstration.",
+  "role": "Projet personnel de bout en bout. Développé en solo, avec l'assistance de Claude.",
+  "ordre": 4,
+  "monogramme": "TA",
+  "pays": "France (opérateur résident en France)",
+  "langues": [
+    "Français (docs et interface)",
+    "Anglais (code)"
+  ],
+  "periode": "Depuis octobre 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "Site vitrine sur Vercel ; application locale sous Windows"
+}

@@ -1,0 +1,17 @@
+{
+  "titre": "BuildIt",
+  "categorie": "Outils développeur",
+  "etiquette": "TypeScript · open source · pré-alpha",
+  "resume": "« Development Environment Factory » : une CLI (pf) et un configurateur web qui assemblent un environnement de développement cohérent à partir d'un registre de technologies.",
+  "role": "Projet personnel de bout en bout. Développé principalement en solo, avec l'assistance de Claude.",
+  "ordre": 5,
+  "monogramme": "BI",
+  "pays": "France (outil international)",
+  "langues": [
+    "Français",
+    "Anglais"
+  ],
+  "periode": "Depuis septembre 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "Vercel (configurateur web : buildit.vercel.app)"
+}

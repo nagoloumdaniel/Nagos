@@ -1,0 +1,11 @@
+En septembre, j'ai passé un test technique en deux parties. La première se faisait sans IA : deux clashs CodinGame en mode « le plus rapide » et un puzzle de l'Advent of Code. La seconde autorisait l'IA, à condition de livrer l'export complet des conversations. Le sujet : un portail où un avocat récupère les pièces de ses clients.
+
+**Sans IA : l'algorithmie.** Sur les deux clashs, j'ai validé 100 % des tests et terminé deuxième. Le puzzle consistait à suivre un garde sur une grille. Toute la difficulté de la seconde partie tenait à la détection des boucles : il faut suivre le couple (position, direction) et pas seulement la position, et ne tester comme obstacles que les cases du parcours d'origine.
+
+**Avec IA : le produit.** L'avocat crée une demande et obtient un lien public qui expire, protégé par un PIN à quatre chiffres affiché une seule fois. Le client déverrouille le lien, puis dépose ses fichiers grâce à un jeton de courte durée, lié à ce lien précis. Les jetons avocat et client passent par deux stratégies Passport distinctes : un jeton client ne peut pas servir sur une route avocat.
+
+**Le bug qui m'a le plus appris.** Pour vérifier le type réel d'un fichier et refuser un .exe renommé en .pdf, j'utilisais d'abord le paquet file-type. Il n'est publié qu'en ESM, alors que le backend compilait en CommonJS : le contrôle levait une erreur à chaque dépôt. Je l'ai remplacé par une vérification des signatures binaires des trois formats acceptés, écrite à la main et testée. Un contrôle de sécurité qui ne s'exécute jamais est pire que pas de contrôle, parce qu'on se croit protégé.
+
+**Déployer pour de vrai.** Tout tourne en conteneurs : NestJS, PostgreSQL, MinIO pour les fichiers, Prometheus et Grafana pour la supervision. Les images sont publiées sur GitHub Container Registry, le serveur se contente de les récupérer, et le certificat Let's Encrypt se renouvelle automatiquement.
+
+**La CI qui n'a jamais tourné.** Le workflow GitHub Actions était prêt, mais Actions est désactivé au niveau de mon compte, pas du dépôt. Plutôt que de passer ce point sous silence, je l'ai documenté et j'ai ajouté une commande make verify qui rejoue la même séquence en local. Dans un test technique, expliquer ce qui ne marche pas me semble plus utile que de l'ignorer.

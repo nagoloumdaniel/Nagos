@@ -1,0 +1,29 @@
+{
+  "intro": "26 modèles et 17 enums Prisma, 15 migrations. Prix et durée sont figés sur chaque réservation ; les montants sont stockés en entiers (colonnes *Cents).",
+  "entites": [
+    {
+      "nom": "Service / Category",
+      "texte": "Prestations, photos, options et règles de compatibilité."
+    },
+    {
+      "nom": "Appointment",
+      "texte": "Réservation avec instantané du prix et de la durée."
+    },
+    {
+      "nom": "HairAssessment",
+      "texte": "Évaluation de compatibilité d'une cliente."
+    },
+    {
+      "nom": "CustomRequest",
+      "texte": "Demande de coiffure personnalisée avec photos de référence."
+    },
+    {
+      "nom": "Conversation / Message",
+      "texte": "Échanges avec les clientes."
+    },
+    {
+      "nom": "Review / WaitlistEntry",
+      "texte": "Avis avec photos et liste d'attente."
+    }
+  ]
+}

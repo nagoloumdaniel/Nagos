@@ -1,0 +1,14 @@
+[
+  {
+    "valeur": "2",
+    "libelle": "dépôts, un seul projet"
+  },
+  {
+    "valeur": "12",
+    "libelle": "routes de l’API"
+  },
+  {
+    "valeur": "6",
+    "libelle": "tests d’intégration backend"
+  }
+]

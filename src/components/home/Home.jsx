@@ -5,7 +5,7 @@ import landing from '../../assets/landing.webp';
 import Social from './Social';
 import ScrollDown from './ScrollDown';
 
-const CV_URL = '/CV_Daniel_NAGOLOUM_TALLA.pdf';
+import { cv } from '../../lib/contenu/cv';
 
 const Home = () => (
   <section className="home" id="home">
@@ -53,10 +53,10 @@ const Home = () => (
 
         <div className="home__actions">
           <div className="home__cta">
-            <a href={CV_URL} download="CV_Daniel_NAGOLOUM_TALLA.pdf" className="button button--flex">
+            {cv && <a href={cv.url} download={cv.fileName} className="button button--flex">
               Télécharger mon CV
               <i className="uil uil-import button__icon" />
-            </a>
+            </a>}
             <Link to="/portfolio" className="button button--ghost button--flex">
               Voir mon travail <i className="uil uil-arrow-right button__icon" />
             </Link>

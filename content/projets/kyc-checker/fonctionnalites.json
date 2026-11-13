@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-file-check-alt",
+    "titre": "MRZ ICAO Doc 9303",
+    "texte": "Formats TD1, TD2 et TD3, avec détection automatique."
+  },
+  {
+    "icone": "uil-check-circle",
+    "titre": "Décision explicable",
+    "texte": "VALID, SUSPECT ou REJECTED, avec les avertissements qui la justifient."
+  },
+  {
+    "icone": "uil-eye",
+    "titre": "Comparaison de visage",
+    "texte": "Seuil cosinus configurable."
+  },
+  {
+    "icone": "uil-lock",
+    "titre": "Archivage chiffré",
+    "texte": "AES-256-GCM, index SQLite sans donnée personnelle en clair (jetons HMAC), journal d'audit et rétention configurable."
+  },
+  {
+    "icone": "uil-code-branch",
+    "titre": "API HTTP",
+    "texte": "FastAPI, authentification par clé d'API, images traitées en mémoire."
+  },
+  {
+    "icone": "uil-terminal",
+    "titre": "CLI et bibliothèque",
+    "texte": "Commandes demo et verify, plus un exemple d'intégration Next.js."
+  }
+]

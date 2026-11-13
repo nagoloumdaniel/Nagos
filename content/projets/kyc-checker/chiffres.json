@@ -1,0 +1,14 @@
+[
+  {
+    "valeur": "3",
+    "libelle": "formats MRZ (TD1, TD2, TD3)"
+  },
+  {
+    "valeur": "50",
+    "libelle": "tests collectés (42 passent, 8 ignorés)"
+  },
+  {
+    "valeur": "4",
+    "libelle": "points d’accès HTTP"
+  }
+]

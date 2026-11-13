@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Générateur du CV du portfolio - source modifiable.
 
-Régénère `public/CV_Daniel_NAGOLOUM_TALLA.pdf`, le fichier téléchargé par le bouton
+Régénère `content/cv/CV_Daniel_NAGOLOUM_TALLA.pdf`, le fichier téléchargé par le bouton
 « Télécharger mon CV » du site (le nom du fichier contient le nom du candidat).
 CV d'une page, compatible ATS : une colonne, texte sélectionnable, liens cliquables.
 
@@ -22,7 +22,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, HRFlowable, KeepTogether
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT_PATH = os.path.join(HERE, "..", "public", "CV_Daniel_NAGOLOUM_TALLA.pdf")
+OUT_PATH = os.path.join(HERE, "..", "content", "cv", "CV_Daniel_NAGOLOUM_TALLA.pdf")
 
 NAVY, BLUE, GRAY, BLACK = HexColor("#0D2B55"), HexColor("#1A6BC8"), HexColor("#555555"), HexColor("#111111")
 

@@ -1,0 +1,22 @@
+[
+  {
+    "icone": "uil-package",
+    "libelle": "Cœur",
+    "texte": "MRZ, rapprochement de nom et scoring, sans dépendance image"
+  },
+  {
+    "icone": "uil-processor",
+    "libelle": "Image",
+    "texte": "OpenCV, OCR, visage et forensique (couches optionnelles)"
+  },
+  {
+    "icone": "uil-server",
+    "libelle": "API",
+    "texte": "FastAPI et Docker"
+  },
+  {
+    "icone": "uil-database",
+    "libelle": "Coffre",
+    "texte": "Fichiers chiffrés et index SQLite"
+  }
+]

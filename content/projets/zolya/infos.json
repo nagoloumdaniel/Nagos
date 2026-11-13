@@ -1,0 +1,18 @@
+{
+  "titre": "Zolya",
+  "categorie": "Mobile",
+  "etiquette": "Flutter · NestJS · dépôt privé",
+  "resume": "Marketplace de vêtements de seconde main entre particuliers au Cameroun, avec paiement Mobile Money sécurisé par séquestre et livraison dédiée.",
+  "role": "Projet personnel de bout en bout : produit, architecture, API, applications mobiles et administration web. Développé en solo, avec l'assistance de Claude.",
+  "ordre": 2,
+  "monogramme": "Z",
+  "logoRecadre": true,
+  "pays": "Cameroun (Douala, Yaoundé)",
+  "langues": [
+    "Français",
+    "Anglais"
+  ],
+  "periode": "Depuis mai 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "En préparation à la publication (pas encore sur les stores)"
+}

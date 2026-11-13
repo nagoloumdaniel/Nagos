@@ -1,0 +1,18 @@
+[
+  {
+    "titre": "Double réservation",
+    "texte": "Une simple vérification ne suffit pas sous concurrence : verrou consultatif plus index unique partiel. Prisma ne sachant pas exprimer l'index partiel, il est écrit en SQL dans la migration."
+  },
+  {
+    "titre": "Migrations sur Vercel",
+    "texte": "Le verrou advisory de Prisma expirait derrière le pooler Neon ; les migrations passent par la connexion directe, verrou désactivé."
+  },
+  {
+    "titre": "i18n sans refonte des routes",
+    "texte": "Un middleware de réécriture plutôt qu'un dossier [locale], pour garder les URL françaises et laisser le dashboard en français."
+  },
+  {
+    "titre": "Fournisseur d'e-mails",
+    "texte": "Resend était prévu au départ, remplacé par SMTP Gmail."
+  }
+]

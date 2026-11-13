@@ -1,0 +1,15 @@
+{
+  "titre": "KYC Checker",
+  "categorie": "Back-End",
+  "etiquette": "Python · en cours de développement",
+  "resume": "Moteur de vérification de pièces d'identité : MRZ, nom, visage, forensique et archivage chiffré, avec une décision explicable.",
+  "role": "Projet personnel. Développé avec l'assistance de Claude.",
+  "ordre": 9,
+  "monogramme": "KC",
+  "logoRecadre": true,
+  "langues": [
+    "Français"
+  ],
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "Pas de déploiement en ligne"
+}

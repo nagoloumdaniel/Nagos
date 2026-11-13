@@ -1,0 +1,1 @@
+Findit lit le web comme un candidat le ferait, mais à grande échelle : un orchestrateur LLM décide quoi chercher, des outils déterministes collectent et extraient, puis les offres dédupliquées sont publiées sur un site public. Les candidats déposent leur CV, obtiennent un matching et génèrent CV et lettres adaptés.

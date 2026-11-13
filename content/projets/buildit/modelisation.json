@@ -1,0 +1,21 @@
+{
+  "intro": "BuildIt n'a pas de base de données : le modèle vit dans des schémas zod et des fichiers de registre versionnés.",
+  "entites": [
+    {
+      "nom": "Manifest",
+      "texte": "Ce que l'utilisateur veut : projet, catégories, choix."
+    },
+    {
+      "nom": "RegistryEntry",
+      "texte": "Une technologie : catégorie, versions, statut certifié ou déclaré."
+    },
+    {
+      "nom": "CompatibilityRule",
+      "texte": "Règle entre entrées : exclusion, exigence, version minimale."
+    },
+    {
+      "nom": "Preset",
+      "texte": "Combinaison certifiée prête à l'emploi."
+    }
+  ]
+}

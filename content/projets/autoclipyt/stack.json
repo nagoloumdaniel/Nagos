@@ -1,0 +1,26 @@
+[
+  {
+    "groupe": "Back (cible)",
+    "elements": [
+      "Python",
+      "FastAPI",
+      "SQLite"
+    ]
+  },
+  {
+    "groupe": "Bot (cible)",
+    "elements": [
+      "Telegram",
+      "aiogram"
+    ]
+  },
+  {
+    "groupe": "Médias (cible)",
+    "elements": [
+      "FFmpeg",
+      "Manim",
+      "Blender",
+      "Piper"
+    ]
+  }
+]

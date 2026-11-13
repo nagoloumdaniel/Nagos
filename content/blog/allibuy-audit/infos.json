@@ -1,0 +1,15 @@
+{
+  "titre": "Allibuy : ce que l'audit de mon propre code m'a appris",
+  "categorie": "Retour d'expérience",
+  "date": "Septembre 2026",
+  "dureeLecture": "5 min",
+  "resume": "874 tests au vert, aucun any, et pourtant une mise en production aurait marqué des commandes comme payées sans rien encaisser. Retour sur l'audit de ma marketplace.",
+  "tags": [
+    "NestJS",
+    "Next.js",
+    "PostgreSQL",
+    "Audit"
+  ],
+  "icone": "uil-shopping-cart-alt",
+  "ordre": 8
+}

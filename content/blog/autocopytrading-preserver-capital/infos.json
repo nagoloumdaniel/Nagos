@@ -1,0 +1,15 @@
+{
+  "titre": "AutoCopyTrading : copier des traders sans copier leurs risques",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "4 min",
+  "resume": "Un agent IA qui classe des fournisseurs de signaux et supervise la copie. Projet en conception : ce qui est décidé, et ce qui ne l'est pas.",
+  "tags": [
+    "Trading",
+    "Gestion du risque",
+    "IA",
+    "Conception"
+  ],
+  "icone": "uil-copy-alt",
+  "ordre": 26
+}

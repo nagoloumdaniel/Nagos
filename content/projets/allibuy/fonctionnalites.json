@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-users-alt",
+    "titre": "Quatre rôles",
+    "texte": "Acheteur, vendeur, livreur et administration, avec un RBAC stocké en base et une 2FA TOTP obligatoire pour les admins."
+  },
+  {
+    "icone": "uil-shield-check",
+    "titre": "Sécurité côté base",
+    "texte": "Row-level security PostgreSQL, triggers, journal d'audit, sessions révocables avec détection de rejeu des refresh tokens et anti-brute-force à escalade."
+  },
+  {
+    "icone": "uil-wallet",
+    "titre": "Escrow et wallet",
+    "texte": "Paiements en escrow, wallet vendeur, montants en entiers BigInt (aucun Float) et taux de change figé sur chaque commande."
+  },
+  {
+    "icone": "uil-globe",
+    "titre": "International",
+    "texte": "Multi-devises (FCFA, EUR, USD), téléphone E.164, interface FR/EN sur le web et les quatre applications mobiles."
+  },
+  {
+    "icone": "uil-id-card",
+    "titre": "KYC différé",
+    "texte": "Vérification d'identité automatique via un service externe, avec repli en revue admin, complétée depuis le tableau de bord après l'inscription."
+  },
+  {
+    "icone": "uil-mobile-android",
+    "titre": "Mobile money",
+    "texte": "Adaptateur MyCoolPay (Orange Money, MTN MoMo) écrit et testé, verrouillé jusqu'à validation en bac à sable."
+  }
+]

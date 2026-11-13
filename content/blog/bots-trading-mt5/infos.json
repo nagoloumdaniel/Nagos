@@ -1,0 +1,15 @@
+{
+  "titre": "XAUFxBot et SYNFxBot : mes premiers bots de trading et leurs limites",
+  "categorie": "Retour d'expérience",
+  "date": "Janvier 2026",
+  "dureeLecture": "5 min",
+  "resume": "Deux bots Python pour MetaTrader 5, l'un sur l'or, l'autre sur les indices synthétiques. Ce qui fonctionnait, ce qui coinçait, et pourquoi j'ai tout repris dans NexaGold.",
+  "tags": [
+    "Python",
+    "MetaTrader 5",
+    "Streamlit",
+    "Trading"
+  ],
+  "icone": "uil-chart-line",
+  "ordre": 13
+}

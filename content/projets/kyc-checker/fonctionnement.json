@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "Lecture",
+    "texte": "Localisation de la bande MRZ avec OpenCV, puis OCR (Tesseract avec modèle OCR-B, ou EasyOCR), ou texte MRZ fourni directement."
+  },
+  {
+    "titre": "MRZ",
+    "texte": "Détection du format, correction des confusions OCR courantes et vérification des clés de contrôle."
+  },
+  {
+    "titre": "Nom et visage",
+    "texte": "Rapprochement flou du nom (Jaro-Winkler) ; comparaison du selfie avec la photo de la pièce (YuNet et SFace)."
+  },
+  {
+    "titre": "Forensique",
+    "texte": "Résolution, netteté et ELA expérimental : des signaux d'aide à la revue, pas des preuves de fraude."
+  },
+  {
+    "titre": "Décision",
+    "texte": "Score (60 points de clés MRZ, 40 de similarité de nom) puis règles dures ; archivage chiffré optionnel."
+  }
+]

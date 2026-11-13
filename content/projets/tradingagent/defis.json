@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "API de courtage indisponible",
+    "texte": "Deriv n'est pas accessible depuis la France : l'exécution est passée sur MetaTrader 5, ce qui limite l'application à Windows."
+  },
+  {
+    "titre": "Réduire le périmètre",
+    "texte": "Le projet a été ramené à deux instruments, XAUUSD et BTCUSD, pour pouvoir valider sérieusement plutôt que survoler beaucoup de marchés."
+  },
+  {
+    "titre": "Ne pas se mentir",
+    "texte": "La version 1.3.0 validée à 1,0275 sur BTC tombe à 0,6909 sur le jeu scellé. La 1.4.0 atteint 1,3916 en validation (35 trades), mais son filtre a été trouvé en examinant 164 tranches des mêmes données et le jeu scellé n'est pas ouvert. La démonstration (22 trades, +14,90 EUR) n'est pas statistiquement significative."
+  },
+  {
+    "titre": "Séparer IA et décision",
+    "texte": "L'IA ne peut que rejeter : la décision d'envoyer un ordre reste déterministe et testable."
+  },
+  {
+    "titre": "Documentation périmée",
+    "texte": "Le fichier CLAUDE.md décrivait encore l'ancienne architecture Deriv. Il est signalé comme obsolète."
+  }
+]

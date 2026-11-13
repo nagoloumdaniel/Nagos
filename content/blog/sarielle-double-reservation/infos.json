@@ -1,0 +1,15 @@
+{
+  "titre": "Sarielle Fashion : empêcher la double réservation, même sous concurrence",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "5 min",
+  "resume": "Un site bilingue pour un salon en Allemagne. Pourquoi une simple vérification ne suffit pas, et comment un verrou et un index partiel règlent le problème.",
+  "tags": [
+    "Next.js",
+    "PostgreSQL",
+    "Prisma",
+    "i18n"
+  ],
+  "icone": "uil-calendar-alt",
+  "ordre": 19
+}

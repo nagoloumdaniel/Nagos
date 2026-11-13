@@ -1,0 +1,22 @@
+[
+  {
+    "icone": "uil-file-edit-alt",
+    "titre": "Script sourcé",
+    "texte": "Recherche, registre de sources et vérification factuelle (prévu)."
+  },
+  {
+    "icone": "uil-microphone",
+    "titre": "Voix off",
+    "texte": "TTS interchangeable avec repli local (prévu)."
+  },
+  {
+    "icone": "uil-film",
+    "titre": "Montage",
+    "texte": "FFmpeg, sous-titres, exports 16:9 et 9:16 (prévu)."
+  },
+  {
+    "icone": "uil-telegram-alt",
+    "titre": "Pilotage Telegram",
+    "texte": "Création, suivi et validation avant publication (prévu)."
+  }
+]

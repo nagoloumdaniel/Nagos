@@ -1,0 +1,1 @@
+Fanours vise à permettre de découvrir des produits, comparer les tarifs selon les volumes, acheter des lots, demander des devis et suivre ses commandes. À ce jour, seuls le cahier des charges (29 sections), la roadmap en 7 phases et les plans d'exécution sont rédigés ; aucun code applicatif n'existe encore.

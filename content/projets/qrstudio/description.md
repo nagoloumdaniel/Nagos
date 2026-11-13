@@ -1,0 +1,1 @@
+QR Studio génère des QR codes pour dix types de contenu (lien, texte, Wi-Fi, contact, e-mail, appel, SMS, événement, position GPS, adresse crypto), avec un contrôle fin du style et un export SVG, PNG, JPG ou WebP. Aucune donnée n'est envoyée à un serveur. L'interface est bilingue (français, anglais) avec thème clair et sombre.

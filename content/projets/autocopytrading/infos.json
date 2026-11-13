@@ -1,0 +1,15 @@
+{
+  "titre": "AutoCopyTrading",
+  "categorie": "IA",
+  "etiquette": "Web · en conception (pas de code)",
+  "resume": "Agent IA qui analyse et classe des fournisseurs de signaux sur Deriv MT5 puis supervise la copie, avec la préservation du capital comme priorité. Projet en phase de conception.",
+  "role": "Projet personnel : cadrage produit, spécification et architecture cible. Développé en solo, avec l'assistance de Claude.",
+  "ordre": 14,
+  "monogramme": "AC",
+  "langues": [
+    "Français"
+  ],
+  "periode": "Depuis octobre 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "Pas encore déployé"
+}

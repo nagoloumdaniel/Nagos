@@ -1,0 +1,15 @@
+{
+  "titre": "Findit : faire travailler un agent sans qu'il coûte une fortune",
+  "categorie": "Retour d'expérience",
+  "date": "Octobre 2026",
+  "dureeLecture": "5 min",
+  "resume": "Un agent qui collecte des offres d'emploi partout en France. Comment j'ai ramené le coût d'une exécution de 5 419 à 782 micro-dollars, et deux erreurs de sécurité à ne pas répéter.",
+  "tags": [
+    "Agent IA",
+    "Coûts",
+    "Sécurité",
+    "Monorepo"
+  ],
+  "icone": "uil-search-alt",
+  "ordre": 15
+}

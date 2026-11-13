@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "Import",
+    "texte": "CSV de 5 000 lignes au plus. Les colonnes sont reconnues en français et en anglais ; une estimation de coût s'affiche au-delà de 20 lignes."
+  },
+  {
+    "titre": "Identification",
+    "texte": "Recherche de l'entreprise (SIREN, domaine officiel) via l'API Recherche d'entreprises et Brave Search."
+  },
+  {
+    "titre": "Lecture du site",
+    "texte": "Le robot lit accueil, contact, carrières, mentions légales : mailto, texte, JSON-LD, microdonnées. Une requête par seconde et par domaine."
+  },
+  {
+    "titre": "Enrichissement et vérification",
+    "texte": "Hunter et adresses de rôle, puis contrôles locaux (syntaxe, MX, domaine jetable, liste de suppression) et vérification de boîte si demandée."
+  },
+  {
+    "titre": "Sortie",
+    "texte": "Bibliothèque filtrable, exports CSV, XLSX et JSON, ou envoi en campagne brouillon dans Campaign Mailer."
+  }
+]

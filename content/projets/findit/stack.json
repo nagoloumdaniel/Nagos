@@ -1,0 +1,46 @@
+[
+  {
+    "groupe": "Front",
+    "elements": [
+      "Next.js",
+      "React"
+    ]
+  },
+  {
+    "groupe": "Back",
+    "elements": [
+      "NestJS",
+      "Fastify",
+      "BullMQ",
+      "Prisma"
+    ]
+  },
+  {
+    "groupe": "Données",
+    "elements": [
+      "Neon PostgreSQL",
+      "Redis"
+    ]
+  },
+  {
+    "groupe": "Agent",
+    "elements": [
+      "DeepSeek",
+      "Brave Search",
+      "Apify",
+      "API France Travail",
+      "Cheerio",
+      "Playwright"
+    ]
+  },
+  {
+    "groupe": "Outillage",
+    "elements": [
+      "TypeScript",
+      "Turborepo",
+      "pnpm",
+      "Vitest",
+      "Playwright"
+    ]
+  }
+]

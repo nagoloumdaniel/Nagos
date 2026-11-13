@@ -1,0 +1,27 @@
+[
+  {
+    "icone": "uil-desktop",
+    "libelle": "apps/web",
+    "texte": "Next.js, React"
+  },
+  {
+    "icone": "uil-server",
+    "libelle": "apps/api",
+    "texte": "NestJS sur Fastify"
+  },
+  {
+    "icone": "uil-processor",
+    "libelle": "apps/worker",
+    "texte": "Agent et files BullMQ (Railway)"
+  },
+  {
+    "icone": "uil-package",
+    "libelle": "packages",
+    "texte": "19 paquets partagés (domaine, extracteurs, outils, UI)"
+  },
+  {
+    "icone": "uil-database",
+    "libelle": "Données",
+    "texte": "Neon PostgreSQL via Prisma, Redis"
+  }
+]

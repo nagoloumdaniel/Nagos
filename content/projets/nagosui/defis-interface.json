@@ -1,0 +1,12 @@
+[
+  {
+    "icone": "uil-sliders-v-alt",
+    "titre": "Indicateur d’actif coulissant",
+    "texte": "Dans la barre latérale et le sommaire de la documentation."
+  },
+  {
+    "icone": "uil-moon",
+    "titre": "Transition de thème",
+    "texte": "Fluide, avec un logo qui suit le thème."
+  }
+]

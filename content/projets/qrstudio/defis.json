@@ -1,0 +1,14 @@
+[
+  {
+    "titre": "Un rendu SVG propre",
+    "texte": "La librairie qrcode fournit la matrice ; les formes, yeux, dégradés et logo sont dessinés par un rendu SVG maison, réutilisé pour l'aperçu, l'export SVG et la rasterisation."
+  },
+  {
+    "titre": "Prévenir les codes illisibles",
+    "texte": "Heuristiques de contraste, de couverture du logo et de densité pour avertir avant l'impression."
+  },
+  {
+    "titre": "Pas de tests automatisés",
+    "texte": "Le dépôt n'a que ESLint ; la vérification est manuelle."
+  }
+]

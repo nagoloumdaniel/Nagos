@@ -1,0 +1,16 @@
+{
+  "titre": "Findit",
+  "categorie": "Full-Stack",
+  "etiquette": "Web · en cours de développement",
+  "resume": "Agent autonome qui découvre, collecte, déduplique et publie des offres d'emploi partout en France, avec un espace candidat (CV, matching, lettres).",
+  "role": "Projet personnel de bout en bout : produit, agent, API, web et déploiement. Développé en solo, avec l'assistance de Claude.",
+  "ordre": 3,
+  "monogramme": "FI",
+  "pays": "France entière",
+  "langues": [
+    "Français"
+  ],
+  "periode": "Depuis juillet 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "Vercel (web et API), Railway (worker)"
+}

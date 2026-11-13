@@ -1,0 +1,12 @@
+[
+  {
+    "icone": "uil-mobile-android",
+    "titre": "Pensé mobile",
+    "texte": "Interface responsive en français, avec thème clair et sombre."
+  },
+  {
+    "icone": "uil-eye",
+    "titre": "Accessibilité visée",
+    "texte": "Objectif WCAG AA, contrôlé en partie avec axe-core dans les tests E2E."
+  }
+]

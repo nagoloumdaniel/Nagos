@@ -1,0 +1,14 @@
+[
+  {
+    "titre": "Page blanche au retour navigateur",
+    "texte": "Conflit entre le bfcache et Lenis, corrigé."
+  },
+  {
+    "titre": "Logo sensible au thème",
+    "texte": "Sans JavaScript ni flash, avec un composant à deux images."
+  },
+  {
+    "titre": "Pas encore de tests",
+    "texte": "Il n'y a pas de tests automatisés ni de script lint pour l'instant."
+  }
+]

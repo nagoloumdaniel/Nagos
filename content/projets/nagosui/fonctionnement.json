@@ -1,0 +1,18 @@
+[
+  {
+    "titre": "Tokens visuels",
+    "texte": "Définis dans theme.css via @theme de Tailwind v4 (couleurs, rayons, ombres, flous, courbes)."
+  },
+  {
+    "titre": "Tokens de motion",
+    "texte": "EASE, SPRING et DURATION en TypeScript, pour Motion et GSAP."
+  },
+  {
+    "titre": "Composants",
+    "texte": "Variantes décrites avec CVA, sans valeur visuelle brute."
+  },
+  {
+    "titre": "Consommation",
+    "texte": "L'application importe theme.css et utilise @nagos/ui comme dépendance de workspace, sans build ni publication."
+  }
+]

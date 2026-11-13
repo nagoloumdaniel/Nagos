@@ -1,0 +1,12 @@
+[
+  {
+    "icone": "uil-dashboard",
+    "titre": "Densité sans bruit",
+    "texte": "Un tableau de bord financier montre beaucoup de chiffres : hiérarchie, états vides et alertes doivent rester lisibles."
+  },
+  {
+    "icone": "uil-exclamation-triangle",
+    "titre": "Ne pas survendre",
+    "texte": "Les captures utilisent des données de démonstration fictives, et l'interface indique l'état de conformité « non vérifié »."
+  }
+]

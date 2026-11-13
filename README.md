@@ -23,13 +23,18 @@ disponible en **alternance de 24 mois dès septembre 2026** (3 semaines entrepri
 ## 📁 Structure du projet
 
 ```
+content/                     # Tout le contenu du site : un dossier = un élément (voir content/README.md)
+├── projets/<nom>/           # Un projet : infos, description, liens, statut, logo, galerie/
+├── blog/<nom>/              # Un article : infos.json, article.md, statut.txt
+├── etudes/<nom>/            # Une ligne de la frise « Éducation »
+├── experiences/<nom>/       # Une ligne de la frise « Expérience »
+├── certifications/<nom>/    # Une certification : infos.json + PDF
+└── cv/                      # Le PDF du CV (remplacer le fichier suffit)
 public/
-├── projects/<id>/           # Images des galeries (WebP, 1600 px max)
 ├── og-image.png             # Image de partage 1200×630 (Open Graph / Twitter)
 ├── robots.txt · sitemap.xml
 src/
-├── assets/                  # Images WebP + CV (Mon_CV_Dev.pdf)
-│   └── logos/               # Logos des projets, récupérés dans leurs dépôts
+├── assets/                  # Images WebP du site
 ├── components/
 │   ├── about/               # « À propos » + bouton de téléchargement du CV
 │   ├── blog/                # Articles avec filtres et modal
@@ -51,6 +56,7 @@ src/
 │   ├── useModalDismiss.js   # Escape + page verrouillée pour les modals
 │   ├── usePageMeta.js       # Titre / description / canonical / OG par page
 │   └── useScrollReveal.js   # Animations d'apparition au scroll
+├── lib/contenu/             # Lecteurs du dossier content/ (projets, blog, parcours, CV)
 ├── lib/github.js            # Client GitHub côté navigateur, avec cache localStorage
 ├── pages/                   # HomePage, PortfolioPage, ProjectPage, BlogPage, NotFoundPage (404)
 ├── App.jsx                  # Layout + routes (pages secondaires en lazy loading)
@@ -133,23 +139,24 @@ d'origine à la fermeture.
 
 ## 🗂️ Projets
 
-Les données sont dans `src/components/work/Data.jsx` : une carte par produit, même quand il a plusieurs
-dépôts (liens « GitHub Frontend » / « GitHub Backend » dans la même carte).
+Chaque projet est un dossier de `content/projets/<nom>/`, détecté automatiquement (aucune liste à
+modifier). Les fichiers reconnus sont décrits dans `content/README.md`; une section sans fichier
+n'est pas affichée. Une carte par produit, même quand il a plusieurs dépôts (plusieurs lignes dans
+`liens.txt`).
 
-- **Logo** : récupéré dans le dépôt du projet (ou sur le site déployé) et converti en WebP dans
-  `src/assets/logos/`. Si la marque du projet est une icône et non un fichier, `logoIcon` reprend la
-  même icône sur le même fond. Sans logo du tout, la carte affiche un monogramme (`initials`).
-- **Liens** : uniquement des liens vérifiés. Un dépôt privé (`private: true`) n'a jamais de lien vers
-  son code.
+- **Logo** : fichier `logo.*` du dossier du projet. Sans logo, la carte affiche un monogramme.
+- **Liens** : uniquement des liens vérifiés (`liens.txt`). Un dépôt privé (`depot.txt` = `prive`) n'a
+  jamais de lien vers son code.
 - **Carte cliquable** : le titre est un bouton dont la zone s'étend à toute la carte (`.work__open::after`) ;
   les liens de la carte passent au-dessus et restent utilisables séparément. Aucun déplacement au survol.
 - **Page détail** (`ProjectPage.jsx`) : chaque projet a sa page, pilotée par les données. Un sommaire
   latéral fixe suit le défilement (`useSectionNav`) ; une section sans contenu disparaît (situation,
   fonctionnement, architecture, modélisation, stack, difficultés, défis d'interface, galerie, liens).
-- **Galerie** : champ `gallery: [{ src, alt, caption }]`, images dans `public/projects/<id>/`. Grille de
-  1 à 3 colonnes, chargement différé, lightbox accessible (Échap, flèches, focus rendu à la vignette).
-  N'y mettre ni donnée personnelle, ni secret, ni photo de client.
-- **Statut** : `wip: true` affiche « en cours » ; les chiffres ne viennent que des dépôts ou rapports.
+- **Galerie** : toute image déposée dans `galerie/` apparaît, la légende est le nom du fichier
+  (`02 - Acheter.webp` donne « Acheter »). Grille de 1 à 3 colonnes, chargement différé, lightbox
+  accessible (Échap, flèches, focus rendu à la vignette). N'y mettre ni donnée personnelle, ni secret,
+  ni photo de client.
+- **Statut** : `statut.txt` = `en-cours` affiche « en cours » ; les chiffres ne viennent que des dépôts ou rapports.
 - **Pagination** : 6 projets par page à partir de 993 px de large (grille à 3 colonnes), gérée dans
   `Works.jsx` avec `matchMedia`. En dessous (tablette, mobile), tous les projets restent affichés.
 
@@ -207,11 +214,11 @@ Variables : `{{name}}`, `{{email}}`, `{{message}}`, `{{date}}` ; Reply To = `{{e
 
 ## 📄 CV
 
-Le CV téléchargeable est `src/assets/Mon_CV_Dev.pdf` (importé par `About.jsx`, proposé au
-téléchargement sous le nom `CV_Daniel_Nagoloum_Talla_Fullstack.pdf`). Pour le mettre à jour,
-remplacer ce fichier par le nouveau PDF en gardant le même nom.
+Le CV téléchargeable est le PDF de `content/cv/`. Pour le mettre à jour, remplacer ce fichier : le
+bouton de `Home.jsx` et `About.jsx` le charge tout seul, sous le nom du fichier. Avec plusieurs PDF,
+le dernier par ordre alphabétique est pris.
 
-> ⚠️ `cv/generate_cv.py` génère l'**ancienne** version du CV : l'exécuter écraserait le CV actuel.
+> `cv/generate_cv.py` régénère ce PDF (il écrit dans `content/cv/`) : l'exécuter écrase le CV actuel.
 
 ---
 

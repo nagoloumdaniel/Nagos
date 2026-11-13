@@ -1,0 +1,29 @@
+{
+  "intro": "26 tables et 18 migrations, chacune avec son script de retour. Les contraintes de base portent les règles du produit.",
+  "entites": [
+    {
+      "nom": "companies",
+      "texte": "Entreprise unique par utilisateur et domaine, ou SIREN."
+    },
+    {
+      "nom": "emails / email_sources",
+      "texte": "Chaque adresse a au moins une source (URL et méthode, ou fournisseur)."
+    },
+    {
+      "nom": "verifications",
+      "texte": "Historique des contrôles et statut de chaque adresse."
+    },
+    {
+      "nom": "pipeline_jobs",
+      "texte": "Une tâche par import, entreprise et étape."
+    },
+    {
+      "nom": "provider_calls / provider_cache",
+      "texte": "Appels payants réservés, comptés et mis en cache, pour ne jamais payer deux fois."
+    },
+    {
+      "nom": "suppressions / erased_addresses",
+      "texte": "Listes d'exclusion, conservées uniquement sous forme d'empreinte SHA-256."
+    }
+  ]
+}

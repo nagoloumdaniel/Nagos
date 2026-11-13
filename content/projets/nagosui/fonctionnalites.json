@@ -1,0 +1,22 @@
+[
+  {
+    "icone": "uil-window-grid",
+    "titre": "Button",
+    "texte": "Variantes primary, glass, gradient, outline et ghost ; tailles de sm à xl, plus icon."
+  },
+  {
+    "icone": "uil-sliders-v-alt",
+    "titre": "MagneticButton",
+    "texte": "Effet magnétique via le hook useMagnetic."
+  },
+  {
+    "icone": "uil-swatchbook",
+    "titre": "Tokens",
+    "texte": "Tokens CSS et tokens de motion."
+  },
+  {
+    "icone": "uil-books",
+    "titre": "Site de documentation",
+    "texte": "Pages et documentation FR / EN, palette de commandes, thème."
+  }
+]

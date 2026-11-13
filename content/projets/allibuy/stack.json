@@ -1,0 +1,32 @@
+[
+  {
+    "groupe": "Front",
+    "elements": [
+      "Next.js",
+      "React",
+      "Expo (React Native)",
+      "Tailwind",
+      "NativeWind"
+    ]
+  },
+  {
+    "groupe": "Back",
+    "elements": [
+      "NestJS",
+      "Prisma",
+      "PostgreSQL",
+      "Zod"
+    ]
+  },
+  {
+    "groupe": "Services",
+    "elements": [
+      "Redis / BullMQ",
+      "Socket.IO",
+      "Meilisearch",
+      "Cloudflare R2",
+      "Docker",
+      "Turborepo"
+    ]
+  }
+]

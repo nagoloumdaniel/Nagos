@@ -1,0 +1,14 @@
+[
+  {
+    "valeur": "5",
+    "libelle": "personnes dans l'équipe"
+  },
+  {
+    "valeur": "~90 %",
+    "libelle": "des commits front-end"
+  },
+  {
+    "valeur": "3",
+    "libelle": "langues (FR, EN, AR)"
+  }
+]

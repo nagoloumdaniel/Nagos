@@ -1,0 +1,17 @@
+{
+  "intro": "Trois collections MongoDB ; le lien entre une tâche et sa liste se fait par le nom, volontairement souple.",
+  "entites": [
+    {
+      "nom": "User",
+      "texte": "Nom, e-mail unique, mot de passe haché (bcrypt), préférences de notification."
+    },
+    {
+      "nom": "Todo",
+      "texte": "Titre, description, état, échéance, liste, priorité (low, medium, high)."
+    },
+    {
+      "nom": "List",
+      "texte": "Nom unique par utilisateur."
+    }
+  ]
+}

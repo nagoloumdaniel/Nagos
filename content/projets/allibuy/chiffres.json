@@ -1,0 +1,18 @@
+[
+  {
+    "valeur": "118",
+    "libelle": "modèles Prisma"
+  },
+  {
+    "valeur": "505",
+    "libelle": "endpoints API"
+  },
+  {
+    "valeur": "874",
+    "libelle": "tests backend"
+  },
+  {
+    "valeur": "4",
+    "libelle": "applications Expo"
+  }
+]

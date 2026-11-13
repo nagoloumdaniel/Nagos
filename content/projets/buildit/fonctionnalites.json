@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-terminal",
+    "titre": "CLI pf",
+    "texte": "@nagoloum/cli, version 0.5.0 dans le dépôt."
+  },
+  {
+    "icone": "uil-window-grid",
+    "titre": "Configurateur web",
+    "texte": "18 écrans et un parcours en 12 étapes, en français et en anglais."
+  },
+  {
+    "icone": "uil-books",
+    "titre": "Registre",
+    "texte": "299 entrées sur 37 catégories, dont 32 certifiées et 267 déclarées."
+  },
+  {
+    "icone": "uil-check-circle",
+    "titre": "Compatibilité",
+    "texte": "Règles cumulatives par catégorie et règles d'écosystème."
+  },
+  {
+    "icone": "uil-heart-rate",
+    "titre": "Project Doctor",
+    "texte": "Diagnostic chiffré de l'état d'un projet."
+  },
+  {
+    "icone": "uil-swatchbook",
+    "titre": "Design « Forge »",
+    "texte": "Accent orange et cyan acier, Inter et JetBrains Mono."
+  }
+]

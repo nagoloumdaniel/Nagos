@@ -1,0 +1,1 @@
+Cyna vend des services de cybersécurité (SOC, EDR, XDR) sous forme d'abonnements. Le site couvre tout le parcours d'achat, du catalogue au paiement Stripe, puis l'espace client avec ses abonnements et licences, et un backoffice pour l'administration.

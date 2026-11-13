@@ -1,0 +1,16 @@
+{
+  "titre": "Hairstyle by Patricia",
+  "categorie": "Full-Stack",
+  "etiquette": "Next.js · en production",
+  "resume": "Site vitrine, catalogue et réservation en ligne pour une coiffeuse indépendante à Dakar (Sénégal) : locs, nattes collées, vanilles, sur rendez-vous.",
+  "role": "Projet client de bout en bout, développé en solo avec l'assistance de Claude. Le nom, le logo et les photographies appartiennent à Patricia.",
+  "ordre": 8,
+  "monogramme": "HP",
+  "pays": "Sénégal (Dakar)",
+  "langues": [
+    "Français"
+  ],
+  "periode": "Depuis octobre 2026",
+  "equipe": "Solo, assisté par IA",
+  "deploiement": "Vercel, Neon (PostgreSQL), Cloudflare R2"
+}

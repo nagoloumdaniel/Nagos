@@ -1,0 +1,27 @@
+[
+  {
+    "icone": "uil-server",
+    "libelle": "API",
+    "texte": "NestJS et Prisma sur PostgreSQL (PostGIS, ltree, citext), Redis / BullMQ, Socket.IO"
+  },
+  {
+    "icone": "uil-desktop",
+    "libelle": "Web",
+    "texte": "Next.js (App Router), React, Tailwind, shadcn/ui, TanStack Query, next-intl : espaces acheteur, vendeur et administration"
+  },
+  {
+    "icone": "uil-mobile-android-alt",
+    "libelle": "Mobile",
+    "texte": "Expo : Allibuy (acheteur), Allisell (vendeur), Allidrivers (livreur), Alliadmin (administration)"
+  },
+  {
+    "icone": "uil-package",
+    "libelle": "Paquets partagés",
+    "texte": "Types, validateurs Zod, design tokens, socle mobile (client API, auth, temps réel, push) et composants React Native communs"
+  },
+  {
+    "icone": "uil-database",
+    "libelle": "Modélisation",
+    "texte": "118 modèles, 91 enums et 32 migrations en une vingtaine de domaines ; RLS, partitionnement et vues matérialisées en SQL annexe"
+  }
+]

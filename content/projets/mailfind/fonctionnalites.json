@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-link-alt",
+    "titre": "Source obligatoire",
+    "texte": "Un déclencheur de base refuse toute adresse sans source."
+  },
+  {
+    "icone": "uil-check-circle",
+    "titre": "Statuts honnêtes",
+    "texte": "accept_all, unknown et unverified ne sont jamais présentés comme vérifiés."
+  },
+  {
+    "icone": "uil-chart-pie-alt",
+    "titre": "Score détaillé",
+    "texte": "0 à 100, décomposé critère par critère, sans pondération cachée."
+  },
+  {
+    "icone": "uil-shield-check",
+    "titre": "Garde SSRF",
+    "texte": "Refus des adresses privées et de métadonnées cloud, après résolution DNS et après chaque redirection."
+  },
+  {
+    "icone": "uil-code-branch",
+    "titre": "API publique /v1",
+    "texte": "Clés hachées, limite de débit, idempotence, erreurs RFC 9457, webhooks signés, OpenAPI."
+  },
+  {
+    "icone": "uil-ban",
+    "titre": "Respect des sites",
+    "texte": "robots.txt, page publique /robot pour demander l'exclusion, liste de suppression."
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "intro": "38 modèles Prisma et 33 migrations. Le modèle sépare ce que l'agent découvre (sources, exécutions) de ce qui est publié (offres) et de ce qui appartient au candidat (profils, CV).",
+  "entites": [
+    {
+      "nom": "Source / SourceAccessStatus",
+      "texte": "Source d'offres et statut de conformité d'accès, consulté avant toute collecte."
+    },
+    {
+      "nom": "AgentRun",
+      "texte": "Une exécution de l'agent : plan, outils appelés, coût en micro-dollars."
+    },
+    {
+      "nom": "JobOffer",
+      "texte": "Offre normalisée : contrat, lieu, entreprise, empreinte de déduplication."
+    },
+    {
+      "nom": "Company",
+      "texte": "Entreprise rattachée à plusieurs offres."
+    },
+    {
+      "nom": "CandidateProfile / Cv",
+      "texte": "Profil du candidat, CV importés et générés."
+    },
+    {
+      "nom": "Match",
+      "texte": "Score de correspondance entre un profil et une offre."
+    }
+  ]
+}

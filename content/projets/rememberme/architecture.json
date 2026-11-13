@@ -1,0 +1,22 @@
+[
+  {
+    "icone": "uil-desktop",
+    "libelle": "Frontend",
+    "texte": "React, Vite, Tailwind CSS, React Router, sur Vercel"
+  },
+  {
+    "icone": "uil-server",
+    "libelle": "API",
+    "texte": "Express en fonctions serverless sur Vercel, connexion MongoDB mise en cache"
+  },
+  {
+    "icone": "uil-database",
+    "libelle": "Données",
+    "texte": "MongoDB via Mongoose"
+  },
+  {
+    "icone": "uil-shield-check",
+    "libelle": "Accès",
+    "texte": "JWT, CORS en liste blanche"
+  }
+]

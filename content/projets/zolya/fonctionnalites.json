@@ -1,0 +1,32 @@
+[
+  {
+    "icone": "uil-lock-alt",
+    "titre": "Paiement en séquestre",
+    "texte": "Mobile Money MTN et Orange via Campay, grand livre à double entrée immuable."
+  },
+  {
+    "icone": "uil-truck",
+    "titre": "Zolya Delivery",
+    "texte": "Application livreur dédiée : offres séquentielles, repli automatique, preuves de remise par code."
+  },
+  {
+    "icone": "uil-shield-check",
+    "titre": "Administration web",
+    "texte": "Back-office Next.js avec RBAC (26 permissions), 2FA TOTP, litiges, retraits et modération."
+  },
+  {
+    "icone": "uil-bell",
+    "titre": "Notifications",
+    "texte": "Push FCM et SMS Twilio, files de tâches BullMQ pour les envois."
+  },
+  {
+    "icone": "uil-globe",
+    "titre": "Bilingue",
+    "texte": "Interface en français et en anglais, avec libellés centralisés."
+  },
+  {
+    "icone": "uil-moon",
+    "titre": "Clair et sombre",
+    "texte": "Thème clair et sombre, cibles tactiles de 44 px minimum, contrastes visés WCAG AA."
+  }
+]

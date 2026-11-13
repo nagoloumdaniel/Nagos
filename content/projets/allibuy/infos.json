@@ -1,0 +1,14 @@
+{
+  "titre": "Allibuy",
+  "categorie": "Full-Stack",
+  "etiquette": "En développement · dépôt privé",
+  "resume": "Marketplace multi-vendeurs internationale de produits, pensée mobile-first pour le marché africain : API, site web et quatre applications mobiles dans un seul monorepo.",
+  "role": "Conception et développement complets, en solo : modélisation, API, web, applications mobiles et audit du code.",
+  "ordre": 1,
+  "pays": "International, lancement axé Afrique",
+  "langues": [
+    "Français",
+    "Anglais"
+  ],
+  "deploiement": "Monorepo (API, web, 4 apps mobiles) · Docker Compose, pas encore déployé en production"
+}

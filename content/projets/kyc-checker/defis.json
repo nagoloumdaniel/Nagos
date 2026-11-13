@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "OCR du caractère <",
+    "texte": "Le modèle Tesseract par défaut le lit mal ; la MRZ exige le modèle OCR-B, complété par une correction des confusions courantes."
+  },
+  {
+    "titre": "Authenticité non vérifiable par image",
+    "texte": "Des clés MRZ correctes ne prouvent rien. Seule la lecture de la puce NFC apporterait une preuve forte ; elle est documentée mais non implémentée."
+  },
+  {
+    "titre": "Règles dures contre score",
+    "texte": "Un score pondéré seul peut laisser passer un nom différent, d'où des plafonds de sévérité indépendants du score."
+  },
+  {
+    "titre": "Recherche sans donnée personnelle",
+    "texte": "Retrouver un dossier par nom sans le stocker en clair a conduit à des jetons HMAC."
+  },
+  {
+    "titre": "Limites assumées",
+    "texte": "Pas de détection de vivacité, pas de limitation de débit, aucune évaluation de conformité : le prototype n'est pas prêt à traiter de vraies données personnelles."
+  }
+]

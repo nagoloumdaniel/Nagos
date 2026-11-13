@@ -1,0 +1,15 @@
+{
+  "titre": "Deux jours de test technique : le portail de dépôt de pièces",
+  "categorie": "Retour d'expérience",
+  "date": "Septembre 2026",
+  "dureeLecture": "5 min",
+  "resume": "Une partie sans IA, une partie avec, et une application complète à déployer en HTTPS. Les choix que j'ai faits sous contrainte de temps, et un bug de sécurité instructif.",
+  "tags": [
+    "NestJS",
+    "Docker",
+    "Sécurité",
+    "Algorithmie"
+  ],
+  "icone": "uil-folder-upload",
+  "ordre": 7
+}
