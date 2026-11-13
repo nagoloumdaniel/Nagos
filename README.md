@@ -152,10 +152,12 @@ n'est pas affichée. Une carte par produit, même quand il a plusieurs dépôts 
 - **Page détail** (`ProjectPage.jsx`) : chaque projet a sa page, pilotée par les données. Un sommaire
   latéral fixe suit le défilement (`useSectionNav`) ; une section sans contenu disparaît (situation,
   fonctionnement, architecture, modélisation, stack, difficultés, défis d'interface, galerie, liens).
-- **Galerie** : toute image déposée dans `04-galerie/` apparaît (8 maximum, les plus importantes), la légende est le nom du fichier
-  (`02 - Acheter.webp` donne « Acheter »). Grille de 1 à 3 colonnes, chargement différé, lightbox
-  accessible (Échap, flèches, focus rendu à la vignette). N'y mettre ni donnée personnelle, ni secret,
-  ni photo de client.
+- **Galerie** : toute image déposée dans `04-galerie/` apparaît (10 maximum, la 11e n'est jamais lue), la légende est le nom du fichier
+  (`02 - Acheter.webp` donne « Acheter »). Écran moyen et grand : rangées justifiées façon Google Photos,
+  calculées avec le format réel de chaque image. Petit écran (moins de 640 px) : un cadre groupé façon
+  WhatsApp avec « +N », qui ouvre la visionneuse. Chargement différé, visionneuse accessible
+  (pagination, Échap, flèches, balayage tactile, croix, focus rendu à la vignette). N'y mettre ni donnée
+  personnelle, ni secret, ni photo de client.
 - **Statut** : `statut.txt` = `en-cours` affiche « en cours » ; les chiffres ne viennent que des dépôts ou rapports.
 - **Pagination** : 6 projets par page à partir de 993 px de large (grille à 3 colonnes), gérée dans
   `Works.jsx` avec `matchMedia`. En dessous (tablette, mobile), tous les projets restent affichés.

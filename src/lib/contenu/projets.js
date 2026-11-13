@@ -8,7 +8,7 @@ import {
 
 const BASE = '../../../content/projets/';
 
-const MAX_GALLERY = 8; // seules les images importantes sont gardées
+const MAX_GALLERY = 10; // seules les images importantes sont gardées
 
 const texts = groupByFolder(
   import.meta.glob('../../../content/projets/*/*/*.{json,md,txt}', { query: '?raw', import: 'default', eager: true }),
@@ -36,9 +36,11 @@ const build = (slug) => {
   const statut = readFlag(f['01-apercu/statut.txt']) || 'termine';
   if (statut === 'brouillon') return null;
 
-  const links = parseLinks(f['12-liens/liens.txt']);
-  const depot = readFlag(f['02-github/depot.txt']) || (links.some(l => l.kind === 'github') ? 'public' : 'prive');
+  const allLinks = parseLinks(f['12-liens/liens.txt']);
+  const depot = readFlag(f['02-github/depot.txt']) || (allLinks.some(l => l.kind === 'github') ? 'public' : 'prive');
   const isPrivate = depot === 'prive';
+  /* Dépôt privé : tout lien vers le code est ignoré, même saisi par erreur dans liens.txt */
+  const links = isPrivate ? allLinks.filter(l => l.kind !== 'github' && !/github\.com/i.test(l.url)) : allLinks;
 
   const allNames = Object.keys(shots[slug] || {}).map(k => k.replace(/^04-galerie\//, '')).sort(byNaturalName);
   if (allNames.length > MAX_GALLERY) {
