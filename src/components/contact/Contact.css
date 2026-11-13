@@ -86,6 +86,12 @@ body.dark-theme .contact {
   -webkit-box-shadow:0 0 0 1000px var(--container-color) inset;
   caret-color:var(--title-color);
 }
+/* Firefox (et Chrome récent) : même rendu que ci-dessus */
+.contact__input:autofill {
+  -webkit-text-fill-color:var(--title-color);
+  box-shadow:0 0 0 1000px var(--container-color) inset;
+  caret-color:var(--title-color);
+}
 .contact__textarea { flex:1; min-height:9rem; resize:none; }
 
 .contact__field--invalid .contact__input { border-color:var(--danger); }

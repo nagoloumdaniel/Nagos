@@ -175,7 +175,16 @@ body.dark-theme {
 
 /* ─── BASE ───────────────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 5.5rem; }
+html {
+  scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 5.5rem;
+  /* Rendu identique d'un navigateur à l'autre : thème déclaré, texte non gonflé sur mobile, barre de défilement standard */
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--body-color);
+}
+html:has(> body.dark-theme) { color-scheme: dark; }
 
 body {
   font-family: var(--body-font);
@@ -185,6 +194,15 @@ body {
   /* clip (et non hidden) : hidden fait de body un conteneur de défilement et casse position: sticky */
   overflow-x: clip;
   transition: background-color 0.5s ease, color 0.5s ease;
+  /* Même épaisseur de texte sur macOS (Safari, Chrome, Firefox) qu'ailleurs */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Pas de halo bleu au toucher (Chrome Android, Safari iOS) */
+  -webkit-tap-highlight-color: transparent;
+  accent-color: var(--accent);
+  /* Impression et export PDF : les couleurs du thème sont gardées */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 /* Content above aurora */
@@ -193,7 +211,8 @@ body {
 h1, h2, h3 { font-family: var(--heading-font); color: var(--title-color); font-weight: var(--font-bold); line-height: 1.15; }
 ul  { list-style: none; }
 a   { text-decoration: none; }
-button { cursor: pointer; border: none; outline: none; }
+button { cursor: pointer; border: none; outline: none; -webkit-appearance: none; appearance: none; }
+input, textarea { -webkit-appearance: none; appearance: none; }
 img { max-width: 100%; height: auto; }
 
 /* ─── LAYOUT ────────────────────────────────────────────── */
