@@ -2,6 +2,14 @@
   "name": "porfolio",
   "private": true,
   "version": "1.0.0",
+  "description": "Portfolio de Daniel Nagoloum Talla, développeur Full-Stack, Data et IA.",
+  "author": "Daniel Nagoloum Talla",
+  "license": "MIT",
+  "homepage": "https://nagoloum.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nagoloumdaniel/Nagos.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
