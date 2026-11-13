@@ -199,7 +199,9 @@ export default function useHomeCraft() {
          chargées), pas sur celle du chargement. D'ici là, son contenu reste masqué. */
       const plan = (root) => planCraft(root, collectTargets(root).map((t) => ({ ...t, at: (r) => Math.max(0, r.y) * 0.85 })));
 
-      const build = (root, p) => {
+      /* cap : position de scroll où la section doit être finie (section construite d'office
+         lors d'un saut) ; en remontant au-dessus, elle se défait comme les autres */
+      const build = (root, p, cap) => {
         const tl = gsap.timeline({ paused: true });
         const n = p.items.length;
         const craft = buildCraft(tl, { plan: p, k: PX, lanes: Math.min(10, Math.max(4, Math.ceil(n / 4))), frame: root.id || 'footer' });
@@ -209,13 +211,14 @@ export default function useHomeCraft() {
           const vh = window.innerHeight;
           const s = root.getBoundingClientRect().top + window.scrollY - vh * 0.88;
           const m = maxScroll();
+          if (cap != null) return Math.max(0, Math.min(s, cap - L));
           if (s + L <= m) return Math.max(0, s);
           return Math.max(0, Math.min(s, m - Math.min(L, vh * 0.7)));
         };
         const st = ScrollTrigger.create({
           trigger: root,
           start: startAt,
-          end: () => Math.min(startAt() + L, maxScroll()),
+          end: () => Math.min(startAt() + L, maxScroll(), cap ?? Infinity),
           animation: tl,
           scrub: 0.6,
           invalidateOnRefresh: false,
@@ -224,7 +227,7 @@ export default function useHomeCraft() {
         /* Fin atteinte (même via le lissage du scrub) : le DOM retrouve son CSS d'origine */
         tl.eventCallback('onComplete', craft.finish);
         tl.eventCallback('onUpdate', () => { if (tl.progress() < 1) craft.rearm(); });
-        crafts.set(root, { tl, st, craft, h: root.offsetHeight, w: root.offsetWidth });
+        crafts.set(root, { tl, st, craft, cap, h: root.offsetHeight, w: root.offsetWidth });
       };
 
       const destroy = (root) => {
@@ -238,11 +241,11 @@ export default function useHomeCraft() {
         crafts.delete(root);
       };
 
-      const buildAll = (list) => {
+      const buildAll = (list, caps) => {
         list.forEach((root) => root.classList.remove('craft-wait'));
         /* Lecture d'abord (toutes les sections du lot), écriture ensuite */
         const plans = list.map((root) => [root, plan(root)]);
-        plans.forEach(([root, p]) => build(root, p));
+        plans.forEach(([root, p]) => build(root, p, caps?.get(root)));
         /* Pas de ScrollTrigger.refresh() global : il remet le scroll à zéro le temps du
            calcul et coupe un défilement fluide en cours (clic dans la nav) */
         crafts.forEach((c) => c.st.refresh());
@@ -284,8 +287,9 @@ export default function useHomeCraft() {
         const list = [...dirty].filter((r) => crafts.has(r));
         dirty.clear();
         if (!list.length) return;
+        const caps = new Map(list.map((r) => [r, crafts.get(r).cap]));
         list.forEach(destroy);
-        buildAll(list);
+        buildAll(list, caps);
       };
       const later = (ms) => { clearTimeout(timer); timer = setTimeout(rebuild, ms); };
       const ro = new ResizeObserver((entries) => {
@@ -343,6 +347,15 @@ export default function useHomeCraft() {
         };
         requestAnimationFrame(check);
       };
+      /* Sections construites d'office : elles retrouvent leur craft lié au scroll, déjà
+         fini à la position actuelle, et se défont si l'on remonte */
+      const rejoin = (list) => {
+        const todo = list.filter((r) => done.has(r) && !autos.has(r));
+        if (!todo.length || settled) return;
+        todo.forEach((r) => done.delete(r));
+        const y = window.scrollY;
+        buildAll(todo, new Map(todo.map((r) => [r, y])));
+      };
       let jumpId = 0;
       jump = (id) => {
         const target = id === 'home' ? null : document.getElementById(id);
@@ -374,6 +387,7 @@ export default function useHomeCraft() {
               evs.forEach((e) => window.removeEventListener(e, release));
               if (!jumping || my !== jumpId) return;
               jumping = false;
+              rejoin(roots.slice(0, idx + 1));
               if (queue.size && !raf) raf = requestAnimationFrame(flush);
             };
             evs.forEach((e) => window.addEventListener(e, release, { passive: true }));
@@ -385,7 +399,10 @@ export default function useHomeCraft() {
             };
             align();
             if (settled) release();
-            else playSection(target, () => { if (jumping && my === jumpId) align(); release(); });
+            else playSection(target, () => {
+              if (my !== jumpId) return;
+              if (jumping) { align(); release(); } else rejoin([target]);
+            });
           });
         });
       };
