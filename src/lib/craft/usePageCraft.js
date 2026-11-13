@@ -81,8 +81,9 @@ export default function usePageCraft(rootRef) {
         const craft = buildCraft(btl, { plan, k: 1, lanes: Math.min(8, Math.max(3, Math.ceil(plan.items.length / 3))), frame: false });
         btl.timeScale(Math.max(1, btl.duration() / 4));
         btl.eventCallback('onComplete', () => { craft.finish(); craft.dispose(); });
+        /* Départ borné au scroll maximal : un bloc tout en bas de page se construit quand même */
         const st = ScrollTrigger.create({
-          start: Math.max(0, top - vh * 0.88),
+          start: () => Math.min(Math.max(0, top - vh * 0.88), Math.max(0, ScrollTrigger.maxScroll(window) - 2)),
           end: () => ScrollTrigger.maxScroll(window) + 1,
           once: true,
           onEnter: () => btl.play(),
@@ -90,15 +91,34 @@ export default function usePageCraft(rootRef) {
         return { btl, craft, st };
       });
 
+      /* Termine tout de suite (bandes comprises, ou seulement celles déjà commencées) */
+      const settle = (all) => {
+        if (tl.progress() < 1) tl.progress(1);
+        bandCrafts.forEach(({ btl, st }) => {
+          if (all || btl.progress() > 0) { st.kill(); btl.progress(1); }
+        });
+      };
+      /* Filet : en bas de page (page raccourcie après mesure), tout ce qui reste se construit */
+      const onBottom = () => {
+        if (window.scrollY < ScrollTrigger.maxScroll(window) - 2) return;
+        bandCrafts.forEach(({ btl, st }) => { if (btl.progress() === 0 && !btl.isActive()) { st.kill(); btl.play(); } });
+      };
+      /* Clavier (Tab) : le contenu masqué serait inatteignable, on termine tout */
+      const onTab = (e) => { if (e.key === 'Tab') settle(true); };
+
       /* Une action de l'utilisateur accélère un peu la fin, sans casser le rythme */
       const hurry = () => { if (tl.progress() < 1) tl.timeScale(Math.max(tl.timeScale(), tl.duration() / 3)); };
       const evs = ['wheel', 'touchstart', 'keydown'];
       evs.forEach((e) => window.addEventListener(e, hurry, { passive: true }));
-      const leave = installLeave((to) => navRef.current(to));
+      window.addEventListener('scroll', onBottom, { passive: true });
+      window.addEventListener('keydown', onTab);
+      const leave = installLeave((to) => navRef.current(to), () => settle(false));
 
       stop = () => {
         leave();
         evs.forEach((e) => window.removeEventListener(e, hurry));
+        window.removeEventListener('scroll', onBottom);
+        window.removeEventListener('keydown', onTab);
         if (headerMine && tl.progress() < 1) releaseHeader();
         tl.progress(1);
         finishMain();

@@ -469,7 +469,15 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
   }
 
   /* Fin de construction : le site redevient 100 % piloté par son CSS */
+  let done = false;
+  /* Retour en arrière après finish() (scroll réversible) : on recoupe les transitions CSS */
+  const rearm = () => {
+    if (!done) return;
+    done = false;
+    original.forEach((_, el) => el.style.setProperty('transition', 'none'));
+  };
   const finish = () => {
+    done = true;
     touched.forEach((props, el) => {
       if (props.has('transform')) gsap.set(el, { clearProps: 'transform' });
       original.get(el).forEach(([key, value]) => {
@@ -492,5 +500,5 @@ export function buildCraft(tl, { plan, root, items, k = 1, lanes = 4, tone = '',
     place();
   };
 
-  return { finish, dispose, reposition };
+  return { finish, rearm, dispose, reposition };
 }

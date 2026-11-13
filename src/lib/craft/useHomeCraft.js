@@ -50,6 +50,8 @@ export default function useHomeCraft() {
       releasePending();
       const home = document.getElementById('home');
       if (!home) return;
+      let settled = false;
+      let settle = () => {};
 
       /* ─── Mesures du hero et de la nav, d'un seul bloc ─── */
       const navPlan = headerMine ? planHeader() : null;
@@ -73,6 +75,7 @@ export default function useHomeCraft() {
       const navCraft = navPlan ? buildCraft(heroTl, { plan: navPlan, k: 1, lanes: 2, tone: 'dark', frame: 'Nav' }) : null;
       const finishHero = () => { heroCraft.finish(); navCraft?.finish(); };
       heroTl.eventCallback('onComplete', finishHero);
+      heroTl.eventCallback('onUpdate', () => { if (heroTl.progress() < 1) { heroCraft.rearm(); navCraft?.rearm(); } });
 
       /* Lecture auto : environ 6 s, rythme posé */
       let mode = 'auto';
@@ -96,7 +99,7 @@ export default function useHomeCraft() {
         complete();
       };
       /* Bas : on construit tant que le hero n'est pas fini. Haut : on défait seulement tout en haut. */
-      const wants = (dir) => !heroStale && (dir > 0 ? prog() < 1 : window.scrollY <= 0 && prog() > 0);
+      const wants = (dir) => !heroStale && !settled && (dir > 0 ? prog() < 1 : window.scrollY <= 0 && prog() > 0);
       const drive = (delta) => {
         if (mode === 'auto') { mode = 'scroll'; heroTl.pause(); target = heroTl.progress(); }
         target = Math.max(0, Math.min(1, target + delta / DIST));
@@ -113,6 +116,7 @@ export default function useHomeCraft() {
         return false;
       };
       const onWheel = (e) => {
+        if (e.ctrlKey) return; // zoom navigateur ou pincement du trackpad
         const dir = Math.sign(e.deltaY);
         if (!dir || !wants(dir) || ownScroll(e.target, dir)) return;
         if (e.cancelable) e.preventDefault();
@@ -122,19 +126,23 @@ export default function useHomeCraft() {
       let ty = null;
       const onTouchStart = (e) => { ty = e.touches[0]?.clientY ?? null; };
       const onTouchMove = (e) => {
-        const y = e.touches[0]?.clientY;
-        if (ty == null || y == null) return;
+        if (e.touches.length !== 1) { ty = null; return; } // pincement : zoom natif
+        const y = e.touches[0].clientY;
+        if (ty == null) { ty = y; return; }
         const dy = ty - y;
+        ty = y; // toujours à jour : pas de saut quand le pilotage reprend
         const dir = Math.sign(dy);
         if (!dir || !wants(dir) || ownScroll(e.target, dir)) return;
         if (e.cancelable) e.preventDefault();
-        ty = y;
         drive(dy * 2.2);
       };
       const KEYS = { ArrowDown: 1, PageDown: 3, ' ': 3, End: 10, ArrowUp: -1, PageUp: -3, Home: -10 };
+      const OWN_KEYS = 'input,textarea,select,button,a,[contenteditable],[role="menu"],[role="dialog"],[role="listbox"],[role="combobox"]';
       const onKey = (e) => {
+        if (e.key === 'Tab') { settle(); return; }
         const n = KEYS[e.key];
-        if (!n || !wants(Math.sign(n)) || e.target.closest?.('input,textarea,select,[contenteditable]')) return;
+        if (!n || e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) return;
+        if (!wants(Math.sign(n)) || e.target.closest?.(OWN_KEYS)) return;
         e.preventDefault();
         drive(n * DIST * 0.06);
       };
@@ -194,6 +202,7 @@ export default function useHomeCraft() {
         });
         /* Fin atteinte (même via le lissage du scrub) : le DOM retrouve son CSS d'origine */
         tl.eventCallback('onComplete', craft.finish);
+        tl.eventCallback('onUpdate', () => { if (tl.progress() < 1) craft.rearm(); });
         crafts.set(root, { tl, st, craft, h: p.R.h });
       };
 
@@ -220,7 +229,7 @@ export default function useHomeCraft() {
       let timer = 0;
       const dirty = new Set();
       const rebuild = () => {
-        if (!alive) return;
+        if (!alive || settled) return;
         const list = [...dirty];
         dirty.clear();
         list.forEach(destroy);
@@ -250,7 +259,13 @@ export default function useHomeCraft() {
         [...crafts.keys()].forEach(destroy);
       });
 
-      cleanups.push(installLeave((to) => navRef.current(to)));
+      /* Départ ou clavier : hero et sections terminés, le contenu devient atteignable et stable */
+      settle = () => {
+        settled = true;
+        if (prog() < 1) complete();
+        [...crafts.keys()].forEach(destroy);
+      };
+      cleanups.push(installLeave((to) => navRef.current(to), () => settle()));
     };
 
     if (fontsReady()) start();

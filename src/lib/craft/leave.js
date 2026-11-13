@@ -5,8 +5,9 @@ const LEAVE = 1.5; // durée du « dé-craft » en secondes
 
 /* En quittant la page par un lien interne : ce qui est à l'écran se défait
    (sélections, particules, frappe à l'envers), puis la navigation a lieu.
-   Un second clic accélère, un troisième part tout de suite. */
-export function installLeave(navigate) {
+   Un second clic accélère, un troisième part tout de suite.
+   settle() termine d'abord le craft en cours : deux timelines ne pilotent jamais les mêmes éléments. */
+export function installLeave(navigate, settle) {
   let tl = null;
   let craft = null;
   let clicks = 0;
@@ -20,6 +21,7 @@ export function installLeave(navigate) {
   };
 
   const run = () => {
+    settle?.();
     const main = document.querySelector('main');
     if (!main) return false;
     const vh = window.innerHeight;
