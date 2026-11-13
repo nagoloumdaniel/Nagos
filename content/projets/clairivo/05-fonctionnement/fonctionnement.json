@@ -1,0 +1,26 @@
+[
+  {
+    "titre": "Choisir et mettre au panier",
+    "texte": "Le client parcourt le catalogue, filtre par univers, format et prix, puis remplit son panier. Le panier vit dans le navigateur et ne contient que des identifiants de produits."
+  },
+  {
+    "titre": "Créer la commande",
+    "texte": "Le serveur relit les prix en base, vérifie la disponibilité et refuse un produit déjà possédé. Il crée une commande en attente et un paiement Stripe pour le montant calculé, en centimes."
+  },
+  {
+    "titre": "Payer",
+    "texte": "Le client règle par carte, Apple Pay ou Google Pay. L'anti-robot Turnstile protège l'étape. Pour un compte connecté, un panier déjà en attente est repris au lieu d'ouvrir un second paiement."
+  },
+  {
+    "titre": "Confirmer par webhook",
+    "texte": "Stripe appelle une route signée. Dans une seule transaction, la commande passe à payée, les droits d'accès sont créés et la facture est émise. Un événement reçu deux fois ne change rien."
+  },
+  {
+    "titre": "Télécharger",
+    "texte": "Le fichier privé est servi par un lien signé valable cinq minutes. Les téléchargements sont limités par produit et par compte sur vingt-quatre heures."
+  },
+  {
+    "titre": "Suivre, rembourser, supprimer",
+    "texte": "L'espace client liste achats, factures et avoirs en PDF. Un remboursement crée un avoir et ne retire l'accès que s'il est total. Le client peut exporter ses données ou supprimer son compte."
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "groupe": "Application",
+    "elements": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Motion"
+    ]
+  },
+  {
+    "groupe": "Données",
+    "elements": [
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Supabase (base et stockage privé)"
+    ]
+  },
+  {
+    "groupe": "Authentification",
+    "elements": [
+      "Better Auth",
+      "Google OAuth",
+      "Double authentification TOTP",
+      "Cloudflare Turnstile"
+    ]
+  },
+  {
+    "groupe": "Paiement et documents",
+    "elements": [
+      "Stripe",
+      "pdf-lib",
+      "uqr"
+    ]
+  },
+  {
+    "groupe": "Services",
+    "elements": [
+      "Resend",
+      "Sentry",
+      "Vercel",
+      "GitHub Actions"
+    ]
+  },
+  {
+    "groupe": "Tests",
+    "elements": [
+      "Vitest",
+      "Playwright"
+    ]
+  }
+]

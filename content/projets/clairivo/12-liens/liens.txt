@@ -1,0 +1,2 @@
+# type | libellé | adresse
+demo | Voir le site | https://www.clairivo.org

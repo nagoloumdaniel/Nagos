@@ -1,0 +1,62 @@
+[
+  {
+    "icone": "uil-shopping-cart",
+    "titre": "Catalogue et packs",
+    "texte": "Guides, modèles, mini-cours et packs, avec recherche en temps réel, filtres par univers, format et prix, favoris et fiches détaillées."
+  },
+  {
+    "icone": "uil-credit-card",
+    "titre": "Paiement par carte",
+    "texte": "Stripe avec cartes, Apple Pay et Google Pay. Prix et total toujours recalculés côté serveur."
+  },
+  {
+    "icone": "uil-user-check",
+    "titre": "Achat sans compte",
+    "texte": "Un invité reçoit un lien de téléchargement signé par e-mail, valable sept jours, et peut aussi retrouver son achat avec un lien signé de trente jours."
+  },
+  {
+    "icone": "uil-shield-check",
+    "titre": "Connexion sécurisée",
+    "texte": "E-mail et mot de passe, lien magique, Google, double authentification par application avec QR code et codes de récupération."
+  },
+  {
+    "icone": "uil-file-download-alt",
+    "titre": "Téléchargements protégés",
+    "texte": "Stockage privé, liens signés de cinq minutes, plafonds de téléchargement par produit et par compte."
+  },
+  {
+    "icone": "uil-invoice",
+    "titre": "Factures et avoirs PDF",
+    "texte": "Documents générés et figés, numérotés par série et par année civile sans trou, avec la mention de franchise de TVA."
+  },
+  {
+    "icone": "uil-redo",
+    "titre": "Remboursements",
+    "texte": "Remboursement total ou partiel depuis l'administration, avoir émis, e-mail envoyé, accès retiré seulement si le remboursement est total."
+  },
+  {
+    "icone": "uil-coffee",
+    "titre": "Page « Me payer un café »",
+    "texte": "Un pourboire libre de 2 € à 500 €, sans contrepartie ni accès à du contenu."
+  },
+  {
+    "icone": "uil-envelope",
+    "titre": "E-mails transactionnels",
+    "texte": "Confirmation de commande, facture, remboursement, liens de connexion et suppression de compte, en HTML habillé et en texte brut, avec un journal qui ne garde que l'adresse masquée."
+  },
+  {
+    "icone": "uil-cookie-bite",
+    "titre": "Cookies et RGPD",
+    "texte": "Bandeau avec accepter, refuser et personnaliser, preuve de consentement, export des données, suppression du compte et mesure d'audience sans cookie."
+  },
+  {
+    "icone": "uil-chart-line",
+    "titre": "Administration",
+    "texte": "Gestion du catalogue et des fichiers, commandes, remboursements, export comptable CSV, journal d'audit et publication programmée."
+  },
+  {
+    "icone": "uil-wrench",
+    "titre": "Mode maintenance",
+    "texte": "Un réglage d'environnement bascule tout le site sur une page de maintenance en 503."
+  }
+]
