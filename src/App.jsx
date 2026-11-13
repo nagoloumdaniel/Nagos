@@ -5,7 +5,7 @@ import Header          from './components/header/Header';
 import Footer          from './components/footer/Footer';
 import Scrollup        from './components/scrollup/Scrollup';
 import HomePage        from './pages/HomePage';
-import useScrollReveal from './hooks/useScrollReveal';
+import './lib/craft/craft.css';
 
 /* Pages secondaires chargées à la demande (code-splitting) */
 const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
@@ -24,7 +24,6 @@ function ScrollToTop() {
 }
 
 function App() {
-  useScrollReveal();
   return (
     <>
       {/* Fond : grille de points + repères pointillés */}

@@ -35,11 +35,11 @@ const SKILL_LINES = [
 const Skills = () => (
   <section className="skills section" id="skills">
     <span className="section__subtitle">Ce que je maîtrise</span>
-    <h2 className="section__title reveal">Mes Compétences</h2>
+    <h2 className="section__title">Mes Compétences</h2>
     <div className="skills__container container grid">
       {categories.flatMap(({ icon, title, items }, i) => {
         const card = (
-          <div key={title} className={`skills__content reveal-scale d${(i % 4) + 1}`}>
+          <div key={title} className={`skills__content`}>
             <h3 className="skills__title"><i className={`uil ${icon} skills__title-icon`} />{title}<span className="skills__count">{String(items.length).padStart(2, '0')}</span></h3>
             <div className="skills__tags">
               {items.map(name => <span key={name} className="skills__tag">{name}</span>)}

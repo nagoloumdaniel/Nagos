@@ -102,7 +102,6 @@
   font-weight: var(--font-bold);
   line-height: 0.8;
   color: var(--hero-ink);
-  animation: homeRiseTitle .6s .1s ease both;
 }
 .home__first {
   display: block;
@@ -150,7 +149,6 @@
 }
 .home__top { align-items: flex-start; }
 
-.home__intro { animation: homeRise .5s .15s ease both; }
 .home__greeting {
   display: inline-flex;
   align-items: center;
@@ -168,7 +166,7 @@
   color: var(--hero-ink);
 }
 
-.home__about { max-width: 26rem; animation: homeRise .5s .3s ease both; }
+.home__about { max-width: 26rem; }
 .home__description {
   font-size: var(--small-font-size);
   line-height: 1.7;
@@ -180,7 +178,6 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 1.25rem;
-  animation: homeFade .5s .4s ease both; /* sans transform : le menu social mobile est positionné par rapport au hero */
 }
 .home__cta {
   display: flex;
@@ -227,7 +224,6 @@
   font-size: var(--small-font-size);
   font-weight: var(--font-medium);
   color: var(--hero-ink);
-  animation: homeRise .5s .2s ease both;
 }
 .home__scroll-circle {
   width: 40px; height: 40px;
@@ -243,15 +239,6 @@
   50%      { transform: translateY(3px); }
 }
 
-@keyframes homeFade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes homeRise {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes homeRiseTitle {
-  from { opacity: 0; transform: translate(-50%, calc(-50% + 16px)); }
-  to   { opacity: 1; transform: translate(-50%, -50%); }
-}
 
 /* ─── TABLETTE / MOBILE ──────────────────────────────────────
    Le menu est en haut (comme sur desktop). La photo n'est plus

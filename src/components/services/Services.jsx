@@ -113,16 +113,16 @@ const Services = () => {
   return (
     <section className="services section" id="services">
       <span className="section__subtitle">Ce que j'offre</span>
-      <h2 className="section__title reveal">Mes Services</h2>
+      <h2 className="section__title">Mes Services</h2>
 
       <div className="services__container container grid">
-        {servicesData.map((service, i) => {
+        {servicesData.map((service) => {
           const { id, title, desc, art } = service;
           const open = () => setActiveService(service);
           return (
             <div
               key={id}
-              className={`services__card reveal d${i + 1}`}
+              className={`services__card`}
               role="button"
               tabIndex={0}
               aria-label={`Voir le détail : ${title}`}

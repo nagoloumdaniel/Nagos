@@ -43,14 +43,13 @@ body.dark-theme .github, body.dark-theme .gh-repo {
 .gh-svg { display: block; width: 100%; height: auto; overflow: visible; }
 .gh-axis { font-family: var(--mono-font); font-size: 13px; fill: var(--text-color); }
 .gh-axis--c { text-anchor: middle; }
-.gh-cell { transform-box: fill-box; transform-origin: center; animation: gh-pop 420ms cubic-bezier(.2,.8,.2,1) both; transition: filter .15s; }
+.gh-cell { transform-box: fill-box; transform-origin: center; transition: filter .15s; }
 .gh-cell:hover { filter: brightness(1.15); stroke: var(--title-color); stroke-width: 1; }
 .gh-l0 { fill: var(--gh-0); background: var(--gh-0); }
 .gh-l1 { fill: var(--gh-1); background: var(--gh-1); }
 .gh-l2 { fill: var(--gh-2); background: var(--gh-2); }
 .gh-l3 { fill: var(--gh-3); background: var(--gh-3); }
 .gh-l4 { fill: var(--gh-4); background: var(--gh-4); }
-@keyframes gh-pop { from { opacity: 0; transform: scale(0.2); } to { opacity: 1; transform: scale(1); } }
 
 .gh-legend { display: flex; align-items: center; justify-content: flex-end; gap: 0.3rem; margin-top: 0.75rem; font-family: var(--mono-font); font-size: var(--tiny-font-size); color: var(--text-color); }
 .gh-legend__cell { display: inline-block; width: 11px; height: 11px; border-radius: 2px; animation: none; }
@@ -69,13 +68,9 @@ body.dark-theme .github, body.dark-theme .gh-repo {
 .gh-chart { min-width: 0; }
 .gh-baseline { stroke: var(--glass-border); stroke-width: 1; }
 .gh-hit { fill: transparent; }
-.gh-bar { fill: var(--gh-3); opacity: .55; transform-box: fill-box; transform-origin: bottom; animation: gh-grow 600ms cubic-bezier(.2,.8,.2,1) both; transition: opacity .15s, fill .15s; }
+.gh-bar { fill: var(--gh-3); opacity: .55; transform-box: fill-box; transform-origin: bottom; transition: opacity .15s, fill .15s; }
 .gh-bar.is-active { opacity: 1; fill: var(--gh-4); }
-.gh-line { fill: none; stroke: var(--gh-3); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1; animation: gh-draw 1.4s ease-out .2s both; }
-.gh-area { animation: gh-fade 1s ease .5s both; }
-@keyframes gh-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-@keyframes gh-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-@keyframes gh-fade { from { opacity: 0; } to { opacity: 1; } }
+.gh-line { fill: none; stroke: var(--gh-3); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1; }
 
 .gh-foot, .gh-note { margin-top: 0.75rem; font-family: var(--mono-font); font-size: var(--tiny-font-size); color: var(--text-color); }
 .gh-note a { color: var(--title-color); text-decoration: underline; text-underline-offset: 3px; }
@@ -90,6 +85,6 @@ body.dark-theme .github, body.dark-theme .gh-repo {
   .gh-panel { padding: 1rem; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .gh-cell, .gh-bar, .gh-line, .gh-area, .gh-skeleton { animation: none; }
+  .gh-skeleton { animation: none; }
   .gh-line { stroke-dashoffset: 0; }
 }

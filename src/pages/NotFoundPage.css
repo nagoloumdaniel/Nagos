@@ -80,7 +80,6 @@
   font-weight: var(--font-bold);
   line-height: 0.8;
   color: var(--ink);
-  animation: nfRise .6s .1s ease both;
 }
 .nf-big__first,
 .nf-big__tail {
@@ -97,10 +96,6 @@
   display: block;
   font-size: min(30vw, calc(var(--img-h) * 0.42));
   letter-spacing: -0.05em;
-}
-@keyframes nfRise {
-  from { opacity: 0; transform: translate(-50%, calc(-50% + 16px)); }
-  to   { opacity: 1; transform: translate(-50%, -50%); }
 }
 
 /* ─── Contenu du hero ────────────────────────────────────── */
@@ -173,5 +168,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .nf *, .nf-big { animation: none !important; }
+  .nf * { animation: none !important; }
 }

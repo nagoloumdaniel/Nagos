@@ -4,6 +4,7 @@ import usePageMeta from '../hooks/usePageMeta';
 import useMediaQuery, { DESKTOP_QUERY } from '../hooks/useMediaQuery';
 import { EditorWindow, Prompt, TermLine } from '../components/ide/Ide';
 import './NotFoundPage.css';
+import usePageCraft from '../lib/craft/usePageCraft';
 
 /* ─── Routes réelles du site (utilisées par le terminal et l'éditeur) ─── */
 const ROUTES = [
@@ -225,6 +226,8 @@ const Terminal = ({ pathname, navigate }) => {
 /* ─── Page ─── */
 const NotFoundPage = () => {
   const { pathname } = useLocation();
+  const craftRef = useRef(null);
+  usePageCraft(craftRef);
   const navigate = useNavigate();
   const isDesktop = useMediaQuery(DESKTOP_QUERY);
 
@@ -236,7 +239,7 @@ const NotFoundPage = () => {
   });
 
   return (
-    <div className="nf">
+    <div className="nf" ref={craftRef}>
       <section className="nf-hero" aria-labelledby="nf-title">
         <div className="nf-hero__stage" aria-hidden="true" />
 

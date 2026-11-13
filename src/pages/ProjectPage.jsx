@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
+import usePageCraft from '../lib/craft/usePageCraft';
 import { Link, useParams } from 'react-router-dom';
 import { projectsData } from '../lib/contenu/projets';
 import { ProjectLogo } from '../components/work/Workitems';
@@ -297,6 +298,8 @@ const Empty = ({ text }) => (
 );
 
 const ProjectDetail = ({ project, prev, next }) => {
+  const craftRef = useRef(null);
+  usePageCraft(craftRef);
   usePageMeta({
     title: `${project.title} - Projet | Daniel NAGOLOUM TALLA`,
     description: `${project.title} : ${project.summary}`,
@@ -312,7 +315,7 @@ const ProjectDetail = ({ project, prev, next }) => {
   const repos = project.links.filter(l => l.kind === 'github');
 
   return (
-    <div className="page project">
+    <div className="page project" ref={craftRef}>
       <div className="pj container">
         <nav className="pj-crumbs" aria-label="Fil d'Ariane">
           <Link to="/portfolio"><i className="uil uil-arrow-left" aria-hidden="true" /> Portfolio</Link>

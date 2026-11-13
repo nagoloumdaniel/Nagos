@@ -77,9 +77,9 @@ const Qualifications = () => {
   return (
     <section className="qualification section">
       <span className="section__subtitle">Formation & expérience</span>
-      <h2 className="section__title reveal">Mon parcours</h2>
+      <h2 className="section__title">Mon parcours</h2>
       <div className="qualification__container container">
-        <div className="qualification__tabs reveal d1">
+        <div className="qualification__tabs">
           {tabs.map(({ id, icon, label }) => (
             <button
               key={id}
