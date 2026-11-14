@@ -8,7 +8,7 @@ import { craftEnabled, reducedMotion, releasePending, setCraftOn, claimHeader, r
 
 gsap.registerPlugin(ScrollTrigger);
 
-const PX = 280; // 1 « seconde » d'animation = 280 px de défilement
+const PX = 200; // 1 « seconde » d'animation = 200 px de défilement (sections, un peu plus vif que 280)
 const ENTRY = 0.9; // un élément de section commence à se construire à 90 % de la hauteur d'écran
 const DIST = 1600; // px de molette pour parcourir tout le hero quand le scroll prend la main
 
@@ -332,7 +332,7 @@ export default function useHomeCraft() {
         if (!p.items.length) { then?.(); return; }
         const tl = gsap.timeline({ paused: true });
         const craft = buildCraft(tl, { plan: p, k: PX, lanes: Math.min(10, Math.max(4, Math.ceil(p.items.length / 4))), frame: root.id || 'footer' });
-        tl.timeScale(Math.max(1, tl.duration() / 3.2));
+        tl.timeScale(Math.max(1, tl.duration() / 2.5));
         tl.eventCallback('onComplete', () => { endAuto(root); then?.(); });
         autos.set(root, { tl, craft });
         tl.play();
