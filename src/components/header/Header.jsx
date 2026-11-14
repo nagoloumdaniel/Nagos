@@ -111,8 +111,8 @@ const Header = () => {
       <header className={`header${snap ? ' header--snap' : ''}${scrolled ? ' scroll-header' : ''}${!scrolled && !location.pathname.startsWith('/portfolio') && location.pathname !== '/blog' ? ' header--on-hero' : ''}`}>
         <nav className="nav container">
 
-          <Link to="/" className="nav__logo" onClick={closeMenu}>
-            NAGOLOUM
+          <Link to="/" className="nav__logo" aria-label="Nagoloum, accueil" onClick={closeMenu}>
+            {'< NAGOLOUM />'}
           </Link>
 
           <div id="nav-menu" className={`nav__menu${menuOpen ? ' show-menu nav__menuf' : ''}`}>
