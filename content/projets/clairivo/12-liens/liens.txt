@@ -1,2 +1,2 @@
 # type | libellé | adresse
-demo | Voir le site | https://clairivo.nagoloum.dev
+demo | Voir le site | https://www.clairivo.org
